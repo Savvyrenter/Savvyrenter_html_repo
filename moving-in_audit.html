@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moving in audit — Savvy Renter</title>
+<meta name="description" content="One sheet for everything about your new home: gas, electrics, EPC, deposit, licence and agent, with the official register beside every box so you can check who really did each report. Works out when each certificate runs out.">
+<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#001e3d">
+<link rel="canonical" href="https://www.savvyrenter.co.uk/moving-in_audit.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Savvy Renter">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Moving in audit — Savvy Renter">
+<meta property="og:description" content="Record every certificate, date and name for your new home before you unpack, and know when each one runs out. Nothing you type is stored or sent.">
+<meta property="og:url" content="https://www.savvyrenter.co.uk/moving-in_audit.html">
+<meta property="og:image" content="https://www.savvyrenter.co.uk/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.5; color:#e2e8f0; max-width:1180px; margin:0 auto; padding:0 18px 24px; background:#0f172a; }
+  h1 { color:#f8fafc; font-size:24px; margin-top:0; }
+  h2 { color:#f1f5f9; font-size:18px; margin:16px 0 4px; border-bottom:1px solid #334155; padding-bottom:5px; }
+  p { margin:6px 0; font-size:14px; }
+  .intro, .note { background:#1e293b; border-left:4px solid #38bdf8; padding:10px 14px; margin:0 0 12px; border-radius:4px; font-size:14px; color:#c9d4e0; }
+  .brand { display:flex; align-items:center; gap:14px; border-bottom:2px solid #334155;
+           padding:12px 0 10px; margin-bottom:14px;
+           position:sticky; top:0; z-index:30; background:#0f172a; }
+  .brand h1 { border:none; padding:0; margin:0; font-size:30px; letter-spacing:-0.2px; }
+  .brand .sub { color:#94a3b8; font-size:13px; margin-top:2px; }
+  .hidden { display:none !important; }
+  .shell { display:flex; gap:20px; align-items:flex-start; }
+  .rail { width:200px; flex:none; position:sticky; top:12px; margin-top:12px;
+          max-height:calc(100vh - 24px); overflow-y:auto; overscroll-behavior:contain; }
+  .tools { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:12px; }
+  .sidelogo { display:block; width:196px; max-width:100%; height:auto; border-radius:10px; margin:14px auto 0; }
+  .tools a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold; font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .tools a:hover { background:#0369a1; }
+  .tools a.on { background:#38bdf8; color:#0f172a; }
+  .tools .grp { margin-bottom:8px; }
+  .tools .grp > summary { list-style:none; cursor:pointer; background:#1e293b; border:1px solid #475569;
+     color:#e2e8f0; font-weight:bold; font-size:14px; padding:5px 12px; border-radius:5px;
+     display:flex; align-items:center; justify-content:space-between; gap:6px; }
+  .tools .grp > summary::-webkit-details-marker { display:none; }
+  .tools .grp > summary::after { content:"\25BE"; font-size:11px; color:#94a3b8; }
+  .tools .grp[open] > summary::after { content:"\25B4"; }
+  .tools .grp > summary:hover { border-color:#38bdf8; color:#fff; }
+  .tools .grp > summary:focus-visible { outline:2px solid #38bdf8; outline-offset:1px; }
+  .tools .grp[open] > summary { margin-bottom:6px; }
+  .tools .grp a { margin-left:10px; font-size:13px; padding:4px 10px; }
+  .page { flex:1; min-width:0; }
+  .pagebar { background:#0b1220; border:1px solid #1e293b; border-radius:6px;
+             padding:5px 12px; margin-bottom:10px; display:flex; align-items:center;
+             justify-content:space-between; gap:14px; font-size:11.5px; }
+  .pagebar a { color:#94a3b8; text-decoration:none; font-weight:bold; letter-spacing:.6px;
+               text-transform:uppercase; white-space:nowrap; }
+  .pagebar a:hover { color:#38bdf8; }
+  .pagebar span { color:#64748b; text-align:right; min-width:0;
+                  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .pagebar .brief { display:none; }
+  @media (max-width:700px) { .pagebar .full { display:none; } .pagebar .brief { display:inline; } }
+  @media (max-width:800px) { .shell { display:block; } .rail { width:auto; position:static; margin-bottom:14px; max-height:none; overflow:visible; } .sidelogo { max-width:208px; } }
+  @media (max-width:700px) { body { padding:18px 12px; } .brand { flex-wrap:wrap; } }
+
+  /* ---- the scrubber itself ---- */
+  .lede { font-size:11px; color:#94a3b8; margin:0 0 2px; }
+  .box { background:#1e293b; border:1px solid #334155; border-radius:6px; padding:8px 10px; margin:0 0 8px; }
+  .btn { background:#0284c7; color:#fff; border:none; border-radius:5px; padding:7px 14px;
+         font-size:14px; font-weight:bold; cursor:pointer; font-family:inherit; }
+  .btn:hover { background:#0369a1; }
+  .btn:disabled { background:#334155; color:#64748b; cursor:default; }
+  .btn.go { background:#15803d; }
+  .btn.go:hover { background:#166534; }
+  .btn.go:disabled { background:#334155; color:#64748b; }
+  .row { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .rules { display:grid; grid-template-columns:repeat(auto-fit,minmax(255px,1fr)); gap:2px 14px; }
+  .rule { display:flex; align-items:flex-start; gap:6px; font-size:12.5px; color:#c9d4e0; padding:1px 0; }
+  .rule input { margin:3px 0 0; flex:0 0 auto; }
+  .rule b { color:#e2e8f0; font-weight:600; }
+  .rule i { display:block; font-style:normal; font-size:11px; color:#94a3b8; line-height:1.35; }
+  .filerow { display:flex; align-items:baseline; gap:8px; font-size:12.5px; padding:2px 0;
+             border-bottom:1px solid #334155; }
+  .filerow:last-child { border-bottom:none; }
+  .filerow .nm { flex:1 1 auto; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:#e2e8f0; }
+  .filerow .ct { flex:0 0 auto; font-family:monospace; font-size:11px; color:#94a3b8; }
+  .log { max-height:420px; overflow-y:auto; border:1px solid #334155; border-radius:6px; background:#0b1220; }
+  table.lg { width:100%; border-collapse:collapse; font-size:12px; }
+  table.lg th { position:sticky; top:0; background:#1e293b; color:#94a3b8; text-align:left;
+                font-size:10.5px; text-transform:uppercase; letter-spacing:.4px;
+                padding:4px 8px; border-bottom:1px solid #334155; z-index:2; }
+  table.lg td { padding:3px 8px; border-bottom:1px solid #16233a; vertical-align:top; line-height:1.35; }
+  table.lg tr:last-child td { border-bottom:none; }
+  td.was { color:#fca5a5; font-family:monospace; word-break:break-word; }
+  td.now { color:#86efac; font-family:monospace; word-break:break-word; }
+  td.wh  { color:#94a3b8; white-space:nowrap; }
+  td.wt  { color:#e2e8f0; white-space:nowrap; }
+  tr.fhdr td { background:#16233a; color:#38bdf8; font-weight:bold; font-size:11.5px; }
+  .tally { font-size:11px; color:#94a3b8; font-family:monospace; }
+  .warn { background:#3b2f0b; border-left:4px solid #f2c94c; color:#f5e6b8;
+          padding:8px 12px; margin:0 0 8px; border-radius:4px; font-size:13px; }
+  .warn b { color:#fde68a; }
+  .dls { display:flex; flex-direction:column; gap:3px; }
+  .dls a { color:#38bdf8; font-size:12.5px; font-weight:bold; text-decoration:none; }
+  .dls a:hover { text-decoration:underline; }
+  .miss { color:#fca5a5; }
+  /* ---- moving in audit ---- */
+  fieldset { border:1px solid #334155; background:#111c30; border-radius:6px;
+             padding:4px 10px 6px; margin:0 0 8px; }
+  legend { color:#38bdf8; font-weight:bold; font-size:11.5px; text-transform:uppercase;
+           letter-spacing:.5px; padding:0 5px; }
+  .lk { font-size:12px; color:#94a3b8; margin:0 0 6px; line-height:1.45; }
+  .lk a { color:#38bdf8; font-weight:bold; text-decoration:none; }
+  .lk a:hover { text-decoration:underline; }
+  .row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:5px; }
+  .f { flex:1 1 150px; min-width:118px; }
+  .f.sm { flex:0 0 122px; }
+  label { display:block; font-size:10px; font-weight:bold; color:#8fa2b8;
+          text-transform:uppercase; letter-spacing:.3px; margin-bottom:1px; }
+  input, select, textarea { width:100%; box-sizing:border-box; background:#0b1220;
+          border:1px solid #334155; color:#e2e8f0; border-radius:4px;
+          padding:3px 6px; font-size:13px; font-family:inherit; }
+  input:focus, select:focus, textarea:focus { outline:none; border-color:#38bdf8; }
+  input::placeholder { color:#5b6b7f; }
+  textarea { line-height:1.45; font-size:13px; padding:8px; }
+  .acts { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:10px 0 4px; }
+  .acts button { border:none; border-radius:5px; font-weight:bold; cursor:pointer;
+                 font-size:13.5px; padding:7px 16px; }
+  .acts .go { background:#0284c7; color:#fff; }
+  .acts .go:hover { background:#0369a1; }
+  .acts .pr { background:#1e293b; color:#e2e8f0; border:1px solid #475569; }
+  .acts .pr:hover { border-color:#38bdf8; color:#fff; }
+  .acts .hint { font-size:11.5px; color:#8fa2b8; }
+  .who { background:#111c30; border:1px solid #334155; border-radius:6px;
+         padding:8px 10px; font-size:13px; line-height:1.5; }
+  .who b { color:#f1f5f9; }
+  table.due { width:100%; border-collapse:collapse; font-size:13px; }
+  table.due th { text-align:left; font-size:10px; text-transform:uppercase; letter-spacing:.4px;
+                 color:#8fa2b8; border-bottom:1px solid #334155; padding:3px 6px; }
+  table.due td { padding:4px 6px; border-bottom:1px solid #1e293b; vertical-align:top; }
+  table.due tr.gone td { background:#3a1414; }
+  table.due tr.soon td { background:#3b2f0b; }
+  .pill { display:inline-block; font-size:10.5px; font-weight:bold; padding:1px 7px;
+          border-radius:9px; white-space:nowrap; }
+  .pill.gone { background:#7f1d1d; color:#fecaca; }
+  .pill.soon { background:#78350f; color:#fde68a; }
+  .pill.ok   { background:#14532d; color:#bbf7d0; }
+  .pill.none { background:#334155; color:#cbd5e1; }
+  .chk { border-left:4px solid #334155; background:#111c30; border-radius:4px;
+         padding:6px 10px; margin-bottom:5px; font-size:13px; line-height:1.45; }
+  .chk b { color:#f1f5f9; }
+  .chk.bad  { border-left-color:#ef4444; background:#2a1414; }
+  .chk.warn { border-left-color:#f2c94c; background:#2a2410; }
+  .chk.good { border-left-color:#22c55e; background:#0f2417; }
+  .chk .law { color:#8fa2b8; font-size:11.5px; }
+  @media print {
+    body { background:#fff; color:#000; max-width:none; }
+    .rail, .pagebar, .intro, form, .noprint, .brand .sub { display:none !important; }
+    .hidden { display:block !important; }
+    .brand { position:static; border-bottom:2px solid #000; }
+    .brand h1 { color:#000; font-size:20px; }
+    h2 { color:#000; border-bottom:1px solid #000; font-size:14px; margin:12px 0 4px; }
+    .who, .chk, table.due td, table.due th { background:#fff !important; color:#000; }
+    .who, .chk { border:1px solid #000; }
+    .who b, .chk b { color:#000; }
+    .pill { border:1px solid #000; background:#fff !important; color:#000 !important; }
+    textarea { border:1px solid #000; color:#000; background:#fff; height:auto; }
+    .unverified { border:1px solid #000; background:#fff; color:#000; }
+    .lk { color:#000; }
+  }
+  button.find { width:100%; background:#1e293b; color:#38bdf8; border:1px solid #475569;
+                border-radius:4px; padding:3px 6px; font-size:11.5px; font-weight:bold;
+                cursor:pointer; white-space:nowrap; }
+  button.find:hover { border-color:#38bdf8; color:#fff; }
+  .card { background:#111c30; border:1px solid #334155; border-radius:6px;
+          padding:8px 10px; font-size:13px; line-height:1.55; margin-bottom:6px; }
+  .card h3 { margin:0 0 3px; font-size:11px; text-transform:uppercase; letter-spacing:.5px;
+             color:#38bdf8; font-weight:bold; }
+  .card .g { display:flex; flex-wrap:wrap; gap:2px 18px; }
+  .card .g span { white-space:nowrap; }
+  .card b { color:#f1f5f9; }
+  .cards { display:flex; gap:8px; flex-wrap:wrap; }
+  .cards > .card { flex:1 1 300px; }
+  @media print {
+    button.find { display:none !important; }
+    .card { background:#fff !important; border:1px solid #000; color:#000; }
+    .card h3, .card b { color:#000; }
+  }
+  .card a { color:#38bdf8; text-decoration:none; }
+  .card a:hover { text-decoration:underline; }
+  .card .g > div { flex-basis:100%; }
+  @media print { .card a { color:#000; text-decoration:underline; } }
+
+  /* ---- Site menu: the fly-out layout, in our own styling ---------------- */
+  /* Fixed sidebar down the left, categories that fly out on hover or keyboard
+     focus. The card, the blue pill links and the colours are the site's own. */
+  .rail { position:fixed; top:0; left:0; width:236px; height:100vh; box-sizing:border-box;
+          padding:14px 12px; overflow:visible; background:#0f172a;
+          display:flex; flex-direction:column; max-height:none; z-index:2000; }
+  .tools { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:12px; }
+  .tools > a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold;
+               font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .tools > a:hover { background:#0369a1; }
+  .tools > a.on { background:#38bdf8; color:#0f172a; }
+  .navlist { list-style:none; margin:0; padding:0; }
+  .navitem { position:relative; margin-bottom:8px; }
+  .navitem > .navcat { display:flex; align-items:center; justify-content:space-between; gap:8px;
+                       background:#1e293b; border:1px solid #475569; border-radius:5px; color:#e2e8f0;
+                       font-size:13px; font-weight:600; padding:5px 10px; cursor:pointer; user-select:none; }
+  .navitem > .navcat::after { content:"\25B8"; font-size:11px; color:#94a3b8; }
+  .navitem:hover > .navcat, .navitem:focus-within > .navcat { background:#334155; border-color:#0284c7; color:#fff; }
+  .navitem.here > .navcat { border-color:#38bdf8; color:#38bdf8; }
+  .flyout { visibility:hidden; opacity:0;
+            transition:visibility 0s linear .4s, opacity .12s ease .4s;
+            position:absolute; top:50%; transform:translateY(-50%); left:100%; margin-left:10px; width:246px;
+            max-height:92vh; overflow-y:auto; list-style:none; padding:12px; margin-bottom:0;
+            background:#1e293b; border:1px solid #334155; border-left:3px solid #0284c7;
+            border-radius:8px; box-shadow:6px 4px 18px rgba(0,0,0,.5); z-index:2001; }
+  .navitem:hover > .flyout, .navitem:focus-within > .flyout, .flyout:hover { visibility:visible; opacity:1; transition-delay:0s; }
+  /* The gap between the row and its fly-out belongs to the row, so crossing it
+     at any angle keeps the menu open; the fly-out then holds itself open. */
+  .navitem > .flyout::before { content:''; position:absolute; top:-40px; bottom:-40px; left:-26px; width:26px; }
+  .navitem::after { content:''; position:absolute; top:-6px; bottom:-6px; left:100%; width:28px; }
+  .flyout a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold;
+              font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .flyout li:last-child a { margin-bottom:0; }
+  .flyout a:hover { background:#0369a1; }
+  .flyout a.on { background:#38bdf8; color:#0f172a; }
+  .sidelogo { display:block; width:196px; max-width:100%; height:auto; border-radius:10px; margin:14px auto 0; }
+  .shell { display:block; }
+  main.page, .page { margin-left:252px; max-width:none; position:relative; z-index:1; }
+  /* Narrow windows and phones: the sidebar stops being fixed and every item is
+     listed openly, so nothing has to be hovered to be found. */
+  @media (max-width:860px) {
+    .rail { position:static; width:auto; height:auto; padding:0; display:block; z-index:auto; }
+    main.page, .page { margin-left:0; }
+    .navitem > .navcat::after { content:""; }
+    .flyout, .navitem.resitem > .flyout { visibility:visible; opacity:1; pointer-events:auto; position:static; transform:none; width:auto; margin:8px 0 0; max-height:none; inset:auto;
+              border-left:1px solid #334155; box-shadow:none; }
+  }
+  /* Other resources: the row is a link to the page, and the fly-out carries the
+     links themselves, so nothing needs two clicks to reach. */
+  .navitem > a.navcat { text-decoration:none; }
+  .navitem.resitem { position:static; }
+  /* The long one is pinned to the window instead, so all 39 links stay on screen. */
+  .navitem.resitem > .flyout { position:fixed; top:2vh; bottom:2vh; left:221px; margin-left:0; transform:none; max-height:none; }
+  .flyout.wide { width:300px; max-height:94vh; }
+  .flyout .sect { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.6px;
+                  color:#94a3b8; margin:10px 2px 5px; }
+  .flyout a.hot { background:#15803d; }
+  .flyout a.hot:hover { background:#166534; }
+  .flyout a.ext { background:#0f172a; border:1px solid #334155; color:#e2e8f0; font-weight:600;
+                  font-size:12.5px; padding:4px 10px; margin-bottom:4px; }
+  .flyout a.ext:hover { background:#334155; border-color:#0284c7; color:#fff; }
+  .flyout a.ext::after { content:" \2197"; color:#94a3b8; font-size:11px; }
+  /* A category inside a fly-out: the Redaction Suite sits under Financial Tools,
+     so what it redacts is said by where it lives. Its parent must not clip it. */
+  .flyout.hassub { overflow:visible; max-height:none; }
+  .flyout .navitem.sub { margin:2px 0 0; }
+  .flyout .navitem.sub > .navcat { background:#0f172a; }
+  .flyout .navitem.sub > .flyout { margin-left:14px; }
+  /* keep the long one in the flow on a phone (this comes last on purpose) */
+  @media (max-width:860px) { .navitem.resitem > .flyout { position:static; inset:auto; transform:none; } }
+  @media print { .rail { display:none !important; } main.page, .page { margin-left:0; } }
+</style>
+</head>
+<body>
+<div class="shell">
+<div class="rail"><aside class="tools"><a href="index.html">Home</a><ul class="navlist"><li class="navitem"><span class="navcat" tabindex="0">Location</span><ul class="flyout"><li><a href="area.html">What rent costs here</a></li><li><a href="counciltax.html">Council tax here</a></li></ul></li><li class="navitem here"><span class="navcat" tabindex="0">Tenancy &amp; Rent</span><ul class="flyout"><li><a href="moving-in_audit.html" class="on">Moving in audit</a></li></ul></li><li class="navitem"><span class="navcat" tabindex="0">Financial Tools</span><ul class="flyout hassub"><li><a href="interest.html">Interest owed to you</a></li><li><a href="arrears.html">Paying off arrears</a></li><li><a href="benefits.html">Benefit entitlements</a></li><li><a href="incoming-benefit-calc.html">Record of income</a></li><li class="navitem sub"><span class="navcat" tabindex="0">Redaction Suite</span><ul class="flyout"><li><a href="bank-statement-redaction.html" class="hot">⚡ Redact a statement page</a></li><li><a href="bank-statement-split.html">Split a PDF into pages</a></li><li><a href="bank-statement-rename.html">Name statements by date</a></li></ul></li></ul></li><li class="navitem"><span class="navcat" tabindex="0">Complaints &amp; Claims</span><ul class="flyout"><li><a href="scrubber.html">🔍 Web page data scrubber</a></li><li><a href="PRS_Tenant_Workspace.html">PRS complaint</a></li><li><a href="TPO_Tenant_Workspace.html">TPO complaint</a></li><li><a href="court_forms_workspace.html">Money Claim Online</a></li></ul></li><li class="navitem resitem"><a class="navcat" href="resources.html">Data &amp; Resources</a><ul class="flyout wide"><li><a href="resources.html">Other resources — the page</a></li><li class="sect">Certificates and safety</li><li><a class="ext" href="https://www.gov.uk/find-energy-certificate" target="_blank" rel="noopener">Energy Performance Certificate</a></li><li><a class="ext" href="https://www.scottishepcregister.org.uk/" target="_blank" rel="noopener">EPC register</a></li><li><a class="ext" href="https://www.gassaferegister.co.uk/find-an-engineer-or-check-the-register/" target="_blank" rel="noopener">Gas Safe Register</a></li><li><a class="ext" href="https://www.niceic.com/find-a-contractor" target="_blank" rel="noopener">Electrical safety</a></li><li><a class="ext" href="https://search.napit.org.uk/" target="_blank" rel="noopener">NAPIT</a></li><li><a class="ext" href="https://www.electricalsafetyfirst.org.uk/" target="_blank" rel="noopener">Electrical Safety First</a></li><li><a class="ext" href="https://www.gov.uk/government/publications/how-to-rent" target="_blank" rel="noopener">How to Rent</a></li><li class="sect">Deposits</li><li><a class="ext" href="https://www.gov.uk/tenancy-deposit-protection" target="_blank" rel="noopener">Tenancy deposit protection</a></li><li><a class="ext" href="https://www.depositprotection.com/" target="_blank" rel="noopener">Deposit Protection Service</a></li><li><a class="ext" href="https://www.tenancydepositscheme.com/" target="_blank" rel="noopener">Tenancy Deposit Scheme</a></li><li><a class="ext" href="https://www.mydeposits.co.uk/" target="_blank" rel="noopener">mydeposits</a></li><li class="sect">Who owns and who manages</li><li><a class="ext" href="https://find-and-update.company-information.service.gov.uk/" target="_blank" rel="noopener">Companies House</a></li><li><a class="ext" href="https://www.gov.uk/search-property-information-land-registry" target="_blank" rel="noopener">HM Land Registry</a></li><li><a class="ext" href="https://www.tpos.co.uk/" target="_blank" rel="noopener">Property Ombudsman</a></li><li><a class="ext" href="https://www.theprs.co.uk/" target="_blank" rel="noopener">Property Redress Scheme</a></li><li><a class="ext" href="https://www.rentsmart.gov.wales/" target="_blank" rel="noopener">Rent Smart Wales</a></li><li><a class="ext" href="https://www.landlordregistrationscotland.gov.uk/" target="_blank" rel="noopener">Scottish Landlord Register</a></li><li><a class="ext" href="https://www.london.gov.uk/programmes-strategies/housing-and-land/improving-private-rented-sector/rogue-landlord-and-agent-checker" target="_blank" rel="noopener">London rogue landlord and agent checker</a></li><li><a class="ext" href="https://www.gov.uk/find-local-council" target="_blank" rel="noopener">Find your local council</a></li><li class="sect">Rent, notices and the law</li><li><a class="ext" href="https://www.gov.uk/private-renting/rent-increases" target="_blank" rel="noopener">Rent increases</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1988/50/section/13" target="_blank" rel="noopener">Housing Act 1988</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2019/4" target="_blank" rel="noopener">Tenant Fees Act 2019</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1985/70/section/11" target="_blank" rel="noopener">Landlord and Tenant Act 1985</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2018/34" target="_blank" rel="noopener">Homes Act 2018</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1977/43" target="_blank" rel="noopener">Protection from Eviction Act 1977</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2015/20" target="_blank" rel="noopener">Deregulation Act 2015</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1984/28/section/69" target="_blank" rel="noopener">County Courts Act 1984</a></li><li><a class="ext" href="https://www.legislation.gov.uk/all?title=Renters%27%20Rights%20Act" target="_blank" rel="noopener">Renters' Rights Act</a></li><li class="sect">Taking it further</li><li><a class="ext" href="https://buntool.co.uk/" target="_blank" rel="noopener">BunTool</a></li><li><a class="ext" href="https://www.gov.uk/make-court-claim-for-money" target="_blank" rel="noopener">Make a court claim for money</a></li><li><a class="ext" href="https://www.moneyclaim.gov.uk/" target="_blank" rel="noopener">Money Claim Online</a></li><li><a class="ext" href="https://www.gov.uk/get-help-with-court-fees" target="_blank" rel="noopener">Help with court fees</a></li><li><a class="ext" href="https://www.gov.uk/government/collections/county-court-forms" target="_blank" rel="noopener">County court forms</a></li><li><a class="ext" href="https://www.gov.uk/housing-tribunals" target="_blank" rel="noopener">Housing tribunals</a></li><li><a class="ext" href="https://www.housing-ombudsman.org.uk/" target="_blank" rel="noopener">Housing Ombudsman</a></li><li class="sect">Free advice</li><li><a class="ext" href="https://england.shelter.org.uk/housing_advice" target="_blank" rel="noopener">Shelter</a></li><li><a class="ext" href="https://www.citizensadvice.org.uk/housing/" target="_blank" rel="noopener">Citizens Advice</a></li><li><a class="ext" href="https://www.lawcentres.org.uk/" target="_blank" rel="noopener">Law Centres Network</a></li><li><a class="ext" href="https://www.advicenow.org.uk/" target="_blank" rel="noopener">Advicenow</a></li></ul></li></ul></aside><img class="sidelogo" src="SavvyRenter-sml.png" alt="Savvy Renter"></div><main class="page">
+<div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
+
+<div class="brand"><div><h1>Moving in audit</h1><div class="sub">Get every certificate, date and name down on one sheet before you unpack</div></div></div>
+
+<div class="intro">
+  Fill this in on the day you move in &mdash; or better, while you are still looking round. Every box has the official register next to it, so you can look up who really did the gas check, the electrics and the energy certificate, and put their name and number down yourself rather than taking anyone's word for it. Then print it and keep it.
+  <b>It works out when each certificate runs out</b>, so when your landlord has gone quiet you can be the one who gets in first: <i>my electrical safety certificate runs out next month, are you getting that booked?</i> That is usually all it takes, and it keeps the place safe to live in.
+</div>
+
+<div class="unverified"><b>Untested, unverified and possibly incomplete.</b> This sheet has not been checked end to end against a real tenancy, and the rules differ in Wales, Scotland and Northern Ireland. It is a record you keep, not legal advice. Always check the certificate itself &mdash; this page only does the arithmetic on the dates you give it.</div>
+
+<form id="f" autocomplete="off">
+
+<fieldset>
+<legend>You and the property</legend>
+<p class="lk">Fill this in while you are still looking round if you can. Everything below has a public register behind it, so most of it you can check yourself without asking anyone.</p>
+<div class="row">
+  <div class="f"><label>Your name</label><input type="text" id="tN"></div>
+  <div class="f sm"><label>Tenancy starts</label><input type="date" id="mI"></div>
+  <div class="f sm"><label>Rent &pound; / month</label><input type="number" id="rA" min="0" step="1"></div>
+  <div class="f sm"><label>Rent due on</label><input type="text" id="rD" placeholder="1st"></div>
+</div>
+<div class="row">
+  <div class="f"><label>Address line 1</label><input type="text" id="p1"></div>
+  <div class="f"><label>Address line 2</label><input type="text" id="p2"></div>
+  <div class="f"><label>Town / city</label><input type="text" id="tC"></div>
+  <div class="f sm"><label>Postcode</label><input type="text" id="pC" maxlength="9" style="text-transform:uppercase"></div>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Your landlord</legend>
+<p class="lk">The address for notices has to be one in England or Wales &mdash; if all you have is a PO box or the agent&rsquo;s office, say so, because until they give you a real one your rent is not legally &ldquo;due&rdquo;. <a href="https://www.gov.uk/search-property-information-land-registry" target="_blank" rel="noopener">Land Registry</a> tells you who actually owns it for &pound;3.</p>
+<div class="row">
+  <div class="f"><label>Name</label><input type="text" id="lN"></div>
+  <div class="f sm"><label>A company?</label><select id="lK" onchange="chShow()"><option value="">&mdash;</option><option value="Y">Yes</option><option value="N">No</option></select></div>
+  <div class="f sm" id="lCoWrap" style="display:none"><label>Company no.</label><input type="text" id="lCo"></div>
+  <div class="f sm" id="lChWrap" style="display:none"><label>&nbsp;</label><button type="button" class="find" onclick="chFind('lN')">Companies House &#8599;</button></div>
+</div>
+<div class="row">
+  <div class="f"><label>Address for notices</label><input type="text" id="lA" placeholder="must be in England or Wales"></div>
+  <div class="f sm"><label>Phone</label><input type="tel" id="lP"></div>
+  <div class="f"><label>Email</label><input type="email" id="lE"></div>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>The agent, if there is one</legend>
+<p class="lk">Type the agency name and press <b>Companies House</b> &mdash; it opens the register with that name already searched, so you can take the company number and the registered office straight off it. Worth having: that is the address a claim gets sent to, and it is often not the shop you walk into. Ask whether repairs go to their own address or through a portal, and get a number that is answered out of hours \u2014 a burst pipe at eleven at night is not an email.</p>
+<div class="row">
+  <div class="f"><label>Agency name</label><input type="text" id="aN"></div>
+  <div class="f sm"><label>&nbsp;</label><button type="button" class="find" onclick="chFind('aN')">Companies House &#8599;</button></div>
+  <div class="f sm"><label>Company no.</label><input type="text" id="aCo"></div>
+  <div class="f"><label>Website</label><input type="text" id="aW"></div>
+</div>
+<div class="row">
+  <div class="f"><label>Registered office (from Companies House)</label><input type="text" id="aReg"></div>
+  <div class="f"><label>The office you actually deal with</label><input type="text" id="aA"></div>
+</div>
+<div class="row">
+  <div class="f sm"><label>Phone</label><input type="tel" id="aP"></div>
+  <div class="f sm"><label>Emergency / out of hours</label><input type="tel" id="aP2"></div>
+  <div class="f"><label>Email &mdash; general</label><input type="email" id="aE1"></div>
+  <div class="f"><label>Email &mdash; repairs</label><input type="email" id="aE2"></div>
+  <div class="f"><label>Repair portal (web address)</label><input type="text" id="aRP" placeholder="the site you report repairs on"></div>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Gas safety &mdash; renewed every 12 months</legend>
+<p class="lk">The certificate has the engineer's name and a licence number on it. <a href="https://www.gassaferegister.co.uk/find-an-engineer-or-check-the-register/" target="_blank" rel="noopener">Check that number on the Gas Safe Register</a> &mdash; it tells you whether they were registered, and for what. If there is no gas at the property, leave this blank.</p>
+<div class="row">
+  <div class="f sm"><label>Date of check</label><input type="date" id="gD"></div>
+  <div class="f sm"><label>Expires</label><input type="date" id="gE"></div>
+  <div class="f sm"><label>Date given to you</label><input type="date" id="gG"></div>
+  <div class="f"><label>Company</label><input type="text" id="gC"></div>
+  <div class="f"><label>Engineer</label><input type="text" id="gI"></div>
+  <div class="f sm"><label>Gas Safe no.</label><input type="text" id="gR"></div>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Electrical installation report (EICR) &mdash; renewed every 5 years</legend>
+<p class="lk">Check the electrician is registered with a competent person scheme: <a href="https://www.niceic.com/find-a-contractor" target="_blank" rel="noopener">NICEIC / ELECSA</a> &middot; <a href="https://search.napit.org.uk/" target="_blank" rel="noopener">NAPIT</a>. The report must say <b>satisfactory</b>; if it says unsatisfactory, the work has to be done within 28 days. <a href="https://www.electricalsafetyfirst.org.uk/" target="_blank" rel="noopener">What the report should cover</a>.</p>
+<div class="row">
+  <div class="f sm"><label>Date of inspection</label><input type="date" id="eD"></div>
+  <div class="f sm"><label>Next due (on report)</label><input type="date" id="eE"></div>
+  <div class="f sm"><label>Date given to you</label><input type="date" id="eG"></div>
+  <div class="f"><label>Company</label><input type="text" id="eC"></div>
+  <div class="f"><label>Electrician</label><input type="text" id="eI"></div>
+  <div class="f sm"><label>Scheme no.</label><input type="text" id="eR"></div>
+</div>
+<div class="row">
+  <div class="f sm"><label>Result</label><select id="eS"><option value="">—</option><option value="SAT">Satisfactory</option><option value="UNSAT">Unsatisfactory</option></select></div>
+  <div class="f"><label>Anything the report told them to fix</label><input type="text" id="eF" placeholder="C1 / C2 / FI codes, and whether it was done"></div>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Energy performance certificate (EPC) &mdash; lasts 10 years</legend>
+<p class="lk"><a href="https://www.gov.uk/find-energy-certificate" target="_blank" rel="noopener">Find the certificate by postcode (England &amp; Wales)</a> &middot; <a href="https://www.scottishepcregister.org.uk/" target="_blank" rel="noopener">Scotland</a>. It is public, it is free, and it names the assessor and their accreditation number &mdash; you can fill this block in before you have even been given anything.</p>
+<div class="row">
+  <div class="f sm"><label>Certificate number</label><input type="text" id="pN"></div>
+  <div class="f sm"><label>Expires</label><input type="date" id="pE"></div>
+  <div class="f sm"><label>Band</label><select id="pB"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+  <div class="f"><label>Assessor</label><input type="text" id="pA"></div>
+  <div class="f sm"><label>Assessor no.</label><input type="text" id="pR"></div>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Your deposit</legend>
+<p class="lk">It must be in one of these three, and you must be given the paperwork, within 30 days of them taking it. Each scheme lets you check your own deposit: <a href="https://www.depositprotection.com/" target="_blank" rel="noopener">DPS</a> &middot; <a href="https://www.tenancydepositscheme.com/" target="_blank" rel="noopener">TDS</a> &middot; <a href="https://www.mydeposits.co.uk/" target="_blank" rel="noopener">mydeposits</a>. <a href="https://www.gov.uk/tenancy-deposit-protection" target="_blank" rel="noopener">How the rules work</a>.</p>
+<div class="row">
+  <div class="f sm"><label>Amount &pound;</label><input type="number" id="dA" min="0" step="1"></div>
+  <div class="f sm"><label>Date you paid it</label><input type="date" id="dP"></div>
+  <div class="f sm"><label>Date protected</label><input type="date" id="dT"></div>
+  <div class="f sm"><label>Paperwork received</label><input type="date" id="dS"></div>
+  <div class="f sm"><label>Scheme</label><select id="dC"><option value="">—</option><option>DPS</option><option>TDS</option><option>mydeposits</option><option value="NONE">Not protected</option></select></div>
+  <div class="f"><label>Scheme reference</label><input type="text" id="dR"></div>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>Licensing</legend>
+<p class="lk">A house shared by 5 or more people from 2 or more households needs a licence everywhere in England and Wales, and many councils licence ordinary lets too. <a href="https://www.gov.uk/find-licences/house-in-multiple-occupation-licence" target="_blank" rel="noopener">Check by postcode</a> &middot; <a href="https://www.gov.uk/find-local-council" target="_blank" rel="noopener">Your council</a> &middot; <a href="https://www.rentsmart.gov.wales/" target="_blank" rel="noopener">Wales: Rent Smart</a> &middot; <a href="https://www.landlordregistrationscotland.gov.uk/" target="_blank" rel="noopener">Scotland: landlord register</a> &middot; <a href="https://www.london.gov.uk/programmes-strategies/housing-and-land/improving-private-rented-sector/rogue-landlord-and-agent-checker" target="_blank" rel="noopener">London rogue landlord checker</a>.</p>
+<div class="row">
+  <div class="f sm"><label>Licence needed?</label><select id="hN"><option value="">—</option><option value="YES">Yes</option><option value="NO">No</option><option value="UNSURE">Not sure yet</option></select></div>
+  <div class="f sm"><label>Type</label><select id="hT"><option value="">—</option><option>Mandatory HMO</option><option>Additional HMO</option><option>Selective</option><option>Wales registration</option><option>Scotland registration</option></select></div>
+  <div class="f sm"><label>Licence number</label><input type="text" id="hR"></div>
+  <div class="f sm"><label>Expires</label><input type="date" id="hE"></div>
+  <div class="f"><label>Issued by (council)</label><input type="text" id="hC"></div>
+</div>
+</fieldset>
+
+<fieldset>
+<legend>If there is an agent: redress scheme and client money protection</legend>
+<p class="lk">Every letting agent must belong to a redress scheme &mdash; ask for the membership number and check it: <a href="https://www.tpos.co.uk/" target="_blank" rel="noopener">The Property Ombudsman</a> &middot; <a href="https://www.theprs.co.uk/" target="_blank" rel="noopener">Property Redress Scheme</a> &middot; <a href="https://www.propertyredress.co.uk/" target="_blank" rel="noopener">Property Redress</a>. If they hold your money they also need client money protection &mdash; <a href="https://www.gov.uk/client-money-protection-scheme-property-agents" target="_blank" rel="noopener">the six approved schemes</a>.</p>
+<div class="row">
+  <div class="f sm"><label>Redress scheme</label><select id="rS"><option value="">—</option><option>TPO</option><option>PRS</option><option>Property Redress</option><option value="NONE">None / would not say</option></select></div>
+  <div class="f sm"><label>Membership no.</label><input type="text" id="rN"></div>
+  <div class="f"><label>Client money protection scheme</label><input type="text" id="cM"></div>
+  <div class="f sm"><label>Date you checked</label><input type="date" id="rC"></div>
+</div>
+</fieldset>
+
+<div class="acts">
+  <button type="button" class="go" onclick="buildSheet()">Build my sheet</button>
+  <button type="button" class="pr" onclick="window.print()">Print / save as PDF</button>
+  <span class="hint">Nothing here is saved. Print it, or it is gone when you close the tab.</span>
+</div>
+</form>
+
+<div id="out" class="hidden">
+  <h2>Your tenancy record</h2>
+  <div id="who" class="who"></div>
+  <div id="cards" class="cards hidden" style="margin-top:6px"></div>
+  <h2>What runs out when</h2>
+  <div id="due"></div>
+  <h2>What this looks like against the rules</h2>
+  <div id="chk"></div>
+  <h2 id="nudgeH">A message you could send</h2>
+  <p class="lk" id="nudgeW">Polite, dated, and it puts you on record as the one who raised it. Change it to sound like you.</p>
+  <textarea id="nudge" rows="10" readonly></textarea>
+  <div class="acts noprint" id="nudgeA">
+    <button type="button" class="pr" onclick="copyNudge()">Copy the message</button>
+    <button type="button" class="pr" onclick="window.print()">Print / save as PDF</button>
+    <span class="hint" id="cpMsg"></span>
+  </div>
+</div>
+
+<script>
+// Moving in audit — everything happens here in the page. Nothing is stored,
+// nothing is sent. Close the tab and it is gone; that is why the sheet is
+// meant to be printed.
+const $ = (id) => document.getElementById(id);
+const v = (id) => ($(id) && $(id).value ? $(id).value.trim() : '');
+const esc = (s) => String(s == null ? '' : s).replace(/[&<>"]/g,
+  (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+const DAY = 86400000;
+function today() { const t = new Date(); t.setHours(0, 0, 0, 0); return t; }
+function d(id) { const s = v(id); if (!s) return null; const t = new Date(s + 'T00:00:00'); return isNaN(t) ? null : t; }
+function plus(dt, y, m) { if (!dt) return null; const o = new Date(dt.getTime()); if (y) o.setFullYear(o.getFullYear() + y); if (m) o.setMonth(o.getMonth() + m); return o; }
+function fmt(dt) { return dt ? dt.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : '—'; }
+function days(dt, from) { return dt ? Math.round((dt - (from || today())) / DAY) : null; }
+
+// How long each certificate is good for, when the page has to work it out
+// because the tenant only has the date it was done.
+function nextDue(kind) {
+  if (kind === 'gas') return d('gE') || plus(d('gD'), 0, 12);
+  if (kind === 'eicr') return d('eE') || plus(d('eD'), 5, 0);
+  if (kind === 'epc') return d('pE');
+  if (kind === 'licence') return d('hE');
+  return null;
+}
+
+function band(n) {
+  if (n === null) return { cls: 'none', txt: 'not filled in' };
+  if (n < 0) return { cls: 'gone', txt: Math.abs(n) + ' day' + (Math.abs(n) === 1 ? '' : 's') + ' ago' };
+  if (n === 0) return { cls: 'gone', txt: 'today' };
+  if (n <= 60) return { cls: 'soon', txt: 'in ' + n + ' day' + (n === 1 ? '' : 's') };
+  return { cls: 'ok', txt: 'in ' + n + ' days' };
+}
+
+function address() {
+  return [v('p1'), v('p2'), v('tC'), v('pC').toUpperCase()].filter(Boolean).join(', ');
+}
+
+function buildSheet() {
+  const mi = d('mI'), now = today();
+
+  // ---- who and where ----
+  const rent = v('rA') ? '\u00a3' + Number(v('rA')).toLocaleString('en-GB') + ' a month' : '\u2014';
+  $('who').innerHTML =
+    '<b>' + (esc(v('tN')) || 'Tenant') + '</b> &middot; ' + (address() ? esc(address()) : 'address not filled in') + '<br>' +
+    'Tenancy starts <b>' + fmt(mi) + '</b> &middot; rent ' + esc(rent) +
+    (v('rD') ? ', due on the ' + esc(v('rD')) : '') +
+    '<br><span class="law">Sheet made ' + fmt(now) + '. Check every date against the certificate itself.</span>';
+  writeContacts();
+
+  // ---- what runs out when ----
+  const items = [
+    { k: 'gas', name: 'Gas safety certificate', who: [v('gC'), v('gI'), v('gR') && 'Gas Safe ' + v('gR')], every: 'every 12 months' },
+    { k: 'eicr', name: 'Electrical report (EICR)', who: [v('eC'), v('eI'), v('eR') && 'scheme ' + v('eR')], every: 'every 5 years' },
+    { k: 'epc', name: 'Energy certificate (EPC)', who: [v('pA'), v('pR'), v('pN') && 'cert ' + v('pN')], every: 'every 10 years' },
+    { k: 'licence', name: (v('hT') || 'Property licence'), who: [v('hC'), v('hR')], every: 'set by the council' },
+  ];
+  const rows = items.map((it) => {
+    const due = nextDue(it.k), n = days(due, now);
+    return { it: it, due: due, n: n, b: band(n) };
+  }).filter((r) => r.due || r.it.who.filter(Boolean).length);
+  rows.sort((a, b2) => (a.due ? a.due.getTime() : Infinity) - (b2.due ? b2.due.getTime() : Infinity));
+
+  if (!rows.length) {
+    $('due').innerHTML = '<div class="chk">Nothing filled in yet. Put the dates in above and press <b>Build my sheet</b>.</div>';
+  } else {
+    $('due').innerHTML =
+      '<table class="due"><tr><th>What</th><th>Runs out</th><th>That is</th><th>Who did it</th><th>Renewed</th></tr>' +
+      rows.map((r) =>
+        '<tr class="' + (r.b.cls === 'gone' || r.b.cls === 'soon' ? r.b.cls : '') + '">' +
+        '<td><b>' + esc(r.it.name) + '</b></td>' +
+        '<td>' + fmt(r.due) + '</td>' +
+        '<td><span class="pill ' + r.b.cls + '">' + esc(r.b.txt) + '</span></td>' +
+        '<td>' + (esc(r.it.who.filter(Boolean).join(' · ')) || '<span class="law">not filled in</span>') + '</td>' +
+        '<td class="law">' + esc(r.it.every) + '</td></tr>').join('') +
+      '</table>';
+  }
+  runChecks(mi, now);
+  writeNudge(rows, now);
+  $('out').classList.remove('hidden');
+  $('out').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Every verdict names the rule it comes from, because the point of the sheet
+// is that the tenant can say WHY, not just that something feels wrong.
+// The printed sheet is the thing they keep, so the numbers have to be ON it.
+// Six months in, nobody remembers which inbox repairs go to -- and sending it
+// to the wrong one is how a landlord gets to say he was never told.
+function line(label, val) {
+  if (!val) return '';
+  return '<span>' + label + ' <b>' + esc(val) + '</b></span>';
+}
+
+// Build 1 -- LINKS SURVIVE THE PDF. Printing to PDF keeps an anchor clickable,
+// so the portal, the addresses and the numbers go on as real links: open the
+// saved sheet six months later and the repair portal is one click away rather
+// than something to be retyped off a printout. The visible text stays the
+// address itself, so it still reads on paper.
+function web(url) {
+  const u = String(url || '').trim();
+  if (!u) return '';
+  return /^[a-z][a-z0-9+.-]*:\/\//i.test(u) ? u : 'https://' + u;
+}
+function linkLine(label, val, href) {
+  if (!val || !href) return '';
+  return '<span>' + label + ' <a href="' + esc(href) + '" target="_blank" rel="noopener"><b>' +
+    esc(val) + '</b></a></span>';
+}
+function tel(n) { return n ? 'tel:' + n.replace(/[^\d+]/g, '') : ''; }
+function writeContacts() {
+  const cards = [];
+  const ll = [
+    line('name', v('lN')), line('company no.', v('lCo')),
+    line('notices to', v('lA')),
+    linkLine('phone', v('lP'), tel(v('lP'))),
+    linkLine('email', v('lE'), v('lE') ? 'mailto:' + v('lE') : ''),
+  ].filter(Boolean);
+  if (ll.length) cards.push('<div class="card"><h3>Landlord</h3><div class="g">' + ll.join('') + '</div></div>');
+
+  const ag = [
+    line('name', v('aN')), line('company no.', v('aCo')),
+    line('registered office', v('aReg')), line('office', v('aA')),
+    linkLine('phone', v('aP'), tel(v('aP'))),
+    linkLine('emergency / out of hours', v('aP2'), tel(v('aP2'))),
+    linkLine('general', v('aE1'), v('aE1') ? 'mailto:' + v('aE1') : ''),
+    linkLine('repairs', v('aE2'), v('aE2') ? 'mailto:' + v('aE2') : ''),
+    linkLine('repair portal', v('aRP'), web(v('aRP'))),
+    linkLine('web', v('aW'), web(v('aW'))),
+    line('redress', v('rS') && v('rS') !== 'NONE' ? v('rS') + (v('rN') ? ' ' + v('rN') : '') : ''),
+    line('client money', v('cM')),
+  ].filter(Boolean);
+  if (ag.length) cards.push('<div class="card"><h3>Agent</h3><div class="g">' + ag.join('') + '</div></div>');
+
+  const box = $('cards');
+  box.innerHTML = cards.length ? cards.join('') : '';
+  if (cards.length) box.classList.remove('hidden'); else box.classList.add('hidden');
+  // Two things worth knowing before the night you need them.
+  const notes = [];
+  if (v('aN') && v('aE1') && v('aE2') && v('aE1').toLowerCase() === v('aE2').toLowerCase()) {
+    notes.push('General enquiries and repairs go to the same address. That is fine, but it means a ' +
+      'repair sits in the same queue as everything else — put <b>REPAIR</b> in the subject line ' +
+      'yourself, and keep your sent items.');
+  }
+  if (v('aN') && !v('aP2')) {
+    notes.push('No number that is answered out of hours. Ask for one and write it down now: a burst ' +
+      'pipe at eleven at night is not an email, and if you cannot reach anyone you may end up having ' +
+      'to get it stopped yourself.');
+  }
+  if (v('aRP')) {
+    notes.push('Repairs go through a portal. Report there so it is logged — then screenshot the ' +
+      'reference, because a portal is their record of what you said and it can change without you.');
+  }
+  if (notes.length) {
+    box.innerHTML += '<div class="card"><h3>Worth noting</h3>' +
+      notes.map((n) => '<div>' + n + '</div>').join('') + '</div>';
+  }
+}
+
+// Straight to the register with the name already searched. No key, no account,
+// nothing typed twice -- and it works the same on the website as in the app.
+function chFind(id) {
+  const q = v(id);
+  if (!q) { alert('Put the name in first, then press this.'); return; }
+  window.open('https://find-and-update.company-information.service.gov.uk/search?q=' +
+    encodeURIComponent(q), '_blank', 'noopener');
+}
+
+// The company number and registered office only matter if there IS a company.
+function chShow() {
+  const on = v('lK') === 'Y';
+  ['lCoWrap', 'lChWrap'].forEach((w) => { $(w).style.display = on ? '' : 'none'; });
+}
+
+function runChecks(mi, now) {
+  const out = [];
+  const add = (cls, head, body, law) => out.push('<div class="chk ' + cls + '"><b>' + head + '</b> ' + body +
+    (law ? '<br><span class="law">' + law + '</span>' : '') + '</div>');
+
+  const gDue = nextDue('gas');
+  if (!gDue && !v('gC')) {
+    add('', 'Gas safety — nothing recorded.', 'If there is any gas appliance, pipe or boiler at the property you should have been given a certificate before you moved in.', 'Gas Safety (Installation and Use) Regulations 1998, reg 36');
+  } else {
+    if (mi && gDue && gDue < mi) add('bad', 'Gas certificate had already run out on the day you moved in.', 'It expired ' + fmt(gDue) + ' and your tenancy started ' + fmt(mi) + '.', 'Gas Safety (Installation and Use) Regulations 1998, reg 36. A landlord who has not served a valid certificate normally cannot use the no-fault eviction route either.');
+    else if (gDue && gDue < now) add('bad', 'Gas certificate has run out.', 'It expired ' + fmt(gDue) + '. The check is annual and arranging it is the landlord’s job, not yours.', 'Gas Safety (Installation and Use) Regulations 1998, reg 36');
+    else if (gDue) add('good', 'Gas certificate is in date.', 'Next one due ' + fmt(gDue) + '.');
+    handOver(add, mi, d('gD'), d('gG'), 'Gas certificate',
+      'reg 36(6)(b) \u2014 a new tenant gets it before they move in, an existing one within 28 days of the check.');
+  }
+
+  const eDue = nextDue('eicr');
+  if (!eDue && !v('eC')) {
+    add('', 'Electrical report — nothing recorded.', 'Since 1 June 2020 every private tenancy in England needs an EICR no more than five years old, and you should have been given a copy.', 'Electrical Safety Standards in the Private Rented Sector (England) Regulations 2020');
+  } else {
+    if (v('eS') === 'UNSAT') add('bad', 'The electrical report came back unsatisfactory.', 'The landlord has 28 days from the inspection, or sooner if the report says so, to get the work done and give you written confirmation.' + (v('eF') ? ' You recorded: ' + esc(v('eF')) + '.' : ''), 'reg 4, 2020 Regulations');
+    if (mi && eDue && eDue < mi) add('bad', 'Electrical report was already out of date when you moved in.', 'It ran to ' + fmt(eDue) + ' and your tenancy started ' + fmt(mi) + '.', 'reg 3, 2020 Regulations');
+    else if (eDue && eDue < now) add('bad', 'Electrical report has expired.', 'It ran to ' + fmt(eDue) + '.', 'reg 3, 2020 Regulations');
+    else if (eDue) add('good', 'Electrical report is in date.', 'Next inspection due ' + fmt(eDue) + '.');
+    handOver(add, mi, d('eD'), d('eG'), 'Electrical report',
+      'reg 3(3), 2020 Regulations \u2014 a new tenant gets it before they occupy, an existing one within 28 days of the inspection.');
+  }
+
+  const pDue = d('pE'), pB = v('pB');
+  if (!pDue && !pB) {
+    add('', 'EPC — nothing recorded.', 'You can look this up yourself by postcode without asking anyone for it. It is public and it is free.');
+  } else {
+    if (mi && pDue && pDue < mi) add('bad', 'EPC had expired before your tenancy started.', 'It ran out ' + fmt(pDue) + '.', 'Energy Performance of Buildings (England and Wales) Regulations 2012');
+    else if (pDue && pDue < now) add('warn', 'EPC has expired.', 'It ran out ' + fmt(pDue) + '. A fresh one is needed before the property is let again.');
+    else if (pDue) add('good', 'EPC is in date.', 'It runs to ' + fmt(pDue) + '.');
+    if (pB === 'F' || pB === 'G') add('bad', 'EPC band ' + pB + '.', 'A property below band E normally cannot be let at all unless the landlord has registered an exemption on the PRS Exemptions Register.', 'Minimum Energy Efficiency Standards, the 2015 Regulations');
+    else if (pB) add('good', 'EPC band ' + pB + '.', 'At or above the minimum standard.');
+  }
+  runDeposit(add);
+  runLicence(add, now);
+  runAgent(add);
+  $('chk').innerHTML = out.join('');
+}
+
+// Build 1 -- WHICH DEADLINE APPLIES DEPENDS ON WHEN THE CHECK WAS DONE.
+//
+// Caught in testing: a tenancy a year old, with this year's gas check done in
+// February, was flagged as "reached you 142 days after you moved in". Of
+// course it did -- the check had not happened when they moved in. The
+// before-you-occupy rule only governs the certificate that was already in
+// force on day one. A check carried out during the tenancy has its own
+// deadline, 28 days from the check, and that is the one to measure against.
+function handOver(add, start, checked, given, what, law) {
+  if (!given || !checked) return;
+  if (start && checked <= start) {
+    if (given > start) {
+      add('warn', what + ' reached you after you moved in.',
+        'You had it on ' + fmt(given) + ', ' + days(given, start) +
+        ' days after the tenancy started. It was done before your tenancy began, so it should have been in your hands before you took the keys.', law);
+    }
+    return;
+  }
+  const n = days(given, checked);
+  if (n > 28) add('warn', what + ' took ' + n + ' days to reach you.', 'The limit is 28 days from the date of the check.', law);
+  else add('good', what + ' was given to you in time.', 'Checked ' + fmt(checked) + ', in your hands ' + fmt(given) + '.');
+}
+
+function runDeposit(add) {
+  const dP = d('dP'), dT = d('dT'), dS = d('dS'), sc = v('dC');
+  const amt = Number(v('dA') || 0), rent = Number(v('rA') || 0);
+  if (!dP && !sc) {
+    add('', 'Deposit — nothing recorded.', 'If you paid one, put the dates in. The 30-day clock is the rule broken most often in renting, and it is the easiest one to prove.');
+  } else if (sc === 'NONE') {
+    add('bad', 'Deposit is not protected.', 'A tenancy deposit has to be in one of the three government-backed schemes.', 'Housing Act 2004, s.213. A court may order between one and three times the deposit paid to you.');
+  } else {
+    const tDays = (dP && dT) ? Math.round((dT - dP) / DAY) : null;
+    const sDays = (dP && dS) ? Math.round((dS - dP) / DAY) : null;
+    if (tDays !== null && tDays > 30) add('bad', 'Deposit protected ' + tDays + ' days after you paid it.', 'The limit is 30 days.', 'Housing Act 2004, s.213(3)');
+    else if (tDays !== null) add('good', 'Deposit protected inside the 30 days.', 'Paid ' + fmt(dP) + ', protected ' + fmt(dT) + '.');
+    if (sDays !== null && sDays > 30) add('bad', 'Deposit paperwork reached you ' + sDays + ' days after you paid.', 'The prescribed information has to be with you inside 30 days as well, and that is a separate breach from protecting the money late.', 'Housing Act 2004, s.213(6)');
+    else if (sDays !== null) add('good', 'Deposit paperwork arrived in time.', 'Received ' + fmt(dS) + '.');
+    if (sc) add('good', 'Scheme: ' + esc(sc) + (v('dR') ? ', reference ' + esc(v('dR')) : '') + '.', 'Check it on the scheme’s own site rather than taking anyone’s word for it.');
+  }
+  if (amt && rent) {
+    const cap = rent * 12 / 52 * 5;
+    if (amt > cap + 0.5) add('bad', 'Deposit looks over the cap.', 'You recorded £' + amt.toLocaleString('en-GB') + '. Five weeks’ rent at £' + rent.toLocaleString('en-GB') + ' a month works out at about £' + Math.round(cap).toLocaleString('en-GB') + '.', 'Tenant Fees Act 2019. Five weeks where the annual rent is under £50,000, six weeks above it.');
+    else add('good', 'Deposit is within five weeks’ rent.', 'The cap here works out at about £' + Math.round(cap).toLocaleString('en-GB') + '.');
+  }
+}
+
+function runLicence(add, now) {
+  const hN = v('hN'), hDue = d('hE');
+  if (hN === 'YES' && !v('hR')) add('bad', 'A licence is needed and you have no licence number.', 'Ask the council — they keep a public register of licensed properties. Letting a licensable property without a licence can be worth a rent repayment order of up to twelve months’ rent to you.', 'Housing and Planning Act 2016, s.40');
+  else if (hN === 'YES' && hDue && hDue < now) add('bad', 'Property licence has expired.', 'It ran out ' + fmt(hDue) + '.');
+  else if (hN === 'YES') add('good', 'Licence recorded.', esc(v('hT') || 'Licence') + ' ' + esc(v('hR')) + (hDue ? ', runs to ' + fmt(hDue) : '') + '.');
+  else if (hN === 'UNSURE') add('warn', 'You have not checked whether the property needs a licence.', 'It takes two minutes by postcode, and an unlicensed let can be worth up to twelve months’ rent back to you.');
+}
+
+function runAgent(add) {
+  if (!v('lA')) add('warn', 'No address for serving notices on the landlord.',
+    'A landlord letting in England or Wales has to give you an address in England or Wales. Until they do, the rent is not treated as due \u2014 and you cannot start a claim against someone you have no address for.',
+    'Landlord and Tenant Act 1987, s.48');
+  if (!v('aN')) return;
+  if (v('rS') === 'NONE') add('bad', 'The agent would not give you a redress scheme.', 'Every letting agent in England has to belong to one, and a council can fine them up to £5,000 for not being in one.', 'Enterprise and Regulatory Reform Act 2013, ss.83–84');
+  else if (v('rS')) add('good', 'Agent is in a redress scheme.', esc(v('rS')) + (v('rN') ? ', membership ' + esc(v('rN')) : '') + '. That is who you complain to when the agent will not put something right.');
+  else add('warn', 'You have not recorded the agent’s redress scheme.', 'Ask for it in writing. You will want it the first time something goes wrong.');
+  if (d('rC')) add('good', 'You checked the agent’s membership yourself on ' + fmt(d('rC')) + '.', 'Worth repeating once a year — agents do leave schemes.');
+  if (!v('cM')) add('warn', 'No client money protection recorded.', 'If the agent takes your rent or holds your deposit they must be in an approved scheme, and they have to display which one.');
+}
+
+// The whole point of the sheet: get in first. Anything inside sixty days, or
+// already gone, turns into a message that is easy to send and impossible to
+// take badly.
+function writeNudge(rows, now) {
+  const soon = rows.filter((r) => r.n !== null && r.n <= 60);
+  const box = $('nudge'), head = $('nudgeH'), why = $('nudgeW'), acts = $('nudgeA');
+  if (!soon.length) {
+    box.value = '';
+    [box, head, why, acts].forEach((e) => e && e.classList.add('hidden'));
+    return;
+  }
+  [box, head, why, acts].forEach((e) => e && e.classList.remove('hidden'));
+  const to = v('aN') || v('lN') || 'Sir or Madam';
+  const lines = soon.map((r) => {
+    const when = r.n < 0 ? 'ran out on ' + fmt(r.due)
+      : (r.n === 0 ? 'runs out today' : 'runs out on ' + fmt(r.due) + ', which is ' + r.n + ' days away');
+    return '  - ' + r.it.name + ' ' + when + '.';
+  });
+  // Build 1 -- THE TONE HAS TO MATCH THE DATES. Caught in testing: three
+  // certificates two years out of date, under a letter saying "I would rather
+  // flag it early than let it lapse". Early is the wrong word once a thing has
+  // gone, and sounding out of touch with your own evidence is the quickest way
+  // to be ignored. Still polite, still not a complaint — but accurate.
+  const one = soon.length === 1;
+  const gone = soon.filter((r) => r.n < 0).length;
+  const lead = !gone
+    ? 'Looking at it today, ' + fmt(now) + ', the following ' + (one ? 'is' : 'are') + ' coming up:'
+    : (gone === soon.length
+      ? 'Looking at it today, ' + fmt(now) + ', ' + (one ? 'this one appears' : 'these appear') + ' to have run out:'
+      : 'Looking at it today, ' + fmt(now) + ', some have run out and others are close:');
+  const ask = gone
+    ? 'I am not making a complaint of it — I would far rather it was simply put right. '
+      + 'Could you let me know when ' + (one ? 'a visit' : 'visits') + ' can be arranged, and send me a copy of the new '
+      + (one ? 'certificate' : 'certificates') + ' once ' + (one ? 'it has' : 'they have') + ' been done?'
+    : 'I am not raising a complaint — I would just rather flag it early than let it lapse. '
+      + 'Could you let me know when the visit is arranged, and send me a copy of the new '
+      + (one ? 'certificate' : 'certificates') + ' once ' + (one ? 'it has' : 'they have') + ' been done?';
+  box.value =
+    'Dear ' + to + ',\n\n' +
+    'Re: ' + (address() || '[property address]') + '\n\n' +
+    'I keep a note of the certificate dates for the property so that nothing gets missed. ' +
+    lead + '\n\n' +
+    lines.join('\n') + '\n\n' +
+    ask + '\n\n' +
+    'I am happy to be in for the appointment and can usually work around whatever time suits the engineer.\n\n' +
+    'Many thanks,\n' + (v('tN') || '[your name]') + '\n' + (address() || '') + '\n';
+}
+
+function copyNudge() {
+  const t = $('nudge'), msg = $('cpMsg');
+  t.removeAttribute('readonly');
+  t.select(); t.setSelectionRange(0, 99999);
+  let ok = false;
+  try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+  t.setAttribute('readonly', 'readonly');
+  if (ok) { msg.textContent = 'Copied.'; return; }
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(t.value).then(
+      () => { msg.textContent = 'Copied.'; },
+      () => { msg.textContent = 'Could not copy — select it and copy by hand.'; });
+  } else {
+    msg.textContent = 'Could not copy — select it and copy by hand.';
+  }
+}
+</script>
+</main>
+</div>
+
+<div style="max-width:1100px; margin:18px auto 30px; padding:0 18px; font-size:12px; color:#94a3b8; line-height:1.5; border-top:1px solid #334155; padding-top:8px;">
+  Savvy Renter &mdash; savvyrenter.co.uk &middot; free tools for renters &middot;
+  Everything on this page happens in your browser. Nothing you type is stored, uploaded or sent anywhere — print the sheet, or it is gone when you close the tab.
+</div>
+</body>
+</html>

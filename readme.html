@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Savvy Renter</title>
+<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#0f172a">
+<meta name="description" content="What these tools do, how the sums are worked out, and why nothing you type ever leaves your computer.">
+<link rel="canonical" href="https://www.savvyrenter.co.uk/readme.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Savvy Renter">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="About Savvy Renter">
+<meta property="og:description" content="What these tools do, how the sums are worked out, and why nothing you type ever leaves your computer.">
+<meta property="og:url" content="https://www.savvyrenter.co.uk/readme.html">
+<meta property="og:image" content="https://www.savvyrenter.co.uk/og-image.png">
+<meta property="og:image:secure_url" content="https://www.savvyrenter.co.uk/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Savvy Renter — free calculators for renters">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About Savvy Renter">
+<meta name="twitter:description" content="What these tools do, how the sums are worked out, and why nothing you type ever leaves your computer.">
+<meta name="twitter:image" content="https://www.savvyrenter.co.uk/og-image.png">
+<style>
+
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.5; color:#e2e8f0; max-width:960px; margin:0 auto; padding:24px 18px; background:#0f172a; }
+  h1 { color:#f8fafc; border-bottom:2px solid #334155; padding-bottom:10px; font-size:24px; margin-top:0; }
+  h2 { color:#f1f5f9; font-size:18px; margin:22px 0 6px; border-bottom:1px solid #334155; padding-bottom:6px; }
+  .intro, .note { background:#1e293b; border-left:4px solid #38bdf8; padding:10px 14px; margin:0 0 14px; border-radius:4px; font-size:14px; color:#c9d4e0; }
+  .note.warn { border-left-color:#fbbf24; color:#fde68a; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:10px 16px; }
+  .field { background:#1e293b; padding:10px 12px; border-radius:6px; border:1px solid #334155; }
+  label { display:block; font-weight:600; margin-bottom:5px; font-size:13px; color:#94a3b8; }
+  input, select { padding:7px 8px; border:1px solid #475569; border-radius:5px; font-size:14px; background:#0f172a; color:#f8fafc; box-sizing:border-box; }
+  input:focus, select:focus { outline:none; border-color:#38bdf8; box-shadow:0 0 0 3px rgba(56,189,248,.15); }
+  .dsel { display:inline-flex; gap:4px; }
+  .dsel select { padding:7px 4px; }
+  button { background:#0284c7; color:#fff; padding:10px 20px; border:none; border-radius:5px; font-size:15px; cursor:pointer; font-weight:bold; }
+  button:hover { background:#0369a1; }
+  button.secondary { background:#334155; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:10px; margin:14px 0; }
+  .card { background:#1e293b; padding:12px; border:1px solid #334155; border-radius:8px; text-align:center; }
+  .card div:first-child { font-size:12px; text-transform:uppercase; letter-spacing:.5px; color:#94a3b8; font-weight:600; }
+  .card .value { font-size:22px; font-weight:700; color:#f8fafc; margin-top:4px; }
+  .card.total { border-top:4px solid #38bdf8; } .card.total .value { color:#38bdf8; }
+  table { width:100%; border-collapse:collapse; margin-top:8px; background:#1e293b; font-size:13px; border:1px solid #334155; }
+  th, td { padding:6px 10px; border-bottom:1px solid #334155; text-align:right; white-space:nowrap; }
+  th:nth-child(-n+3), td:nth-child(-n+3) { text-align:left; }
+  th { background:#334155; color:#f8fafc; }
+  .hidden { display:none !important; }
+  .brand { display:flex; align-items:center; gap:14px; border-bottom:2px solid #334155; padding-bottom:10px; margin-bottom:14px; }
+  .brand img { height:56px; width:auto; border-radius:8px; }
+  .brand h1 { border:none; padding:0; margin:0; font-size:26px; letter-spacing:-0.2px; }
+  .brand .sub { color:#94a3b8; font-size:13px; margin-top:2px; }
+  /* Feedback. The address is assembled in script when the button is used, so
+     it is not sitting in the page source for a harvester to scrape. */
+  .brand .fbwrap { margin-left:auto; text-align:right; position:relative; }
+  #fbBtn { background:#0284c7; color:#fff; border:none; border-radius:5px; font-size:13px; font-weight:bold; padding:9px 14px; cursor:pointer; font-family:inherit; }
+  #fbBtn:hover { background:#0369a1; }
+  #fbPanel { position:absolute; top:0; right:0; z-index:20; width:470px; max-width:calc(100vw - 40px); box-sizing:border-box; background:#1e293b; border:1px solid #475569; border-radius:6px; padding:10px 30px 10px 12px; text-align:left; font-size:12.5px; color:#c9d4e0; line-height:1.5; box-shadow:0 6px 18px rgba(0,0,0,.45); }
+  #fbClose { position:absolute; top:4px; right:6px; background:none; border:none; color:#94a3b8; font-size:16px; line-height:1; padding:2px 5px; cursor:pointer; font-family:inherit; }
+  #fbClose:hover { color:#f8fafc; }
+  #fbPanel a { color:#38bdf8; font-weight:bold; text-decoration:none; font-size:14px; }
+  #fbPanel a:hover { text-decoration:underline; }
+  @media print { .brand .fbwrap { display:none !important; } }
+  .brand button { margin-left:auto; }
+  button.small { padding:6px 12px; font-size:13px; }
+  .brand .aboutlink { margin-left:auto; background:#334155; color:#fff; text-decoration:none; font-weight:bold; font-size:13px; padding:7px 13px; border-radius:5px; white-space:nowrap; }
+  .brand .aboutlink:hover { background:#475569; }
+  #about { position:fixed; inset:0; background:rgba(2,6,23,.82); display:flex; align-items:center; justify-content:center; padding:20px; z-index:20; }
+  #about[hidden] { display:none; }
+  .about-box { background:#1e293b; border:1px solid #334155; border-radius:10px; max-width:720px; max-height:90vh; overflow:auto; padding:18px 22px; box-shadow:0 10px 30px rgba(0,0,0,.5); }
+  .about-box h2 { margin-top:14px; }
+  .about-box p { margin:6px 0; font-size:14px; }
+  .about-bar { display:flex; align-items:center; gap:12px; }
+  .about-bar img { height:44px; border-radius:6px; }
+  .about-bar h1 { font-size:20px; border:none; margin:0; padding:0; }
+  .about-bar button { margin-left:auto; }
+  @media print { #about, .brand button { display:none !important; } .brand img { height:40px; } }
+  .foot { font-size:12px; color:#94a3b8; margin-top:18px; border-top:1px solid #334155; padding-top:8px; }
+  @media print {
+    body { background:#fff; color:#000; max-width:none; padding:0; font-size:11px; }
+    #form, #runBtn, #printBtn, .intro, .foot .nostore { display:none !important; }
+    h1, h2, .card .value, .card.total .value, th { color:#000; }
+    .card, table, th, td { border-color:#999; background:#fff; }
+    th { background:#eee; }
+    .note { background:#f4f4f4; color:#000; } .note.warn { color:#000; }
+  }
+
+  .brand a.btn { margin-left:auto; background:#0284c7; color:#fff; padding:8px 14px; border-radius:5px; text-decoration:none; font-weight:bold; font-size:13px; }
+  code { background:#0f172a; border:1px solid #334155; border-radius:3px; padding:1px 5px; }
+  p { font-size:14px; }
+  body { max-width:1180px; }
+  .shell { display:flex; gap:20px; align-items:flex-start; }
+  /* Capped to the screen: a sticky column taller than the viewport pins at
+     the top and whatever sits below the fold can never be reached. */
+  .rail { width:200px; flex:none; position:sticky; top:18px;
+           max-height:calc(100vh - 36px); overflow-y:auto; overscroll-behavior:contain; }
+  .tools { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:12px; }
+  .sidelogo { display:block; width:196px; max-width:100%; height:auto; border-radius:10px; margin:14px auto 0; }
+  .tools h3 { margin:0 0 10px; font-size:12px; text-transform:uppercase; letter-spacing:.5px; color:#94a3b8; }
+  .tools a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold; font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .tools a:hover { background:#0369a1; }
+  .tools a.on { background:#38bdf8; color:#0f172a; }
+  /* Grouped rail -- the flat list of eleven buttons was getting long, so the
+     related ones fold up. <details>/<summary>, so it works with no JS at all;
+     the group holding the page you are on is written out already open. */
+  .tools .grp { margin-bottom:8px; }
+  .tools .grp > summary { list-style:none; cursor:pointer; background:#1e293b; border:1px solid #475569;
+     color:#e2e8f0; font-weight:bold; font-size:14px; padding:5px 12px; border-radius:5px;
+     display:flex; align-items:center; justify-content:space-between; gap:6px; }
+  .tools .grp > summary::-webkit-details-marker { display:none; }
+  .tools .grp > summary::after { content:"\25BE"; font-size:11px; color:#94a3b8; }
+  .tools .grp[open] > summary::after { content:"\25B4"; }
+  .tools .grp > summary:hover { border-color:#38bdf8; color:#fff; }
+  .tools .grp > summary:focus-visible { outline:2px solid #38bdf8; outline-offset:1px; }
+  .tools .grp[open] > summary { margin-bottom:6px; }
+  .tools .grp a { margin-left:10px; font-size:13px; padding:4px 10px; }
+  .unverified { background:#3b2f0b; border-left:4px solid #f2c94c; color:#f5e6b8;
+     padding:8px 14px; margin:0 0 10px; border-radius:4px; font-size:13px; }
+  .tools .tiny { font-size:11px; color:#94a3b8; margin-top:6px; }
+  .page { flex:1; min-width:0; }
+  @media (max-width:800px) { .shell { display:block; } .rail { width:auto; position:static; margin-bottom:14px; max-height:none; overflow:visible; } .sidelogo { max-width:208px; } }
+  /* Other resources: the row is a link to the page, and the fly-out carries the
+     links themselves, so nothing needs two clicks to reach. */
+  .navitem > a.navcat { text-decoration:none; }
+  .navitem.resitem { position:static; }
+  /* The long one is pinned to the window instead, so all 39 links stay on screen. */
+  .navitem.resitem > .flyout { position:fixed; top:2vh; bottom:2vh; left:221px; margin-left:0; transform:none; max-height:none; }
+  .flyout.wide { width:300px; max-height:94vh; }
+  .flyout .sect { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.6px;
+                  color:#94a3b8; margin:10px 2px 5px; }
+  .flyout a.hot { background:#15803d; }
+  .flyout a.hot:hover { background:#166534; }
+  .flyout a.ext { background:#0f172a; border:1px solid #334155; color:#e2e8f0; font-weight:600;
+                  font-size:12.5px; padding:4px 10px; margin-bottom:4px; }
+  .flyout a.ext:hover { background:#334155; border-color:#0284c7; color:#fff; }
+  .flyout a.ext::after { content:" \2197"; color:#94a3b8; font-size:11px; }
+  /* A category inside a fly-out: the Redaction Suite sits under Financial Tools,
+     so what it redacts is said by where it lives. Its parent must not clip it. */
+  .flyout.hassub { overflow:visible; max-height:none; }
+  .flyout .navitem.sub { margin:2px 0 0; }
+  .flyout .navitem.sub > .navcat { background:#0f172a; }
+  .flyout .navitem.sub > .flyout { margin-left:14px; }
+  /* keep the long one in the flow on a phone (this comes last on purpose) */
+  @media (max-width:860px) { .navitem.resitem > .flyout { position:static; inset:auto; transform:none; } }
+  @media print { .rail { display:none !important; } }
+
+  /* A thin strip across the top of the page itself: the site's name, above the
+     content and clear of the navigation, costing one line of height. */
+  .pagebar { background:#0b1220; border:1px solid #1e293b; border-radius:6px;
+             padding:5px 12px; margin-bottom:10px; display:flex; align-items:center;
+             justify-content:space-between; gap:14px; font-size:11.5px; }
+  .pagebar a { color:#94a3b8; text-decoration:none; font-weight:bold; letter-spacing:.6px;
+               text-transform:uppercase; white-space:nowrap; }
+  .pagebar a:hover { color:#38bdf8; }
+  .pagebar span { color:#64748b; text-align:right; min-width:0;
+                  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .pagebar .brief { display:none; }
+  @media (max-width:700px) { .pagebar .full { display:none; } .pagebar .brief { display:inline; } }
+
+  /* ---- Site menu: the fly-out layout, in our own styling ---------------- */
+  /* Fixed sidebar down the left, categories that fly out on hover or keyboard
+     focus. The card, the blue pill links and the colours are the site's own. */
+  .rail { position:fixed; top:0; left:0; width:236px; height:100vh; box-sizing:border-box;
+          padding:14px 12px; overflow:visible; background:#0f172a;
+          display:flex; flex-direction:column; max-height:none; z-index:2000; }
+  .tools { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:12px; }
+  .tools > a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold;
+               font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .tools > a:hover { background:#0369a1; }
+  .tools > a.on { background:#38bdf8; color:#0f172a; }
+  .navlist { list-style:none; margin:0; padding:0; }
+  .navitem { position:relative; margin-bottom:8px; }
+  .navitem > .navcat { display:flex; align-items:center; justify-content:space-between; gap:8px;
+                       background:#1e293b; border:1px solid #475569; border-radius:5px; color:#e2e8f0;
+                       font-size:13px; font-weight:600; padding:5px 10px; cursor:pointer; user-select:none; }
+  .navitem > .navcat::after { content:"\25B8"; font-size:11px; color:#94a3b8; }
+  .navitem:hover > .navcat, .navitem:focus-within > .navcat { background:#334155; border-color:#0284c7; color:#fff; }
+  .navitem.here > .navcat { border-color:#38bdf8; color:#38bdf8; }
+  .flyout { visibility:hidden; opacity:0;
+            transition:visibility 0s linear .4s, opacity .12s ease .4s;
+            position:absolute; top:50%; transform:translateY(-50%); left:100%; margin-left:10px; width:246px;
+            max-height:92vh; overflow-y:auto; list-style:none; padding:12px; margin-bottom:0;
+            background:#1e293b; border:1px solid #334155; border-left:3px solid #0284c7;
+            border-radius:8px; box-shadow:6px 4px 18px rgba(0,0,0,.5); z-index:2001; }
+  .navitem:hover > .flyout, .navitem:focus-within > .flyout, .flyout:hover { visibility:visible; opacity:1; transition-delay:0s; }
+  /* The gap between the row and its fly-out belongs to the row, so crossing it
+     at any angle keeps the menu open; the fly-out then holds itself open. */
+  .navitem > .flyout::before { content:''; position:absolute; top:-40px; bottom:-40px; left:-26px; width:26px; }
+  .navitem::after { content:''; position:absolute; top:-6px; bottom:-6px; left:100%; width:28px; }
+  .flyout a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold;
+              font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .flyout li:last-child a { margin-bottom:0; }
+  .flyout a:hover { background:#0369a1; }
+  .flyout a.on { background:#38bdf8; color:#0f172a; }
+  .sidelogo { display:block; width:196px; max-width:100%; height:auto; border-radius:10px; margin:14px auto 0; }
+  .shell { display:block; }
+  main.page, .page { margin-left:252px; max-width:none; position:relative; z-index:1; }
+  /* Narrow windows and phones: the sidebar stops being fixed and every item is
+     listed openly, so nothing has to be hovered to be found. */
+  @media (max-width:860px) {
+    .rail { position:static; width:auto; height:auto; padding:0; display:block; z-index:auto; }
+    main.page, .page { margin-left:0; }
+    .navitem > .navcat::after { content:""; }
+    .flyout, .navitem.resitem > .flyout { visibility:visible; opacity:1; pointer-events:auto; position:static; transform:none; width:auto; margin:8px 0 0; max-height:none; inset:auto;
+              border-left:1px solid #334155; box-shadow:none; }
+  }
+  @media print { .rail { display:none !important; } main.page, .page { margin-left:0; } }
+</style>
+</head>
+<body>
+<div class="shell">
+<div class="rail"><aside class="tools"><a href="index.html">Home</a><ul class="navlist"><li class="navitem"><span class="navcat" tabindex="0">Location</span><ul class="flyout"><li><a href="area.html">What rent costs here</a></li><li><a href="counciltax.html">Council tax here</a></li></ul></li><li class="navitem"><span class="navcat" tabindex="0">Tenancy &amp; Rent</span><ul class="flyout"><li><a href="moving-in_audit.html">Moving in audit</a></li></ul></li><li class="navitem"><span class="navcat" tabindex="0">Financial Tools</span><ul class="flyout hassub"><li><a href="interest.html">Interest owed to you</a></li><li><a href="arrears.html">Paying off arrears</a></li><li><a href="benefits.html">Benefit entitlements</a></li><li><a href="incoming-benefit-calc.html">Record of income</a></li><li class="navitem sub"><span class="navcat" tabindex="0">Redaction Suite</span><ul class="flyout"><li><a href="bank-statement-redaction.html" class="hot">⚡ Redact a statement page</a></li><li><a href="bank-statement-split.html">Split a PDF into pages</a></li><li><a href="bank-statement-rename.html">Name statements by date</a></li></ul></li></ul></li><li class="navitem"><span class="navcat" tabindex="0">Complaints &amp; Claims</span><ul class="flyout"><li><a href="scrubber.html">🔍 Web page data scrubber</a></li><li><a href="PRS_Tenant_Workspace.html">PRS complaint</a></li><li><a href="TPO_Tenant_Workspace.html">TPO complaint</a></li><li><a href="court_forms_workspace.html">Money Claim Online</a></li></ul></li><li class="navitem resitem"><a class="navcat" href="resources.html">Data &amp; Resources</a><ul class="flyout wide"><li><a href="resources.html">Other resources — the page</a></li><li class="sect">Certificates and safety</li><li><a class="ext" href="https://www.gov.uk/find-energy-certificate" target="_blank" rel="noopener">Energy Performance Certificate</a></li><li><a class="ext" href="https://www.scottishepcregister.org.uk/" target="_blank" rel="noopener">EPC register</a></li><li><a class="ext" href="https://www.gassaferegister.co.uk/find-an-engineer-or-check-the-register/" target="_blank" rel="noopener">Gas Safe Register</a></li><li><a class="ext" href="https://www.niceic.com/find-a-contractor" target="_blank" rel="noopener">Electrical safety</a></li><li><a class="ext" href="https://search.napit.org.uk/" target="_blank" rel="noopener">NAPIT</a></li><li><a class="ext" href="https://www.electricalsafetyfirst.org.uk/" target="_blank" rel="noopener">Electrical Safety First</a></li><li><a class="ext" href="https://www.gov.uk/government/publications/how-to-rent" target="_blank" rel="noopener">How to Rent</a></li><li class="sect">Deposits</li><li><a class="ext" href="https://www.gov.uk/tenancy-deposit-protection" target="_blank" rel="noopener">Tenancy deposit protection</a></li><li><a class="ext" href="https://www.depositprotection.com/" target="_blank" rel="noopener">Deposit Protection Service</a></li><li><a class="ext" href="https://www.tenancydepositscheme.com/" target="_blank" rel="noopener">Tenancy Deposit Scheme</a></li><li><a class="ext" href="https://www.mydeposits.co.uk/" target="_blank" rel="noopener">mydeposits</a></li><li class="sect">Who owns and who manages</li><li><a class="ext" href="https://find-and-update.company-information.service.gov.uk/" target="_blank" rel="noopener">Companies House</a></li><li><a class="ext" href="https://www.gov.uk/search-property-information-land-registry" target="_blank" rel="noopener">HM Land Registry</a></li><li><a class="ext" href="https://www.tpos.co.uk/" target="_blank" rel="noopener">Property Ombudsman</a></li><li><a class="ext" href="https://www.theprs.co.uk/" target="_blank" rel="noopener">Property Redress Scheme</a></li><li><a class="ext" href="https://www.rentsmart.gov.wales/" target="_blank" rel="noopener">Rent Smart Wales</a></li><li><a class="ext" href="https://www.landlordregistrationscotland.gov.uk/" target="_blank" rel="noopener">Scottish Landlord Register</a></li><li><a class="ext" href="https://www.london.gov.uk/programmes-strategies/housing-and-land/improving-private-rented-sector/rogue-landlord-and-agent-checker" target="_blank" rel="noopener">London rogue landlord and agent checker</a></li><li><a class="ext" href="https://www.gov.uk/find-local-council" target="_blank" rel="noopener">Find your local council</a></li><li class="sect">Rent, notices and the law</li><li><a class="ext" href="https://www.gov.uk/private-renting/rent-increases" target="_blank" rel="noopener">Rent increases</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1988/50/section/13" target="_blank" rel="noopener">Housing Act 1988</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2019/4" target="_blank" rel="noopener">Tenant Fees Act 2019</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1985/70/section/11" target="_blank" rel="noopener">Landlord and Tenant Act 1985</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2018/34" target="_blank" rel="noopener">Homes Act 2018</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1977/43" target="_blank" rel="noopener">Protection from Eviction Act 1977</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2015/20" target="_blank" rel="noopener">Deregulation Act 2015</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1984/28/section/69" target="_blank" rel="noopener">County Courts Act 1984</a></li><li><a class="ext" href="https://www.legislation.gov.uk/all?title=Renters%27%20Rights%20Act" target="_blank" rel="noopener">Renters' Rights Act</a></li><li class="sect">Taking it further</li><li><a class="ext" href="https://buntool.co.uk/" target="_blank" rel="noopener">BunTool</a></li><li><a class="ext" href="https://www.gov.uk/make-court-claim-for-money" target="_blank" rel="noopener">Make a court claim for money</a></li><li><a class="ext" href="https://www.moneyclaim.gov.uk/" target="_blank" rel="noopener">Money Claim Online</a></li><li><a class="ext" href="https://www.gov.uk/get-help-with-court-fees" target="_blank" rel="noopener">Help with court fees</a></li><li><a class="ext" href="https://www.gov.uk/government/collections/county-court-forms" target="_blank" rel="noopener">County court forms</a></li><li><a class="ext" href="https://www.gov.uk/housing-tribunals" target="_blank" rel="noopener">Housing tribunals</a></li><li><a class="ext" href="https://www.housing-ombudsman.org.uk/" target="_blank" rel="noopener">Housing Ombudsman</a></li><li class="sect">Free advice</li><li><a class="ext" href="https://england.shelter.org.uk/housing_advice" target="_blank" rel="noopener">Shelter</a></li><li><a class="ext" href="https://www.citizensadvice.org.uk/housing/" target="_blank" rel="noopener">Citizens Advice</a></li><li><a class="ext" href="https://www.lawcentres.org.uk/" target="_blank" rel="noopener">Law Centres Network</a></li><li><a class="ext" href="https://www.advicenow.org.uk/" target="_blank" rel="noopener">Advicenow</a></li></ul></li></ul></aside><img class="sidelogo" src="SavvyRenter-sml.png" alt="Savvy Renter"></div><main class="page">
+<div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
+<div class="brand"><div><h1>Savvy Renter</h1><div class="sub">README · what the tools are, how the sums work, and what is in the folder</div></div><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page." onclick="showFeedback()">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div></div>
+<p>I built this tool to work out exactly how much my landlord owed me after an unlawful rent increase. Once I had the sums right for myself, I put it online for free to save other tenants the headache of working it out by hand.</p>
+<h2>The legal bit</h2>
+<p>This tool is a guide, not formal legal advice. The arithmetic follows the way county courts read a claim for interest, but you use it at your own risk. Double-check your final figures with Citizens Advice or Shelter before putting them to a court, a tribunal, or in a Letter Before Action. I am not a solicitor and accept no liability for your claim.</p>
+<h2>How the sums work — the increasing principal sum</h2>
+<p>Most calculators put interest on one lump sum from one date. That is wrong for rent overpayments, because you paid month by month: the principal sum owed to you was increasing the whole time. Your first overpayment has been held the longest and earns the most interest; your last one the least. This tool adds each payment to the running balance on the day it was made, charges simple interest on that balance for the days until the next payment (balance × rate × days ÷ 365), and adds it all up. Interest is never charged on interest. A late first payment does not shift the rest — later payments are counted on the day the rent falls due.</p>
+<h2>What you get</h2>
+<p>A statement laid out for the court: the number of payments, the sums overpaid, the interest to date and the total as at the date you choose; the basis; the method in plain English; one line per payment showing the balance, the interest for that period and the running total; and, where the overpayment is still going on, a note that the figure is rising by so much a day and should be worked again on the day of the hearing. Print it, or save it as a PDF, from the button on the page.</p>
+<h2>Setup</h2>
+<p>Everything runs in your browser. Nothing you type is stored, sent anywhere, or remembered — close the page and it is gone. There is no server and no network call. To run it, open <code>index.html</code> in any browser, or host the folder as static files. The 8% rate is the usual county-court rate (County Courts Act 1984, s.69) and can be changed on the page if the court directs a different one.</p>
+<h2>Files</h2>
+<p><code>index.html</code> — the home page: what the tools are and how the sums work. <code>interest.html</code> — the interest calculator (the calculation engine is inside it). <code>arrears.html</code> — the arrears repayment calculator (decreasing principal sum). <code>readme.html</code> — this page. <code>resources.html</code> — the index of official pages (EPC, Gas Safe, deposit schemes, Companies House, Land Registry, the Acts, courts and free advice). <code>SavvyRenter.png</code>, <code>SavvyRenter-sml.png</code>, <code>favicon.*</code>, <code>apple-touch-icon.png</code>, <code>site.webmanifest</code> — branding and icons.</p>
+<div class="foot">Savvy Renter — savvyrenter.co.uk · free tools for renters · <a href="resources.html#sources" style="color:#38bdf8;text-decoration:none">Data sources &amp; licences</a></div>
+</main>
+</div>
+<script>
+// The address is never written into the page source. It is put together only
+// when someone asks for it, which keeps the harvesters off it.
+function showFeedback() {
+  const who = ['feedback', 'savvyrenter.co.uk'].join('\u0040');
+  const p = document.getElementById('fbPanel');
+  p.innerHTML =
+    '<button type="button" id="fbClose" title="Close" onclick="hideFeedback()">\u2715</button>' +
+    '<p style="margin:0 0 6px">Suggestions, corrections, or an open-source tool we could host \u2014 we read everything, though we can\u2019t promise to answer every email. Use a suggestion and we\u2019ll credit you on the page.</p>' +
+    '<a href="mailto:' + who + '?subject=Savvy%20Renter%20feedback">' + who + '</a>';
+  p.classList.remove('hidden');
+}
+function hideFeedback() { document.getElementById('fbPanel').classList.add('hidden'); }
+</script>
+</body>
+</html>

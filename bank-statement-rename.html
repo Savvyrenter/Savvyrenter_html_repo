@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Name statements by their dates — Savvy Renter</title>
+<meta name="description" content="Rename a batch of bank statements after the period they cover, read off the page in your browser. Nothing is uploaded.">
+<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#001e3d">
+<link rel="canonical" href="https://www.savvyrenter.co.uk/bank-statement-rename.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Savvy Renter">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Name statements by their dates — Savvy Renter">
+<meta property="og:description" content="Rename a batch of bank statements after the period they cover, read off the page in your browser. Nothing is uploaded.">
+<meta property="og:url" content="https://www.savvyrenter.co.uk/bank-statement-rename.html">
+<meta property="og:image" content="https://www.savvyrenter.co.uk/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.5; color:#e2e8f0; max-width:1180px; margin:0 auto; padding:0 18px 24px; background:#0f172a; }
+  h1 { color:#f8fafc; font-size:24px; margin-top:0; }
+  h2 { color:#f1f5f9; font-size:18px; margin:16px 0 4px; border-bottom:1px solid #334155; padding-bottom:5px; }
+  p { margin:6px 0; font-size:14px; }
+  .intro, .note { background:#1e293b; border-left:4px solid #38bdf8; padding:10px 14px; margin:0 0 12px; border-radius:4px; font-size:14px; color:#c9d4e0; }
+  .brand { display:flex; align-items:center; gap:14px; border-bottom:2px solid #334155;
+           padding:12px 0 10px; margin-bottom:14px;
+           position:sticky; top:0; z-index:30; background:#0f172a; }
+  .brand h1 { border:none; padding:0; margin:0; font-size:30px; letter-spacing:-0.2px; }
+  .brand .sub { color:#94a3b8; font-size:13px; margin-top:2px; }
+  .hidden { display:none !important; }
+  .shell { display:flex; gap:20px; align-items:flex-start; }
+  .rail { width:200px; flex:none; position:sticky; top:12px; margin-top:12px;
+          max-height:calc(100vh - 24px); overflow-y:auto; overscroll-behavior:contain; }
+  .tools { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:12px; }
+  .sidelogo { display:block; width:196px; max-width:100%; height:auto; border-radius:10px; margin:14px auto 0; }
+  .tools a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold; font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .tools a:hover { background:#0369a1; }
+  .tools a.on { background:#38bdf8; color:#0f172a; }
+  .tools .grp { margin-bottom:8px; }
+  .tools .grp > summary { list-style:none; cursor:pointer; background:#1e293b; border:1px solid #475569;
+     color:#e2e8f0; font-weight:bold; font-size:14px; padding:5px 12px; border-radius:5px;
+     display:flex; align-items:center; justify-content:space-between; gap:6px; }
+  .tools .grp > summary::-webkit-details-marker { display:none; }
+  .tools .grp > summary::after { content:"\25BE"; font-size:11px; color:#94a3b8; }
+  .tools .grp[open] > summary::after { content:"\25B4"; }
+  .tools .grp > summary:hover { border-color:#38bdf8; color:#fff; }
+  .tools .grp > summary:focus-visible { outline:2px solid #38bdf8; outline-offset:1px; }
+  .tools .grp[open] > summary { margin-bottom:6px; }
+  .tools .grp a { margin-left:10px; font-size:13px; padding:4px 10px; }
+  .page { flex:1; min-width:0; }
+  .pagebar { background:#0b1220; border:1px solid #1e293b; border-radius:6px;
+             padding:5px 12px; margin-bottom:10px; display:flex; align-items:center;
+             justify-content:space-between; gap:14px; font-size:11.5px; }
+  .pagebar a { color:#94a3b8; text-decoration:none; font-weight:bold; letter-spacing:.6px;
+               text-transform:uppercase; white-space:nowrap; }
+  .pagebar a:hover { color:#38bdf8; }
+  .pagebar span { color:#64748b; text-align:right; min-width:0;
+                  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .pagebar .brief { display:none; }
+  @media (max-width:700px) { .pagebar .full { display:none; } .pagebar .brief { display:inline; } }
+  @media (max-width:800px) { .shell { display:block; } .rail { width:auto; position:static; margin-bottom:14px; max-height:none; overflow:visible; } .sidelogo { max-width:208px; } }
+  @media (max-width:700px) { body { padding:18px 12px; } .brand { flex-wrap:wrap; } }
+
+  /* ---- Bank statement redaction ---------------------------------------- */
+  .rdsteps { display:flex; flex-direction:column; gap:8px; }
+  .rdbar { display:flex; flex-wrap:wrap; align-items:center; gap:8px; background:#1e293b; border:1px solid #334155; border-radius:6px; padding:8px 10px; }
+  .rdbar .lbl { font-size:12px; font-weight:700; color:#94a3b8; text-transform:uppercase; letter-spacing:.5px; margin-right:2px; }
+  .rdbar button, .rdbar label.filebtn { background:#0284c7; color:#fff; border:none; border-radius:5px; padding:8px 13px; font-size:13px; font-weight:bold; cursor:pointer; font-family:inherit; }
+  .rdbar button.sec { background:#334155; }
+  .rdbar button:disabled { opacity:.45; cursor:default; }
+  .rdbar input[type=number] { width:64px; background:#0f172a; border:1px solid #334155; color:#f8fafc; padding:6px 8px; border-radius:5px; font-size:13px; }
+  .rdbar .fname { font-size:12.5px; color:#94a3b8; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .rdwrap { position:relative; margin-top:8px; background:#0b1220; border:1px solid #334155; border-radius:6px; overflow:auto; max-height:78vh; }
+  #sheet { display:block; margin:0 auto; cursor:crosshair; }
+  .rdhint { font-size:12px; color:#94a3b8; padding:6px 2px; }
+  .rules { background:#1e293b; border:1px solid #334155; border-radius:6px; padding:8px 10px; margin-top:8px; }
+  .rules h3 { margin:0 0 6px; font-size:12px; text-transform:uppercase; letter-spacing:.5px; color:#94a3b8; }
+  .rule { display:flex; align-items:center; gap:8px; padding:4px 0; border-bottom:1px solid #263449; font-size:13px; }
+  .rule:last-child { border-bottom:none; }
+  .rule .what { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .rule .kind { font-size:11px; color:#94a3b8; white-space:nowrap; }
+  .rule button { background:#334155; color:#fff; border:none; border-radius:4px; padding:3px 9px; font-size:11.5px; cursor:pointer; }
+  .rule input[type=checkbox] { width:16px; height:16px; accent-color:#0284c7; }
+  .offer { display:flex; flex-wrap:wrap; align-items:center; gap:8px; background:#0b2537; border:1px solid #0284c7; border-radius:6px; padding:7px 10px; margin-top:8px; font-size:13px; }
+  .offer button { background:#0284c7; color:#fff; border:none; border-radius:4px; padding:5px 10px; font-size:12px; font-weight:bold; cursor:pointer; }
+  .working { font-size:12.5px; color:#38bdf8; }
+  .bad { color:#f87171; }
+
+  /* ---- Site menu: the fly-out layout, in our own styling ---------------- */
+  /* Fixed sidebar down the left, categories that fly out on hover or keyboard
+     focus. The card, the blue pill links and the colours are the site's own. */
+  .rail { position:fixed; top:0; left:0; width:236px; height:100vh; box-sizing:border-box;
+          padding:14px 12px; overflow:visible; background:#0f172a;
+          display:flex; flex-direction:column; max-height:none; z-index:2000; }
+  .tools { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:12px; }
+  .tools > a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold;
+               font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .tools > a:hover { background:#0369a1; }
+  .tools > a.on { background:#38bdf8; color:#0f172a; }
+  .navlist { list-style:none; margin:0; padding:0; }
+  .navitem { position:relative; margin-bottom:8px; }
+  .navitem > .navcat { display:flex; align-items:center; justify-content:space-between; gap:8px;
+                       background:#1e293b; border:1px solid #475569; border-radius:5px; color:#e2e8f0;
+                       font-size:13px; font-weight:600; padding:5px 10px; cursor:pointer; user-select:none; }
+  .navitem > .navcat::after { content:"\25B8"; font-size:11px; color:#94a3b8; }
+  .navitem:hover > .navcat, .navitem:focus-within > .navcat { background:#334155; border-color:#0284c7; color:#fff; }
+  .navitem.here > .navcat { border-color:#38bdf8; color:#38bdf8; }
+  .flyout { visibility:hidden; opacity:0;
+            transition:visibility 0s linear .4s, opacity .12s ease .4s;
+            position:absolute; top:50%; transform:translateY(-50%); left:100%; margin-left:10px; width:246px;
+            max-height:92vh; overflow-y:auto; list-style:none; padding:12px; margin-bottom:0;
+            background:#1e293b; border:1px solid #334155; border-left:3px solid #0284c7;
+            border-radius:8px; box-shadow:6px 4px 18px rgba(0,0,0,.5); z-index:2001; }
+  .navitem:hover > .flyout, .navitem:focus-within > .flyout, .flyout:hover { visibility:visible; opacity:1; transition-delay:0s; }
+  /* The gap between the row and its fly-out belongs to the row, so crossing it
+     at any angle keeps the menu open; the fly-out then holds itself open. */
+  .navitem > .flyout::before { content:''; position:absolute; top:-40px; bottom:-40px; left:-26px; width:26px; }
+  .navitem::after { content:''; position:absolute; top:-6px; bottom:-6px; left:100%; width:28px; }
+  .flyout a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold;
+              font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .flyout li:last-child a { margin-bottom:0; }
+  .flyout a:hover { background:#0369a1; }
+  .flyout a.on { background:#38bdf8; color:#0f172a; }
+  .sidelogo { display:block; width:196px; max-width:100%; height:auto; border-radius:10px; margin:14px auto 0; }
+  .shell { display:block; }
+  main.page, .page { margin-left:252px; max-width:none; position:relative; z-index:1; }
+  /* Narrow windows and phones: the sidebar stops being fixed and every item is
+     listed openly, so nothing has to be hovered to be found. */
+  @media (max-width:860px) {
+    .rail { position:static; width:auto; height:auto; padding:0; display:block; z-index:auto; }
+    main.page, .page { margin-left:0; }
+    .navitem > .navcat::after { content:""; }
+    .flyout, .navitem.resitem > .flyout { visibility:visible; opacity:1; pointer-events:auto; position:static; transform:none; width:auto; margin:8px 0 0; max-height:none; inset:auto;
+              border-left:1px solid #334155; box-shadow:none; }
+  }
+  /* Other resources: the row is a link to the page, and the fly-out carries the
+     links themselves, so nothing needs two clicks to reach. */
+  .navitem > a.navcat { text-decoration:none; }
+  .navitem.resitem { position:static; }
+  /* The long one is pinned to the window instead, so all 39 links stay on screen. */
+  .navitem.resitem > .flyout { position:fixed; top:2vh; bottom:2vh; left:221px; margin-left:0; transform:none; max-height:none; }
+  .flyout.wide { width:300px; max-height:94vh; }
+  .flyout .sect { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.6px;
+                  color:#94a3b8; margin:10px 2px 5px; }
+  .flyout a.hot { background:#15803d; }
+  .flyout a.hot:hover { background:#166534; }
+  .flyout a.ext { background:#0f172a; border:1px solid #334155; color:#e2e8f0; font-weight:600;
+                  font-size:12.5px; padding:4px 10px; margin-bottom:4px; }
+  .flyout a.ext:hover { background:#334155; border-color:#0284c7; color:#fff; }
+  .flyout a.ext::after { content:" \2197"; color:#94a3b8; font-size:11px; }
+  /* A category inside a fly-out: the Redaction Suite sits under Financial Tools,
+     so what it redacts is said by where it lives. Its parent must not clip it. */
+  .flyout.hassub { overflow:visible; max-height:none; }
+  .flyout .navitem.sub { margin:2px 0 0; }
+  .flyout .navitem.sub > .navcat { background:#0f172a; }
+  .flyout .navitem.sub > .flyout { margin-left:14px; }
+  /* keep the long one in the flow on a phone (this comes last on purpose) */
+  @media (max-width:860px) { .navitem.resitem > .flyout { position:static; inset:auto; transform:none; } }
+  @media print { .rail { display:none !important; } main.page, .page { margin-left:0; } }
+
+  .fl { display:flex; align-items:center; gap:8px; padding:6px 0; border-bottom:1px solid #263449; font-size:13px; flex-wrap:wrap; }
+  .fl:last-child { border-bottom:none; }
+  .fl .orig { flex:1 1 190px; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:#94a3b8; }
+  .fl .found { flex:0 0 auto; font-size:11.5px; color:#38bdf8; white-space:nowrap; }
+  .fl input.nm { flex:2 1 260px; min-width:170px; background:#0f172a; border:1px solid #334155; color:#f8fafc; padding:5px 8px; border-radius:4px; font-size:12.5px; }
+  .fl .st { flex:0 0 auto; font-size:11.5px; color:#94a3b8; min-width:78px; }
+  .fl .st.ok { color:#6ee7b7; } .fl .st.no { color:#f87171; }
+</style>
+<script>
+/* Reloading a tool page puts you back at the top, where the controls are,
+   instead of wherever you had scrolled to. */
+try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) { }
+window.addEventListener('load', () => window.scrollTo(0, 0));
+</script>
+</head>
+<body>
+<div class="shell">
+<div class="rail"><aside class="tools"><a href="index.html">Home</a><ul class="navlist"><li class="navitem"><span class="navcat" tabindex="0">Location</span><ul class="flyout"><li><a href="area.html">What rent costs here</a></li><li><a href="counciltax.html">Council tax here</a></li></ul></li><li class="navitem"><span class="navcat" tabindex="0">Tenancy &amp; Rent</span><ul class="flyout"><li><a href="moving-in_audit.html">Moving in audit</a></li></ul></li><li class="navitem here"><span class="navcat" tabindex="0">Financial Tools</span><ul class="flyout hassub"><li><a href="interest.html">Interest owed to you</a></li><li><a href="arrears.html">Paying off arrears</a></li><li><a href="benefits.html">Benefit entitlements</a></li><li><a href="incoming-benefit-calc.html">Record of income</a></li><li class="navitem sub here"><span class="navcat" tabindex="0">Redaction Suite</span><ul class="flyout"><li><a href="bank-statement-redaction.html" class="hot">⚡ Redact a statement page</a></li><li><a href="bank-statement-split.html">Split a PDF into pages</a></li><li><a href="bank-statement-rename.html" class="on">Name statements by date</a></li></ul></li></ul></li><li class="navitem"><span class="navcat" tabindex="0">Complaints &amp; Claims</span><ul class="flyout"><li><a href="scrubber.html">🔍 Web page data scrubber</a></li><li><a href="PRS_Tenant_Workspace.html">PRS complaint</a></li><li><a href="TPO_Tenant_Workspace.html">TPO complaint</a></li><li><a href="court_forms_workspace.html">Money Claim Online</a></li></ul></li><li class="navitem resitem"><a class="navcat" href="resources.html">Data &amp; Resources</a><ul class="flyout wide"><li><a href="resources.html">Other resources — the page</a></li><li class="sect">Certificates and safety</li><li><a class="ext" href="https://www.gov.uk/find-energy-certificate" target="_blank" rel="noopener">Energy Performance Certificate</a></li><li><a class="ext" href="https://www.scottishepcregister.org.uk/" target="_blank" rel="noopener">EPC register</a></li><li><a class="ext" href="https://www.gassaferegister.co.uk/find-an-engineer-or-check-the-register/" target="_blank" rel="noopener">Gas Safe Register</a></li><li><a class="ext" href="https://www.niceic.com/find-a-contractor" target="_blank" rel="noopener">Electrical safety</a></li><li><a class="ext" href="https://search.napit.org.uk/" target="_blank" rel="noopener">NAPIT</a></li><li><a class="ext" href="https://www.electricalsafetyfirst.org.uk/" target="_blank" rel="noopener">Electrical Safety First</a></li><li><a class="ext" href="https://www.gov.uk/government/publications/how-to-rent" target="_blank" rel="noopener">How to Rent</a></li><li class="sect">Deposits</li><li><a class="ext" href="https://www.gov.uk/tenancy-deposit-protection" target="_blank" rel="noopener">Tenancy deposit protection</a></li><li><a class="ext" href="https://www.depositprotection.com/" target="_blank" rel="noopener">Deposit Protection Service</a></li><li><a class="ext" href="https://www.tenancydepositscheme.com/" target="_blank" rel="noopener">Tenancy Deposit Scheme</a></li><li><a class="ext" href="https://www.mydeposits.co.uk/" target="_blank" rel="noopener">mydeposits</a></li><li class="sect">Who owns and who manages</li><li><a class="ext" href="https://find-and-update.company-information.service.gov.uk/" target="_blank" rel="noopener">Companies House</a></li><li><a class="ext" href="https://www.gov.uk/search-property-information-land-registry" target="_blank" rel="noopener">HM Land Registry</a></li><li><a class="ext" href="https://www.tpos.co.uk/" target="_blank" rel="noopener">Property Ombudsman</a></li><li><a class="ext" href="https://www.theprs.co.uk/" target="_blank" rel="noopener">Property Redress Scheme</a></li><li><a class="ext" href="https://www.rentsmart.gov.wales/" target="_blank" rel="noopener">Rent Smart Wales</a></li><li><a class="ext" href="https://www.landlordregistrationscotland.gov.uk/" target="_blank" rel="noopener">Scottish Landlord Register</a></li><li><a class="ext" href="https://www.london.gov.uk/programmes-strategies/housing-and-land/improving-private-rented-sector/rogue-landlord-and-agent-checker" target="_blank" rel="noopener">London rogue landlord and agent checker</a></li><li><a class="ext" href="https://www.gov.uk/find-local-council" target="_blank" rel="noopener">Find your local council</a></li><li class="sect">Rent, notices and the law</li><li><a class="ext" href="https://www.gov.uk/private-renting/rent-increases" target="_blank" rel="noopener">Rent increases</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1988/50/section/13" target="_blank" rel="noopener">Housing Act 1988</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2019/4" target="_blank" rel="noopener">Tenant Fees Act 2019</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1985/70/section/11" target="_blank" rel="noopener">Landlord and Tenant Act 1985</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2018/34" target="_blank" rel="noopener">Homes Act 2018</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1977/43" target="_blank" rel="noopener">Protection from Eviction Act 1977</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2015/20" target="_blank" rel="noopener">Deregulation Act 2015</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1984/28/section/69" target="_blank" rel="noopener">County Courts Act 1984</a></li><li><a class="ext" href="https://www.legislation.gov.uk/all?title=Renters%27%20Rights%20Act" target="_blank" rel="noopener">Renters' Rights Act</a></li><li class="sect">Taking it further</li><li><a class="ext" href="https://buntool.co.uk/" target="_blank" rel="noopener">BunTool</a></li><li><a class="ext" href="https://www.gov.uk/make-court-claim-for-money" target="_blank" rel="noopener">Make a court claim for money</a></li><li><a class="ext" href="https://www.moneyclaim.gov.uk/" target="_blank" rel="noopener">Money Claim Online</a></li><li><a class="ext" href="https://www.gov.uk/get-help-with-court-fees" target="_blank" rel="noopener">Help with court fees</a></li><li><a class="ext" href="https://www.gov.uk/government/collections/county-court-forms" target="_blank" rel="noopener">County court forms</a></li><li><a class="ext" href="https://www.gov.uk/housing-tribunals" target="_blank" rel="noopener">Housing tribunals</a></li><li><a class="ext" href="https://www.housing-ombudsman.org.uk/" target="_blank" rel="noopener">Housing Ombudsman</a></li><li class="sect">Free advice</li><li><a class="ext" href="https://england.shelter.org.uk/housing_advice" target="_blank" rel="noopener">Shelter</a></li><li><a class="ext" href="https://www.citizensadvice.org.uk/housing/" target="_blank" rel="noopener">Citizens Advice</a></li><li><a class="ext" href="https://www.lawcentres.org.uk/" target="_blank" rel="noopener">Law Centres Network</a></li><li><a class="ext" href="https://www.advicenow.org.uk/" target="_blank" rel="noopener">Advicenow</a></li></ul></li></ul></aside><img class="sidelogo" src="SavvyRenter-sml.png" alt="Savvy Renter"></div><main class="page">
+<div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
+  <div class="brand"><div><h1>Name statements by their dates</h1><div class="sub">Reads the period off each page and renames the file, so a folder of statements falls into order</div></div></div>
+  <div class="intro">
+    Bank statements arrive named things like <i>statement_4471.pdf</i>, which tells you nothing and sorts into no useful order. This reads the dates on each one and gives it a name that starts with its period &mdash; <i>2026-08-16 to 2026-09-15 &mdash; statement.pdf</i> &mdash; so the folder sorts itself into date order. Nothing else about the file is touched: what comes out is the same document, under a better name.
+    <b>Your files never leave this computer.</b> The reading is done here in the browser; nothing is uploaded and nothing is stored.
+  </div>
+  <div class="rdsteps">
+    <div class="rdbar">
+      <span class="lbl">1 &middot; The files</span>
+      <label class="filebtn" for="batch">&#128194; Choose files</label>
+      <input type="file" id="batch" accept=".pdf,image/*" multiple class="hidden" onchange="addFiles(this)">
+      <button type="button" class="sec" id="readBtn" onclick="readAll()" disabled>&#128269; Read the dates</button>
+      <span class="working" id="working"></span>
+    </div>
+    <div class="rdhint">One page each is enough &mdash; if a statement is several sheets in one PDF, only the first is read. Split it first if you want a name per sheet.</div>
+    <div class="rules"><h3>Files</h3><div id="fileList"><div class="rdhint">Nothing chosen yet.</div></div></div>
+    <div class="rdbar">
+      <span class="lbl">2 &middot; Save them</span>
+      <button type="button" id="zipBtn" onclick="saveAll('zip')" disabled>&#128230; Save all as a zip</button>
+      <button type="button" class="sec" id="oneBtn" onclick="saveAll('files')" disabled>Save one at a time</button>
+      <span class="rdhint" style="padding:0">A browser cannot rename a file where it sits, so these are saved as new copies. The originals are untouched.</span>
+    </div>
+  </div>
+  <div class="note" style="margin-top:10px"><b>Nothing to hand?</b> Try it on these made-up statements first:
+    <a href="sample-statement-1.pdf" target="_blank">sample 1</a>,
+    <a href="sample-statement-2.pdf" target="_blank">sample 2</a>,
+    <a href="sample-statement-3.pdf" target="_blank">sample 3</a>.
+    They are from a bank that does not exist and are marked as samples, so nothing of yours is at risk while you find your way around.</div>
+
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.1.4/dist/tesseract.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script>
+/* Reads the first page of each file, finds the dates on it, and proposes a
+   name built from the earliest and latest. Everything happens in this tab. */
+let items = [];            // { file, name, from, to, state }
+let worker = null;
+const $ = (id) => document.getElementById(id);
+const say = (m, bad) => { const e = $('working'); e.textContent = m || ''; e.className = 'working' + (bad ? ' bad' : ''); };
+const esc = (t) => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const MONTHS = { jan:1, feb:2, mar:3, apr:4, may:5, jun:6, jul:7, aug:8, sep:9, oct:10, nov:11, dec:12 };
+
+function addFiles(input) {
+  [...(input.files || [])].forEach(f => items.push({ file: f, name: '', from: null, to: null, state: 'not read yet' }));
+  input.value = '';
+  draw();
+  $('readBtn').disabled = !items.length;
+  $('zipBtn').disabled = $('oneBtn').disabled = !items.length;
+  say(items.length + ' file(s) ready. Read the dates, or type names yourself.');
+}
+function draw() {
+  const list = $('fileList');
+  if (!items.length) { list.innerHTML = '<div class="rdhint">Nothing chosen yet.</div>'; return; }
+  list.innerHTML = items.map((it, i) =>
+    '<div class="fl"><span class="orig" title="' + esc(it.file.name) + '">' + esc(it.file.name) + '</span>' +
+    '<span class="found">' + (it.from ? esc(it.from + (it.to && it.to !== it.from ? ' to ' + it.to : '')) : '') + '</span>' +
+    '<input class="nm" value="' + esc(it.name || suggested(it)) + '" onchange="items[' + i + '].name=this.value">' +
+    '<span class="st ' + (it.state === 'read' ? 'ok' : it.state.indexOf('not') === 0 ? '' : 'no') + '">' + esc(it.state) + '</span></div>'
+  ).join('');
+}
+function ext(n) { const m = /\.[^.]+$/.exec(n); return m ? m[0].toLowerCase() : '.pdf'; }
+function suggested(it) {
+  const stem = it.file.name.replace(/\.[^.]+$/, '');
+  if (!it.from) return it.file.name;
+  const span = it.to && it.to !== it.from ? it.from + ' to ' + it.to : it.from;
+  return span + ' - ' + stem + ext(it.file.name);
+}
+/* Dates, in the shapes a statement uses: 16 Aug 26, 16 August 2026, 16/08/26, 2026-08-16 */
+function datesIn(text) {
+  const found = [];
+  const push = (y, m, d) => {
+    if (y < 100) y += 2000;
+    if (m < 1 || m > 12 || d < 1 || d > 31 || y < 1990 || y > 2100) return;
+    found.push(y + '-' + String(m).padStart(2, '0') + '-' + String(d).padStart(2, '0'));
+  };
+  let m;
+  const re1 = /\b(\d{1,2})\s+([A-Za-z]{3,9})\.?\s+(\d{2,4})\b/g;
+  while ((m = re1.exec(text))) { const mm = MONTHS[m[2].slice(0, 3).toLowerCase()]; if (mm) push(+m[3], mm, +m[1]); }
+  const re2 = /\b(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{2,4})\b/g;
+  while ((m = re2.exec(text))) push(+m[3], +m[2], +m[1]);          // UK order: day first
+  const re3 = /\b(20\d{2})-(\d{2})-(\d{2})\b/g;
+  while ((m = re3.exec(text))) push(+m[1], +m[2], +m[3]);
+  return found;
+}
+async function textOf(it) {
+  if (/\.pdf$/i.test(it.file.name)) {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+    const buf = await it.file.arrayBuffer();
+    const doc = await pdfjsLib.getDocument({ data: new Uint8Array(buf) }).promise;
+    const page = await doc.getPage(1);
+    const txt = (await page.getTextContent()).items.map(x => x.str).join(' ');
+    if (txt.replace(/\s/g, '').length > 40) return txt;            // a real text PDF: no need to read the picture
+    return await ocrOf(await render(page));
+  }
+  return await ocrOf(await imageOf(it.file));
+}
+async function render(page) {
+  const v1 = page.getViewport({ scale: 1 });
+  const vp = page.getViewport({ scale: 1400 / v1.width });
+  const c = document.createElement('canvas');
+  c.width = Math.round(vp.width); c.height = Math.round(vp.height);
+  await page.render({ canvasContext: c.getContext('2d'), viewport: vp }).promise;
+  return c;
+}
+function imageOf(file) {
+  return new Promise((res, rej) => {
+    const img = new Image();
+    img.onload = () => {
+      const c = document.createElement('canvas');
+      const s = 1400 / img.width;
+      c.width = Math.round(img.width * s); c.height = Math.round(img.height * s);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      res(c);
+    };
+    img.onerror = () => rej(new Error('that picture could not be opened'));
+    img.src = URL.createObjectURL(file);
+  });
+}
+async function ocrOf(canvas) {
+  if (!worker) {
+    say('Loading the reader… (first time only)');
+    worker = await Tesseract.createWorker();
+    await worker.loadLanguage('eng');
+    await worker.initialize('eng');
+  }
+  const { data } = await worker.recognize(canvas);
+  return data.text || '';
+}
+async function readAll() {
+  $('readBtn').disabled = true;
+  for (let i = 0; i < items.length; i++) {
+    const it = items[i];
+    if (it.state === 'read') continue;
+    say('Reading ' + (i + 1) + ' of ' + items.length + ': ' + it.file.name);
+    try {
+      const dates = datesIn(await textOf(it)).sort();
+      if (!dates.length) { it.state = 'no dates found'; }
+      else { it.from = dates[0]; it.to = dates[dates.length - 1]; it.name = suggested(it); it.state = 'read'; }
+    } catch (e) { it.state = 'could not read'; }
+    draw();
+  }
+  $('readBtn').disabled = false;
+  say('Finished. Change any name you do not like, then save them.');
+}
+function download(blob, name) {
+  const url = URL.createObjectURL(blob), a = document.createElement('a');
+  a.href = url; a.download = name; document.body.appendChild(a); a.click();
+  setTimeout(() => { a.remove(); URL.revokeObjectURL(url); }, 2000);
+}
+function safeName(n) { return String(n || '').replace(/[\\/:*?"<>|]+/g, ' ').replace(/\s+/g, ' ').trim() || 'file'; }
+async function saveAll(how) {
+  if (!items.length) return;
+  $('zipBtn').disabled = $('oneBtn').disabled = true;
+  try {
+    const zip = how === 'zip' ? new JSZip() : null;
+    const used = {};
+    for (const it of items) {
+      let name = safeName(it.name || suggested(it));
+      if (used[name]) { const n = ++used[name]; name = name.replace(/(\.[^.]+)$/, ' (' + n + ')$1'); } else used[name] = 1;
+      const data = await it.file.arrayBuffer();
+      if (zip) zip.file(name, data);
+      else { download(new Blob([data], { type: it.file.type || 'application/octet-stream' }), name); await new Promise(r => setTimeout(r, 350)); }
+    }
+    if (zip) { say('Building the zip…'); download(await zip.generateAsync({ type: 'blob' }), 'renamed statements.zip'); }
+    say('Saved to your downloads.');
+  } catch (e) { say('They could not be saved: ' + e.message, true); }
+  finally { $('zipBtn').disabled = $('oneBtn').disabled = false; }
+}
+draw();
+</script>
+
+</main>
+</div>
+</body>
+</html>

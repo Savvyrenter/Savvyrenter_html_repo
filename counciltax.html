@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Council tax round here — Savvy Renter</title>
+<meta name="description" content="Type a postcode and see the council tax for every band in that area, what the discounts take off, and what it works out at a month. Free, from official figures.">
+<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://www.savvyrenter.co.uk/counciltax.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Savvy Renter">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Council tax round here — Savvy Renter">
+<meta property="og:description" content="Type a postcode and see the council tax for every band in that area, what the discounts take off, and what it works out at a month.">
+<meta property="og:url" content="https://www.savvyrenter.co.uk/counciltax.html">
+<meta property="og:image" content="https://www.savvyrenter.co.uk/og-image.png">
+<meta property="og:image:secure_url" content="https://www.savvyrenter.co.uk/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Savvy Renter — free calculators for renters">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Council tax round here — Savvy Renter">
+<meta name="twitter:description" content="What the council tax actually is for any address, and what you should be taking off it.">
+<meta name="twitter:image" content="https://www.savvyrenter.co.uk/og-image.png">
+<style>
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.5; color:#e2e8f0; max-width:1180px; margin:0 auto; padding:24px 18px; background:#0f172a; }
+  h1 { color:#f8fafc; font-size:24px; margin-top:0; }
+  h2 { color:#f1f5f9; font-size:18px; margin:20px 0 8px; border-bottom:1px solid #334155; padding-bottom:6px; }
+  p { margin:6px 0; font-size:14px; }
+  .intro, .note { background:#1e293b; border-left:4px solid #38bdf8; padding:10px 14px; margin:0 0 14px; border-radius:4px; font-size:14px; color:#c9d4e0; }
+  .note.warn { border-left-color:#fbbf24; }
+  .brand { display:flex; align-items:center; gap:14px; border-bottom:2px solid #334155; padding-bottom:10px; margin-bottom:14px; }
+  .brand h1 { border:none; padding:0; margin:0; font-size:30px; letter-spacing:-0.2px; }
+  .brand .sub { color:#94a3b8; font-size:13px; margin-top:2px; }
+  .brand .fbwrap { margin-left:auto; text-align:right; position:relative; }
+  #fbBtn { background:#0284c7; color:#fff; border:none; border-radius:5px; font-size:13px; font-weight:bold; padding:9px 14px; cursor:pointer; font-family:inherit; }
+  #fbBtn:hover { background:#0369a1; }
+  #fbPanel { position:absolute; top:0; right:0; z-index:20; width:470px; max-width:calc(100vw - 40px); box-sizing:border-box; background:#1e293b; border:1px solid #475569; border-radius:6px; padding:10px 30px 10px 12px; text-align:left; font-size:12.5px; color:#c9d4e0; line-height:1.5; box-shadow:0 6px 18px rgba(0,0,0,.45); }
+  #fbClose { position:absolute; top:4px; right:6px; background:none; border:none; color:#94a3b8; font-size:16px; line-height:1; padding:2px 5px; cursor:pointer; font-family:inherit; }
+  #fbClose:hover { color:#f8fafc; }
+  #fbPanel a { color:#38bdf8; font-weight:bold; text-decoration:none; font-size:14px; }
+  .hidden { display:none !important; }
+  .foot { font-size:12px; color:#94a3b8; margin-top:18px; border-top:1px solid #334155; padding-top:8px; }
+  .foot a { color:#38bdf8; text-decoration:none; }
+  .shell { display:flex; gap:20px; align-items:flex-start; }
+  /* Capped to the screen: a sticky column taller than the viewport pins at
+     the top and whatever sits below the fold can never be reached. */
+  .rail { width:200px; flex:none; position:sticky; top:18px;
+           max-height:calc(100vh - 36px); overflow-y:auto; overscroll-behavior:contain; }
+  .tools { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:12px; }
+  .sidelogo { display:block; width:196px; max-width:100%; height:auto; border-radius:10px; margin:14px auto 0; }
+  .tools h3 { margin:0 0 10px; font-size:12px; text-transform:uppercase; letter-spacing:.5px; color:#94a3b8; }
+  .tools a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold; font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .tools a:hover { background:#0369a1; }
+  .tools a.on { background:#38bdf8; color:#0f172a; }
+  /* Grouped rail -- the flat list of eleven buttons was getting long, so the
+     related ones fold up. <details>/<summary>, so it works with no JS at all;
+     the group holding the page you are on is written out already open. */
+  .tools .grp { margin-bottom:8px; }
+  .tools .grp > summary { list-style:none; cursor:pointer; background:#1e293b; border:1px solid #475569;
+     color:#e2e8f0; font-weight:bold; font-size:14px; padding:5px 12px; border-radius:5px;
+     display:flex; align-items:center; justify-content:space-between; gap:6px; }
+  .tools .grp > summary::-webkit-details-marker { display:none; }
+  .tools .grp > summary::after { content:"\25BE"; font-size:11px; color:#94a3b8; }
+  .tools .grp[open] > summary::after { content:"\25B4"; }
+  .tools .grp > summary:hover { border-color:#38bdf8; color:#fff; }
+  .tools .grp > summary:focus-visible { outline:2px solid #38bdf8; outline-offset:1px; }
+  .tools .grp[open] > summary { margin-bottom:6px; }
+  .tools .grp a { margin-left:10px; font-size:13px; padding:4px 10px; }
+  .unverified { background:#3b2f0b; border-left:4px solid #f2c94c; color:#f5e6b8;
+     padding:8px 14px; margin:0 0 10px; border-radius:4px; font-size:13px; }
+  .tools .tiny { font-size:11px; color:#94a3b8; margin-top:6px; }
+  .page { flex:1; min-width:0; }
+  button { background:#0284c7; color:#fff; padding:10px 20px; border:none; border-radius:5px; font-size:15px; cursor:pointer; font-weight:bold; font-family:inherit; }
+  button:hover { background:#0369a1; }
+  input[type=text], select { padding:9px 10px; border:1px solid #475569; border-radius:5px; font-size:15px; background:#0f172a; color:#f8fafc; font-family:inherit; box-sizing:border-box; }
+  input:focus, select:focus { outline:none; border-color:#38bdf8; box-shadow:0 0 0 3px rgba(56,189,248,.15); }
+
+  /* ask row */
+  .ask { display:flex; gap:8px; align-items:flex-end; flex-wrap:wrap; background:#1e293b; border:1px solid #334155; border-radius:6px; padding:10px 12px; }
+  .ask label { display:block; font-weight:600; font-size:13px; color:#94a3b8; margin-bottom:5px; }
+  #pc { width:170px; text-transform:uppercase; letter-spacing:.5px; }
+  .msg { font-size:13px; color:#fbbf24; margin-top:6px; min-height:18px; }
+
+  /* filters, one row above the chart */
+  .filters { display:flex; gap:5px; flex-wrap:wrap; margin:12px 0 8px; align-items:center; }
+  .filters .lbl { font-size:12px; color:#94a3b8; margin-right:3px; }
+  .chip { background:#1e293b; border:1px solid #334155; color:#94a3b8; border-radius:5px; font-size:12.5px; font-weight:bold; padding:6px 11px; cursor:pointer; font-family:inherit; }
+  .chip:hover { border-color:#38bdf8; color:#e2e8f0; }
+  .chip.on { background:#38bdf8; border-color:#38bdf8; color:#0f172a; }
+  .chip.sm { font-size:11.5px; padding:4px 8px; }
+  /* the headline figure */
+  .hero { background:#1e293b; border:1px solid #334155; border-radius:6px; padding:12px 14px; margin-bottom:6px; }
+  .hero .big { font-size:34px; font-weight:bold; color:#f8fafc; line-height:1.1; }
+  .hero .cap { font-size:12.5px; color:#94a3b8; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:6px; margin-bottom:10px; }
+  .card { background:#1e293b; border:1px solid #334155; border-radius:6px; padding:9px 12px; }
+  .card .n { font-size:20px; font-weight:bold; color:#f8fafc; }
+  .card .c { font-size:12px; color:#94a3b8; }
+  table { border-collapse:collapse; width:100%; font-size:13px; margin-top:8px; }
+  th, td { padding:4px 9px; border-bottom:1px solid #26364a; text-align:right; }
+  th { color:#94a3b8; font-weight:600; }
+  th:first-child, td:first-child { text-align:left; }
+  @media (max-width:800px) { .shell { display:block; } .rail { width:auto; position:static; margin-bottom:14px; max-height:none; overflow:visible; } .sidelogo { max-width:208px; } }
+  @media (max-width:700px) { body { padding:18px 12px; } #fbPanel { width:calc(100vw - 36px); } #pc { width:100%; } .hero .big { font-size:27px; } }
+
+  /* the band table — the row you are on is picked out, the rest is context */
+  tbody tr.you { background:#0f2942; }
+  tbody tr.you td { color:#f8fafc; font-weight:bold; }
+  td.band { font-weight:bold; color:#94a3b8; }
+  tbody tr.you td.band { color:#38bdf8; }
+  .rise { font-size:12px; }
+  .rise.up { color:#fca5a5; }
+
+  /* small print under a result, kept above the thing it explains elsewhere */
+  .fineprint { font-size:12px; color:#94a3b8; margin:8px 0 0; }
+  .fineprint a { color:#38bdf8; text-decoration:none; }
+  .liable { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:8px; margin-top:8px; }
+  .liable div { background:#1e293b; border:1px solid #334155; border-radius:6px; padding:9px 12px; font-size:13px; color:#c9d4e0; }
+  .liable b { color:#f1f5f9; }
+  .bandhelp { font-size:12px; color:#94a3b8; margin-left:8px; }
+  .bandhelp a { color:#38bdf8; text-decoration:none; }
+
+  /* A thin strip across the top of the page itself: the site's name, above the
+     content and clear of the navigation, costing one line of height. */
+  .pagebar { background:#0b1220; border:1px solid #1e293b; border-radius:6px;
+             padding:5px 12px; margin-bottom:10px; display:flex; align-items:center;
+             justify-content:space-between; gap:14px; font-size:11.5px; }
+  .pagebar a { color:#94a3b8; text-decoration:none; font-weight:bold; letter-spacing:.6px;
+               text-transform:uppercase; white-space:nowrap; }
+  .pagebar a:hover { color:#38bdf8; }
+  .pagebar span { color:#64748b; text-align:right; min-width:0;
+                  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .pagebar .brief { display:none; }
+  @media (max-width:700px) { .pagebar .full { display:none; } .pagebar .brief { display:inline; } }
+
+  /* ---- Site menu: the fly-out layout, in our own styling ---------------- */
+  /* Fixed sidebar down the left, categories that fly out on hover or keyboard
+     focus. The card, the blue pill links and the colours are the site's own. */
+  .rail { position:fixed; top:0; left:0; width:236px; height:100vh; box-sizing:border-box;
+          padding:14px 12px; overflow:visible; background:#0f172a;
+          display:flex; flex-direction:column; max-height:none; z-index:2000; }
+  .tools { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:12px; }
+  .tools > a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold;
+               font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .tools > a:hover { background:#0369a1; }
+  .tools > a.on { background:#38bdf8; color:#0f172a; }
+  .navlist { list-style:none; margin:0; padding:0; }
+  .navitem { position:relative; margin-bottom:8px; }
+  .navitem > .navcat { display:flex; align-items:center; justify-content:space-between; gap:8px;
+                       background:#1e293b; border:1px solid #475569; border-radius:5px; color:#e2e8f0;
+                       font-size:13px; font-weight:600; padding:5px 10px; cursor:pointer; user-select:none; }
+  .navitem > .navcat::after { content:"\25B8"; font-size:11px; color:#94a3b8; }
+  .navitem:hover > .navcat, .navitem:focus-within > .navcat { background:#334155; border-color:#0284c7; color:#fff; }
+  .navitem.here > .navcat { border-color:#38bdf8; color:#38bdf8; }
+  .flyout { visibility:hidden; opacity:0;
+            transition:visibility 0s linear .4s, opacity .12s ease .4s;
+            position:absolute; top:50%; transform:translateY(-50%); left:100%; margin-left:10px; width:246px;
+            max-height:92vh; overflow-y:auto; list-style:none; padding:12px; margin-bottom:0;
+            background:#1e293b; border:1px solid #334155; border-left:3px solid #0284c7;
+            border-radius:8px; box-shadow:6px 4px 18px rgba(0,0,0,.5); z-index:2001; }
+  .navitem:hover > .flyout, .navitem:focus-within > .flyout, .flyout:hover { visibility:visible; opacity:1; transition-delay:0s; }
+  /* The gap between the row and its fly-out belongs to the row, so crossing it
+     at any angle keeps the menu open; the fly-out then holds itself open. */
+  .navitem > .flyout::before { content:''; position:absolute; top:-40px; bottom:-40px; left:-26px; width:26px; }
+  .navitem::after { content:''; position:absolute; top:-6px; bottom:-6px; left:100%; width:28px; }
+  .flyout a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold;
+              font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .flyout li:last-child a { margin-bottom:0; }
+  .flyout a:hover { background:#0369a1; }
+  .flyout a.on { background:#38bdf8; color:#0f172a; }
+  .sidelogo { display:block; width:196px; max-width:100%; height:auto; border-radius:10px; margin:14px auto 0; }
+  .shell { display:block; }
+  main.page, .page { margin-left:252px; max-width:none; position:relative; z-index:1; }
+  /* Narrow windows and phones: the sidebar stops being fixed and every item is
+     listed openly, so nothing has to be hovered to be found. */
+  @media (max-width:860px) {
+    .rail { position:static; width:auto; height:auto; padding:0; display:block; z-index:auto; }
+    main.page, .page { margin-left:0; }
+    .navitem > .navcat::after { content:""; }
+    .flyout, .navitem.resitem > .flyout { visibility:visible; opacity:1; pointer-events:auto; position:static; transform:none; width:auto; margin:8px 0 0; max-height:none; inset:auto;
+              border-left:1px solid #334155; box-shadow:none; }
+  }
+  /* Other resources: the row is a link to the page, and the fly-out carries the
+     links themselves, so nothing needs two clicks to reach. */
+  .navitem > a.navcat { text-decoration:none; }
+  .navitem.resitem { position:static; }
+  /* The long one is pinned to the window instead, so all 39 links stay on screen. */
+  .navitem.resitem > .flyout { position:fixed; top:2vh; bottom:2vh; left:221px; margin-left:0; transform:none; max-height:none; }
+  .flyout.wide { width:300px; max-height:94vh; }
+  .flyout .sect { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.6px;
+                  color:#94a3b8; margin:10px 2px 5px; }
+  .flyout a.hot { background:#15803d; }
+  .flyout a.hot:hover { background:#166534; }
+  .flyout a.ext { background:#0f172a; border:1px solid #334155; color:#e2e8f0; font-weight:600;
+                  font-size:12.5px; padding:4px 10px; margin-bottom:4px; }
+  .flyout a.ext:hover { background:#334155; border-color:#0284c7; color:#fff; }
+  .flyout a.ext::after { content:" \2197"; color:#94a3b8; font-size:11px; }
+  /* A category inside a fly-out: the Redaction Suite sits under Financial Tools,
+     so what it redacts is said by where it lives. Its parent must not clip it. */
+  .flyout.hassub { overflow:visible; max-height:none; }
+  .flyout .navitem.sub { margin:2px 0 0; }
+  .flyout .navitem.sub > .navcat { background:#0f172a; }
+  .flyout .navitem.sub > .flyout { margin-left:14px; }
+  /* keep the long one in the flow on a phone (this comes last on purpose) */
+  @media (max-width:860px) { .navitem.resitem > .flyout { position:static; inset:auto; transform:none; } }
+  @media print { .rail { display:none !important; } main.page, .page { margin-left:0; } }
+</style>
+</head>
+<body>
+<div class="shell">
+<div class="rail"><aside class="tools"><a href="index.html">Home</a><ul class="navlist"><li class="navitem here"><span class="navcat" tabindex="0">Location</span><ul class="flyout"><li><a href="area.html">What rent costs here</a></li><li><a href="counciltax.html" class="on">Council tax here</a></li></ul></li><li class="navitem"><span class="navcat" tabindex="0">Tenancy &amp; Rent</span><ul class="flyout"><li><a href="moving-in_audit.html">Moving in audit</a></li></ul></li><li class="navitem"><span class="navcat" tabindex="0">Financial Tools</span><ul class="flyout hassub"><li><a href="interest.html">Interest owed to you</a></li><li><a href="arrears.html">Paying off arrears</a></li><li><a href="benefits.html">Benefit entitlements</a></li><li><a href="incoming-benefit-calc.html">Record of income</a></li><li class="navitem sub"><span class="navcat" tabindex="0">Redaction Suite</span><ul class="flyout"><li><a href="bank-statement-redaction.html" class="hot">⚡ Redact a statement page</a></li><li><a href="bank-statement-split.html">Split a PDF into pages</a></li><li><a href="bank-statement-rename.html">Name statements by date</a></li></ul></li></ul></li><li class="navitem"><span class="navcat" tabindex="0">Complaints &amp; Claims</span><ul class="flyout"><li><a href="scrubber.html">🔍 Web page data scrubber</a></li><li><a href="PRS_Tenant_Workspace.html">PRS complaint</a></li><li><a href="TPO_Tenant_Workspace.html">TPO complaint</a></li><li><a href="court_forms_workspace.html">Money Claim Online</a></li></ul></li><li class="navitem resitem"><a class="navcat" href="resources.html">Data &amp; Resources</a><ul class="flyout wide"><li><a href="resources.html">Other resources — the page</a></li><li class="sect">Certificates and safety</li><li><a class="ext" href="https://www.gov.uk/find-energy-certificate" target="_blank" rel="noopener">Energy Performance Certificate</a></li><li><a class="ext" href="https://www.scottishepcregister.org.uk/" target="_blank" rel="noopener">EPC register</a></li><li><a class="ext" href="https://www.gassaferegister.co.uk/find-an-engineer-or-check-the-register/" target="_blank" rel="noopener">Gas Safe Register</a></li><li><a class="ext" href="https://www.niceic.com/find-a-contractor" target="_blank" rel="noopener">Electrical safety</a></li><li><a class="ext" href="https://search.napit.org.uk/" target="_blank" rel="noopener">NAPIT</a></li><li><a class="ext" href="https://www.electricalsafetyfirst.org.uk/" target="_blank" rel="noopener">Electrical Safety First</a></li><li><a class="ext" href="https://www.gov.uk/government/publications/how-to-rent" target="_blank" rel="noopener">How to Rent</a></li><li class="sect">Deposits</li><li><a class="ext" href="https://www.gov.uk/tenancy-deposit-protection" target="_blank" rel="noopener">Tenancy deposit protection</a></li><li><a class="ext" href="https://www.depositprotection.com/" target="_blank" rel="noopener">Deposit Protection Service</a></li><li><a class="ext" href="https://www.tenancydepositscheme.com/" target="_blank" rel="noopener">Tenancy Deposit Scheme</a></li><li><a class="ext" href="https://www.mydeposits.co.uk/" target="_blank" rel="noopener">mydeposits</a></li><li class="sect">Who owns and who manages</li><li><a class="ext" href="https://find-and-update.company-information.service.gov.uk/" target="_blank" rel="noopener">Companies House</a></li><li><a class="ext" href="https://www.gov.uk/search-property-information-land-registry" target="_blank" rel="noopener">HM Land Registry</a></li><li><a class="ext" href="https://www.tpos.co.uk/" target="_blank" rel="noopener">Property Ombudsman</a></li><li><a class="ext" href="https://www.theprs.co.uk/" target="_blank" rel="noopener">Property Redress Scheme</a></li><li><a class="ext" href="https://www.rentsmart.gov.wales/" target="_blank" rel="noopener">Rent Smart Wales</a></li><li><a class="ext" href="https://www.landlordregistrationscotland.gov.uk/" target="_blank" rel="noopener">Scottish Landlord Register</a></li><li><a class="ext" href="https://www.london.gov.uk/programmes-strategies/housing-and-land/improving-private-rented-sector/rogue-landlord-and-agent-checker" target="_blank" rel="noopener">London rogue landlord and agent checker</a></li><li><a class="ext" href="https://www.gov.uk/find-local-council" target="_blank" rel="noopener">Find your local council</a></li><li class="sect">Rent, notices and the law</li><li><a class="ext" href="https://www.gov.uk/private-renting/rent-increases" target="_blank" rel="noopener">Rent increases</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1988/50/section/13" target="_blank" rel="noopener">Housing Act 1988</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2019/4" target="_blank" rel="noopener">Tenant Fees Act 2019</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1985/70/section/11" target="_blank" rel="noopener">Landlord and Tenant Act 1985</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2018/34" target="_blank" rel="noopener">Homes Act 2018</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1977/43" target="_blank" rel="noopener">Protection from Eviction Act 1977</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2015/20" target="_blank" rel="noopener">Deregulation Act 2015</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1984/28/section/69" target="_blank" rel="noopener">County Courts Act 1984</a></li><li><a class="ext" href="https://www.legislation.gov.uk/all?title=Renters%27%20Rights%20Act" target="_blank" rel="noopener">Renters' Rights Act</a></li><li class="sect">Taking it further</li><li><a class="ext" href="https://buntool.co.uk/" target="_blank" rel="noopener">BunTool</a></li><li><a class="ext" href="https://www.gov.uk/make-court-claim-for-money" target="_blank" rel="noopener">Make a court claim for money</a></li><li><a class="ext" href="https://www.moneyclaim.gov.uk/" target="_blank" rel="noopener">Money Claim Online</a></li><li><a class="ext" href="https://www.gov.uk/get-help-with-court-fees" target="_blank" rel="noopener">Help with court fees</a></li><li><a class="ext" href="https://www.gov.uk/government/collections/county-court-forms" target="_blank" rel="noopener">County court forms</a></li><li><a class="ext" href="https://www.gov.uk/housing-tribunals" target="_blank" rel="noopener">Housing tribunals</a></li><li><a class="ext" href="https://www.housing-ombudsman.org.uk/" target="_blank" rel="noopener">Housing Ombudsman</a></li><li class="sect">Free advice</li><li><a class="ext" href="https://england.shelter.org.uk/housing_advice" target="_blank" rel="noopener">Shelter</a></li><li><a class="ext" href="https://www.citizensadvice.org.uk/housing/" target="_blank" rel="noopener">Citizens Advice</a></li><li><a class="ext" href="https://www.lawcentres.org.uk/" target="_blank" rel="noopener">Law Centres Network</a></li><li><a class="ext" href="https://www.advicenow.org.uk/" target="_blank" rel="noopener">Advicenow</a></li></ul></li></ul></aside><img class="sidelogo" src="SavvyRenter-sml.png" alt="Savvy Renter"></div><main class="page">
+<div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
+
+<div class="brand"><div><h1>Council Tax Round Here</h1><div class="sub">What the bill actually is · and what you should be taking off it</div></div><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page." onclick="showFeedback()">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div></div>
+
+<div class="intro">
+  Council tax is the cost that catches renters out, because it is not in the advertised rent and nobody quotes it at a viewing. On most tenancies it is yours to pay, and on a two bedroom flat it can be another £200 a month on top. This tells you what the charge is for any address in England, Scotland or Wales, and works out the discounts — a quarter off if you live alone, and more than that in cases people often do not realise they are in. <b>Your postcode stays in your browser.</b> It is used to work out which area file to fetch, and nothing about you is sent anywhere.
+</div>
+
+<div class="ask">
+  <div><label for="pc">Postcode</label><input type="text" id="pc" placeholder="e.g. SW1A 1AA" autocomplete="postal-code" spellcheck="false"></div>
+  <button type="button" id="goBtn" onclick="look()">Look it up</button>
+</div>
+<div class="msg" id="msg"></div>
+
+<div id="out" class="hidden">
+
+  <h2 id="areaName">Area</h2>
+
+  <div class="filters">
+    <span class="lbl">Your band:</span>
+    <span id="bandChips"></span>
+    <span class="bandhelp" id="bandHelp"></span>
+  </div>
+
+  <div class="filters">
+    <span class="lbl">Who lives there:</span>
+    <span id="whoChips"></span>
+  </div>
+
+  <div class="hero"><div class="big" id="heroBig">—</div><div class="cap" id="heroCap"></div></div>
+  <div class="cards" id="cards"></div>
+  <p class="fineprint" id="whyNote"></p>
+
+  <h2>Every band here</h2>
+  <div id="tableWrap"></div>
+  <p class="fineprint" id="tableNote"></p>
+
+  <h2>Things worth knowing</h2>
+  <div class="liable">
+    <div><b>Who pays it.</b> On an ordinary tenancy of a whole home, the tenant is liable — not the landlord, whatever the agreement says about "bills included". If your rent is said to include council tax, the landlord collects it from you and pays it on; you are still the one the council will chase if it goes unpaid.</div>
+    <div><b>Renting a room in a shared house.</b> In most HMOs the <b>landlord</b> is liable for the council tax, not the tenants, and cannot make you pay it separately as a fee. If you rent a room in a shared house and you are being billed for council tax on top of your rent, that is worth checking.</div>
+    <div><b>Full-time students.</b> A household where everyone is a full-time student pays nothing at all — it is exempt, not discounted. If you live with one non-student, they get the 25% single person discount instead. Either way you have to apply; councils do not work it out for you.</div>
+    <div><b>If you cannot afford it.</b> Council Tax Reduction is a separate, means-tested scheme run by each council, and it is not included in the figures above. It can take a large chunk off, or all of it. Apply to your own council — it is not automatic and it is not part of Universal Credit.</div>
+    <div><b>You can challenge the band.</b> Bands were set on 1991 values in England and Scotland, and 2003 in Wales, and plenty are simply wrong. Challenging is free. It can go down, and it can go up, so check what similar homes near you are banded at first.</div>
+    <div><b>Ten payments, or twelve.</b> Councils bill over ten months by default, which makes each payment bigger. You have the right to ask for twelve instead and the council has to agree. It does not reduce the bill, but it spreads it.</div>
+  </div>
+
+</div>
+
+<div class="foot">Savvy Renter — savvyrenter.co.uk · free tools for renters · <a href="resources.html#sources">Data sources &amp; licences</a><br>
+Band D charges compiled by PlainCouncilTax from MHCLG, the Scottish Government, StatsWales and the Valuation Office Agency; compilation CC BY 4.0, underlying figures Open Government Licence v3.0. The other bands are worked out from Band D using the statutory proportions. Figures are the standard charge for the whole authority and exclude any parish or town council precept.</div>
+
+</main>
+</div>
+<script src="savvy-data.js"></script>
+<script>
+// ---------------------------------------------------------------- state
+let place = null, area = null, doc = null, band = 'D', who = 'standard';
+const gbp = n => '£' + Number(n).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const gbp0 = n => '£' + Math.round(n).toLocaleString('en-GB');
+const say = t => document.getElementById('msg').textContent = t;
+const NATION = { E: 'England', S: 'Scotland', W: 'Wales' };
+
+// Where to go and look your band up. England and Wales share the VOA's search;
+// Scotland is the Assessors, which is a different body and a different site.
+const BAND_FINDER = {
+  E: ['the Valuation Office Agency', 'https://www.gov.uk/council-tax-bands'],
+  W: ['the Valuation Office Agency', 'https://www.gov.uk/council-tax-bands'],
+  S: ['the Scottish Assessors', 'https://www.saa.gov.uk/council-tax/']
+};
+
+// ---------------------------------------------------------------- lookup
+async function look() {
+  const btn = document.getElementById('goBtn');
+  btn.disabled = true; say('Looking…');
+  try {
+    const p = await SavvyData.postcode(document.getElementById('pc').value);
+    if (!p.ok) { say(p.message); document.getElementById('out').classList.add('hidden'); return; }
+    place = p;
+    doc = await SavvyData.councils();
+    area = doc.la[p.lad];
+    if (!area) { say('No council tax figures are published for that authority yet.'); return; }
+    say('');
+    document.getElementById('out').classList.remove('hidden');
+    drawChips();
+    draw();
+  } catch (e) {
+    say('Could not reach the data just now. Check your connection and try again.');
+  } finally { btn.disabled = false; }
+}
+document.getElementById('pc').addEventListener('keydown', e => { if (e.key === 'Enter') look(); });
+
+// ---------------------------------------------------------------- controls
+// Wales has nine bands, England and Scotland eight, so the row of buttons is
+// built from whatever the data says this nation has rather than assumed.
+function drawChips() {
+  const bandsFor = doc.ratios[area.nation].bands;
+  const keys = Object.keys(bandsFor);
+  if (!keys.includes(band)) band = 'D';
+  document.getElementById('bandChips').innerHTML = keys.map(b =>
+    `<button type="button" class="chip${b === band ? ' on' : ''}" data-band="${b}" onclick="setBand('${b}')">${b}</button>`).join(' ');
+
+  const [who_, url] = BAND_FINDER[area.nation];
+  document.getElementById('bandHelp').innerHTML =
+    `Not sure? <a href="${url}" target="_blank" rel="noopener">Look it up on ${who_}</a> — free, by postcode.`;
+
+  document.getElementById('whoChips').innerHTML = doc.discounts.map(d =>
+    `<button type="button" class="chip${d.key === who ? ' on' : ''}" data-who="${d.key}" title="${d.note.replace(/"/g,'&quot;')}" onclick="setWho('${d.key}')">${d.label}</button>`).join(' ');
+}
+function setBand(b) {
+  band = b;
+  document.querySelectorAll('#bandChips .chip').forEach(c => c.classList.toggle('on', c.dataset.band === b));
+  draw();
+}
+function setWho(k) {
+  who = k;
+  document.querySelectorAll('#whoChips .chip').forEach(c => c.classList.toggle('on', c.dataset.who === k));
+  draw();
+}
+
+// ---------------------------------------------------------------- the numbers
+// Every band for this authority, in the newest year and the one before, worked
+// out from Band D with that nation's statutory proportions. The fractions live
+// in the data file — England and Wales are ninths, but Scotland's top four
+// bands are steeper, and a single set of multipliers would be wrong for a
+// third of the country.
+function bandTable(year) {
+  const r = doc.ratios[area.nation];
+  const d = area.bandD[year];
+  if (d == null) return null;
+  const out = {};
+  for (const b in r.bands) out[b] = Math.round((d * r.bands[b] / r.den) * 100) / 100;
+  return out;
+}
+
+function draw() {
+  const years = doc.years;                 // newest first
+  const now = years[0], was = years[1];
+  const tNow = bandTable(now), tWas = was ? bandTable(was) : null;
+  const rule = doc.discounts.find(d => d.key === who) || doc.discounts[0];
+
+  document.getElementById('areaName').textContent = area.name + ' — ' + NATION[area.nation];
+
+  const full = tNow[band];
+  const pay = Math.round(full * (1 - rule.off) * 100) / 100;
+  const saved = Math.round((full - pay) * 100) / 100;
+
+  document.getElementById('heroBig').textContent = gbp(pay) + ' a year';
+  document.getElementById('heroCap').textContent =
+    `Band ${band} in ${area.name}, ${now}` + (rule.off ? ` — after the ${Math.round(rule.off * 100)}% discount` : ' — the full charge');
+
+  const cards = [];
+  cards.push(`<div class="card"><div class="n">${gbp(pay / 10)}</div>
+    <div class="c">a month over 10 months — how the council will bill you</div></div>`);
+  cards.push(`<div class="card"><div class="n">${gbp(pay / 12)}</div>
+    <div class="c">a month over 12 — you can ask for this and they must agree</div></div>`);
+  if (saved > 0) cards.push(`<div class="card"><div class="n">${gbp0(saved)}</div>
+    <div class="c">a year the discount takes off — you have to claim it</div></div>`);
+  if (tWas) {
+    const rise = Math.round((tNow[band] - tWas[band]) * 100) / 100;
+    const pct = Math.round((rise / tWas[band]) * 1000) / 10;
+    cards.push(`<div class="card"><div class="n">${rise >= 0 ? '+' : ''}${gbp0(rise)}</div>
+      <div class="c">more than ${was} on this band — ${pct >= 0 ? '+' : ''}${pct}%</div></div>`);
+  }
+  document.getElementById('cards').innerHTML = cards.join('');
+
+  document.getElementById('whyNote').innerHTML = rule.off
+    ? `<b>${rule.label}.</b> ${rule.note} Councils do not apply it for you — you have to tell them.`
+    : `<b>${rule.label}.</b> ${rule.note} If anyone in the house is a full-time student, a live-in carer, under 18, an apprentice, or has a severe mental impairment, pick one of the other options — they are not counted, and the bill drops.`;
+
+  // the full table
+  const rows = Object.keys(tNow).map(b => {
+    const f = tNow[b];
+    const p = Math.round(f * (1 - rule.off) * 100) / 100;
+    const cells = `<td class="band">${b}</td><td>${gbp(f)}</td>` +
+      (rule.off ? `<td>${gbp(p)}</td>` : '') +
+      `<td>${gbp(p / 12)}</td>` +
+      (tWas ? `<td class="rise${tNow[b] > tWas[b] ? ' up' : ''}">${tNow[b] >= tWas[b] ? '+' : ''}${gbp0(tNow[b] - tWas[b])}</td>` : '');
+    return `<tr class="${b === band ? 'you' : ''}">${cells}</tr>`;
+  }).join('');
+  document.getElementById('tableWrap').innerHTML =
+    `<table><thead><tr><th>Band</th><th>Full charge ${now}</th>` +
+    (rule.off ? `<th>After your discount</th>` : '') +
+    `<th>A month over 12</th>` +
+    (tWas ? `<th>Change on ${was}</th>` : '') +
+    `</tr></thead><tbody>${rows}</tbody></table>`;
+
+  const [finderName, finderUrl] = BAND_FINDER[area.nation];
+  document.getElementById('tableNote').innerHTML =
+    `Bands were set on property values as at ${area.nation === 'W' ? '1 April 2003' : '1 April 1991'}, not on what a place is worth now. ` +
+    `Only Band D is published; the rest are fixed proportions of it in law, which is how these are worked out — ` +
+    `${area.nation === 'S'
+       ? 'and Scotland\'s proportions for bands E to H were raised in April 2017, so they are steeper than the rest of Great Britain.'
+       : 'sixths to eighteenths of nine' + (area.nation === 'W' ? ', with Band I at twenty-one ninths.' : '.')} ` +
+    `<a href="${finderUrl}" target="_blank" rel="noopener">Check the band for your address on ${finderName}</a>. ` +
+    `These figures are the standard charge for ${area.name} and include the police, fire and adult social care precepts. ` +
+    `They do not include a parish or town council precept, so if you are in a parished area your bill will be a little higher — usually £20 to £80 a year.`;
+}
+
+// ---------------------------------------------------------------- feedback
+function showFeedback() {
+  const w = ['feedback', 'savvyrenter.co.uk'].join('@');
+  const p = document.getElementById('fbPanel');
+  p.innerHTML =
+    '<button type="button" id="fbClose" title="Close" onclick="hideFeedback()">✕</button>' +
+    '<p style="margin:0 0 6px">Suggestions, corrections, or an open-source tool we could host — we read everything, though we can’t promise to answer every email. Use a suggestion and we’ll credit you on the page.</p>' +
+    '<a href="mailto:' + w + '?subject=Savvy%20Renter%20feedback">' + w + '</a>';
+  p.classList.remove('hidden');
+}
+function hideFeedback() { document.getElementById('fbPanel').classList.add('hidden'); }
+</script>
+</body>
+</html>

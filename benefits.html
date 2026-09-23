@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Benefit entitlements — Savvy Renter</title>
+<meta name="description" content="A Universal Credit estimate on the April 2026 rates that shows every line of the sum, with the housing element worked out from the real allowance for your area. Free, and nothing you type is stored.">
+<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://www.savvyrenter.co.uk/benefits.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Savvy Renter">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Benefit entitlements — Savvy Renter">
+<meta property="og:description" content="A Universal Credit estimate on the April 2026 rates that shows every line of the sum, with the housing element worked out from the real allowance for your area.">
+<meta property="og:url" content="https://www.savvyrenter.co.uk/benefits.html">
+<meta property="og:image" content="https://www.savvyrenter.co.uk/og-image.png">
+<meta property="og:image:secure_url" content="https://www.savvyrenter.co.uk/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Savvy Renter — free calculators for renters">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Benefit entitlements — Savvy Renter">
+<meta name="twitter:description" content="A Universal Credit estimate that shows its working, with the housing part from the real allowance for your area.">
+<meta name="twitter:image" content="https://www.savvyrenter.co.uk/og-image.png">
+<style>
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.5; color:#e2e8f0; max-width:1180px; margin:0 auto; padding:24px 18px; background:#0f172a; }
+  h1 { color:#f8fafc; font-size:24px; margin-top:0; }
+  h2 { color:#f1f5f9; font-size:18px; margin:20px 0 8px; border-bottom:1px solid #334155; padding-bottom:6px; }
+  p { margin:6px 0; font-size:14px; }
+  .intro, .note { background:#1e293b; border-left:4px solid #38bdf8; padding:10px 14px; margin:0 0 14px; border-radius:4px; font-size:14px; color:#c9d4e0; }
+  .note.warn { border-left-color:#fbbf24; }
+  .brand { display:flex; align-items:center; gap:14px; border-bottom:2px solid #334155; padding-bottom:10px; margin-bottom:14px; }
+  .brand h1 { border:none; padding:0; margin:0; font-size:30px; letter-spacing:-0.2px; }
+  .brand .sub { color:#94a3b8; font-size:13px; margin-top:2px; }
+  .brand .fbwrap { margin-left:auto; text-align:right; position:relative; }
+  #fbBtn { background:#0284c7; color:#fff; border:none; border-radius:5px; font-size:13px; font-weight:bold; padding:9px 14px; cursor:pointer; font-family:inherit; }
+  #fbBtn:hover { background:#0369a1; }
+  #fbPanel { position:absolute; top:0; right:0; z-index:20; width:470px; max-width:calc(100vw - 40px); box-sizing:border-box; background:#1e293b; border:1px solid #475569; border-radius:6px; padding:10px 30px 10px 12px; text-align:left; font-size:12.5px; color:#c9d4e0; line-height:1.5; box-shadow:0 6px 18px rgba(0,0,0,.45); }
+  #fbClose { position:absolute; top:4px; right:6px; background:none; border:none; color:#94a3b8; font-size:16px; line-height:1; padding:2px 5px; cursor:pointer; font-family:inherit; }
+  #fbClose:hover { color:#f8fafc; }
+  #fbPanel a { color:#38bdf8; font-weight:bold; text-decoration:none; font-size:14px; }
+  .hidden { display:none !important; }
+  .foot { font-size:12px; color:#94a3b8; margin-top:18px; border-top:1px solid #334155; padding-top:8px; }
+  .foot a { color:#38bdf8; text-decoration:none; }
+  .shell { display:flex; gap:20px; align-items:flex-start; }
+  /* Capped to the screen: a sticky column taller than the viewport pins at
+     the top and whatever sits below the fold can never be reached. */
+  .rail { width:200px; flex:none; position:sticky; top:18px;
+           max-height:calc(100vh - 36px); overflow-y:auto; overscroll-behavior:contain; }
+  .tools { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:12px; }
+  .sidelogo { display:block; width:196px; max-width:100%; height:auto; border-radius:10px; margin:14px auto 0; }
+  .tools h3 { margin:0 0 10px; font-size:12px; text-transform:uppercase; letter-spacing:.5px; color:#94a3b8; }
+  .tools a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold; font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .tools a:hover { background:#0369a1; }
+  .tools a.on { background:#38bdf8; color:#0f172a; }
+  /* Grouped rail -- the flat list of eleven buttons was getting long, so the
+     related ones fold up. <details>/<summary>, so it works with no JS at all;
+     the group holding the page you are on is written out already open. */
+  .tools .grp { margin-bottom:8px; }
+  .tools .grp > summary { list-style:none; cursor:pointer; background:#1e293b; border:1px solid #475569;
+     color:#e2e8f0; font-weight:bold; font-size:14px; padding:5px 12px; border-radius:5px;
+     display:flex; align-items:center; justify-content:space-between; gap:6px; }
+  .tools .grp > summary::-webkit-details-marker { display:none; }
+  .tools .grp > summary::after { content:"\25BE"; font-size:11px; color:#94a3b8; }
+  .tools .grp[open] > summary::after { content:"\25B4"; }
+  .tools .grp > summary:hover { border-color:#38bdf8; color:#fff; }
+  .tools .grp > summary:focus-visible { outline:2px solid #38bdf8; outline-offset:1px; }
+  .tools .grp[open] > summary { margin-bottom:6px; }
+  .tools .grp a { margin-left:10px; font-size:13px; padding:4px 10px; }
+  .unverified { background:#3b2f0b; border-left:4px solid #f2c94c; color:#f5e6b8;
+     padding:8px 14px; margin:0 0 10px; border-radius:4px; font-size:13px; }
+  .tools .tiny { font-size:11px; color:#94a3b8; margin-top:6px; }
+  .page { flex:1; min-width:0; }
+  button { background:#0284c7; color:#fff; padding:10px 20px; border:none; border-radius:5px; font-size:15px; cursor:pointer; font-weight:bold; font-family:inherit; }
+  button:hover { background:#0369a1; }
+  input[type=text], select { padding:9px 10px; border:1px solid #475569; border-radius:5px; font-size:15px; background:#0f172a; color:#f8fafc; font-family:inherit; box-sizing:border-box; }
+  input:focus, select:focus { outline:none; border-color:#38bdf8; box-shadow:0 0 0 3px rgba(56,189,248,.15); }
+
+  /* ask row */
+  .ask { display:flex; gap:8px; align-items:flex-end; flex-wrap:wrap; background:#1e293b; border:1px solid #334155; border-radius:6px; padding:10px 12px; }
+  .ask label { display:block; font-weight:600; font-size:13px; color:#94a3b8; margin-bottom:5px; }
+  #pc { width:170px; text-transform:uppercase; letter-spacing:.5px; }
+  .msg { font-size:13px; color:#fbbf24; margin-top:6px; min-height:18px; }
+
+  /* filters, one row above the chart */
+  .filters { display:flex; gap:5px; flex-wrap:wrap; margin:12px 0 8px; align-items:center; }
+  .filters .lbl { font-size:12px; color:#94a3b8; margin-right:3px; }
+  .chip { background:#1e293b; border:1px solid #334155; color:#94a3b8; border-radius:5px; font-size:12.5px; font-weight:bold; padding:6px 11px; cursor:pointer; font-family:inherit; }
+  .chip:hover { border-color:#38bdf8; color:#e2e8f0; }
+  .chip.on { background:#38bdf8; border-color:#38bdf8; color:#0f172a; }
+  .chip.sm { font-size:11.5px; padding:4px 8px; }
+
+  /* the household box — who is renting decides the size, so it comes first */
+  .house { background:#1e293b; border:1px solid #334155; border-radius:6px; padding:8px 12px 10px; margin:12px 0 6px; }
+  .hrow { display:flex; gap:5px; flex-wrap:wrap; align-items:center; margin-top:6px; }
+  .hrow:first-child { margin-top:0; }
+  .hrow .lbl { font-size:12px; color:#94a3b8; margin-right:3px; }
+  .hrow .lbl.gap { margin-left:14px; }
+  .kids { display:flex; gap:5px; flex-wrap:wrap; align-items:center; }
+  .kid { display:inline-flex; align-items:center; gap:4px; background:#0f172a; border:1px solid #334155;
+         border-radius:5px; padding:3px 4px 3px 7px; font-size:12px; color:#94a3b8; }
+  .kid input[type=number] { width:44px; padding:3px 5px; font-size:12px; border-radius:4px; }
+  .kid .x { background:none; border:none; color:#64748b; cursor:pointer; font-size:13px; padding:0 3px; font-family:inherit; }
+  .kid .x:hover { color:#f87171; }
+  .ticks { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2px 14px; margin-top:5px; }
+  .ticks label { display:flex; gap:7px; align-items:flex-start; font-size:12.5px; color:#c9d4e0; cursor:pointer; padding:2px 0; }
+  .ticks input { margin:2px 0 0; accent-color:#38bdf8; flex:none; }
+  .verdict { margin-top:8px; padding:7px 11px; background:#0f172a; border-left:3px solid #38bdf8;
+             border-radius:4px; font-size:13px; color:#e2e8f0; }
+  .verdict b { color:#f8fafc; }
+  .verdict .why { display:block; font-size:11.5px; color:#94a3b8; margin-top:2px; }
+  .more { background:none; border:none; color:#38bdf8; font-size:12.5px; font-weight:bold;
+          padding:2px 0; cursor:pointer; font-family:inherit; }
+  .more:hover { background:none; color:#7dd3fc; }
+
+  /* the headline figure */
+  .hero { background:#1e293b; border:1px solid #334155; border-radius:6px; padding:12px 14px; margin-bottom:6px; }
+  .hero .big { font-size:34px; font-weight:bold; color:#f8fafc; line-height:1.1; }
+  .hero .cap { font-size:12.5px; color:#94a3b8; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:6px; margin-bottom:10px; }
+  .card { background:#1e293b; border:1px solid #334155; border-radius:6px; padding:9px 12px; }
+  .card .n { font-size:20px; font-weight:bold; color:#f8fafc; }
+  .card .c { font-size:12px; color:#94a3b8; }
+
+  /* chart */
+  .viz { --surface:#0f172a; --grid:#26364a; --ink:#f8fafc; --ink2:#94a3b8;
+         --rent:#3987e5; --lha:#d95926;
+         background:#1e293b; border:1px solid #334155; border-radius:6px; padding:12px; position:relative; }
+  .viz svg { display:block; width:100%; height:auto; overflow:visible; }
+  .legend { display:flex; gap:14px; flex-wrap:wrap; font-size:12.5px; color:#94a3b8; margin-bottom:8px; }
+  .legend span { display:inline-flex; align-items:center; gap:6px; }
+  .key { width:14px; height:3px; border-radius:2px; flex:none; }
+  .tip { position:absolute; pointer-events:none; background:#0f172a; border:1px solid #475569; border-radius:5px;
+         padding:6px 9px; font-size:12.5px; color:#e2e8f0; white-space:nowrap; box-shadow:0 4px 14px rgba(0,0,0,.5); z-index:5; }
+  table { border-collapse:collapse; width:100%; font-size:13px; margin-top:8px; }
+  th, td { padding:4px 9px; border-bottom:1px solid #26364a; text-align:right; }
+  th { color:#94a3b8; font-weight:600; }
+  th:first-child, td:first-child { text-align:left; }
+  .tabtoggle { background:none; border:none; color:#38bdf8; font-size:12.5px; padding:6px 0 0; cursor:pointer; font-family:inherit; font-weight:bold; }
+  @media (max-width:800px) { .shell { display:block; } .rail { width:auto; position:static; margin-bottom:14px; max-height:none; overflow:visible; } .sidelogo { max-width:208px; } }
+  @media (max-width:700px) { body { padding:18px 12px; } #fbPanel { width:calc(100vw - 36px); } #pc { width:100%; } .hero .big { font-size:27px; } }
+
+  /* A thin strip across the top of the page itself: the site's name, above the
+     content and clear of the navigation, costing one line of height. */
+  .pagebar { background:#0b1220; border:1px solid #1e293b; border-radius:6px;
+             padding:5px 12px; margin-bottom:10px; display:flex; align-items:center;
+             justify-content:space-between; gap:14px; font-size:11.5px; }
+  .pagebar a { color:#94a3b8; text-decoration:none; font-weight:bold; letter-spacing:.6px;
+               text-transform:uppercase; white-space:nowrap; }
+  .pagebar a:hover { color:#38bdf8; }
+  .pagebar span { color:#64748b; text-align:right; min-width:0;
+                  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .pagebar .brief { display:none; }
+  @media (max-width:700px) { .pagebar .full { display:none; } .pagebar .brief { display:inline; } }
+
+  /* the working-out, shown as a bill rather than hidden behind a number */
+  .calc { background:#1e293b; border:1px solid #334155; border-radius:6px; padding:10px 14px; margin-bottom:10px; }
+  .calc table { margin:0; font-size:13.5px; }
+  .calc td { border-bottom:1px solid #26364a; padding:5px 4px; }
+  .calc tr.sub td { border-bottom:2px solid #475569; font-weight:bold; color:#f1f5f9; }
+  .calc tr.total td { border-bottom:none; font-size:16px; font-weight:bold; color:#f8fafc; padding-top:8px; }
+  .calc td.minus { color:#fca5a5; }
+  .calc td.why { font-size:11.5px; color:#64748b; text-align:left; padding-top:0; border:none; }
+  .money { width:1%; white-space:nowrap; }
+
+  /* inputs that take a figure */
+  .numrow { display:flex; gap:10px; flex-wrap:wrap; }
+  .numrow .f { flex:1; min-width:170px; }
+  .numrow label { display:block; font-size:12px; color:#94a3b8; margin-bottom:4px; }
+  .numrow input { width:100%; padding:8px 10px; border:1px solid #475569; border-radius:5px;
+                  font-size:15px; background:#0f172a; color:#f8fafc; font-family:inherit; box-sizing:border-box;
+                  -moz-appearance:textfield; }
+  .numrow input::-webkit-outer-spin-button, .numrow input::-webkit-inner-spin-button {
+                  -webkit-appearance:none; margin:0; }
+  .numrow .hint { font-size:11px; color:#64748b; margin-top:3px; }
+  .segs { display:flex; gap:5px; flex-wrap:wrap; align-items:center; margin-top:4px; }
+
+  /* ---- Site menu: the fly-out layout, in our own styling ---------------- */
+  /* Fixed sidebar down the left, categories that fly out on hover or keyboard
+     focus. The card, the blue pill links and the colours are the site's own. */
+  .rail { position:fixed; top:0; left:0; width:236px; height:100vh; box-sizing:border-box;
+          padding:14px 12px; overflow:visible; background:#0f172a;
+          display:flex; flex-direction:column; max-height:none; z-index:2000; }
+  .tools { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:12px; }
+  .tools > a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold;
+               font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .tools > a:hover { background:#0369a1; }
+  .tools > a.on { background:#38bdf8; color:#0f172a; }
+  .navlist { list-style:none; margin:0; padding:0; }
+  .navitem { position:relative; margin-bottom:8px; }
+  .navitem > .navcat { display:flex; align-items:center; justify-content:space-between; gap:8px;
+                       background:#1e293b; border:1px solid #475569; border-radius:5px; color:#e2e8f0;
+                       font-size:13px; font-weight:600; padding:5px 10px; cursor:pointer; user-select:none; }
+  .navitem > .navcat::after { content:"\25B8"; font-size:11px; color:#94a3b8; }
+  .navitem:hover > .navcat, .navitem:focus-within > .navcat { background:#334155; border-color:#0284c7; color:#fff; }
+  .navitem.here > .navcat { border-color:#38bdf8; color:#38bdf8; }
+  .flyout { visibility:hidden; opacity:0;
+            transition:visibility 0s linear .4s, opacity .12s ease .4s;
+            position:absolute; top:50%; transform:translateY(-50%); left:100%; margin-left:10px; width:246px;
+            max-height:92vh; overflow-y:auto; list-style:none; padding:12px; margin-bottom:0;
+            background:#1e293b; border:1px solid #334155; border-left:3px solid #0284c7;
+            border-radius:8px; box-shadow:6px 4px 18px rgba(0,0,0,.5); z-index:2001; }
+  .navitem:hover > .flyout, .navitem:focus-within > .flyout, .flyout:hover { visibility:visible; opacity:1; transition-delay:0s; }
+  /* The gap between the row and its fly-out belongs to the row, so crossing it
+     at any angle keeps the menu open; the fly-out then holds itself open. */
+  .navitem > .flyout::before { content:''; position:absolute; top:-40px; bottom:-40px; left:-26px; width:26px; }
+  .navitem::after { content:''; position:absolute; top:-6px; bottom:-6px; left:100%; width:28px; }
+  .flyout a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold;
+              font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .flyout li:last-child a { margin-bottom:0; }
+  .flyout a:hover { background:#0369a1; }
+  .flyout a.on { background:#38bdf8; color:#0f172a; }
+  .sidelogo { display:block; width:196px; max-width:100%; height:auto; border-radius:10px; margin:14px auto 0; }
+  .shell { display:block; }
+  main.page, .page { margin-left:252px; max-width:none; position:relative; z-index:1; }
+  /* Narrow windows and phones: the sidebar stops being fixed and every item is
+     listed openly, so nothing has to be hovered to be found. */
+  @media (max-width:860px) {
+    .rail { position:static; width:auto; height:auto; padding:0; display:block; z-index:auto; }
+    main.page, .page { margin-left:0; }
+    .navitem > .navcat::after { content:""; }
+    .flyout, .navitem.resitem > .flyout { visibility:visible; opacity:1; pointer-events:auto; position:static; transform:none; width:auto; margin:8px 0 0; max-height:none; inset:auto;
+              border-left:1px solid #334155; box-shadow:none; }
+  }
+  /* Other resources: the row is a link to the page, and the fly-out carries the
+     links themselves, so nothing needs two clicks to reach. */
+  .navitem > a.navcat { text-decoration:none; }
+  .navitem.resitem { position:static; }
+  /* The long one is pinned to the window instead, so all 39 links stay on screen. */
+  .navitem.resitem > .flyout { position:fixed; top:2vh; bottom:2vh; left:221px; margin-left:0; transform:none; max-height:none; }
+  .flyout.wide { width:300px; max-height:94vh; }
+  .flyout .sect { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.6px;
+                  color:#94a3b8; margin:10px 2px 5px; }
+  .flyout a.hot { background:#15803d; }
+  .flyout a.hot:hover { background:#166534; }
+  .flyout a.ext { background:#0f172a; border:1px solid #334155; color:#e2e8f0; font-weight:600;
+                  font-size:12.5px; padding:4px 10px; margin-bottom:4px; }
+  .flyout a.ext:hover { background:#334155; border-color:#0284c7; color:#fff; }
+  .flyout a.ext::after { content:" \2197"; color:#94a3b8; font-size:11px; }
+  /* A category inside a fly-out: the Redaction Suite sits under Financial Tools,
+     so what it redacts is said by where it lives. Its parent must not clip it. */
+  .flyout.hassub { overflow:visible; max-height:none; }
+  .flyout .navitem.sub { margin:2px 0 0; }
+  .flyout .navitem.sub > .navcat { background:#0f172a; }
+  .flyout .navitem.sub > .flyout { margin-left:14px; }
+  /* keep the long one in the flow on a phone (this comes last on purpose) */
+  @media (max-width:860px) { .navitem.resitem > .flyout { position:static; inset:auto; transform:none; } }
+  @media print { .rail { display:none !important; } main.page, .page { margin-left:0; } }
+</style>
+</head>
+<body>
+<div class="shell">
+<div class="rail"><aside class="tools"><a href="index.html">Home</a><ul class="navlist"><li class="navitem"><span class="navcat" tabindex="0">Location</span><ul class="flyout"><li><a href="area.html">What rent costs here</a></li><li><a href="counciltax.html">Council tax here</a></li></ul></li><li class="navitem"><span class="navcat" tabindex="0">Tenancy &amp; Rent</span><ul class="flyout"><li><a href="moving-in_audit.html">Moving in audit</a></li></ul></li><li class="navitem here"><span class="navcat" tabindex="0">Financial Tools</span><ul class="flyout hassub"><li><a href="interest.html">Interest owed to you</a></li><li><a href="arrears.html">Paying off arrears</a></li><li><a href="benefits.html" class="on">Benefit entitlements</a></li><li><a href="incoming-benefit-calc.html">Record of income</a></li><li class="navitem sub"><span class="navcat" tabindex="0">Redaction Suite</span><ul class="flyout"><li><a href="bank-statement-redaction.html" class="hot">⚡ Redact a statement page</a></li><li><a href="bank-statement-split.html">Split a PDF into pages</a></li><li><a href="bank-statement-rename.html">Name statements by date</a></li></ul></li></ul></li><li class="navitem"><span class="navcat" tabindex="0">Complaints &amp; Claims</span><ul class="flyout"><li><a href="scrubber.html">🔍 Web page data scrubber</a></li><li><a href="PRS_Tenant_Workspace.html">PRS complaint</a></li><li><a href="TPO_Tenant_Workspace.html">TPO complaint</a></li><li><a href="court_forms_workspace.html">Money Claim Online</a></li></ul></li><li class="navitem resitem"><a class="navcat" href="resources.html">Data &amp; Resources</a><ul class="flyout wide"><li><a href="resources.html">Other resources — the page</a></li><li class="sect">Certificates and safety</li><li><a class="ext" href="https://www.gov.uk/find-energy-certificate" target="_blank" rel="noopener">Energy Performance Certificate</a></li><li><a class="ext" href="https://www.scottishepcregister.org.uk/" target="_blank" rel="noopener">EPC register</a></li><li><a class="ext" href="https://www.gassaferegister.co.uk/find-an-engineer-or-check-the-register/" target="_blank" rel="noopener">Gas Safe Register</a></li><li><a class="ext" href="https://www.niceic.com/find-a-contractor" target="_blank" rel="noopener">Electrical safety</a></li><li><a class="ext" href="https://search.napit.org.uk/" target="_blank" rel="noopener">NAPIT</a></li><li><a class="ext" href="https://www.electricalsafetyfirst.org.uk/" target="_blank" rel="noopener">Electrical Safety First</a></li><li><a class="ext" href="https://www.gov.uk/government/publications/how-to-rent" target="_blank" rel="noopener">How to Rent</a></li><li class="sect">Deposits</li><li><a class="ext" href="https://www.gov.uk/tenancy-deposit-protection" target="_blank" rel="noopener">Tenancy deposit protection</a></li><li><a class="ext" href="https://www.depositprotection.com/" target="_blank" rel="noopener">Deposit Protection Service</a></li><li><a class="ext" href="https://www.tenancydepositscheme.com/" target="_blank" rel="noopener">Tenancy Deposit Scheme</a></li><li><a class="ext" href="https://www.mydeposits.co.uk/" target="_blank" rel="noopener">mydeposits</a></li><li class="sect">Who owns and who manages</li><li><a class="ext" href="https://find-and-update.company-information.service.gov.uk/" target="_blank" rel="noopener">Companies House</a></li><li><a class="ext" href="https://www.gov.uk/search-property-information-land-registry" target="_blank" rel="noopener">HM Land Registry</a></li><li><a class="ext" href="https://www.tpos.co.uk/" target="_blank" rel="noopener">Property Ombudsman</a></li><li><a class="ext" href="https://www.theprs.co.uk/" target="_blank" rel="noopener">Property Redress Scheme</a></li><li><a class="ext" href="https://www.rentsmart.gov.wales/" target="_blank" rel="noopener">Rent Smart Wales</a></li><li><a class="ext" href="https://www.landlordregistrationscotland.gov.uk/" target="_blank" rel="noopener">Scottish Landlord Register</a></li><li><a class="ext" href="https://www.london.gov.uk/programmes-strategies/housing-and-land/improving-private-rented-sector/rogue-landlord-and-agent-checker" target="_blank" rel="noopener">London rogue landlord and agent checker</a></li><li><a class="ext" href="https://www.gov.uk/find-local-council" target="_blank" rel="noopener">Find your local council</a></li><li class="sect">Rent, notices and the law</li><li><a class="ext" href="https://www.gov.uk/private-renting/rent-increases" target="_blank" rel="noopener">Rent increases</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1988/50/section/13" target="_blank" rel="noopener">Housing Act 1988</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2019/4" target="_blank" rel="noopener">Tenant Fees Act 2019</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1985/70/section/11" target="_blank" rel="noopener">Landlord and Tenant Act 1985</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2018/34" target="_blank" rel="noopener">Homes Act 2018</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1977/43" target="_blank" rel="noopener">Protection from Eviction Act 1977</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2015/20" target="_blank" rel="noopener">Deregulation Act 2015</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1984/28/section/69" target="_blank" rel="noopener">County Courts Act 1984</a></li><li><a class="ext" href="https://www.legislation.gov.uk/all?title=Renters%27%20Rights%20Act" target="_blank" rel="noopener">Renters' Rights Act</a></li><li class="sect">Taking it further</li><li><a class="ext" href="https://buntool.co.uk/" target="_blank" rel="noopener">BunTool</a></li><li><a class="ext" href="https://www.gov.uk/make-court-claim-for-money" target="_blank" rel="noopener">Make a court claim for money</a></li><li><a class="ext" href="https://www.moneyclaim.gov.uk/" target="_blank" rel="noopener">Money Claim Online</a></li><li><a class="ext" href="https://www.gov.uk/get-help-with-court-fees" target="_blank" rel="noopener">Help with court fees</a></li><li><a class="ext" href="https://www.gov.uk/government/collections/county-court-forms" target="_blank" rel="noopener">County court forms</a></li><li><a class="ext" href="https://www.gov.uk/housing-tribunals" target="_blank" rel="noopener">Housing tribunals</a></li><li><a class="ext" href="https://www.housing-ombudsman.org.uk/" target="_blank" rel="noopener">Housing Ombudsman</a></li><li class="sect">Free advice</li><li><a class="ext" href="https://england.shelter.org.uk/housing_advice" target="_blank" rel="noopener">Shelter</a></li><li><a class="ext" href="https://www.citizensadvice.org.uk/housing/" target="_blank" rel="noopener">Citizens Advice</a></li><li><a class="ext" href="https://www.lawcentres.org.uk/" target="_blank" rel="noopener">Law Centres Network</a></li><li><a class="ext" href="https://www.advicenow.org.uk/" target="_blank" rel="noopener">Advicenow</a></li></ul></li></ul></aside><img class="sidelogo" src="SavvyRenter-sml.png" alt="Savvy Renter"></div><main class="page">
+<div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
+
+<div class="brand"><div><h1>Benefit Entitlements</h1><div class="sub">A Universal Credit estimate that shows its working · and what it means for the rent</div></div><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page." onclick="showFeedback()">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div></div>
+
+<div class="intro">
+  This works out roughly what Universal Credit would come to, using the rates in force from April 2026, and shows every line of the sum so you can see where the money goes rather than being handed a number to take on trust. The housing part is the bit most calculators guess at — here it comes from the actual allowance for your area, worked out from who is in the household. <b>It is an estimate, not a decision.</b> Only the DWP can decide a claim, and a real award turns on things no calculator can see. <b>Nothing you type is stored or sent anywhere.</b>
+</div>
+
+<div class="ask">
+  <div><label for="pc">Postcode</label><input type="text" id="pc" placeholder="e.g. SW1A 1AA" autocomplete="postal-code" spellcheck="false"></div>
+  <button type="button" id="goBtn" onclick="look()">Start</button>
+</div>
+<div class="msg" id="msg"></div>
+
+<div id="out" class="hidden">
+
+  <h2 id="areaName">Who is in the household</h2>
+  <p class="help" style="font-size:12.5px;color:#94a3b8;margin:0 0 6px">This decides both the standard allowance and how many bedrooms the housing part will pay for.</p>
+
+  <div class="house">
+    <div class="hrow">
+      <span class="lbl">Claiming as:</span>
+      <button type="button" class="chip on" id="hSolo" onclick="setCouple(false)">One adult</button>
+      <button type="button" class="chip" id="hCouple" onclick="setCouple(true)">A couple</button>
+      <span class="lbl gap" id="ageLbl">Age:</span>
+      <button type="button" class="chip" id="ageU25" data-age="u25" onclick="setAge('u25')">Under 25</button>
+      <button type="button" class="chip" id="age25" data-age="25to34" onclick="setAge('25to34')">25 to 34</button>
+      <button type="button" class="chip on" id="age35" data-age="o35" onclick="setAge('o35')">35 or over</button>
+    </div>
+
+    <div class="hrow">
+      <span class="lbl">Children living with you:</span>
+      <span class="kids" id="kidList"></span>
+      <button type="button" class="chip sm" onclick="addKid()">+ add a child</button>
+    </div>
+
+    <div class="hrow"><button type="button" class="more" id="moreBtn" onclick="toggleMore()" aria-expanded="false"><span id="moreCaret">&#9656;</span> <span id="moreLbl">Health, caring and other circumstances</span></button></div>
+
+    <div id="more" class="hidden">
+      <div class="ticks">
+        <label><input type="checkbox" id="xLcwra"> I have been assessed as having <b>limited capability for work and work-related activity</b></label>
+        <label id="xOldWrap" class="hidden"><input type="checkbox" id="xOld"> My claim, or that assessment, started <b>before 6 April 2026</b></label>
+        <label><input type="checkbox" id="xCarer"> I care for someone at least 35 hours a week and they get a disability benefit</label>
+        <label><input type="checkbox" id="xPip"> Someone in the household gets PIP, DLA, or an equivalent disability benefit</label>
+        <label><input type="checkbox" id="xCarerRoom"> Someone here needs a carer to stay overnight, who does not live with us</label>
+        <label id="xPairWrap" class="hidden"><input type="checkbox" id="xPair"> My partner and I cannot share a bedroom because of a disability</label>
+        <label><input type="checkbox" id="xLondon"> The property is in Greater London</label>
+      </div>
+    </div>
+
+    <div class="verdict" id="verdict"></div>
+  </div>
+
+  <h2>Money coming in</h2>
+  <div class="house">
+    <div class="numrow">
+      <div class="f"><label for="earn">Take-home pay, a month</label>
+        <input type="number" id="earn" min="0" step="1" placeholder="0" oninput="draw()">
+        <div class="hint">After tax and National Insurance. Both of you, if you are a couple.</div></div>
+      <div class="f"><label for="savings">Savings and capital</label>
+        <input type="number" id="savings" min="0" step="1" placeholder="0" oninput="draw()">
+        <div class="hint">Money in accounts, and any property other than your home.</div></div>
+      <div class="f"><label for="childcare">Registered childcare paid, a month</label>
+        <input type="number" id="childcare" min="0" step="1" placeholder="0" oninput="draw()">
+        <div class="hint">Registered or approved childcare only, and only if you are working. 85% of it can be covered.</div></div>
+    </div>
+  </div>
+
+  <h2>The housing part</h2>
+  <p class="help" style="font-size:12.5px;color:#94a3b8;margin:0 0 6px">Universal Credit pays towards rent up to the Local Housing Allowance for your area and the size of home the rules say your household needs — never more, however much the rent actually is.</p>
+  <div class="house">
+    <div class="hrow">
+      <span class="lbl">Work it out from:</span>
+      <button type="button" class="chip on" id="hAuto" onclick="setHousing('auto')">The allowance for this area</button>
+      <button type="button" class="chip" id="hMine" onclick="setHousing('mine')">A figure I already know</button>
+      <button type="button" class="chip" id="hNone" onclick="setHousing('none')">No help with rent</button>
+    </div>
+    <div class="hrow" id="brmaRow">
+      <span class="lbl">Broad Rental Market Area:</span>
+      <select id="brma" onchange="draw()" style="max-width:280px"></select>
+    </div>
+    <div class="numrow hidden" id="mineRow" style="margin-top:6px">
+      <div class="f"><label for="rentMine">Housing element, a month</label>
+        <input type="number" id="rentMine" min="0" step="1" placeholder="0" oninput="draw()">
+        <div class="hint">The housing figure from your statement, not the rent you pay.</div></div>
+      <div class="f"><label for="rentReal">Rent you actually pay, a month</label>
+        <input type="number" id="rentReal" min="0" step="1" placeholder="0" oninput="draw()">
+        <div class="hint">Optional — lets the page show the shortfall.</div></div>
+    </div>
+    <div class="numrow" id="realRow" style="margin-top:6px">
+      <div class="f"><label for="rentNow">Rent you actually pay, a month</label>
+        <input type="number" id="rentNow" min="0" step="1" placeholder="0" oninput="draw()">
+        <div class="hint">Optional — lets the page show what you would be left to find.</div></div>
+    </div>
+    <div class="verdict" id="housingNote"></div>
+  </div>
+
+  <h2>What it comes to</h2>
+  <div class="hero"><div class="big" id="heroBig">—</div><div class="cap" id="heroCap"></div></div>
+  <div class="cards" id="cards"></div>
+
+  <div class="calc" id="calc"></div>
+  <div class="note hidden" id="capNote"></div>
+
+  <h2>Council tax is separate</h2>
+  <div class="note" id="ctNote"></div>
+
+  <h2>Before you rely on this</h2>
+  <div class="liable">
+    <div><b>This is an estimate.</b> It uses the April 2026 rates and the main rules, but a real award turns on your exact circumstances, your assessment period dates, and things a web page cannot see. Check it against <a href="https://www.entitledto.co.uk/" target="_blank" rel="noopener">entitledto</a> or <a href="https://benefits-calculator.turn2us.org.uk/" target="_blank" rel="noopener">Turn2us</a>, both free, before making any decision.</div>
+    <div><b>Savings over £16,000 stop a claim.</b> Between £6,000 and £16,000 each £250 above the first £6,000, or part of £250, is treated as producing £4.35 a month of income whether it does or not.</div>
+    <div><b>Deductions are not shown.</b> Repayments of an advance, rent or council tax arrears, and overpayments all come off the payment after this calculation, and can take several hundred pounds a month.</div>
+    <div><b>The housing figure is a ceiling.</b> It is the most that can be paid towards rent. If your rent is higher, the difference is yours to find — and the shortfall is the single most common reason renters on Universal Credit fall into arrears.</div>
+    <div><b>Getting it wrong costs money.</b> If a claim is refused or paid at less than you expected, that is worth challenging — ask for a mandatory reconsideration within a month. Citizens Advice will help you do it, free.</div>
+  </div>
+
+</div>
+
+<div class="foot">Savvy Renter — savvyrenter.co.uk · free tools for renters · <a href="resources.html#sources">Data sources &amp; licences</a><br>
+Universal Credit rates: Benefit and pension rates 2026 to 2027, DWP. Allowance figures: Local Housing Allowance, DWP. Both Open Government Licence v3.0. An estimate only — it is not a benefit decision and it is not advice.</div>
+
+</main>
+</div>
+<script src="savvy-data.js"></script>
+<script>
+// ===========================================================================
+// The rates, in one place, with the date they came into force. Every figure
+// below is from the DWP's Benefit and pension rates 2026 to 2027. When April
+// comes round, this block is the only thing that needs changing.
+// ===========================================================================
+const RATES = {
+  from: 'April 2026',
+  standard: { singleUnder25: 338.58, single25: 424.90, coupleUnder25: 528.34, couple25: 666.97 },
+  // The higher first-child rate is only for a first child born before 6 April
+  // 2017. The two-child limit was abolished in April 2026, so every child now
+  // counts — a family of four children gets four child elements.
+  child:  { firstPre2017: 351.88, other: 303.94 },
+  // Split in April 2026. Claims made on or after the 6th get the lower rate;
+  // people already on it, and those meeting the severe conditions criteria or
+  // who are terminally ill, keep the higher one.
+  lcwra:  { existing: 429.80, newClaim: 217.26 },
+  carer: 209.34,
+  childcare: { maxOne: 1071.09, maxMore: 1836.16, share: 0.85 },
+  work:   { noHousing: 710.00, withHousing: 427.00 },
+  taper:  0.55,
+  capital: { floor: 6000, ceiling: 16000, step: 250, yield: 4.35 },
+  cap: { londonFamily: 2110.25, londonSingle: 1413.92,
+         elsewhereFamily: 1835.00, elsewhereSingle: 1229.42, earningsExempt: 881 }
+};
+
+// ---------------------------------------------------------------- state
+// Two different age thresholds are at work and they are not the same one.
+// Universal Credit's standard allowance steps up at 25. The shared
+// accommodation rate for housing applies below 35. Asking once, in three
+// bands, answers both without asking twice.
+let place = null, rates = null, couple = false, age = 'o35', kids = [], housing = 'auto';
+const under25 = () => age === 'u25';
+const under35 = () => age !== 'o35';
+const gbp = n => '£' + Number(n).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const gbp0 = n => '£' + Math.round(n).toLocaleString('en-GB');
+const say = t => document.getElementById('msg').textContent = t;
+const on = id => document.getElementById(id).checked;
+const num = id => Math.max(0, Number(document.getElementById(id).value) || 0);
+const COL_NAME = ['a room in a shared house','1 bedroom','2 bedroom','3 bedroom','4 bedroom'];
+
+// ---------------------------------------------------------------- lookup
+async function look() {
+  const btn = document.getElementById('goBtn');
+  btn.disabled = true; say('Looking…');
+  try {
+    const p = await SavvyData.postcode(document.getElementById('pc').value);
+    if (!p.ok) { say(p.message); document.getElementById('out').classList.add('hidden'); return; }
+    place = p;
+    rates = rates || await SavvyData.lha();
+    fillBrmaList();
+    say('');
+    document.getElementById('out').classList.remove('hidden');
+    drawKids(); applyHousehold();
+  } catch (e) {
+    say('Could not reach the allowance data just now. Check your connection and try again.');
+  } finally { btn.disabled = false; }
+}
+document.getElementById('pc').addEventListener('keydown', e => { if (e.key === 'Enter') look(); });
+
+// The postcode-to-area lookup for housing allowance is a separate dataset and
+// is not in yet, so the area is picked from the list — pre-selected where the
+// names match, which they do for most places.
+function fillBrmaList() {
+  const sel = document.getElementById('brma');
+  if (sel.dataset.filled) return;
+  const keys = Object.keys(rates.brma).sort((a,b) => rates.brma[a].name.localeCompare(rates.brma[b].name));
+  sel.innerHTML = '<option value="">— choose your area —</option>' +
+    keys.map(k => `<option value="${k}">${rates.brma[k].name}</option>`).join('');
+  sel.dataset.filled = '1';
+}
+
+// ---------------------------------------------------------------- household
+function setCouple(v) {
+  couple = v;
+  document.getElementById('hSolo').classList.toggle('on', !v);
+  document.getElementById('hCouple').classList.toggle('on', v);
+  applyHousehold();
+}
+function setAge(v) {
+  age = v;
+  document.querySelectorAll('.hrow .chip[data-age]').forEach(c => c.classList.toggle('on', c.dataset.age === v));
+  applyHousehold();
+}
+function setHousing(mode) {
+  housing = mode;
+  ['auto','mine','none'].forEach(m =>
+    document.getElementById('h' + m[0].toUpperCase() + m.slice(1)).classList.toggle('on', m === mode));
+  document.getElementById('brmaRow').classList.toggle('hidden', mode !== 'auto');
+  document.getElementById('mineRow').classList.toggle('hidden', mode !== 'mine');
+  document.getElementById('realRow').classList.toggle('hidden', mode !== 'auto');
+  draw();
+}
+function toggleMore() {
+  const box = document.getElementById('more');
+  const open = box.classList.toggle('hidden') === false;
+  document.getElementById('moreCaret').textContent = open ? '▾' : '▸';
+  document.getElementById('moreBtn').setAttribute('aria-expanded', String(open));
+}
+
+function addKid() { kids.push({ age: 5, sex: 'f', own: false, pre2017: false }); drawKids(); applyHousehold(); }
+function delKid(i) { kids.splice(i, 1); drawKids(); applyHousehold(); }
+function setKid(i, field, v) {
+  if (field === 'age') {
+    kids[i].age = Math.max(0, Math.min(19, Number(v) || 0));
+    // Born before 6 April 2017 means aged 10 or over now, give or take: a child
+    // of 9 falls either side of that date depending on their birthday, so the
+    // guess is offered and can be corrected.
+    kids[i].pre2017 = kids[i].age >= 10;
+  } else { kids[i][field] = v; }
+  drawKids(); applyHousehold();
+}
+function drawKids() {
+  document.getElementById('kidList').innerHTML = kids.map((k, i) => `
+    <span class="kid">
+      <input type="number" min="0" max="19" value="${k.age}" aria-label="Age of child ${i+1}" onchange="setKid(${i},'age',this.value)"> yrs
+      <button type="button" class="chip sm${k.sex==='f'?' on':''}" onclick="setKid(${i},'sex','f')">Girl</button>
+      <button type="button" class="chip sm${k.sex==='m'?' on':''}" onclick="setKid(${i},'sex','m')">Boy</button>
+      <button type="button" class="chip sm${k.own?' on':''}" title="Cannot share a bedroom because of a disability" onclick="setKid(${i},'own',${!k.own})">own room</button>
+      <button type="button" class="chip sm${k.pre2017?' on':''}" title="Born before 6 April 2017 — one such child takes the higher child element" onclick="setKid(${i},'pre2017',${!k.pre2017})">pre-2017</button>
+      <button type="button" class="x" title="Remove" onclick="delKid(${i})">✕</button>
+    </span>`).join('');
+}
+
+// ---------------------------------------------------------------- bedrooms
+// One bedroom for a couple or a single adult, one for each other adult, and
+// children paired off: two under 16 of the same sex, or any two under 10.
+// Sixteen is the age a child stops being paired at all.
+function bedroomsFor(list) {
+  const own   = list.filter(k => k.own).length;
+  const rest  = list.filter(k => !k.own);
+  const adult = rest.filter(k => k.age >= 16).length;
+  const teens = rest.filter(k => k.age >= 10 && k.age < 16);
+  let pool    = rest.filter(k => k.age < 10);
+  let rooms   = own + adult;
+  const odd = [];
+  ['m','f'].forEach(s => {
+    const n = teens.filter(k => k.sex === s).length;
+    rooms += Math.floor(n / 2);
+    if (n % 2) odd.push(s);
+  });
+  odd.forEach(s => {
+    const i = pool.findIndex(k => k.sex === s);
+    if (i >= 0) pool.splice(i, 1);
+    rooms += 1;
+  });
+  return rooms + Math.ceil(pool.length / 2);
+}
+
+// -1 means the shared accommodation rate: renting alone, under 35, with none of
+// the things that lift it. Otherwise the number of bedrooms, capped at four,
+// because housing allowance stops there however big the household is.
+function entitled() {
+  const soloYoung = !couple && !kids.length && under35();
+  const lifted = on('xLcwra') || on('xPip') || on('xCarerRoom');
+  if (soloYoung && !lifted) return { beds: -1, cap: false };
+  let n = 1;
+  if (couple && on('xPair')) n += 1;
+  n += bedroomsFor(kids);
+  if (on('xCarerRoom')) n += 1;
+  return { beds: Math.min(n, 4), cap: n > 4, raw: n };
+}
+
+function applyHousehold() {
+  document.getElementById('xPairWrap').classList.toggle('hidden', !couple);
+  document.getElementById('xOldWrap').classList.toggle('hidden', !on('xLcwra'));
+  document.getElementById('ageLbl').textContent = couple ? 'Older of you:' : 'Your age:';
+  draw();
+}
+['xLcwra','xCarer','xPip','xCarerRoom','xPair','xLondon','xOld'].forEach(id =>
+  document.getElementById(id).addEventListener('change', applyHousehold));
+
+// ---------------------------------------------------------------- the sum
+// Worked in the order the rules are applied: build the maximum, then take the
+// deductions off it, then test it against the cap.
+function calculate() {
+  const e = entitled();
+  const rows = [];
+  let max = 0;
+
+  const std = couple ? (under25() ? RATES.standard.coupleUnder25 : RATES.standard.couple25)
+                     : (under25() ? RATES.standard.singleUnder25 : RATES.standard.single25);
+  rows.push(['Standard allowance', std,
+             (couple ? 'A couple' : 'One adult') + ', ' + (under25() ? 'under 25' : '25 or over')]);
+  max += std;
+
+  // The two-child limit went in April 2026, so every child counts. The higher
+  // rate is only for a first child born before 6 April 2017.
+  // One child in the household can take the higher rate: the eldest, and only
+  // if born before 6 April 2017. Every other child gets the standard rate. The
+  // two-child limit was abolished in April 2026, so the count no longer stops
+  // at two — a fourth child is worth as much as a second.
+  if (kids.length) {
+    const higher = kids.filter(k => k.pre2017);
+    const nHigher = Math.min(1, higher.length);
+    const total = nHigher * RATES.child.firstPre2017 + (kids.length - nHigher) * RATES.child.other;
+    let note = nHigher
+      ? 'One child born before 6 April 2017 takes the higher rate of ' + gbp(RATES.child.firstPre2017) +
+        (kids.length > 1 ? '; the other ' + (kids.length - 1 === 1 ? 'is' : kids.length - 1 + ' are') +
+                           ' at ' + gbp(RATES.child.other) : '')
+      : 'All at ' + gbp(RATES.child.other) + ' — none born before 6 April 2017';
+    if (kids.length > 2) note += '. Every child counts: the two-child limit was abolished in April 2026';
+    rows.push([kids.length === 1 ? 'Child element' : kids.length + ' child elements', total, note]);
+    max += total;
+  }
+
+  if (on('xLcwra')) {
+    const v = on('xOld') ? RATES.lcwra.existing : RATES.lcwra.newClaim;
+    rows.push(['Health element', v,
+               on('xOld') ? 'Claim or assessment before 6 April 2026, so the higher rate'
+                          : 'New claims from 6 April 2026 get the lower rate — £' +
+                            (RATES.lcwra.existing - RATES.lcwra.newClaim).toFixed(2) + ' a month less']);
+    max += v;
+  }
+  if (on('xCarer')) { rows.push(['Carer element', RATES.carer, 'Caring 35 hours a week or more']); max += RATES.carer; }
+
+  // childcare — 85% of what is paid, up to a cap by number of children
+  const cc = num('childcare');
+  if (cc > 0 && kids.length) {
+    const capAmt = kids.length > 1 ? RATES.childcare.maxMore : RATES.childcare.maxOne;
+    const v = Math.min(cc * RATES.childcare.share, capAmt);
+    rows.push(['Childcare costs', v, '85% of ' + gbp(cc) +
+               (v >= capAmt ? ' — capped at ' + gbp(capAmt) : '')]);
+    max += v;
+  }
+
+  // housing
+  const h = housingAmount(e);
+  if (h.amount > 0) { rows.push(['Housing element', h.amount, h.why]); max += h.amount; }
+
+  // ---- deductions
+  const ded = [];
+  const savings = num('savings');
+  let tariff = 0;
+  if (savings >= RATES.capital.ceiling) {
+    return { blocked: true, savings, rows, max, entitled: e, housing: h };
+  }
+  if (savings > RATES.capital.floor) {
+    const steps = Math.ceil((savings - RATES.capital.floor) / RATES.capital.step);
+    tariff = steps * RATES.capital.yield;
+    ded.push(['Treated as income from savings', tariff,
+              steps + ' × £' + RATES.capital.yield.toFixed(2) + ' — every £250 above £6,000, or part of one']);
+  }
+
+  const earn = num('earn');
+  let taper = 0;
+  if (earn > 0) {
+    // A work allowance — earnings you can keep in full — only exists where
+    // there are children or a health element. Everyone else is tapered from
+    // the first pound.
+    const qualifies = kids.length > 0 || on('xLcwra');
+    const allow = !qualifies ? 0 : (h.amount > 0 ? RATES.work.withHousing : RATES.work.noHousing);
+    const above = Math.max(0, earn - allow);
+    taper = above * RATES.taper;
+    ded.push(['Taken off for earnings', taper,
+              allow > 0 ? gbp(earn) + ' less the ' + gbp(allow) + ' work allowance, then 55% of the rest'
+                        : '55% of ' + gbp(earn) + ' — no work allowance without children or a health element']);
+  }
+
+  let net = Math.max(0, max - tariff - taper);
+
+  // ---- the benefit cap, tested last
+  const capExempt = on('xLcwra') || on('xCarer') || on('xPip') || earn >= RATES.cap.earningsExempt;
+  const family = kids.length > 0;
+  const capAmt = on('xLondon') ? (family ? RATES.cap.londonFamily : RATES.cap.londonSingle)
+                               : (family ? RATES.cap.elsewhereFamily : RATES.cap.elsewhereSingle);
+  let capped = 0;
+  if (!capExempt && net > capAmt) { capped = net - capAmt; net = capAmt; }
+
+  return { rows, max, ded, tariff, taper, net, capped, capAmt, capExempt, earn, savings,
+           entitled: e, housing: h, blocked: false };
+}
+
+// What the housing element would be. Three ways in: worked out from the
+// allowance for the area, taken from a figure the claimant already has, or
+// none at all.
+function housingAmount(e) {
+  if (housing === 'none') return { amount: 0, why: '', rent: num('rentNow') };
+  if (housing === 'mine') return { amount: num('rentMine'), why: 'The figure you entered', rent: num('rentReal') };
+  const k = document.getElementById('brma').value;
+  const b = rates && rates.brma[k];
+  if (!b) return { amount: 0, why: '', rent: num('rentNow'), needArea: true };
+  const year = rates.years[rates.years.length - 1];
+  const col = e.beds === -1 ? 0 : e.beds;
+  const v = b.rates[year] ? b.rates[year][col] : null;
+  if (v == null) return { amount: 0, why: '', rent: num('rentNow'), needArea: true };
+  return { amount: v, rent: num('rentNow'),
+           why: 'The ' + COL_NAME[col] + ' rate for ' + b.name + ', which is what the rules allow this household' };
+}
+
+// ---------------------------------------------------------------- drawing
+function draw() {
+  if (!place) return;
+  const r = calculate();
+  const e = r.entitled;
+
+  // what the rules give, in one line
+  const v = document.getElementById('verdict');
+  const why = [];
+  if (e.beds === -1) why.push('renting alone, under 35, and none of the things that lift it — so the shared accommodation rate');
+  else {
+    why.push(couple ? 'one bedroom for the two of you' : 'one bedroom for you');
+    const k = bedroomsFor(kids);
+    if (k) why.push((k === 1 ? 'one' : k) + (kids.length === 1 ? ' for the child' : ' for the children'));
+    if (couple && on('xPair')) why.push('one more as you cannot share');
+    if (on('xCarerRoom')) why.push('one for the overnight carer');
+  }
+  v.innerHTML = 'The rules give this household <b>' + (e.beds === -1 ? 'the shared accommodation rate' : COL_NAME[e.beds]) + '</b>.' +
+    '<span class="why">' + why.join(', ') +
+    (e.cap ? '. The rules work out to ' + e.raw + ' bedrooms, but housing allowance stops at four however big the household is' : '') + '.</span>';
+
+  // housing note
+  const hn = document.getElementById('housingNote');
+  if (housing === 'none') {
+    hn.innerHTML = 'No housing element in the sum. <span class="why">Pick one of the other two if any of the rent is met by Universal Credit.</span>';
+  } else if (r.housing.needArea) {
+    hn.innerHTML = 'Choose your Broad Rental Market Area above to bring the housing element into the sum. <span class="why">Not sure which you are in? The government\'s own <a href="https://lha-direct.voa.gov.uk/" target="_blank" rel="noopener" style="color:#38bdf8">LHA postcode search</a> will tell you.</span>';
+  } else {
+    const rent = r.housing.rent;
+    const gap = rent > 0 ? rent - r.housing.amount : 0;
+    hn.innerHTML = 'Housing element <b>' + gbp(r.housing.amount) + ' a month</b>. <span class="why">' + r.housing.why +
+      (rent > 0
+        ? (gap > 0 ? '. Your rent is ' + gbp(rent) + ', so <b>' + gbp(gap) + ' a month</b> would be yours to find out of everything else.'
+                   : '. Your rent of ' + gbp(rent) + ' is inside it, so it would be covered in full.')
+        : '') + '</span>';
+  }
+
+  // ---- savings over the limit stops everything
+  if (r.blocked) {
+    document.getElementById('heroBig').textContent = 'No Universal Credit';
+    document.getElementById('heroCap').textContent =
+      'Savings of ' + gbp0(r.savings) + ' are over the £16,000 limit, which rules out a claim entirely';
+    document.getElementById('cards').innerHTML = '';
+    document.getElementById('calc').innerHTML =
+      '<table><tbody><tr class="total"><td>Capital above £16,000 ends entitlement</td>' +
+      '<td class="money">' + gbp(0) + '</td></tr>' +
+      '<tr><td class="why" colspan="2">This is the one hard cut-off in Universal Credit. It counts money in accounts, ' +
+      'savings, and property other than the home you live in — not personal belongings, and not a pension you cannot yet draw.</td></tr>' +
+      '</tbody></table>';
+    document.getElementById('capNote').classList.add('hidden');
+    councilTaxNote(0);
+    return;
+  }
+
+  // ---- the headline
+  document.getElementById('heroBig').textContent = gbp(r.net) + ' a month';
+  document.getElementById('heroCap').textContent =
+    r.net > 0 ? 'estimated Universal Credit, on the rates in force from ' + RATES.from
+              : 'the deductions come to more than the entitlement, so nothing would be paid';
+
+  const cards = [];
+  cards.push(`<div class="card"><div class="n">${gbp0(r.max)}</div>
+    <div class="c">maximum entitlement before anything is taken off</div></div>`);
+  if (r.taper > 0) cards.push(`<div class="card"><div class="n">${gbp0(r.taper)}</div>
+    <div class="c">taken off for earnings — 55p in every pound above the allowance</div></div>`);
+  if (r.housing.amount > 0 && r.housing.rent > 0) {
+    const gap = r.housing.rent - r.housing.amount;
+    if (gap > 0) cards.push(`<div class="card"><div class="n">${gbp0(gap)}</div>
+      <div class="c">of rent a month the housing element will not reach</div></div>`);
+  }
+  if (r.net > 0 && r.earn > 0) cards.push(`<div class="card"><div class="n">${gbp0(r.net + r.earn)}</div>
+    <div class="c">a month in total, wages and Universal Credit together</div></div>`);
+  document.getElementById('cards').innerHTML = cards.join('');
+
+  // ---- the working
+  let body = r.rows.map(([label, amt, note]) =>
+    `<tr><td>${label}</td><td class="money">${gbp(amt)}</td></tr>` +
+    (note ? `<tr><td class="why" colspan="2">${note}</td></tr>` : '')).join('');
+  body += `<tr class="sub"><td>Maximum entitlement</td><td class="money">${gbp(r.max)}</td></tr>`;
+  if (r.ded.length) {
+    body += r.ded.map(([label, amt, note]) =>
+      `<tr><td>${label}</td><td class="money minus">− ${gbp(amt)}</td></tr>` +
+      (note ? `<tr><td class="why" colspan="2">${note}</td></tr>` : '')).join('');
+  } else {
+    body += `<tr><td class="why" colspan="2">Nothing is taken off — no earnings, and savings under £6,000.</td></tr>`;
+  }
+  if (r.capped > 0) body += `<tr><td>Cut by the benefit cap</td><td class="money minus">− ${gbp(r.capped)}</td></tr>`;
+  body += `<tr class="total"><td>Paid each month</td><td class="money">${gbp(r.net)}</td></tr>`;
+  document.getElementById('calc').innerHTML = '<table><tbody>' + body + '</tbody></table>';
+
+  // ---- the cap
+  const cn = document.getElementById('capNote');
+  if (r.capped > 0) {
+    cn.className = 'note warn';
+    cn.innerHTML = '<b>The benefit cap is biting.</b> There is a ceiling of ' + gbp(r.capAmt) +
+      ' a month on what a household ' + (on('xLondon') ? 'in Greater London' : 'outside Greater London') +
+      ' can receive in total, so ' + gbp(r.capped) + ' a month is being cut. The cap does not apply once you earn ' +
+      gbp0(RATES.cap.earningsExempt) + ' a month or more, nor if anyone in the household gets PIP, DLA, Carer\'s Allowance, ' +
+      'or the health element — tick those above if they apply, because it changes the answer completely.';
+  } else if (!r.capExempt && r.net > 0 && r.net > r.capAmt * 0.85) {
+    cn.className = 'note';
+    cn.innerHTML = 'This is close to the benefit cap of ' + gbp(r.capAmt) + ' a month. Anything that pushes the total above it is simply cut.';
+  } else { cn.className = 'note hidden'; }
+
+  councilTaxNote(r.net);
+}
+
+// Council Tax Reduction is not part of Universal Credit and is not worked out
+// here, because it cannot be: each council in England runs its own scheme, and
+// Scotland and Wales run national ones that still have to be applied for. The
+// honest thing is to say so and point at the right door.
+function councilTaxNote(net) {
+  const nation = place && place.lad ? place.lad[0] : 'E';
+  const where = nation === 'S' ? 'Scotland' : nation === 'W' ? 'Wales' : 'England';
+  document.getElementById('ctNote').innerHTML =
+    '<b>Council Tax Reduction is a different thing, run by your council, and it will not arrive on its own.</b> ' +
+    'It is not part of Universal Credit, it is not in the figure above, and claiming Universal Credit does not start it — ' +
+    'you have to apply to the council separately. It can take a large part of the bill, and sometimes all of it. ' +
+    (where === 'England'
+      ? 'In England every council writes its own scheme, and most make working-age people pay something whatever their income — anywhere from nothing to about a third of the bill. There is no way to know yours without asking them.'
+      : 'In ' + where + ' there is one national scheme, and it can cover the whole bill — but it is still means-tested, still needs an application, and is reduced if another adult lives with you.') +
+    ' <a href="https://www.gov.uk/apply-council-tax-reduction" target="_blank" rel="noopener" style="color:#38bdf8">Apply through GOV.UK</a>, ' +
+    'and see <a href="counciltax.html" style="color:#38bdf8">what the bill is round here</a> first so you know what you are asking about.';
+}
+
+// ---------------------------------------------------------------- feedback
+function showFeedback() {
+  const w = ['feedback', 'savvyrenter.co.uk'].join('@');
+  const p = document.getElementById('fbPanel');
+  p.innerHTML =
+    '<button type="button" id="fbClose" title="Close" onclick="hideFeedback()">✕</button>' +
+    '<p style="margin:0 0 6px">Suggestions, corrections, or an open-source tool we could host — we read everything, though we can’t promise to answer every email. Use a suggestion and we’ll credit you on the page.</p>' +
+    '<a href="mailto:' + w + '?subject=Savvy%20Renter%20feedback">' + w + '</a>';
+  p.classList.remove('hidden');
+}
+function hideFeedback() { document.getElementById('fbPanel').classList.add('hidden'); }
+</script>
+</body>
+</html>

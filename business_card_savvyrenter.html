@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Savvy Renter — business card, front and back</title>
+<style>
+/* Savvy Renter business card. UK standard 85 x 55 mm, 3 mm bleed on every
+   edge, so each card is laid out at 91 x 61 mm with the trim line 3 mm in.
+   Everything that must not be cut off sits inside a further 4 mm safe
+   margin. Print this page at 100% / "Actual size" with backgrounds on --
+   the crop marks and the notes below are screen-only and never print.
+   Brand navy #001E3D, accent #38BDF8, logo SavvyRenter-sml.png (208x176). */
+
+:root {
+  --navy:#001E3D; --navy-2:#00294F; --accent:#38BDF8;
+  --ink:#0F172A; --paper:#FFFFFF; --muted:#5B6B7F;
+  --bleed:3mm; --trim-w:85mm; --trim-h:55mm;
+}
+* { box-sizing:border-box; }
+body { margin:0; background:#E7EAEE; color:var(--ink);
+       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+
+.sheet { padding:26px 22px 40px; }
+.screen-note { max-width:calc(91mm*2 + 26px); margin:0 auto 18px;
+               font-size:13px; line-height:1.55; color:#33414F; }
+.screen-note h1 { font-size:17px; margin:0 0 6px; color:var(--navy); }
+.screen-note code { background:#fff; border:1px solid #cfd6de; border-radius:3px; padding:1px 5px; }
+
+.cards { display:flex; gap:26px; justify-content:center; flex-wrap:wrap; }
+.cardwrap { display:flex; flex-direction:column; align-items:center; gap:7px; }
+.cardlabel { font-size:11px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:#68788A; }
+
+/* The bleed box is what actually gets printed and trimmed. */
+.card { position:relative; width:calc(var(--trim-w) + var(--bleed)*2);
+        height:calc(var(--trim-h) + var(--bleed)*2);
+        overflow:hidden; background:var(--paper);
+        -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.card .safe { position:absolute; inset:calc(var(--bleed) + 4mm); }
+
+/* Screen-only trim guide. */
+.trimguide { position:absolute; inset:var(--bleed); outline:1px dashed rgba(255,255,255,.55);
+             pointer-events:none; z-index:9; }
+.card.light .trimguide { outline-color:rgba(0,30,61,.28); }
+
+/* ---------------- FRONT ---------------- */
+.front { background:
+    radial-gradient(120% 140% at 82% 18%, var(--navy-2) 0%, var(--navy) 62%); color:#fff; }
+/* A single sweep of accent, bled off the right edge. */
+.front::after { content:""; position:absolute; top:-12%; right:-18%; width:52%; height:124%;
+  background:linear-gradient(200deg, rgba(56,189,248,.20), rgba(56,189,248,0) 62%);
+  transform:rotate(-9deg); }
+.front .safe { display:flex; flex-direction:column; justify-content:space-between; z-index:2; }
+
+.brandrow { display:flex; align-items:center; gap:3.4mm; }
+.brandrow img { width:15mm; height:auto; display:block; border-radius:1.6mm; }
+.wordmark { font-size:6.6mm; font-weight:800; letter-spacing:-0.02em; line-height:1; color:#fff; }
+.tagline { margin-top:1.1mm; font-size:2.65mm; letter-spacing:.16em; text-transform:uppercase;
+           color:var(--accent); font-weight:700; }
+
+.frontfoot { display:flex; align-items:flex-end; justify-content:space-between; gap:3mm; }
+.domain { font-size:3.9mm; font-weight:700; color:#fff; letter-spacing:.005em; }
+.domain span { color:var(--accent); }
+.freeline { font-size:2.5mm; line-height:1.45; color:#9FB3C8; text-align:right; max-width:36mm; }
+
+/* ---------------- BACK ---------------- */
+.back { background:var(--paper); }
+.back .safe { display:flex; flex-direction:column; justify-content:space-between; }
+.backhead { font-size:3.5mm; font-weight:800; color:var(--navy); letter-spacing:-0.01em; }
+.backsub { font-size:2.5mm; color:var(--muted); margin-top:.7mm; }
+
+.tools { list-style:none; margin:2.2mm 0 0; padding:0;
+         display:grid; grid-template-columns:1fr 1fr; gap:1.1mm 3mm; }
+.tools li { font-size:2.75mm; line-height:1.3; color:var(--ink); position:relative; padding-left:3.2mm; }
+.tools li::before { content:""; position:absolute; left:0; top:1.05mm;
+                    width:1.5mm; height:1.5mm; border-radius:50%; background:var(--accent); }
+
+.promise { border-top:0.3mm solid #D8DFE7; padding-top:1.6mm;
+           display:flex; align-items:flex-end; justify-content:space-between; gap:3mm; }
+.promise .p1 { font-size:2.5mm; line-height:1.4; color:var(--muted); max-width:46mm; }
+.promise .p1 b { color:var(--navy); }
+.promise .p2 { font-size:3.1mm; font-weight:800; color:var(--navy); white-space:nowrap; }
+
+@media print {
+  body { background:#fff; }
+  .sheet { padding:0; }
+  .screen-note, .cardlabel, .trimguide { display:none !important; }
+  .cards { gap:0; display:block; }
+  .cardwrap { display:block; }
+  .card { page-break-after:always; break-after:page; }
+  @page { size:91mm 61mm; margin:0; }
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="screen-note">
+    <h1>Savvy Renter — business card</h1>
+    Laid out at <b>91 × 61 mm</b>: an 85 × 55 mm UK card plus 3 mm bleed all round. The dashed line is the
+    trim edge and is screen-only. Print with <code>Actual size</code> (not "fit to page") and background
+    graphics switched on; each card comes out on its own page. Logo is <code>SavvyRenter-sml.png</code>
+    from this folder, so keep the file beside this one.
+  </div>
+
+  <div class="cards">
+
+    <div class="cardwrap">
+      <div class="cardlabel">Front</div>
+      <div class="card front">
+        <div class="trimguide"></div>
+        <div class="safe">
+          <div class="brandrow">
+            <img src="SavvyRenter-sml.png" alt="Savvy Renter">
+            <div>
+              <div class="wordmark">Savvy Renter</div>
+              <div class="tagline">Free tools for renters</div>
+            </div>
+          </div>
+          <div class="frontfoot">
+            <div class="domain">savvyrenter<span>.co.uk</span></div>
+            <div class="freeline">Free to use.<br>No sign-up, no account.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cardwrap">
+      <div class="cardlabel">Back</div>
+      <div class="card back light">
+        <div class="trimguide"></div>
+        <div class="safe">
+          <div>
+            <div class="backhead">Know what you are owed.</div>
+            <div class="backsub">Calculators and guides for private renters in England.</div>
+            <ul class="tools">
+              <li>Interest owed to you</li>
+              <li>Paying off arrears</li>
+              <li>What rent costs here</li>
+              <li>Benefit entitlements</li>
+              <li>PRS complaint</li>
+              <li>TPO complaint</li>
+            </ul>
+          </div>
+          <div class="promise">
+            <div class="p1">Everything runs in your own browser. <b>Nothing you type is stored or sent anywhere.</b></div>
+            <div class="p2">savvyrenter.co.uk</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

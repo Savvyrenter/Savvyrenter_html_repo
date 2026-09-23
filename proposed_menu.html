@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streamlined Navigation System</title>
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --sidebar-bg: #1e293b;
+            --accent-blue: #0284c7;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --hover-bg: #334155;
+            --brand-green: #10b981;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Fixed Sidebar Frame Layout */
+        .sidebar {
+            width: 240px;
+            background-color: var(--sidebar-bg);
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            box-shadow: 3px 0 12px rgba(0,0,0,0.4);
+            z-index: 100;
+        }
+
+        /* Home link replacing original Navigation Panel header */
+        .sidebar-home-link {
+            display: block;
+            padding: 22px 18px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-decoration: none;
+            border-bottom: 1px solid var(--hover-bg);
+            transition: background 0.2s;
+        }
+
+        .sidebar-home-link:hover {
+            background-color: var(--hover-bg);
+            color: var(--accent-blue);
+        }
+
+        /* Main Navigation Menu Tiers */
+        .nav-menu {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 18px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .nav-link:hover {
+            background-color: var(--hover-bg);
+        }
+
+        .nav-link::after {
+            content: '›';
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            transition: transform 0.2s;
+        }
+
+        /* Full Height Flyout Dropdown Configuration */
+        .popout-submenu {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: 290px;
+            /* Expanded calculation parameters to cover almost the full height of the viewport */
+            max-height: 96vh; 
+            overflow-y: auto;
+            background-color: var(--sidebar-bg);
+            border-left: 3px solid var(--accent-blue);
+            box-shadow: 6px 4px 18px rgba(0,0,0,0.45);
+            list-style: none;
+            padding: 12px 0;
+            margin: 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        /* Dynamic placement shift for items near the lower viewport fold */
+        .nav-item.reverse-flyout {
+            position: static; /* Breaks link bounds to let child position against the whole sidebar height */
+        }
+
+        .nav-item.reverse-flyout .popout-submenu {
+            top: 2vh; /* Anchors near the top fold of the browser screen */
+            bottom: auto;
+            max-height: 96vh;
+            border-radius: 6px;
+        }
+
+        /* Custom Dark-Themed Scrollbar for long menus */
+        .popout-submenu::-webkit-scrollbar {
+            width: 6px;
+        }
+        .popout-submenu::-webkit-scrollbar-track {
+            background: var(--sidebar-bg);
+        }
+        .popout-submenu::-webkit-scrollbar-thumb {
+            background: var(--hover-bg);
+            border-radius: 3px;
+        }
+        .popout-submenu::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
+
+        /* Resource Group Section Layout Headers */
+        .submenu-section-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--accent-blue);
+            padding: 14px 18px 4px 18px;
+            font-weight: 700;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            margin-top: 5px;
+        }
+
+        .popout-submenu li a {
+            display: block;
+            padding: 8px 18px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: all 0.2s ease;
+        }
+
+        .popout-submenu li a:hover {
+            color: var(--text-light);
+            background-color: var(--hover-bg);
+            padding-left: 22px;
+        }
+
+        /* Green Highlight Accent for New Tool Placement */
+        .popout-submenu li a.tool-highlight {
+            color: var(--brand-green);
+            font-weight: 600;
+        }
+        .popout-submenu li a.tool-highlight:hover {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #34d399;
+        }
+
+        /* Interaction Hover Triggers */
+        .nav-item:hover .popout-submenu {
+            display: block;
+        }
+
+        .nav-item:hover .nav-link::after {
+            transform: translateX(4px);
+            color: var(--text-light);
+        }
+
+        .main-content {
+            margin-left: 270px;
+            padding: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="rail"><aside class="tools"><a href="index.html">Home</a><details class="grp"><summary>Where you live</summary><a href="area.html">What rent costs here</a><a href="counciltax.html">Council tax here</a></details><details class="grp"><summary>Money coming in</summary><a href="benefits.html">Benefit entitlements</a><a href="incoming-benefit-calc.html">Record of income</a></details><details class="grp"><summary>Money owed</summary><a href="interest.html">Interest owed to you</a><a href="arrears.html">Paying off arrears</a></details><details class="grp"><summary>Your paperwork</summary><a href="bank-statement-redaction.html">Bank statement redaction</a><a href="scrubber.html">Web page data scrubber</a><a href="moving-in_audit.html">Moving in audit</a></details><details class="grp"><summary>Complaints &amp; claims</summary><a href="PRS_Tenant_Workspace.html">PRS complaint</a><a href="TPO_Tenant_Workspace.html">TPO complaint</a><a href="court_forms_workspace.html">Money Claim Online</a></details><a href="resources.html">Other resources</a></aside><img class="sidelogo" src="SavvyRenter-sml.png" alt="Savvy Renter"></div>
+
+    <main class="main-content">
+        <h2>Rent Overpayment Interest Calculator</h2>
+        <p>Hover over the bottom options to see the vertically maximized layout display along the screen side.</p>
+    </main>
+
+</body>
+</html>

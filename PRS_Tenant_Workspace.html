@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRS complaint workspace — Savvy Renter</title>
+<meta name="description" content="Draft a Property Redress Scheme complaint at your own pace, with the same character limits as the live portal, then save it to your own computer and paste it in when you are ready. Nothing you type is stored or sent anywhere.">
+<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://www.savvyrenter.co.uk/PRS_Tenant_Workspace.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Savvy Renter">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="PRS complaint workspace — Savvy Renter">
+<meta property="og:description" content="Draft a Property Redress Scheme complaint at your own pace, with the same character limits as the live portal, then save it and paste it in when you are ready.">
+<meta property="og:url" content="https://www.savvyrenter.co.uk/PRS_Tenant_Workspace.html">
+<meta property="og:image" content="https://www.savvyrenter.co.uk/og-image.png">
+<meta property="og:image:secure_url" content="https://www.savvyrenter.co.uk/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Savvy Renter — free calculators for renters">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PRS complaint workspace — Savvy Renter">
+<meta name="twitter:description" content="Draft a Property Redress Scheme complaint at your own pace, then save it and paste it in when you are ready.">
+<meta name="twitter:image" content="https://www.savvyrenter.co.uk/og-image.png">
+<style>
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.5; color:#e2e8f0; max-width:1180px; margin:0 auto; padding:0 18px 24px; background:#0f172a; }
+  h1 { color:#f8fafc; font-size:24px; margin-top:0; }
+  h2 { color:#f1f5f9; font-size:18px; margin:0 0 10px; border-bottom:1px solid #334155; padding-bottom:6px; }
+  p { margin:6px 0; font-size:14px; }
+  .intro, .note { background:#1e293b; border-left:4px solid #38bdf8; padding:10px 14px; margin:0 0 14px; border-radius:4px; font-size:14px; color:#c9d4e0; }
+  /* The header is a masthead: Save, Load and Generate stay reachable however
+     far down the form you are, which is the point of having them there. */
+  .brand { display:flex; align-items:center; gap:14px; border-bottom:2px solid #334155;
+           padding:12px 0 10px; margin-bottom:14px;
+           position:sticky; top:0; z-index:30; background:#0f172a; }
+  .brand h1 { border:none; padding:0; margin:0; font-size:30px; letter-spacing:-0.2px; }
+  .brand .sub { color:#94a3b8; font-size:13px; margin-top:2px; }
+  /* Feedback. The address is assembled in script when the button is used, so
+     it is not sitting in the page source for a harvester to scrape. */
+  /* Save, Load and Generate now sit with Feedback in the header, so the rail
+     is navigation only and the page starts higher up. */
+  .brand .acts { margin-left:auto; display:flex; align-items:center; justify-content:flex-end;
+                 gap:6px; flex-wrap:wrap; }
+  .brand .act { background:#334155; color:#fff; border:none; border-radius:5px; font-size:13px;
+                font-weight:bold; padding:9px 12px; cursor:pointer; font-family:inherit; white-space:nowrap; }
+  .brand .act:hover { background:#475569; }
+  .brand .fbwrap { position:relative; }
+  .brand .savenote { flex-basis:100%; text-align:right; font-size:11px; color:#94a3b8; min-height:14px; margin:0; }
+  #fbBtn { background:#0284c7; color:#fff; border:none; border-radius:5px; font-size:13px; font-weight:bold; padding:9px 14px; cursor:pointer; font-family:inherit; }
+  #fbBtn:hover { background:#0369a1; }
+  #fbPanel { position:absolute; top:0; right:0; z-index:20; width:470px; max-width:calc(100vw - 40px); box-sizing:border-box; background:#1e293b; border:1px solid #475569; border-radius:6px; padding:10px 30px 10px 12px; text-align:left; font-size:12.5px; color:#c9d4e0; line-height:1.5; box-shadow:0 6px 18px rgba(0,0,0,.45); }
+  #fbClose { position:absolute; top:4px; right:6px; background:none; border:none; color:#94a3b8; font-size:16px; line-height:1; padding:2px 5px; cursor:pointer; font-family:inherit; }
+  #fbClose:hover { color:#f8fafc; }
+  #fbPanel a { color:#38bdf8; font-weight:bold; text-decoration:none; font-size:14px; }
+  #fbPanel a:hover { text-decoration:underline; }
+  .hidden { display:none !important; }
+  .foot { font-size:12px; color:#94a3b8; margin-top:18px; border-top:1px solid #334155; padding-top:8px; }
+  .shell { display:flex; gap:20px; align-items:flex-start; }
+  /* Capped to the screen: a sticky column taller than the viewport pins at
+     the top and whatever sits below the fold can never be reached. */
+  .rail { width:200px; flex:none; position:sticky; top:12px; margin-top:12px;
+          max-height:calc(100vh - 24px); overflow-y:auto; overscroll-behavior:contain; }
+  .tools { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:12px; }
+  .sidelogo { display:block; width:196px; max-width:100%; height:auto; border-radius:10px; margin:14px auto 0; }
+  .tools h3 { margin:0 0 10px; font-size:12px; text-transform:uppercase; letter-spacing:.5px; color:#94a3b8; }
+  .tools a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold; font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .tools a:hover { background:#0369a1; }
+  .tools a.on { background:#38bdf8; color:#0f172a; }
+  /* Grouped rail -- the flat list of eleven buttons was getting long, so the
+     related ones fold up. <details>/<summary>, so it works with no JS at all;
+     the group holding the page you are on is written out already open. */
+  .tools .grp { margin-bottom:8px; }
+  .tools .grp > summary { list-style:none; cursor:pointer; background:#1e293b; border:1px solid #475569;
+     color:#e2e8f0; font-weight:bold; font-size:14px; padding:5px 12px; border-radius:5px;
+     display:flex; align-items:center; justify-content:space-between; gap:6px; }
+  .tools .grp > summary::-webkit-details-marker { display:none; }
+  .tools .grp > summary::after { content:"\25BE"; font-size:11px; color:#94a3b8; }
+  .tools .grp[open] > summary::after { content:"\25B4"; }
+  .tools .grp > summary:hover { border-color:#38bdf8; color:#fff; }
+  .tools .grp > summary:focus-visible { outline:2px solid #38bdf8; outline-offset:1px; }
+  .tools .grp[open] > summary { margin-bottom:6px; }
+  .tools .grp a { margin-left:10px; font-size:13px; padding:4px 10px; }
+  .unverified { background:#3b2f0b; border-left:4px solid #f2c94c; color:#f5e6b8;
+     padding:8px 14px; margin:0 0 10px; border-radius:4px; font-size:13px; }
+  .tools .tiny { font-size:11px; color:#94a3b8; margin-top:6px; }
+  .page { flex:1; min-width:0; }
+  button { background:#0284c7; color:#fff; padding:10px 20px; border:none; border-radius:5px; font-size:15px; cursor:pointer; font-weight:bold; font-family:inherit; }
+  button:hover { background:#0369a1; }
+  button.secondary { background:#334155; }
+  button.secondary:hover { background:#475569; }
+
+  /* The six steps. Tabs stay on one row where they fit and wrap on a phone,
+     rather than scrolling sideways out of sight. */
+  .steps { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:12px; }
+  .step { background:#1e293b; border:1px solid #334155; color:#94a3b8; border-radius:5px; font-size:12.5px; font-weight:bold; padding:7px 11px; cursor:pointer; font-family:inherit; }
+  .step:hover { border-color:#38bdf8; color:#e2e8f0; background:#1e293b; }
+  .step.on { background:#38bdf8; border-color:#38bdf8; color:#0f172a; }
+  .step.done { border-color:#475569; color:#cbd5e1; }
+
+  .panel { display:none; }
+  .panel.on { display:block; }
+  .field { background:#1e293b; padding:10px 12px; border-radius:6px; border:1px solid #334155; margin-bottom:6px; }
+  label.lab { display:block; font-weight:600; margin-bottom:5px; font-size:13px; color:#94a3b8; }
+  .help { font-size:12px; color:#94a3b8; margin:0 0 6px; }
+  input[type=text], input[type=date], select, textarea {
+    width:100%; box-sizing:border-box; padding:8px 9px; border:1px solid #475569; border-radius:5px;
+    font-size:14px; background:#0f172a; color:#f8fafc; font-family:inherit; }
+  textarea { line-height:1.5; resize:vertical; }
+  input:focus, select:focus, textarea:focus { outline:none; border-color:#38bdf8; box-shadow:0 0 0 3px rgba(56,189,248,.15); }
+  .count { text-align:right; font-size:11.5px; font-weight:bold; color:#94a3b8; margin-top:3px; }
+  .count.warn { color:#fbbf24; }
+  .count.over { color:#f87171; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:6px 10px; }
+  .inline { display:flex; gap:6px; align-items:stretch; }
+  .inline input { flex:1; min-width:0; }
+  .checkbtn { background:#334155; font-size:12.5px; padding:8px 11px; white-space:nowrap; flex:none; }
+  .checkbtn:hover { background:#475569; }
+  .echo { font-size:14px; color:#e2e8f0; }
+  .evrow { display:flex; gap:6px; align-items:center; }
+  .evrow input { flex:1; min-width:0; }
+  .evdel { background:none; border:1px solid #334155; color:#64748b; border-radius:5px;
+           font-size:14px; line-height:1; padding:7px 9px; cursor:pointer; flex:none; font-family:inherit; }
+  .evdel:hover { border-color:#f87171; color:#f87171; }
+  .addrow { background:#334155; font-size:12.5px; padding:7px 12px; margin-top:2px; }
+  .addrow:hover { background:#475569; }
+  .linkish { background:none; border:none; color:#38bdf8; font-size:13px; padding:0; cursor:pointer; font-family:inherit; font-weight:bold; text-decoration:underline; }
+  @media (max-width:700px) { .inline { flex-wrap:wrap; } .checkbtn { width:100%; } }
+  .tick { display:flex; align-items:flex-start; gap:9px; font-size:13.5px; color:#e2e8f0; padding:3px 0; cursor:pointer; }
+  .tick input { width:18px; height:18px; margin:2px 0 0; accent-color:#38bdf8; flex:none; cursor:pointer; }
+  /* The small print sits in the gap the two buttons leave, rather than on its
+     own row underneath — same information, a whole block less page. */
+  .navrow { display:flex; justify-content:space-between; align-items:center; gap:14px; margin-top:12px;
+            border-top:1px solid #334155; padding-top:10px; }
+  .navrow button { flex:none; }
+  .navfoot { flex:1; min-width:0; text-align:center; font-size:11.5px; color:#94a3b8; line-height:1.35; }
+  .navfoot span + span::before { content:' · '; }
+  .navfoot a { color:#38bdf8; text-decoration:none; }
+  .gen { width:100%; padding:13px; font-size:15px; background:#0284c7; margin-top:8px; }
+  @media (max-width:800px) { .shell { display:block; } .rail { width:auto; position:static; margin-bottom:14px; max-height:none; overflow:visible; } .sidelogo { max-width:208px; } }
+  @media (max-width:700px) {
+    body { padding:18px 12px; }
+    .grid2 { grid-template-columns:1fr; }
+    .field { min-width:0; }
+    #fbPanel { width:calc(100vw - 36px); }
+    .brand { flex-wrap:wrap; }
+    .brand .acts { margin-left:0; justify-content:flex-start; width:100%; }
+    .brand .savenote { text-align:left; }
+    /* the buttons keep the top row; the small print drops below them and
+       takes one line per part instead of wrapping mid-sentence */
+    .navrow { flex-wrap:wrap; }
+    .navfoot { order:3; flex:1 0 100%; margin-top:8px; }
+    .navfoot span { display:block; }
+    .navfoot span + span::before { content:none; }
+  }
+
+  /* A thin strip across the top of the page itself: the site's name, above the
+     content and clear of the navigation, costing one line of height. */
+  .pagebar { background:#0b1220; border:1px solid #1e293b; border-radius:6px;
+             padding:5px 12px; margin-bottom:10px; display:flex; align-items:center;
+             justify-content:space-between; gap:14px; font-size:11.5px; }
+  .pagebar a { color:#94a3b8; text-decoration:none; font-weight:bold; letter-spacing:.6px;
+               text-transform:uppercase; white-space:nowrap; }
+  .pagebar a:hover { color:#38bdf8; }
+  .pagebar span { color:#64748b; text-align:right; min-width:0;
+                  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .pagebar .brief { display:none; }
+  @media (max-width:700px) { .pagebar .full { display:none; } .pagebar .brief { display:inline; } }
+
+  /* ---- Site menu: the fly-out layout, in our own styling ---------------- */
+  /* Fixed sidebar down the left, categories that fly out on hover or keyboard
+     focus. The card, the blue pill links and the colours are the site's own. */
+  .rail { position:fixed; top:0; left:0; width:236px; height:100vh; box-sizing:border-box;
+          padding:14px 12px; overflow:visible; background:#0f172a;
+          display:flex; flex-direction:column; max-height:none; z-index:2000; }
+  .tools { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:12px; }
+  .tools > a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold;
+               font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .tools > a:hover { background:#0369a1; }
+  .tools > a.on { background:#38bdf8; color:#0f172a; }
+  .navlist { list-style:none; margin:0; padding:0; }
+  .navitem { position:relative; margin-bottom:8px; }
+  .navitem > .navcat { display:flex; align-items:center; justify-content:space-between; gap:8px;
+                       background:#1e293b; border:1px solid #475569; border-radius:5px; color:#e2e8f0;
+                       font-size:13px; font-weight:600; padding:5px 10px; cursor:pointer; user-select:none; }
+  .navitem > .navcat::after { content:"\25B8"; font-size:11px; color:#94a3b8; }
+  .navitem:hover > .navcat, .navitem:focus-within > .navcat { background:#334155; border-color:#0284c7; color:#fff; }
+  .navitem.here > .navcat { border-color:#38bdf8; color:#38bdf8; }
+  .flyout { visibility:hidden; opacity:0;
+            transition:visibility 0s linear .4s, opacity .12s ease .4s;
+            position:absolute; top:50%; transform:translateY(-50%); left:100%; margin-left:10px; width:246px;
+            max-height:92vh; overflow-y:auto; list-style:none; padding:12px; margin-bottom:0;
+            background:#1e293b; border:1px solid #334155; border-left:3px solid #0284c7;
+            border-radius:8px; box-shadow:6px 4px 18px rgba(0,0,0,.5); z-index:2001; }
+  .navitem:hover > .flyout, .navitem:focus-within > .flyout, .flyout:hover { visibility:visible; opacity:1; transition-delay:0s; }
+  /* The gap between the row and its fly-out belongs to the row, so crossing it
+     at any angle keeps the menu open; the fly-out then holds itself open. */
+  .navitem > .flyout::before { content:''; position:absolute; top:-40px; bottom:-40px; left:-26px; width:26px; }
+  .navitem::after { content:''; position:absolute; top:-6px; bottom:-6px; left:100%; width:28px; }
+  .flyout a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold;
+              font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .flyout li:last-child a { margin-bottom:0; }
+  .flyout a:hover { background:#0369a1; }
+  .flyout a.on { background:#38bdf8; color:#0f172a; }
+  .sidelogo { display:block; width:196px; max-width:100%; height:auto; border-radius:10px; margin:14px auto 0; }
+  .shell { display:block; }
+  main.page, .page { margin-left:252px; max-width:none; position:relative; z-index:1; }
+  /* Narrow windows and phones: the sidebar stops being fixed and every item is
+     listed openly, so nothing has to be hovered to be found. */
+  @media (max-width:860px) {
+    .rail { position:static; width:auto; height:auto; padding:0; display:block; z-index:auto; }
+    main.page, .page { margin-left:0; }
+    .navitem > .navcat::after { content:""; }
+    .flyout, .navitem.resitem > .flyout { visibility:visible; opacity:1; pointer-events:auto; position:static; transform:none; width:auto; margin:8px 0 0; max-height:none; inset:auto;
+              border-left:1px solid #334155; box-shadow:none; }
+  }
+  /* Other resources: the row is a link to the page, and the fly-out carries the
+     links themselves, so nothing needs two clicks to reach. */
+  .navitem > a.navcat { text-decoration:none; }
+  .navitem.resitem { position:static; }
+  /* The long one is pinned to the window instead, so all 39 links stay on screen. */
+  .navitem.resitem > .flyout { position:fixed; top:2vh; bottom:2vh; left:221px; margin-left:0; transform:none; max-height:none; }
+  .flyout.wide { width:300px; max-height:94vh; }
+  .flyout .sect { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.6px;
+                  color:#94a3b8; margin:10px 2px 5px; }
+  .flyout a.hot { background:#15803d; }
+  .flyout a.hot:hover { background:#166534; }
+  .flyout a.ext { background:#0f172a; border:1px solid #334155; color:#e2e8f0; font-weight:600;
+                  font-size:12.5px; padding:4px 10px; margin-bottom:4px; }
+  .flyout a.ext:hover { background:#334155; border-color:#0284c7; color:#fff; }
+  .flyout a.ext::after { content:" \2197"; color:#94a3b8; font-size:11px; }
+  /* A category inside a fly-out: the Redaction Suite sits under Financial Tools,
+     so what it redacts is said by where it lives. Its parent must not clip it. */
+  .flyout.hassub { overflow:visible; max-height:none; }
+  .flyout .navitem.sub { margin:2px 0 0; }
+  .flyout .navitem.sub > .navcat { background:#0f172a; }
+  .flyout .navitem.sub > .flyout { margin-left:14px; }
+  /* keep the long one in the flow on a phone (this comes last on purpose) */
+  @media (max-width:860px) { .navitem.resitem > .flyout { position:static; inset:auto; transform:none; } }
+  @media print { .rail { display:none !important; } main.page, .page { margin-left:0; } }
+</style>
+</head>
+<body>
+<div class="shell">
+<div class="rail"><aside class="tools"><a href="index.html">Home</a><ul class="navlist"><li class="navitem"><span class="navcat" tabindex="0">Location</span><ul class="flyout"><li><a href="area.html">What rent costs here</a></li><li><a href="counciltax.html">Council tax here</a></li></ul></li><li class="navitem"><span class="navcat" tabindex="0">Tenancy &amp; Rent</span><ul class="flyout"><li><a href="moving-in_audit.html">Moving in audit</a></li></ul></li><li class="navitem"><span class="navcat" tabindex="0">Financial Tools</span><ul class="flyout hassub"><li><a href="interest.html">Interest owed to you</a></li><li><a href="arrears.html">Paying off arrears</a></li><li><a href="benefits.html">Benefit entitlements</a></li><li><a href="incoming-benefit-calc.html">Record of income</a></li><li class="navitem sub"><span class="navcat" tabindex="0">Redaction Suite</span><ul class="flyout"><li><a href="bank-statement-redaction.html" class="hot">⚡ Redact a statement page</a></li><li><a href="bank-statement-split.html">Split a PDF into pages</a></li><li><a href="bank-statement-rename.html">Name statements by date</a></li></ul></li></ul></li><li class="navitem here"><span class="navcat" tabindex="0">Complaints &amp; Claims</span><ul class="flyout"><li><a href="scrubber.html">🔍 Web page data scrubber</a></li><li><a href="PRS_Tenant_Workspace.html" class="on">PRS complaint</a></li><li><a href="TPO_Tenant_Workspace.html">TPO complaint</a></li><li><a href="court_forms_workspace.html">Money Claim Online</a></li></ul></li><li class="navitem resitem"><a class="navcat" href="resources.html">Data &amp; Resources</a><ul class="flyout wide"><li><a href="resources.html">Other resources — the page</a></li><li class="sect">Certificates and safety</li><li><a class="ext" href="https://www.gov.uk/find-energy-certificate" target="_blank" rel="noopener">Energy Performance Certificate</a></li><li><a class="ext" href="https://www.scottishepcregister.org.uk/" target="_blank" rel="noopener">EPC register</a></li><li><a class="ext" href="https://www.gassaferegister.co.uk/find-an-engineer-or-check-the-register/" target="_blank" rel="noopener">Gas Safe Register</a></li><li><a class="ext" href="https://www.niceic.com/find-a-contractor" target="_blank" rel="noopener">Electrical safety</a></li><li><a class="ext" href="https://search.napit.org.uk/" target="_blank" rel="noopener">NAPIT</a></li><li><a class="ext" href="https://www.electricalsafetyfirst.org.uk/" target="_blank" rel="noopener">Electrical Safety First</a></li><li><a class="ext" href="https://www.gov.uk/government/publications/how-to-rent" target="_blank" rel="noopener">How to Rent</a></li><li class="sect">Deposits</li><li><a class="ext" href="https://www.gov.uk/tenancy-deposit-protection" target="_blank" rel="noopener">Tenancy deposit protection</a></li><li><a class="ext" href="https://www.depositprotection.com/" target="_blank" rel="noopener">Deposit Protection Service</a></li><li><a class="ext" href="https://www.tenancydepositscheme.com/" target="_blank" rel="noopener">Tenancy Deposit Scheme</a></li><li><a class="ext" href="https://www.mydeposits.co.uk/" target="_blank" rel="noopener">mydeposits</a></li><li class="sect">Who owns and who manages</li><li><a class="ext" href="https://find-and-update.company-information.service.gov.uk/" target="_blank" rel="noopener">Companies House</a></li><li><a class="ext" href="https://www.gov.uk/search-property-information-land-registry" target="_blank" rel="noopener">HM Land Registry</a></li><li><a class="ext" href="https://www.tpos.co.uk/" target="_blank" rel="noopener">Property Ombudsman</a></li><li><a class="ext" href="https://www.theprs.co.uk/" target="_blank" rel="noopener">Property Redress Scheme</a></li><li><a class="ext" href="https://www.rentsmart.gov.wales/" target="_blank" rel="noopener">Rent Smart Wales</a></li><li><a class="ext" href="https://www.landlordregistrationscotland.gov.uk/" target="_blank" rel="noopener">Scottish Landlord Register</a></li><li><a class="ext" href="https://www.london.gov.uk/programmes-strategies/housing-and-land/improving-private-rented-sector/rogue-landlord-and-agent-checker" target="_blank" rel="noopener">London rogue landlord and agent checker</a></li><li><a class="ext" href="https://www.gov.uk/find-local-council" target="_blank" rel="noopener">Find your local council</a></li><li class="sect">Rent, notices and the law</li><li><a class="ext" href="https://www.gov.uk/private-renting/rent-increases" target="_blank" rel="noopener">Rent increases</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1988/50/section/13" target="_blank" rel="noopener">Housing Act 1988</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2019/4" target="_blank" rel="noopener">Tenant Fees Act 2019</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1985/70/section/11" target="_blank" rel="noopener">Landlord and Tenant Act 1985</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2018/34" target="_blank" rel="noopener">Homes Act 2018</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1977/43" target="_blank" rel="noopener">Protection from Eviction Act 1977</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2015/20" target="_blank" rel="noopener">Deregulation Act 2015</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1984/28/section/69" target="_blank" rel="noopener">County Courts Act 1984</a></li><li><a class="ext" href="https://www.legislation.gov.uk/all?title=Renters%27%20Rights%20Act" target="_blank" rel="noopener">Renters' Rights Act</a></li><li class="sect">Taking it further</li><li><a class="ext" href="https://buntool.co.uk/" target="_blank" rel="noopener">BunTool</a></li><li><a class="ext" href="https://www.gov.uk/make-court-claim-for-money" target="_blank" rel="noopener">Make a court claim for money</a></li><li><a class="ext" href="https://www.moneyclaim.gov.uk/" target="_blank" rel="noopener">Money Claim Online</a></li><li><a class="ext" href="https://www.gov.uk/get-help-with-court-fees" target="_blank" rel="noopener">Help with court fees</a></li><li><a class="ext" href="https://www.gov.uk/government/collections/county-court-forms" target="_blank" rel="noopener">County court forms</a></li><li><a class="ext" href="https://www.gov.uk/housing-tribunals" target="_blank" rel="noopener">Housing tribunals</a></li><li><a class="ext" href="https://www.housing-ombudsman.org.uk/" target="_blank" rel="noopener">Housing Ombudsman</a></li><li class="sect">Free advice</li><li><a class="ext" href="https://england.shelter.org.uk/housing_advice" target="_blank" rel="noopener">Shelter</a></li><li><a class="ext" href="https://www.citizensadvice.org.uk/housing/" target="_blank" rel="noopener">Citizens Advice</a></li><li><a class="ext" href="https://www.lawcentres.org.uk/" target="_blank" rel="noopener">Law Centres Network</a></li><li><a class="ext" href="https://www.advicenow.org.uk/" target="_blank" rel="noopener">Advicenow</a></li></ul></li></ul></aside><img class="sidelogo" src="SavvyRenter-sml.png" alt="Savvy Renter"></div><main class="page">
+<div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
+
+<div class="brand"><div><h1>PRS Complaint Workspace</h1><div class="sub">Draft it here at your own pace · paste it into the portal when it is ready</div></div><div class="acts"><button type="button" class="act" onclick="saveDraft()" title="Saves everything you have typed to a file on this computer, so you can come back and carry on.">&#128190; Save</button><button type="button" class="act" onclick="document.getElementById('loadFile').click()" title="Opens a draft you saved earlier and puts every answer back.">&#128193; Load</button><input type="file" id="loadFile" accept=".json,application/json" class="hidden" onchange="loadDraft(this)"><button type="button" class="act" onclick="buildTextFile()" title="Writes a plain text file with every answer in it, ready to copy from when you fill in the real portal.">&#128196; Generate file</button><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page." onclick="showFeedback()">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div><div class="savenote" id="saveNote"></div></div></div>
+
+<div class="unverified"><b>Untested, unverified and possibly incomplete.</b> This workspace has not been checked end to end against the live service. Treat everything it produces as a draft, and check it against the real form before you rely on it. <b>Found a step we have not covered?</b> Save that page from the Property Redress Scheme portal before you type anything into it (Ctrl+S, or Cmd+S on a Mac, &ldquo;Webpage, complete&rdquo;), run it through our <a href="scrubber.html" style="color:#f2c94c;font-weight:bold">web page data scrubber</a>, and email it to us so we can build it in. We aim to do that within a couple of days, but this is a volunteer project and that is an aim, not a promise.</div>
+
+<div class="intro">
+  The Property Redress Scheme portal will not let you save a part-finished complaint, so a long submission has to be written in one sitting or lost. This page is the same set of questions with the same character limits, kept on your own computer. Write it over days if you need to, save as you go, then paste the finished text into the real portal in one go.
+  <b>Nothing you type here is stored or sent anywhere.</b> It is not connected to the Property Redress Scheme and submits nothing — the real complaint is still made on their site.
+</div>
+
+<div class="steps" id="steps"></div>
+
+<form id="workspace" onsubmit="return false">
+
+  <div class="panel on" id="panel0">
+    <h2>0 · Is the agent a PRS member?</h2>
+    <p class="help">Worth two minutes before you write anything else. This scheme can only look at a complaint about one of its own members — if the agent is not one, everything you write here would go nowhere.</p>
+    <div class="field"><label class="lab">Check the register</label>
+      <button type="button" class="checkbtn" onclick="checkAgent()" title="Opens the scheme&#39;s own member register in a new tab. You search it there.">Check they are a member &#8599;</button>
+      <p class="help" style="margin:6px 0 0">Opens in a new tab. Dismiss the cookie banner, then search for the agent by the name on your tenancy agreement or letterhead, including the Ltd &mdash; trading names often differ from the registered one.</p>
+    </div>
+    <div class="note" style="margin-top:10px">
+      <b>If they are not listed.</b> Every letting agent in England must belong to a redress scheme, and there are two. Try <a href="https://www.tpos.co.uk/find-a-member" target="_blank" rel="noopener" style="color:#38bdf8">The Property Ombudsman</a> next — if that is where they are, your complaint goes to them instead and this page is the wrong form. If they are in neither, they are trading unlawfully, and your council's private-sector housing team can act on that.
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>1 · Eligibility</h2>
+    <p class="help">The scheme will normally only look at a complaint once the agent's own procedure has been exhausted.</p>
+    <div class="grid2">
+      <div class="field"><label class="lab">Date the formal complaint was sent to the agent</label><input type="date" id="date_complaint"></div>
+      <div class="field"><label class="lab">Date their final response was received</label><input type="date" id="date_rejection"></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>2 · You and the property</h2>
+    <div class="grid2">
+      <div class="field"><label class="lab">First name</label><input type="text" id="app_firstname" placeholder="e.g. John"></div>
+      <div class="field"><label class="lab">Last name</label><input type="text" id="app_lastname" placeholder="e.g. Doe"></div>
+    </div>
+    <div class="field"><label class="lab">Address of the tenancy</label><input type="text" id="app_address" placeholder="e.g. Flat 1, 123 Example Street, Town, AB1 2CD"></div>
+    <div class="field"><label class="lab">Registered company name of the letting agent</label><input type="text" id="agent_name" placeholder="e.g. Example Lettings Agency Ltd"></div>
+  </div>
+
+  <div class="panel">
+    <h2>3 · What the complaint is about</h2>
+    <p class="help">Tick everything that applies.</p>
+    <div class="field">
+      <label class="tick"><input type="checkbox" id="cat_financial"> <span><b>Money</b> — charges, accounting, rent or deposit handling</span></label>
+      <label class="tick"><input type="checkbox" id="cat_repairs"> <span><b>Repairs and safety</b> — disrepair, hazards, certificates not provided</span></label>
+      <label class="tick"><input type="checkbox" id="cat_conduct"> <span><b>Conduct</b> — changing the agreement, pressure, threats, poor communication</span></label>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>4 · The case itself</h2>
+    <p class="help">These are the two long boxes on the real form, with the same limits. Write freely here — you can cut it down before you paste it across.</p>
+    <div class="field">
+      <label class="lab">What happened, in date order</label>
+      <textarea id="txt_chronology" rows="14" placeholder="Start at the beginning and go in date order. Dates, what was said, what was done, what was not done."></textarea>
+      <div class="count" id="count_chronology">0 / 4,000</div>
+    </div>
+    <div class="field">
+      <label class="lab">What you are asking them to put right</label>
+      <textarea id="txt_remedy" rows="6" placeholder="What you want to happen, and any sum you say you are owed, with how it is worked out."></textarea>
+      <div class="count" id="count_remedy">0 / 2,000</div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2>5 · Your evidence</h2>
+    <p class="help">List the documents you will attach, in the order you will upload them. Naming them here means the numbering in your account above still matches once they are on the portal. Press <b>Enter</b> on the last line and another appears.</p>
+    <div id="evList"></div>
+    <button type="button" class="addrow" onclick="addEvidence(true)">+ Add another document</button>
+  </div>
+
+  <div class="panel">
+    <h2>6 · Finish</h2>
+    <div class="field"><label class="lab">Your name, as your signature</label><input type="text" id="truth_signature" placeholder="Type your full name"></div>
+    <div class="note" id="ready"></div>
+    <button type="button" class="gen" onclick="buildTextFile()">&#128196; Generate the file to work from</button>
+    <p class="help">Produces a plain text file with every answer in it, ready to copy from when you fill in the real portal. Use <b>Save</b> in the menu instead if you want to come back and keep editing here.</p>
+  </div>
+
+  <div class="navrow">
+    <button type="button" class="secondary" id="prevBtn" onclick="move(-1)" disabled>← Back</button>
+    <div class="navfoot"><span>Savvy Renter — savvyrenter.co.uk · free tools for renters</span><span>Not connected to, or endorsed by, the Property Redress Scheme</span><span><a href="resources.html#sources">Data sources &amp; licences</a> · this page submits nothing</span></div>
+    <button type="button" id="nextBtn" onclick="move(1)">Next →</button>
+  </div>
+
+</form>
+
+</main>
+</div>
+
+<script>
+// ---- the six steps ---------------------------------------------------
+const STEP_NAMES = ['0 · PRS member check','1 · Eligibility','2 · You and the property','3 · What it is about','4 · The case','5 · Evidence','6 · Finish'];
+const panels = document.querySelectorAll('.panel');
+let current = 0;
+
+document.getElementById('steps').innerHTML = STEP_NAMES.map((n,i) =>
+  `<button type="button" class="step${i===0?' on':''}" onclick="go(${i})">${n}</button>`).join('');
+const steps = document.querySelectorAll('.step');
+
+function go(i) {
+  panels[current].classList.remove('on');
+  steps[current].classList.remove('on');
+  steps[current].classList.add('done');
+  current = i;
+  panels[current].classList.add('on');
+  steps[current].classList.add('on');
+  steps[current].classList.remove('done');
+  document.getElementById('prevBtn').disabled = (current === 0);
+  document.getElementById('nextBtn').disabled = (current === panels.length - 1);
+  if (current === panels.length - 1) readyCheck();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function move(d) { const n = current + d; if (n >= 0 && n < panels.length) go(n); }
+
+// ---- character counters ----------------------------------------------
+// The real portal simply stops accepting characters at the limit. Here it
+// keeps counting and turns red, so you can write it long and then cut it
+// down rather than losing the end of a sentence as you type.
+const LIMITS = { txt_chronology: 4000, txt_remedy: 2000 };
+function count(id) {
+  const el = document.getElementById(id);
+  const max = LIMITS[id];
+  const c = document.getElementById('count_' + id.replace('txt_',''));
+  const n = el.value.length;
+  c.textContent = n.toLocaleString() + ' / ' + max.toLocaleString() + (n > max ? ' — ' + (n - max).toLocaleString() + ' too many' : '');
+  c.className = 'count' + (n > max ? ' over' : (n > max * 0.9 ? ' warn' : ''));
+}
+Object.keys(LIMITS).forEach(id => {
+  document.getElementById(id).addEventListener('input', () => count(id));
+  count(id);
+});
+
+// ---- every field on the page, in one list ----------------------------
+const TEXTS = ['date_complaint','date_rejection','app_firstname','app_lastname','app_address',
+               'agent_name','txt_chronology','txt_remedy','truth_signature'];
+const TICKS = ['cat_financial','cat_repairs','cat_conduct'];
+const val = id => document.getElementById(id).value.trim();
+
+// ---- the evidence list, which grows as it is filled --------------------
+// Five lines to start with, because that is what the portal shows. Pressing
+// Enter on the last one adds another, so a long list never runs out of room
+// and nobody has to guess how many they are allowed.
+let evidence = ['', '', '', '', ''];
+
+function drawEvidence(focusLast) {
+  document.getElementById('evList').innerHTML = evidence.map((v, i) =>
+    `<div class="field"><label class="lab" for="ev-${i}">Document ${i + 1}</label>
+      <div class="evrow">
+        <input type="text" id="ev-${i}" value="${String(v).replace(/"/g, '&quot;')}" placeholder="${i === 0 ? 'e.g. Exhibit A — tenancy agreement.pdf' : 'e.g. Exhibit ' + String.fromCharCode(65 + i) + ' — …'}">
+        ${evidence.length > 1 ? `<button type="button" class="evdel" title="Remove this line" onclick="removeEvidence(${i})">✕</button>` : ''}
+      </div></div>`).join('');
+
+  evidence.forEach((_, i) => {
+    const el = document.getElementById('ev-' + i);
+    el.addEventListener('input', () => { evidence[i] = el.value; });
+    el.addEventListener('keydown', e => {
+      if (e.key !== 'Enter') return;
+      e.preventDefault();
+      evidence[i] = el.value;
+      if (i === evidence.length - 1) { if (el.value.trim()) addEvidence(true); }
+      else document.getElementById('ev-' + (i + 1)).focus();
+    });
+  });
+  if (focusLast) {
+    const last = document.getElementById('ev-' + (evidence.length - 1));
+    if (last) last.focus();
+  }
+}
+function addEvidence(focus) { evidence.push(''); drawEvidence(focus); }
+function removeEvidence(i) {
+  evidence.splice(i, 1);
+  if (!evidence.length) evidence = [''];
+  drawEvidence(false);
+}
+drawEvidence(false);
+
+// Whatever was typed at step 0 is the agent for the whole form — shown again
+// where it is relevant rather than asked for twice.
+// The agent's name is asked for ONCE, at step 1, with the other parties.
+// Step 0 used to carry a name box next to the register button; removed
+// because the register opens behind a cookie banner with its own search
+// box, so the name gets typed there whatever, and nothing on their page
+// needs transposing back. The echo that mirrored step 0 went with it --
+// step 1 IS the field now, so there is nothing to mirror.
+
+function readyCheck() {
+  const missing = [];
+  if (!val('app_firstname') || !val('app_lastname')) missing.push('your name');
+  if (!val('app_address')) missing.push('the property address');
+  if (!val('agent_name')) missing.push('the agent');
+  if (!val('txt_chronology')) missing.push('what happened');
+  if (!val('txt_remedy')) missing.push('what you are asking for');
+  const over = Object.keys(LIMITS).filter(id => document.getElementById(id).value.length > LIMITS[id]);
+  const el = document.getElementById('ready');
+  if (!missing.length && !over.length) {
+    el.innerHTML = '<b>Ready.</b> Everything the portal asks for is filled in and both long answers are inside their limits.';
+  } else {
+    let s = '';
+    if (missing.length) s += '<b>Still blank:</b> ' + missing.join(', ') + '. ';
+    if (over.length) s += '<b>Over the limit:</b> ' + over.map(id => id === 'txt_chronology' ? 'what happened' : 'what you are asking for').join(' and ') + ' — the portal will cut off the end.';
+    el.innerHTML = s;
+  }
+}
+
+// ---- save and load, to a file on this computer ------------------------
+function stamp() {
+  const d = new Date(), p = n => String(n).padStart(2,'0');
+  return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}-${p(d.getHours())}${p(d.getMinutes())}`;
+}
+function say(msg) {
+  const el = document.getElementById('saveNote');
+  el.textContent = msg;
+  setTimeout(() => { if (el.textContent === msg) el.textContent = ''; }, 6000);
+}
+function saveDraft() {
+  const data = { app:'savvyrenter-prs', version:1, savedAt:new Date().toISOString(), fields:{}, ticks:{} };
+  TEXTS.forEach(id => data.fields[id] = document.getElementById(id).value);
+  data.evidence = evidence.slice();
+  TICKS.forEach(id => data.ticks[id] = document.getElementById(id).checked);
+  const blob = new Blob([JSON.stringify(data, null, 1)], { type:'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `prs-complaint-draft-${stamp()}.json`;
+  document.body.appendChild(a); a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 0);
+  say('Saved to your downloads.');
+}
+function loadDraft(input) {
+  const f = input.files && input.files[0];
+  input.value = '';
+  if (!f) return;
+  const r = new FileReader();
+  r.onload = () => {
+    let d;
+    try { d = JSON.parse(r.result); } catch (e) { say('That file could not be read.'); return; }
+    if (!d || d.app !== 'savvyrenter-prs') { say('That is not a saved PRS draft.'); return; }
+    TEXTS.forEach(id => { if (d.fields && id in d.fields) document.getElementById(id).value = d.fields[id]; });
+    TICKS.forEach(id => { if (d.ticks && id in d.ticks) document.getElementById(id).checked = !!d.ticks[id]; });
+    if (Array.isArray(d.evidence)) { evidence = d.evidence.slice(); }
+    else { // a draft saved before the list could grow
+      const old = [1,2,3,4,5].map(n => (d.fields && d.fields['ev_file' + n]) || '');
+      if (old.some(Boolean)) evidence = old;
+    }
+    if (!evidence.length) evidence = [''];
+    drawEvidence(false);
+    Object.keys(LIMITS).forEach(count);
+    readyCheck();
+    const when = d.savedAt ? new Date(d.savedAt) : null;
+    say(when ? 'Loaded — saved ' + when.toLocaleString('en-GB') + '.' : 'Loaded.');
+  };
+  r.readAsText(f);
+}
+
+// ---- the plain text file to work from ---------------------------------
+function buildTextFile() {
+  const line = '='.repeat(72);
+  const cats = [];
+  if (document.getElementById('cat_financial').checked) cats.push('Money — charges, accounting, rent or deposit handling');
+  if (document.getElementById('cat_repairs').checked)   cats.push('Repairs and safety');
+  if (document.getElementById('cat_conduct').checked)   cats.push('Conduct');
+
+  const chron = document.getElementById('txt_chronology').value;
+  const remedy = document.getElementById('txt_remedy').value;
+  const d = new Date();
+
+  let o = '';
+  o += line + '\n';
+  o += 'PROPERTY REDRESS SCHEME — COMPLAINT WORKING COPY\n';
+  o += 'Prepared ' + d.toLocaleString('en-GB') + '\n';
+  o += line + '\n\n';
+  o += 'Complainant     ' + val('app_firstname') + ' ' + val('app_lastname') + '\n';
+  o += 'Property        ' + val('app_address') + '\n';
+  o += 'Agent           ' + val('agent_name') + '\n';
+  o += 'Complaint sent  ' + (val('date_complaint') || '(not given)') + '\n';
+  o += 'Final response  ' + (val('date_rejection') || '(not given)') + '\n\n';
+  o += 'Complaint is about:\n';
+  o += (cats.length ? cats.map(c => '  - ' + c).join('\n') : '  (nothing ticked)') + '\n\n';
+  o += line + '\n';
+  o += 'WHAT HAPPENED, IN DATE ORDER   (' + chron.length.toLocaleString() + ' of 4,000 characters)\n';
+  o += line + '\n\n' + (chron || '(blank)') + '\n\n';
+  o += line + '\n';
+  o += 'WHAT I AM ASKING THEM TO PUT RIGHT   (' + remedy.length.toLocaleString() + ' of 2,000 characters)\n';
+  o += line + '\n\n' + (remedy || '(blank)') + '\n\n';
+  o += line + '\n';
+  o += 'DOCUMENTS TO ATTACH\n';
+  o += line + '\n';
+  const docs = evidence.map(v => String(v).trim()).filter(Boolean);
+  docs.forEach((v, i) => { o += '  ' + (i + 1) + '. ' + v + '\n'; });
+  if (!docs.length) o += '  (none listed)\n';
+  o += '\nSigned: ' + val('truth_signature') + '\n\n';
+  o += line + '\n';
+  o += 'Drafted with the Savvy Renter PRS complaint workspace (savvyrenter.co.uk).\n';
+  o += 'This is a working copy held on your own computer. It has not been sent to\n';
+  o += 'anyone. The complaint itself must still be submitted on the Property\n';
+  o += 'Redress Scheme website.\n';
+  o += line + '\n';
+
+  const blob = new Blob([o], { type:'text/plain;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'prs-complaint-' + stamp() + '.txt';
+  document.body.appendChild(a); a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 0);
+  say('Text file saved to your downloads.');
+}
+
+// ---- is the agent actually a member? ----------------------------------
+// The scheme's Agent Finder is a form with no search in the address, so the
+// name goes on the clipboard and their page opens in its own tab. Nothing is
+// read from their site and nothing is sent to it.
+const AGENT_FINDER = 'https://www.propertyredress.co.uk/agent-finder';
+function checkAgent() {
+  window.open(AGENT_FINDER, '_blank', 'noopener');
+}
+
+// ---- feedback ---------------------------------------------------------
+function showFeedback() {
+  const who = ['feedback', 'savvyrenter.co.uk'].join('@');
+  const p = document.getElementById('fbPanel');
+  p.innerHTML =
+    '<button type="button" id="fbClose" title="Close" onclick="hideFeedback()">✕</button>' +
+    '<p style="margin:0 0 6px">Suggestions, corrections, or an open-source tool we could host — we read everything, though we can’t promise to answer every email. Use a suggestion and we’ll credit you on the page.</p>' +
+    '<a href="mailto:' + who + '?subject=Savvy%20Renter%20feedback">' + who + '</a>';
+  p.classList.remove('hidden');
+}
+function hideFeedback() { document.getElementById('fbPanel').classList.add('hidden'); }
+</script>
+</body>
+</html>

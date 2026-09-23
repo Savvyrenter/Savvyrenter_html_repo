@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Record of income — Savvy Renter</title>
+<meta name="description" content="Put every source of household income — benefits, Universal Credit, wages, self-employment — into one dated record, and produce a statement of income for a landlord, a council or a court.">
+<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://www.savvyrenter.co.uk/incoming-benefit-calc.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Savvy Renter">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Record of income — Savvy Renter">
+<meta property="og:description" content="Every pound coming in, dated and totalled — ready to hand to a landlord, a council or a court.">
+<meta property="og:url" content="https://www.savvyrenter.co.uk/incoming-benefit-calc.html">
+<meta property="og:image" content="https://www.savvyrenter.co.uk/og-image.png">
+<meta property="og:image:secure_url" content="https://www.savvyrenter.co.uk/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Savvy Renter — free calculators for renters">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Record of income — Savvy Renter">
+<meta name="twitter:description" content="Every pound coming in, dated and totalled — ready to hand to a landlord, a council or a court.">
+<meta name="twitter:image" content="https://www.savvyrenter.co.uk/og-image.png">
+<style>
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.5; color:#e2e8f0; max-width:1180px; margin:0 auto; padding:24px 18px; background:#0f172a; }
+  h1 { color:#f8fafc; font-size:24px; margin-top:0; }
+  h2 { color:#f1f5f9; font-size:18px; margin:20px 0 8px; border-bottom:1px solid #334155; padding-bottom:6px; }
+  p { margin:6px 0; font-size:14px; }
+  .intro, .note { background:#1e293b; border-left:4px solid #38bdf8; padding:10px 14px; margin:0 0 14px; border-radius:4px; font-size:14px; color:#c9d4e0; }
+  .note.warn { border-left-color:#fbbf24; }
+  .brand { display:flex; align-items:center; gap:14px; border-bottom:2px solid #334155; padding-bottom:10px; margin-bottom:14px; }
+  .brand h1 { border:none; padding:0; margin:0; font-size:30px; letter-spacing:-0.2px; }
+  .brand .sub { color:#94a3b8; font-size:13px; margin-top:2px; }
+  .brand .fbwrap { margin-left:auto; text-align:right; position:relative; }
+  #fbBtn { background:#0284c7; color:#fff; border:none; border-radius:5px; font-size:13px; font-weight:bold; padding:9px 14px; cursor:pointer; font-family:inherit; }
+  #fbBtn:hover { background:#0369a1; }
+  #fbPanel { position:absolute; top:0; right:0; z-index:20; width:470px; max-width:calc(100vw - 40px); box-sizing:border-box; background:#1e293b; border:1px solid #475569; border-radius:6px; padding:10px 30px 10px 12px; text-align:left; font-size:12.5px; color:#c9d4e0; line-height:1.5; box-shadow:0 6px 18px rgba(0,0,0,.45); }
+  #fbClose { position:absolute; top:4px; right:6px; background:none; border:none; color:#94a3b8; font-size:16px; line-height:1; padding:2px 5px; cursor:pointer; font-family:inherit; }
+  #fbClose:hover { color:#f8fafc; }
+  #fbPanel a { color:#38bdf8; font-weight:bold; text-decoration:none; font-size:14px; }
+  .hidden { display:none !important; }
+  .foot { font-size:12px; color:#94a3b8; margin-top:18px; border-top:1px solid #334155; padding-top:8px; }
+  .foot a { color:#38bdf8; text-decoration:none; }
+  .shell { display:flex; gap:20px; align-items:flex-start; }
+  /* Capped to the screen: a sticky column taller than the viewport pins at
+     the top and whatever sits below the fold can never be reached. */
+  .rail { width:200px; flex:none; position:sticky; top:18px;
+           max-height:calc(100vh - 36px); overflow-y:auto; overscroll-behavior:contain; }
+  .tools { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:12px; }
+  .sidelogo { display:block; width:196px; max-width:100%; height:auto; border-radius:10px; margin:14px auto 0; }
+  .tools h3 { margin:0 0 10px; font-size:12px; text-transform:uppercase; letter-spacing:.5px; color:#94a3b8; }
+  .tools a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold; font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .tools a:hover { background:#0369a1; }
+  .tools a.on { background:#38bdf8; color:#0f172a; }
+  /* Grouped rail -- the flat list of eleven buttons was getting long, so the
+     related ones fold up. <details>/<summary>, so it works with no JS at all;
+     the group holding the page you are on is written out already open. */
+  .tools .grp { margin-bottom:8px; }
+  .tools .grp > summary { list-style:none; cursor:pointer; background:#1e293b; border:1px solid #475569;
+     color:#e2e8f0; font-weight:bold; font-size:14px; padding:5px 12px; border-radius:5px;
+     display:flex; align-items:center; justify-content:space-between; gap:6px; }
+  .tools .grp > summary::-webkit-details-marker { display:none; }
+  .tools .grp > summary::after { content:"\25BE"; font-size:11px; color:#94a3b8; }
+  .tools .grp[open] > summary::after { content:"\25B4"; }
+  .tools .grp > summary:hover { border-color:#38bdf8; color:#fff; }
+  .tools .grp > summary:focus-visible { outline:2px solid #38bdf8; outline-offset:1px; }
+  .tools .grp[open] > summary { margin-bottom:6px; }
+  .tools .grp a { margin-left:10px; font-size:13px; padding:4px 10px; }
+  .unverified { background:#3b2f0b; border-left:4px solid #f2c94c; color:#f5e6b8;
+     padding:8px 14px; margin:0 0 10px; border-radius:4px; font-size:13px; }
+  .tools .tiny { font-size:11px; color:#94a3b8; margin-top:6px; }
+  .page { flex:1; min-width:0; }
+  button { background:#0284c7; color:#fff; padding:10px 20px; border:none; border-radius:5px; font-size:15px; cursor:pointer; font-weight:bold; font-family:inherit; }
+  button:hover { background:#0369a1; }
+  input[type=text], select { padding:9px 10px; border:1px solid #475569; border-radius:5px; font-size:15px; background:#0f172a; color:#f8fafc; font-family:inherit; box-sizing:border-box; }
+  input:focus, select:focus { outline:none; border-color:#38bdf8; box-shadow:0 0 0 3px rgba(56,189,248,.15); }
+
+  /* ask row */
+  .ask { display:flex; gap:8px; align-items:flex-end; flex-wrap:wrap; background:#1e293b; border:1px solid #334155; border-radius:6px; padding:10px 12px; }
+  .ask label { display:block; font-weight:600; font-size:13px; color:#94a3b8; margin-bottom:5px; }
+  #pc { width:170px; text-transform:uppercase; letter-spacing:.5px; }
+  .msg { font-size:13px; color:#fbbf24; margin-top:6px; min-height:18px; }
+
+  /* filters, one row above the chart */
+  .filters { display:flex; gap:5px; flex-wrap:wrap; margin:12px 0 8px; align-items:center; }
+  .filters .lbl { font-size:12px; color:#94a3b8; margin-right:3px; }
+  .chip { background:#1e293b; border:1px solid #334155; color:#94a3b8; border-radius:5px; font-size:12.5px; font-weight:bold; padding:6px 11px; cursor:pointer; font-family:inherit; }
+  .chip:hover { border-color:#38bdf8; color:#e2e8f0; }
+  .chip.on { background:#38bdf8; border-color:#38bdf8; color:#0f172a; }
+  .chip.sm { font-size:11.5px; padding:4px 8px; }
+
+  /* the household box — who is renting decides the size, so it comes first */
+  .house { background:#1e293b; border:1px solid #334155; border-radius:6px; padding:8px 12px 10px; margin:12px 0 6px; }
+  .hrow { display:flex; gap:5px; flex-wrap:wrap; align-items:center; margin-top:6px; }
+  .hrow:first-child { margin-top:0; }
+  .hrow .lbl { font-size:12px; color:#94a3b8; margin-right:3px; }
+  .hrow .lbl.gap { margin-left:14px; }
+  .kids { display:flex; gap:5px; flex-wrap:wrap; align-items:center; }
+  .kid { display:inline-flex; align-items:center; gap:4px; background:#0f172a; border:1px solid #334155;
+         border-radius:5px; padding:3px 4px 3px 7px; font-size:12px; color:#94a3b8; }
+  .kid input[type=number] { width:44px; padding:3px 5px; font-size:12px; border-radius:4px; }
+  .kid .x { background:none; border:none; color:#64748b; cursor:pointer; font-size:13px; padding:0 3px; font-family:inherit; }
+  .kid .x:hover { color:#f87171; }
+  .ticks { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2px 14px; margin-top:5px; }
+  .ticks label { display:flex; gap:7px; align-items:flex-start; font-size:12.5px; color:#c9d4e0; cursor:pointer; padding:2px 0; }
+  .ticks input { margin:2px 0 0; accent-color:#38bdf8; flex:none; }
+  .verdict { margin-top:8px; padding:7px 11px; background:#0f172a; border-left:3px solid #38bdf8;
+             border-radius:4px; font-size:13px; color:#e2e8f0; }
+  .verdict b { color:#f8fafc; }
+  .verdict .why { display:block; font-size:11.5px; color:#94a3b8; margin-top:2px; }
+  .more { background:none; border:none; color:#38bdf8; font-size:12.5px; font-weight:bold;
+          padding:2px 0; cursor:pointer; font-family:inherit; }
+  .more:hover { background:none; color:#7dd3fc; }
+
+  /* the headline figure */
+  .hero { background:#1e293b; border:1px solid #334155; border-radius:6px; padding:12px 14px; margin-bottom:6px; }
+  .hero .big { font-size:34px; font-weight:bold; color:#f8fafc; line-height:1.1; }
+  .hero .cap { font-size:12.5px; color:#94a3b8; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:6px; margin-bottom:10px; }
+  .card { background:#1e293b; border:1px solid #334155; border-radius:6px; padding:9px 12px; }
+  .card .n { font-size:20px; font-weight:bold; color:#f8fafc; }
+  .card .c { font-size:12px; color:#94a3b8; }
+
+  /* chart */
+  .viz { --surface:#0f172a; --grid:#26364a; --ink:#f8fafc; --ink2:#94a3b8;
+         --rent:#3987e5; --lha:#d95926;
+         background:#1e293b; border:1px solid #334155; border-radius:6px; padding:12px; position:relative; }
+  .viz svg { display:block; width:100%; height:auto; overflow:visible; }
+  .legend { display:flex; gap:14px; flex-wrap:wrap; font-size:12.5px; color:#94a3b8; margin-bottom:8px; }
+  .legend span { display:inline-flex; align-items:center; gap:6px; }
+  .key { width:14px; height:3px; border-radius:2px; flex:none; }
+  .tip { position:absolute; pointer-events:none; background:#0f172a; border:1px solid #475569; border-radius:5px;
+         padding:6px 9px; font-size:12.5px; color:#e2e8f0; white-space:nowrap; box-shadow:0 4px 14px rgba(0,0,0,.5); z-index:5; }
+  table { border-collapse:collapse; width:100%; font-size:13px; margin-top:8px; }
+  th, td { padding:4px 9px; border-bottom:1px solid #26364a; text-align:right; }
+  th { color:#94a3b8; font-weight:600; }
+  th:first-child, td:first-child { text-align:left; }
+  .tabtoggle { background:none; border:none; color:#38bdf8; font-size:12.5px; padding:6px 0 0; cursor:pointer; font-family:inherit; font-weight:bold; }
+  @media (max-width:800px) { .shell { display:block; } .rail { width:auto; position:static; margin-bottom:14px; max-height:none; overflow:visible; } .sidelogo { max-width:208px; } }
+  @media (max-width:700px) { body { padding:18px 12px; } #fbPanel { width:calc(100vw - 36px); } #pc { width:100%; } .hero .big { font-size:27px; } }
+
+  /* A thin strip across the top of the page itself: the site's name, above the
+     content and clear of the navigation, costing one line of height. */
+  .pagebar { background:#0b1220; border:1px solid #1e293b; border-radius:6px;
+             padding:5px 12px; margin-bottom:10px; display:flex; align-items:center;
+             justify-content:space-between; gap:14px; font-size:11.5px; }
+  .pagebar a { color:#94a3b8; text-decoration:none; font-weight:bold; letter-spacing:.6px;
+               text-transform:uppercase; white-space:nowrap; }
+  .pagebar a:hover { color:#38bdf8; }
+  .pagebar span { color:#64748b; text-align:right; min-width:0;
+                  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .pagebar .brief { display:none; }
+  @media (max-width:700px) { .pagebar .full { display:none; } .pagebar .brief { display:inline; } }
+
+  /* the working-out, shown as a bill rather than hidden behind a number */
+  .calc { background:#1e293b; border:1px solid #334155; border-radius:6px; padding:10px 14px; margin-bottom:10px; }
+  .calc table { margin:0; font-size:13.5px; }
+  .calc td { border-bottom:1px solid #26364a; padding:5px 4px; }
+  .calc tr.sub td { border-bottom:2px solid #475569; font-weight:bold; color:#f1f5f9; }
+  .calc tr.total td { border-bottom:none; font-size:16px; font-weight:bold; color:#f8fafc; padding-top:8px; }
+  .calc td.minus { color:#fca5a5; }
+  .calc td.why { font-size:11.5px; color:#64748b; text-align:left; padding-top:0; border:none; }
+  .money { width:1%; white-space:nowrap; }
+
+  /* inputs that take a figure */
+  .numrow { display:flex; gap:10px; flex-wrap:wrap; }
+  .numrow .f { flex:1; min-width:170px; }
+  .numrow label { display:block; font-size:12px; color:#94a3b8; margin-bottom:4px; }
+  .numrow input { width:100%; padding:8px 10px; border:1px solid #475569; border-radius:5px;
+                  font-size:15px; background:#0f172a; color:#f8fafc; font-family:inherit; box-sizing:border-box;
+                  -moz-appearance:textfield; }
+  .numrow input::-webkit-outer-spin-button, .numrow input::-webkit-inner-spin-button {
+                  -webkit-appearance:none; margin:0; }
+  .numrow .hint { font-size:11px; color:#64748b; margin-top:3px; }
+  .segs { display:flex; gap:5px; flex-wrap:wrap; align-items:center; margin-top:4px; }
+
+  /* ---- the ledger ------------------------------------------------------
+     Every income source is a row that knows when it started and, if it has,
+     when it stopped. That is the whole design: a figure entered once keeps
+     counting until something ends it, which is what actually happens with a
+     benefit award. */
+  .ledger { width:100%; border-collapse:collapse; font-size:13.5px; margin-top:6px; }
+  .ledger th { text-align:left; color:#94a3b8; font-weight:600; font-size:11.5px;
+               text-transform:uppercase; letter-spacing:.04em; padding:6px 8px;
+               border-bottom:1px solid #334155; white-space:nowrap; }
+  .ledger td { padding:6px 8px; border-bottom:1px solid #26364a; vertical-align:top; }
+  .ledger td.num, .ledger th.num { text-align:right; white-space:nowrap; }
+  .ledger tr.ended td { opacity:.55; }
+  .ledger tr.sum td { border-top:2px solid #475569; border-bottom:none; font-weight:bold;
+                      color:#f1f5f9; font-size:15px; padding-top:9px; }
+  .ledger tr.grand td { border-top:2px solid #38bdf8; border-bottom:none; font-weight:bold;
+                        color:#f8fafc; font-size:17px; padding-top:10px; }
+  .ledger .src b { color:#f1f5f9; }
+  .ledger .src .meta { display:block; font-size:11.5px; color:#64748b; }
+  .tag { display:inline-block; font-size:10.5px; font-weight:bold; letter-spacing:.04em;
+         text-transform:uppercase; padding:1px 6px; border-radius:3px; margin-left:6px;
+         background:#1e3a54; color:#7dd3fc; vertical-align:1px; }
+  .tag.earn { background:#14351f; color:#86efac; }
+  .tag.se   { background:#3a2a14; color:#fcd34d; }
+  .tag.off  { background:#3a1c1c; color:#fca5a5; }
+
+  /* the row editor */
+  .rowbox { background:#1e293b; border:1px solid #334155; border-radius:6px;
+            padding:10px 12px; margin-bottom:8px; }
+  .rowbox.gone { border-style:dashed; opacity:.75; }
+  .rowgrid { display:grid; gap:8px 10px; grid-template-columns:1fr; }
+  .rowgrid label { display:block; font-size:11.5px; color:#94a3b8; margin-bottom:3px; }
+  .rowgrid input, .rowgrid select {
+    width:100%; font:inherit; font-size:14.5px; padding:7px 9px; border:1px solid #475569;
+    border-radius:5px; background:#0f172a; color:#f8fafc; box-sizing:border-box;
+    -moz-appearance:textfield; }
+  .rowgrid input::-webkit-outer-spin-button, .rowgrid input::-webkit-inner-spin-button {
+    -webkit-appearance:none; margin:0; }
+  .rowacts { display:flex; gap:6px; flex-wrap:wrap; align-items:center; margin-top:8px; }
+  .rowacts .grow { margin-left:auto; font-size:11.5px; color:#64748b; text-align:right; }
+  .mini { background:#334155; color:#fff; border:none; border-radius:5px; font-size:12px;
+          font-weight:bold; padding:6px 10px; cursor:pointer; font-family:inherit; }
+  .mini:hover { background:#475569; }
+  .mini.warn { background:#4a2318; color:#fca5a5; }
+  .mini.warn:hover { background:#5e2c1e; }
+  .mini.go { background:#0284c7; }
+  .mini.go:hover { background:#0369a1; }
+
+  .addbar { display:flex; gap:6px; flex-wrap:wrap; align-items:center; margin:10px 0 4px; }
+  .addbar select { max-width:320px; font-size:14px; padding:8px 10px; }
+
+  .totals { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:6px; margin:10px 0; }
+  .tot { background:#1e293b; border:1px solid #334155; border-radius:6px; padding:9px 12px; }
+  .tot .n { font-size:21px; font-weight:bold; color:#f8fafc; }
+  .tot .c { font-size:11.5px; color:#94a3b8; }
+  .tot.big { border-color:#38bdf8; }
+  .tot.big .n { color:#38bdf8; }
+
+  .period { display:flex; gap:10px; flex-wrap:wrap; align-items:flex-end; }
+  .period .f label { display:block; font-size:11.5px; color:#94a3b8; margin-bottom:3px; }
+  .period input, .period select { font:inherit; font-size:14.5px; padding:8px 10px;
+    border:1px solid #475569; border-radius:5px; background:#0f172a; color:#f8fafc; }
+
+  @media (min-width:620px) {
+    .rowgrid { grid-template-columns:2fr 1fr 1fr 1fr 1fr; align-items:end; }
+    .rowgrid .wide { grid-column:span 2; }
+  }
+  @media (max-width:620px) {
+    .ledger { font-size:12.5px; }
+    .ledger th, .ledger td { padding:5px 4px; }
+  }
+  .scroller { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+
+  /* ---- Site menu: the fly-out layout, in our own styling ---------------- */
+  /* Fixed sidebar down the left, categories that fly out on hover or keyboard
+     focus. The card, the blue pill links and the colours are the site's own. */
+  .rail { position:fixed; top:0; left:0; width:236px; height:100vh; box-sizing:border-box;
+          padding:14px 12px; overflow:visible; background:#0f172a;
+          display:flex; flex-direction:column; max-height:none; z-index:2000; }
+  .tools { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:12px; }
+  .tools > a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold;
+               font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .tools > a:hover { background:#0369a1; }
+  .tools > a.on { background:#38bdf8; color:#0f172a; }
+  .navlist { list-style:none; margin:0; padding:0; }
+  .navitem { position:relative; margin-bottom:8px; }
+  .navitem > .navcat { display:flex; align-items:center; justify-content:space-between; gap:8px;
+                       background:#1e293b; border:1px solid #475569; border-radius:5px; color:#e2e8f0;
+                       font-size:13px; font-weight:600; padding:5px 10px; cursor:pointer; user-select:none; }
+  .navitem > .navcat::after { content:"\25B8"; font-size:11px; color:#94a3b8; }
+  .navitem:hover > .navcat, .navitem:focus-within > .navcat { background:#334155; border-color:#0284c7; color:#fff; }
+  .navitem.here > .navcat { border-color:#38bdf8; color:#38bdf8; }
+  .flyout { visibility:hidden; opacity:0;
+            transition:visibility 0s linear .4s, opacity .12s ease .4s;
+            position:absolute; top:50%; transform:translateY(-50%); left:100%; margin-left:10px; width:246px;
+            max-height:92vh; overflow-y:auto; list-style:none; padding:12px; margin-bottom:0;
+            background:#1e293b; border:1px solid #334155; border-left:3px solid #0284c7;
+            border-radius:8px; box-shadow:6px 4px 18px rgba(0,0,0,.5); z-index:2001; }
+  .navitem:hover > .flyout, .navitem:focus-within > .flyout, .flyout:hover { visibility:visible; opacity:1; transition-delay:0s; }
+  /* The gap between the row and its fly-out belongs to the row, so crossing it
+     at any angle keeps the menu open; the fly-out then holds itself open. */
+  .navitem > .flyout::before { content:''; position:absolute; top:-40px; bottom:-40px; left:-26px; width:26px; }
+  .navitem::after { content:''; position:absolute; top:-6px; bottom:-6px; left:100%; width:28px; }
+  .flyout a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold;
+              font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .flyout li:last-child a { margin-bottom:0; }
+  .flyout a:hover { background:#0369a1; }
+  .flyout a.on { background:#38bdf8; color:#0f172a; }
+  .sidelogo { display:block; width:196px; max-width:100%; height:auto; border-radius:10px; margin:14px auto 0; }
+  .shell { display:block; }
+  main.page, .page { margin-left:252px; max-width:none; position:relative; z-index:1; }
+  /* Narrow windows and phones: the sidebar stops being fixed and every item is
+     listed openly, so nothing has to be hovered to be found. */
+  @media (max-width:860px) {
+    .rail { position:static; width:auto; height:auto; padding:0; display:block; z-index:auto; }
+    main.page, .page { margin-left:0; }
+    .navitem > .navcat::after { content:""; }
+    .flyout, .navitem.resitem > .flyout { visibility:visible; opacity:1; pointer-events:auto; position:static; transform:none; width:auto; margin:8px 0 0; max-height:none; inset:auto;
+              border-left:1px solid #334155; box-shadow:none; }
+  }
+  /* Other resources: the row is a link to the page, and the fly-out carries the
+     links themselves, so nothing needs two clicks to reach. */
+  .navitem > a.navcat { text-decoration:none; }
+  .navitem.resitem { position:static; }
+  /* The long one is pinned to the window instead, so all 39 links stay on screen. */
+  .navitem.resitem > .flyout { position:fixed; top:2vh; bottom:2vh; left:221px; margin-left:0; transform:none; max-height:none; }
+  .flyout.wide { width:300px; max-height:94vh; }
+  .flyout .sect { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.6px;
+                  color:#94a3b8; margin:10px 2px 5px; }
+  .flyout a.hot { background:#15803d; }
+  .flyout a.hot:hover { background:#166534; }
+  .flyout a.ext { background:#0f172a; border:1px solid #334155; color:#e2e8f0; font-weight:600;
+                  font-size:12.5px; padding:4px 10px; margin-bottom:4px; }
+  .flyout a.ext:hover { background:#334155; border-color:#0284c7; color:#fff; }
+  .flyout a.ext::after { content:" \2197"; color:#94a3b8; font-size:11px; }
+  /* A category inside a fly-out: the Redaction Suite sits under Financial Tools,
+     so what it redacts is said by where it lives. Its parent must not clip it. */
+  .flyout.hassub { overflow:visible; max-height:none; }
+  .flyout .navitem.sub { margin:2px 0 0; }
+  .flyout .navitem.sub > .navcat { background:#0f172a; }
+  .flyout .navitem.sub > .flyout { margin-left:14px; }
+  /* keep the long one in the flow on a phone (this comes last on purpose) */
+  @media (max-width:860px) { .navitem.resitem > .flyout { position:static; inset:auto; transform:none; } }
+  @media print { .rail { display:none !important; } main.page, .page { margin-left:0; } }
+</style>
+</head>
+<body>
+<div class="shell">
+<div class="rail"><aside class="tools"><a href="index.html">Home</a><ul class="navlist"><li class="navitem"><span class="navcat" tabindex="0">Location</span><ul class="flyout"><li><a href="area.html">What rent costs here</a></li><li><a href="counciltax.html">Council tax here</a></li></ul></li><li class="navitem"><span class="navcat" tabindex="0">Tenancy &amp; Rent</span><ul class="flyout"><li><a href="moving-in_audit.html">Moving in audit</a></li></ul></li><li class="navitem here"><span class="navcat" tabindex="0">Financial Tools</span><ul class="flyout hassub"><li><a href="interest.html">Interest owed to you</a></li><li><a href="arrears.html">Paying off arrears</a></li><li><a href="benefits.html">Benefit entitlements</a></li><li><a href="incoming-benefit-calc.html" class="on">Record of income</a></li><li class="navitem sub"><span class="navcat" tabindex="0">Redaction Suite</span><ul class="flyout"><li><a href="bank-statement-redaction.html" class="hot">⚡ Redact a statement page</a></li><li><a href="bank-statement-split.html">Split a PDF into pages</a></li><li><a href="bank-statement-rename.html">Name statements by date</a></li></ul></li></ul></li><li class="navitem"><span class="navcat" tabindex="0">Complaints &amp; Claims</span><ul class="flyout"><li><a href="scrubber.html">🔍 Web page data scrubber</a></li><li><a href="PRS_Tenant_Workspace.html">PRS complaint</a></li><li><a href="TPO_Tenant_Workspace.html">TPO complaint</a></li><li><a href="court_forms_workspace.html">Money Claim Online</a></li></ul></li><li class="navitem resitem"><a class="navcat" href="resources.html">Data &amp; Resources</a><ul class="flyout wide"><li><a href="resources.html">Other resources — the page</a></li><li class="sect">Certificates and safety</li><li><a class="ext" href="https://www.gov.uk/find-energy-certificate" target="_blank" rel="noopener">Energy Performance Certificate</a></li><li><a class="ext" href="https://www.scottishepcregister.org.uk/" target="_blank" rel="noopener">EPC register</a></li><li><a class="ext" href="https://www.gassaferegister.co.uk/find-an-engineer-or-check-the-register/" target="_blank" rel="noopener">Gas Safe Register</a></li><li><a class="ext" href="https://www.niceic.com/find-a-contractor" target="_blank" rel="noopener">Electrical safety</a></li><li><a class="ext" href="https://search.napit.org.uk/" target="_blank" rel="noopener">NAPIT</a></li><li><a class="ext" href="https://www.electricalsafetyfirst.org.uk/" target="_blank" rel="noopener">Electrical Safety First</a></li><li><a class="ext" href="https://www.gov.uk/government/publications/how-to-rent" target="_blank" rel="noopener">How to Rent</a></li><li class="sect">Deposits</li><li><a class="ext" href="https://www.gov.uk/tenancy-deposit-protection" target="_blank" rel="noopener">Tenancy deposit protection</a></li><li><a class="ext" href="https://www.depositprotection.com/" target="_blank" rel="noopener">Deposit Protection Service</a></li><li><a class="ext" href="https://www.tenancydepositscheme.com/" target="_blank" rel="noopener">Tenancy Deposit Scheme</a></li><li><a class="ext" href="https://www.mydeposits.co.uk/" target="_blank" rel="noopener">mydeposits</a></li><li class="sect">Who owns and who manages</li><li><a class="ext" href="https://find-and-update.company-information.service.gov.uk/" target="_blank" rel="noopener">Companies House</a></li><li><a class="ext" href="https://www.gov.uk/search-property-information-land-registry" target="_blank" rel="noopener">HM Land Registry</a></li><li><a class="ext" href="https://www.tpos.co.uk/" target="_blank" rel="noopener">Property Ombudsman</a></li><li><a class="ext" href="https://www.theprs.co.uk/" target="_blank" rel="noopener">Property Redress Scheme</a></li><li><a class="ext" href="https://www.rentsmart.gov.wales/" target="_blank" rel="noopener">Rent Smart Wales</a></li><li><a class="ext" href="https://www.landlordregistrationscotland.gov.uk/" target="_blank" rel="noopener">Scottish Landlord Register</a></li><li><a class="ext" href="https://www.london.gov.uk/programmes-strategies/housing-and-land/improving-private-rented-sector/rogue-landlord-and-agent-checker" target="_blank" rel="noopener">London rogue landlord and agent checker</a></li><li><a class="ext" href="https://www.gov.uk/find-local-council" target="_blank" rel="noopener">Find your local council</a></li><li class="sect">Rent, notices and the law</li><li><a class="ext" href="https://www.gov.uk/private-renting/rent-increases" target="_blank" rel="noopener">Rent increases</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1988/50/section/13" target="_blank" rel="noopener">Housing Act 1988</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2019/4" target="_blank" rel="noopener">Tenant Fees Act 2019</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1985/70/section/11" target="_blank" rel="noopener">Landlord and Tenant Act 1985</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2018/34" target="_blank" rel="noopener">Homes Act 2018</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1977/43" target="_blank" rel="noopener">Protection from Eviction Act 1977</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2015/20" target="_blank" rel="noopener">Deregulation Act 2015</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1984/28/section/69" target="_blank" rel="noopener">County Courts Act 1984</a></li><li><a class="ext" href="https://www.legislation.gov.uk/all?title=Renters%27%20Rights%20Act" target="_blank" rel="noopener">Renters' Rights Act</a></li><li class="sect">Taking it further</li><li><a class="ext" href="https://buntool.co.uk/" target="_blank" rel="noopener">BunTool</a></li><li><a class="ext" href="https://www.gov.uk/make-court-claim-for-money" target="_blank" rel="noopener">Make a court claim for money</a></li><li><a class="ext" href="https://www.moneyclaim.gov.uk/" target="_blank" rel="noopener">Money Claim Online</a></li><li><a class="ext" href="https://www.gov.uk/get-help-with-court-fees" target="_blank" rel="noopener">Help with court fees</a></li><li><a class="ext" href="https://www.gov.uk/government/collections/county-court-forms" target="_blank" rel="noopener">County court forms</a></li><li><a class="ext" href="https://www.gov.uk/housing-tribunals" target="_blank" rel="noopener">Housing tribunals</a></li><li><a class="ext" href="https://www.housing-ombudsman.org.uk/" target="_blank" rel="noopener">Housing Ombudsman</a></li><li class="sect">Free advice</li><li><a class="ext" href="https://england.shelter.org.uk/housing_advice" target="_blank" rel="noopener">Shelter</a></li><li><a class="ext" href="https://www.citizensadvice.org.uk/housing/" target="_blank" rel="noopener">Citizens Advice</a></li><li><a class="ext" href="https://www.lawcentres.org.uk/" target="_blank" rel="noopener">Law Centres Network</a></li><li><a class="ext" href="https://www.advicenow.org.uk/" target="_blank" rel="noopener">Advicenow</a></li></ul></li></ul></aside><img class="sidelogo" src="SavvyRenter-sml.png" alt="Savvy Renter"></div><main class="page">
+<div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
+
+<div class="brand"><div><h1>Record of Income</h1><div class="sub">Every pound coming in, dated and totalled &middot; ready to hand to a landlord, a council or a court</div></div><div class="acts"><button type="button" class="act" onclick="saveCase()" title="Saves everything you have entered to a file on this computer, so you can come back and carry on.">&#128190; Save</button><button type="button" class="act" onclick="document.getElementById('loadFile').click()" title="Opens a record you saved earlier and puts every line back.">&#128193; Load</button><input type="file" id="loadFile" accept=".json,application/json" class="hidden" onchange="loadCase(this)"><button type="button" class="act" onclick="buildStatement()" title="Writes a plain text statement of income, ready to print or attach.">&#128196; Statement</button><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page." onclick="showFeedback()">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div><div class="savenote" id="saveNote"></div></div></div>
+
+<div class="intro">
+  When a landlord, a council or a court asks what you have coming in, what they want is one figure with the working behind it — every source, what it pays, when it started, and when it stopped. That is awkward to assemble from a drawer of letters and a bank app, which is sometimes rather the point of asking. This puts it together properly. <b>Enter a figure once and it keeps counting</b> until you say otherwise, which is how an award actually behaves, and when April moves the rates you close the old line and open the new one in a click. <b>Nothing you type is stored or sent anywhere.</b>
+</div>
+
+<h2>1 &middot; Which system are you on?</h2>
+<p class="fine" style="font-size:12.5px;color:#94a3b8;margin:0 0 6px">This only decides what the page offers you next. You can override any of it.</p>
+<div class="house">
+  <div class="hrow">
+    <span class="lbl">Income-replacement benefit:</span>
+    <button type="button" class="chip on" data-sys="uc" onclick="setSystem('uc')">Universal Credit</button>
+    <button type="button" class="chip" data-sys="legacy" onclick="setSystem('legacy')">A legacy benefit</button>
+    <button type="button" class="chip" data-sys="none" onclick="setSystem('none')">Neither</button>
+  </div>
+  <div class="hrow" id="suppRow">
+    <label class="tick" style="font-size:12.5px;color:#c9d4e0;display:flex;gap:7px;align-items:flex-start">
+      <input type="checkbox" id="xSupported" onchange="setSystem(system)" style="margin-top:3px;accent-color:#38bdf8">
+      <span>I live in <b>supported, sheltered or temporary accommodation</b> &mdash; rent is paid by Housing Benefit even on Universal Credit</span>
+    </label>
+  </div>
+  <div class="verdict" id="sysNote"></div>
+</div>
+
+<h2>2 &middot; The period you are reporting</h2>
+<div class="house">
+  <div class="period">
+    <div class="f"><label for="from">From</label><input type="date" id="from" onchange="draw()"></div>
+    <div class="f"><label for="to">To</label><input type="date" id="to" onchange="draw()"></div>
+    <div class="f"><label>&nbsp;</label>
+      <button type="button" class="mini" onclick="setRange('12m')">Last 12 months</button>
+      <button type="button" class="mini" onclick="setRange('tax')">This tax year</button>
+      <button type="button" class="mini" onclick="setRange('ytd')">Tax year to date</button>
+    </div>
+  </div>
+  <div class="verdict" id="rangeNote"></div>
+</div>
+
+<h2>3 &middot; What comes in</h2>
+<p class="fine" style="font-size:12.5px;color:#94a3b8;margin:0 0 6px">Add a line for each source. Leave <b>To</b> empty while it is still being paid.</p>
+
+<div class="addbar">
+  <select id="addWhat" aria-label="Type of income to add"></select>
+  <button type="button" class="mini go" onclick="addRow()">+ Add this</button>
+  <span style="font-size:12px;color:#64748b">or <button type="button" class="linkish" onclick="addRow('custom')">add something not on the list</button></span>
+</div>
+
+<div id="rows"></div>
+
+<h2>4 &middot; What it comes to</h2>
+<div class="totals" id="totals"></div>
+<div class="house">
+  <div class="scroller"><table class="ledger" id="table"></table></div>
+  <p class="fine" style="font-size:11.5px;color:#64748b;margin-top:10px" id="method"></p>
+</div>
+
+<div class="note" id="checks"></div>
+
+<h2>Before you hand this over</h2>
+<div class="liable">
+  <div><b>This is a record, not a calculation.</b> It totals what you tell it you receive. It does not work out entitlement and it cannot check your award is right &mdash; for that, use <a href="benefits.html">the entitlement page</a> or a full calculator.</div>
+  <div><b>Back it with the paperwork.</b> A figure is worth far more with the award letter, the Universal Credit statement or the payslip behind it. Number your documents and put the same numbers in the note against each line.</div>
+  <div><b>Self-employed figures are before tax.</b> Money into the business is not money you can spend. Enter receipts and expenses separately and the page will show the profit, which is the figure that counts as income.</div>
+  <div><b>Council Tax Reduction is not income.</b> It reduces a bill rather than paying you, so it is kept out of the totals. Record it if you want it on the statement, and it will be listed separately.</div>
+  <div><b>Keep it current.</b> Rates change every April. Use <b>Uprate</b> on a line and it closes on 5 April and reopens on 6 April at the new figure, so the history stays intact instead of being overwritten.</div>
+</div>
+
+</main>
+</div>
+<script>
+// ===========================================================================
+// Record of Income
+//
+// The model is a ledger, not a calculator. Each line is a source of money with
+// an amount, how often it is paid, the date it started and — only once it has
+// stopped — the date it ended. Everything else falls out of that: a figure
+// entered once keeps counting, April's uprating is a line ending and another
+// beginning, and a job starting halfway through the year is just another line.
+//
+// Rates below are the published 2026/27 figures. They are offered as a
+// starting point and a sanity check, never as the answer: this page reports
+// what someone actually receives, and the only authority on that is their
+// award letter.
+// ===========================================================================
+
+const RATES_YEAR = '2026/27';
+
+// w = weekly published rate. Where a benefit has no fixed rate (it is worked
+// out from circumstances) there is no figure and the field starts empty.
+const KINDS = {
+  // ---- Universal Credit, broken down as the statement breaks it down ----
+  uc_total:    { g:'uc', label:'Universal Credit — whole award',        freq:'monthly' },
+  uc_standard: { g:'uc', label:'UC — standard allowance',               freq:'monthly' },
+  uc_housing:  { g:'uc', label:'UC — housing element',                  freq:'monthly', housing:true },
+  uc_health:   { g:'uc', label:'UC — health element (LCWRA)',           freq:'monthly' },
+  uc_child:    { g:'uc', label:'UC — child element',                    freq:'monthly' },
+  uc_carer:    { g:'uc', label:'UC — carer element',                    freq:'monthly' },
+  uc_childcare:{ g:'uc', label:'UC — childcare costs',                  freq:'monthly' },
+  uc_transit:  { g:'uc', label:'UC — transitional protection',          freq:'monthly' },
+  uc_deduct:   { g:'uc', label:'UC — deductions taken off',             freq:'monthly', negative:true },
+
+  // ---- legacy income-replacement benefits ----
+  esa_ir:      { g:'legacy', label:'ESA (income-related)',              freq:'fortnightly', w:95.55 },
+  jsa_ib:      { g:'legacy', label:'JSA (income-based)',                freq:'fortnightly', w:95.55 },
+  income_supp: { g:'legacy', label:'Income Support',                    freq:'fortnightly', w:95.55 },
+  hb:          { g:'legacy', label:'Housing Benefit',                   freq:'fortnightly', housing:true },
+
+  // ---- contributory benefits: these sit alongside UC ----
+  esa_ns:      { g:'other', label:'New Style ESA',                      freq:'fortnightly', w:95.55 },
+  esa_support: { g:'other', label:'New Style ESA — support component',  freq:'fortnightly', w:50.35 },
+  esa_wrac:    { g:'other', label:'ESA — work-related activity component', freq:'fortnightly', w:37.95 },
+  jsa_ns:      { g:'other', label:'New Style JSA',                      freq:'fortnightly', w:95.55 },
+
+  // ---- disability and caring: payable alongside anything ----
+  pip_dl_std:  { g:'other', label:'PIP — daily living, standard rate',  freq:'fortnightly', w:76.70 },
+  pip_dl_enh:  { g:'other', label:'PIP — daily living, enhanced rate',  freq:'fortnightly', w:114.60 },
+  pip_mob_std: { g:'other', label:'PIP — mobility, standard rate',      freq:'fortnightly', w:30.30 },
+  pip_mob_enh: { g:'other', label:'PIP — mobility, enhanced rate',      freq:'fortnightly', w:80.00 },
+  dla_care_h:  { g:'other', label:'DLA — care, highest rate',           freq:'fortnightly', w:114.60 },
+  dla_care_m:  { g:'other', label:'DLA — care, middle rate',            freq:'fortnightly', w:76.70 },
+  dla_care_l:  { g:'other', label:'DLA — care, lowest rate',            freq:'fortnightly', w:30.30 },
+  dla_mob_h:   { g:'other', label:'DLA — mobility, higher rate',        freq:'fortnightly', w:80.00 },
+  dla_mob_l:   { g:'other', label:'DLA — mobility, lower rate',         freq:'fortnightly', w:30.30 },
+  aa_high:     { g:'other', label:'Attendance Allowance — higher rate', freq:'fortnightly', w:114.60 },
+  aa_low:      { g:'other', label:'Attendance Allowance — lower rate',  freq:'fortnightly', w:76.70 },
+  carers:      { g:'other', label:"Carer's Allowance",                  freq:'fortnightly', w:86.45 },
+
+  // ---- family, pension, and the rest ----
+  child_ben1:  { g:'other', label:'Child Benefit — eldest or only child', freq:'4weekly', w:27.05 },
+  child_ben2:  { g:'other', label:'Child Benefit — each other child',  freq:'4weekly', w:17.90 },
+  guardians:   { g:'other', label:"Guardian's Allowance",              freq:'4weekly', w:22.95 },
+  pension_new: { g:'other', label:'State Pension (new)',                freq:'4weekly', w:241.30 },
+  pension_bas: { g:'other', label:'State Pension (basic)',              freq:'4weekly', w:184.90 },
+  pension_cred:{ g:'other', label:'Pension Credit',                     freq:'fortnightly' },
+  maternity:   { g:'other', label:'Maternity or paternity pay',         freq:'fortnightly' },
+  bereavement: { g:'other', label:'Bereavement Support Payment',        freq:'monthly' },
+  industrial:  { g:'other', label:'Industrial Injuries benefit',        freq:'fortnightly' },
+  other_ben:   { g:'other', label:'Another benefit',                    freq:'fortnightly' },
+
+  // ---- earned income ----
+  paye:        { g:'earn', label:'Wages (PAYE) — take-home',            freq:'monthly', earn:true, paye:true },
+  paye_gross:  { g:'earn', label:'Wages (PAYE) — gross, for reference', freq:'monthly', earn:true, paye:true, info:true },
+  se_income:   { g:'earn', label:'Self-employed — money in',            freq:'monthly', earn:true, se:true },
+  se_expense:  { g:'earn', label:'Self-employed — expenses',            freq:'monthly', earn:true, se:true, negative:true },
+  pension_priv:{ g:'earn', label:'Private or works pension',            freq:'monthly', earn:true },
+  maintenance: { g:'earn', label:'Child maintenance',                   freq:'monthly', earn:true },
+  lodger:      { g:'earn', label:'Rent from a lodger',                  freq:'monthly', earn:true },
+  other_inc:   { g:'earn', label:'Other income',                        freq:'monthly', earn:true },
+
+  // ---- counted, but not as income ----
+  ctr:         { g:'nonincome', label:'Council Tax Reduction',          freq:'monthly', nonincome:true },
+  dhp:         { g:'nonincome', label:'Discretionary Housing Payment',  freq:'fortnightly', housing:true },
+
+  custom:      { g:'earn', label:'Something else',                      freq:'monthly' }
+};
+
+const GROUPS = [
+  ['uc',        'Universal Credit'],
+  ['legacy',    'Legacy benefits and Housing Benefit'],
+  ['other',     'Other benefits'],
+  ['earn',      'Earnings and other income'],
+  ['nonincome', 'Help that is not income']
+];
+
+// Paid how often, and what one payment is worth per day. Everything is reduced
+// to a daily figure and multiplied by the days in the period, which is the one
+// method that stays consistent whatever the payment cycle and can be checked
+// by hand.
+const FREQ = {
+  weekly:      { label:'a week',        perYear:52,  days:7 },
+  fortnightly: { label:'a fortnight',   perYear:26,  days:14 },
+  '4weekly':   { label:'every 4 weeks', perYear:13,  days:28 },
+  monthly:     { label:'a month',       perYear:12,  days:365/12 },
+  quarterly:   { label:'a quarter',     perYear:4,   days:365/4 },
+  yearly:      { label:'a year',        perYear:1,   days:365 },
+  oneoff:      { label:'one payment',   perYear:0,   days:0 }
+};
+
+// ---------------------------------------------------------------- state
+let system = 'uc';
+let rows = [];
+let nextId = 1;
+
+const gbp  = n => (n < 0 ? '−£' : '£') + Math.abs(n).toLocaleString('en-GB', { minimumFractionDigits:2, maximumFractionDigits:2 });
+const gbp0 = n => (n < 0 ? '−£' : '£') + Math.round(Math.abs(n)).toLocaleString('en-GB');
+const esc  = s => String(s == null ? '' : s).replace(/[<>&"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c]));
+const iso  = d => d.toISOString().slice(0,10);
+const parse = s => s ? new Date(s + 'T00:00:00') : null;
+const pretty = s => { const d = parse(s); return d ? d.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' }) : ''; };
+
+// ---------------------------------------------------------------- system
+function setSystem(s) {
+  system = s;
+  document.querySelectorAll('.chip[data-sys]').forEach(c => c.classList.toggle('on', c.dataset.sys === s));
+  document.getElementById('suppRow').classList.toggle('hidden', s !== 'uc');
+  const supported = document.getElementById('xSupported').checked;
+  const n = document.getElementById('sysNote');
+
+  if (s === 'uc') {
+    n.innerHTML = supported
+      ? 'Universal Credit for living costs, <b>and Housing Benefit for the rent</b>. <span class="why">In supported, sheltered or temporary accommodation the rent is met by Housing Benefit and not by a housing element, so both appear in the list &mdash; this is the one case where the two run together.</span>'
+      : 'Housing costs come through the <b>housing element inside Universal Credit</b>. <span class="why">Housing Benefit is not offered, because the two cannot both be paid for the same home. Take the housing element figure from any Universal Credit statement &mdash; it holds until it changes, so one statement covers you going forward.</span>';
+  } else if (s === 'legacy') {
+    n.innerHTML = 'Housing costs come through <b>Housing Benefit</b>, paid separately. <span class="why">Almost everyone on income-related ESA, income-based JSA, Income Support or tax credits has now been moved to Universal Credit. These remain for a small number of cases, so they are here &mdash; but if you are not certain which you are on, the letters will say.</span>';
+  } else {
+    n.innerHTML = 'No income-replacement benefit. <span class="why">Housing Benefit is still offered: it is payable at pension age, and in supported or temporary accommodation, without Universal Credit being involved.</span>';
+  }
+  fillAddList();
+  draw();
+}
+
+// The list of things you can add follows from the system, so nobody is offered
+// a benefit they cannot be on.
+function fillAddList() {
+  const supported = document.getElementById('xSupported').checked;
+  const sel = document.getElementById('addWhat');
+  const keep = sel.value;
+  let html = '';
+  GROUPS.forEach(([g, name]) => {
+    const inGroup = Object.keys(KINDS).filter(k => {
+      const K = KINDS[k];
+      if (K.g !== g) return false;
+      if (g === 'uc' && system !== 'uc') return false;
+      if (k === 'uc_housing' && supported) return false;   // rent is on HB instead
+      if (g === 'legacy') {
+        if (k === 'hb') return system === 'legacy' || system === 'none' || supported;
+        return system === 'legacy';
+      }
+      return true;
+    });
+    if (!inGroup.length) return;
+    html += `<optgroup label="${name}">` +
+      inGroup.map(k => `<option value="${k}">${KINDS[k].label}</option>`).join('') + '</optgroup>';
+  });
+  sel.innerHTML = html;
+  if (keep && sel.querySelector(`option[value="${keep}"]`)) sel.value = keep;
+}
+
+// ---------------------------------------------------------------- period
+function setRange(which) {
+  const now = new Date(); now.setHours(0,0,0,0);
+  let a, b;
+  // The benefit year and the tax year both turn on 6 April, so "this tax year"
+  // is also the year a set of rates applies to.
+  const taxStart = y => new Date(y + '-04-06T00:00:00');
+  const thisTaxYear = now >= taxStart(now.getFullYear()) ? now.getFullYear() : now.getFullYear() - 1;
+  if (which === '12m') { b = now; a = new Date(now); a.setFullYear(a.getFullYear() - 1); a.setDate(a.getDate() + 1); }
+  if (which === 'tax') { a = taxStart(thisTaxYear); b = new Date(taxStart(thisTaxYear + 1)); b.setDate(b.getDate() - 1); }
+  if (which === 'ytd') { a = taxStart(thisTaxYear); b = now; }
+  document.getElementById('from').value = iso(a);
+  document.getElementById('to').value = iso(b);
+  draw();
+}
+
+function range() {
+  const a = parse(document.getElementById('from').value);
+  const b = parse(document.getElementById('to').value);
+  if (!a || !b || b < a) return null;
+  return { a, b, days: Math.round((b - a) / 86400000) + 1 };
+}
+
+// ---------------------------------------------------------------- rows
+function addRow(kind) {
+  const k = kind || document.getElementById('addWhat').value;
+  if (!k) return;
+  const K = KINDS[k] || KINDS.custom;
+  const r = range();
+  rows.push({
+    id: nextId++, kind: k,
+    name: k === 'custom' ? '' : K.label,
+    amount: K.w != null ? round2(K.w / 7 * FREQ[K.freq].days) : '',
+    freq: K.freq,
+    from: r ? iso(r.a) : '',
+    to: '',
+    note: ''
+  });
+  drawRows(); draw();
+  const el = document.querySelector('.rowbox:last-of-type input');
+  if (el) el.focus();
+}
+function delRow(id) { rows = rows.filter(r => r.id !== id); drawRows(); draw(); }
+function setRow(id, field, v) {
+  const r = rows.find(x => x.id === id); if (!r) return;
+  r[field] = (field === 'amount') ? v.replace(/[^0-9.\-]/g,'') : v;
+  if (field === 'freq' || field === 'amount' || field === 'from' || field === 'to') draw();
+  if (field === 'to' || field === 'freq') drawRows();
+}
+const round2 = n => Math.round(n * 100) / 100;
+
+// Ending a line and starting another on the day the rates change, rather than
+// editing the figure in place. The old period keeps its old figure, which is
+// the whole point of a record.
+function uprate(id) {
+  const r = rows.find(x => x.id === id); if (!r) return;
+  const now = new Date();
+  const y = now.getMonth() >= 3 ? now.getFullYear() : now.getFullYear() - 1;
+  r.to = y + '-04-05';
+  rows.push(Object.assign({}, r, { id: nextId++, from: y + '-04-06', to: '', note: r.note }));
+  drawRows(); draw();
+}
+function stopRow(id) {
+  const r = rows.find(x => x.id === id); if (!r) return;
+  r.to = r.to || iso(new Date());
+  drawRows(); draw();
+}
+
+function drawRows() {
+  const box = document.getElementById('rows');
+  if (!rows.length) {
+    box.innerHTML = '<div class="rowbox" style="text-align:center;color:#64748b;font-size:13.5px">' +
+      'Nothing added yet. Pick something above and press <b>Add this</b>.</div>';
+    return;
+  }
+  box.innerHTML = rows.map(r => {
+    const K = KINDS[r.kind] || KINDS.custom;
+    const ended = !!r.to;
+    const opts = Object.keys(FREQ).map(f =>
+      `<option value="${f}"${r.freq===f?' selected':''}>${FREQ[f].label}</option>`).join('');
+    return `<div class="rowbox${ended?' gone':''}">
+      <div class="rowgrid">
+        <div class="wide">
+          <label for="n${r.id}">Source</label>
+          <input id="n${r.id}" type="text" value="${esc(r.name)}" placeholder="What is it?"
+                 oninput="setRow(${r.id},'name',this.value)">
+        </div>
+        <div>
+          <label for="a${r.id}">Amount ${K.negative ? '(taken off)' : ''}</label>
+          <input id="a${r.id}" type="text" inputmode="decimal" value="${esc(r.amount)}" placeholder="0.00"
+                 onfocus="this.select()"
+                 oninput="setRow(${r.id},'amount',this.value)">
+        </div>
+        <div>
+          <label for="f${r.id}">Paid</label>
+          <select id="f${r.id}" onchange="setRow(${r.id},'freq',this.value)">${opts}</select>
+        </div>
+        <div>
+          <label for="s${r.id}">From</label>
+          <input id="s${r.id}" type="date" value="${esc(r.from)}" onchange="setRow(${r.id},'from',this.value)">
+        </div>
+        <div>
+          <label for="e${r.id}">To <span style="color:#475569">(blank = ongoing)</span></label>
+          <input id="e${r.id}" type="date" value="${esc(r.to)}" onchange="setRow(${r.id},'to',this.value)">
+        </div>
+      </div>
+      <div class="rowacts">
+        <input type="text" value="${esc(r.note)}" placeholder="Note — e.g. Exhibit C, award letter 12 May"
+               style="flex:1;min-width:180px;font:inherit;font-size:12.5px;padding:6px 9px;border:1px solid #334155;border-radius:5px;background:#0f172a;color:#c9d4e0"
+               oninput="setRow(${r.id},'note',this.value)">
+        ${ended ? '' : `<button type="button" class="mini" onclick="uprate(${r.id})" title="Close this line on 5 April and open a new one on 6 April, so the old figure stays on the record">Uprate at April</button>`}
+        ${ended ? '' : `<button type="button" class="mini" onclick="stopRow(${r.id})" title="Mark this as having stopped today">Stopped</button>`}
+        <button type="button" class="mini warn" onclick="delRow(${r.id})">Remove</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ---------------------------------------------------------------- the sums
+// How much of this line falls inside the period being reported. A daily figure
+// times the number of days the line was actually running.
+function inRange(r, R) {
+  const amt = Number(r.amount);
+  if (!R || !isFinite(amt) || !amt) return null;
+  const f = FREQ[r.freq] || FREQ.monthly;
+  const a = parse(r.from) || R.a;
+  const b = parse(r.to) || R.b;
+  const from = a > R.a ? a : R.a;
+  const to   = b < R.b ? b : R.b;
+  if (to < from) return { days: 0, total: 0, daily: 0 };
+  const days = Math.round((to - from) / 86400000) + 1;
+  if (r.freq === 'oneoff') {
+    const on = parse(r.from);
+    const within = on && on >= R.a && on <= R.b;
+    return { days: within ? 1 : 0, total: within ? amt : 0, daily: 0, oneoff:true };
+  }
+  const daily = amt / f.days;
+  return { days, total: daily * days, daily };
+}
+
+function draw() {
+  const R = range();
+  const rn = document.getElementById('rangeNote');
+  if (!R) {
+    rn.innerHTML = 'Choose a start and an end date, or use one of the buttons. <span class="why">Everything below is worked out for the period between them.</span>';
+  } else {
+    const wks = Math.round(R.days / 7 * 10) / 10;
+    rn.innerHTML = `<b>${pretty(iso(R.a))} to ${pretty(iso(R.b))}</b> &mdash; ${R.days} days, ${wks} weeks. <span class="why">A line only counts for the days it was actually running inside this period.</span>`;
+  }
+
+  const body = [];
+  const sums = { benefit: 0, earn: 0, se_in: 0, se_out: 0, nonincome: 0, info: 0 };
+  let any = false;
+
+  GROUPS.forEach(([g, gname]) => {
+    const mine = rows.filter(r => (KINDS[r.kind] || KINDS.custom).g === g);
+    if (!mine.length) return;
+    body.push(`<tr><td colspan="6" style="padding-top:12px;border:none;color:#94a3b8;font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;font-weight:700">${gname}</td></tr>`);
+    mine.forEach(r => {
+      const K = KINDS[r.kind] || KINDS.custom;
+      const res = inRange(r, R);
+      const amt = Number(r.amount) || 0;
+      const signed = K.negative ? -Math.abs(res ? res.total : 0) : (res ? res.total : 0);
+      if (res && res.total) {
+        any = true;
+        if (K.info) sums.info += signed;
+        else if (K.nonincome) sums.nonincome += signed;
+        else if (K.earn) {
+          sums.earn += signed;
+          if (K.se && !K.negative) sums.se_in += signed;
+          if (K.se && K.negative) sums.se_out += Math.abs(signed);
+        }
+        else sums.benefit += signed;
+      }
+      const tags = (K.paye ? '<span class="tag earn">PAYE</span>' : '') +
+                   (K.se ? '<span class="tag se">Self-employed</span>' : '') +
+                   (K.housing ? '<span class="tag">Housing</span>' : '') +
+                   (K.info ? '<span class="tag off">Not counted</span>' : '') +
+                   (K.nonincome ? '<span class="tag off">Not income</span>' : '');
+      body.push(`<tr class="${r.to ? 'ended' : ''}">
+        <td class="src"><b>${esc(r.name || K.label)}</b>${tags}${r.note ? `<span class="meta">${esc(r.note)}</span>` : ''}</td>
+        <td class="num">${amt ? gbp(K.negative ? -amt : amt) : '—'}</td>
+        <td>${FREQ[r.freq] ? FREQ[r.freq].label : ''}</td>
+        <td>${r.from ? pretty(r.from) : '—'}</td>
+        <td>${r.to ? pretty(r.to) : '<span style="color:#7fc8a9">ongoing</span>'}</td>
+        <td class="num">${res && res.total ? gbp(signed) : '<span style="color:#475569">—</span>'}</td>
+      </tr>`);
+    });
+  });
+
+  const total = sums.benefit + sums.earn;
+  const head = `<thead><tr><th>Source</th><th class="num">Rate</th><th>Paid</th><th>From</th><th>To</th>
+                <th class="num">In this period</th></tr></thead>`;
+  const foot = any ? `
+    <tr class="sum"><td colspan="5">Benefits and allowances</td><td class="num">${gbp(sums.benefit)}</td></tr>
+    <tr class="sum"><td colspan="5">Earnings and other income</td><td class="num">${gbp(sums.earn)}</td></tr>
+    <tr class="grand"><td colspan="5">Total income for the period</td><td class="num">${gbp(total)}</td></tr>` +
+    (sums.nonincome ? `<tr><td colspan="5" style="color:#94a3b8;font-size:12px">Help that is not income, listed but not added in</td><td class="num" style="color:#94a3b8">${gbp(sums.nonincome)}</td></tr>` : '') +
+    (sums.info ? `<tr><td colspan="5" style="color:#94a3b8;font-size:12px">For reference only, not added in</td><td class="num" style="color:#94a3b8">${gbp(sums.info)}</td></tr>` : '')
+    : '<tr><td colspan="6" style="color:#64748b;text-align:center;padding:18px">Add a line above and the figures appear here.</td></tr>';
+
+  document.getElementById('table').innerHTML = head + '<tbody>' + body.join('') + foot + '</tbody>';
+
+  // headline figures
+  const days = R ? R.days : 0;
+  const perWeek  = days ? total / days * 7 : 0;
+  const perMonth = days ? total / days * (365/12) : 0;
+  const perYear  = days ? total / days * 365 : 0;
+  document.getElementById('totals').innerHTML = !R || !any ? '' : `
+    <div class="tot big"><div class="n">${gbp0(total)}</div><div class="c">total income across the ${days} days</div></div>
+    <div class="tot"><div class="n">${gbp0(perWeek)}</div><div class="c">a week, on average</div></div>
+    <div class="tot"><div class="n">${gbp0(perMonth)}</div><div class="c">a month, on average</div></div>
+    <div class="tot"><div class="n">${gbp0(perYear)}</div><div class="c">a year at this rate</div></div>`;
+
+  document.getElementById('method').innerHTML = !any ? '' :
+    'How this is worked out: each line is reduced to a daily figure &mdash; the amount divided by the number of days in its payment cycle &mdash; ' +
+    'and multiplied by the number of days that line was running inside the period. A line that started or stopped part way through counts only for the days it ran. ' +
+    'Published rates shown when a line is added are the ' + RATES_YEAR + ' figures and are a starting point only; the figure that matters is the one on your award letter or statement.';
+
+  checks(sums);
+  drawRows2();
+}
+
+// A light redraw of just the row boxes' ended state, without stealing focus
+// from whatever is being typed into.
+function drawRows2() {
+  rows.forEach(r => {
+    const box = document.getElementById('n' + r.id);
+    if (box && box.closest('.rowbox')) box.closest('.rowbox').classList.toggle('gone', !!r.to);
+  });
+}
+
+// Things worth saying out loud before this is handed to anyone.
+function checks(sums) {
+  const el = document.getElementById('checks');
+  const msgs = [];
+  const has = k => rows.some(r => r.kind === k && Number(r.amount));
+  const supported = document.getElementById('xSupported').checked;
+
+  if (has('hb') && has('uc_housing') && !supported) {
+    msgs.push('<b>Housing Benefit and a UC housing element are both listed.</b> Those cannot both be in payment for the same home unless it is supported, sheltered or temporary accommodation &mdash; tick that box above if it is, and otherwise check which one you are actually getting.');
+  }
+  if (system === 'uc' && !supported && !has('uc_housing') && !has('uc_total')) {
+    msgs.push('No Universal Credit housing element has been entered. If your rent is met through Universal Credit, take the figure from any statement &mdash; it is the single most important line for a landlord.');
+  }
+  if (sums.se_in && !sums.se_out) {
+    msgs.push('<b>Self-employed money in, with no expenses against it.</b> Income from self-employment is normally counted after allowable expenses. If there are none, say so on the statement so nobody assumes it was left out.');
+  }
+  if (rows.some(r => r.from && r.to && parse(r.to) < parse(r.from))) {
+    msgs.push('<b>A line ends before it starts.</b> Check the dates.');
+  }
+  const R = range();
+  if (R && rows.length && !rows.some(r => { const x = inRange(r, R); return x && x.total; })) {
+    msgs.push('Nothing falls inside the period you have chosen. Check the dates on the lines against the From and To above.');
+  }
+  el.className = msgs.length ? 'note warn' : 'note hidden';
+  el.innerHTML = msgs.join('<br><br>');
+}
+
+// ---------------------------------------------------------------- statement
+function stamp() {
+  const d = new Date(), p = n => String(n).padStart(2,'0');
+  return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}-${p(d.getHours())}${p(d.getMinutes())}`;
+}
+function say(m) {
+  const el = document.getElementById('saveNote');
+  el.textContent = m;
+  setTimeout(() => { if (el.textContent === m) el.textContent = ''; }, 6000);
+}
+function drop(blob, filename) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = filename;
+  document.body.appendChild(a); a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 0);
+}
+
+function buildStatement() {
+  const R = range();
+  if (!R) { say('Set the period first.'); return; }
+  const line = '='.repeat(74);
+  const pad = (s, n) => String(s).padEnd(n);
+  const rpad = (s, n) => String(s).padStart(n);
+  let o = line + '\nSTATEMENT OF INCOME\n' +
+    'Period: ' + pretty(iso(R.a)) + ' to ' + pretty(iso(R.b)) + '  (' + R.days + ' days)\n' +
+    'Prepared: ' + new Date().toLocaleString('en-GB') + '\n' + line + '\n\n';
+
+  let benefit = 0, earn = 0, nonincome = 0;
+  GROUPS.forEach(([g, gname]) => {
+    const mine = rows.filter(r => (KINDS[r.kind] || KINDS.custom).g === g);
+    if (!mine.length) return;
+    o += gname.toUpperCase() + '\n' + '-'.repeat(gname.length) + '\n';
+    mine.forEach(r => {
+      const K = KINDS[r.kind] || KINDS.custom;
+      const res = inRange(r, R);
+      const t = res ? (K.negative ? -res.total : res.total) : 0;
+      if (t) {
+        if (K.nonincome) nonincome += t;
+        else if (K.info) { /* reference only */ }
+        else if (K.earn) earn += t; else benefit += t;
+      }
+      o += '  ' + pad((r.name || K.label).slice(0,34), 35) +
+           rpad(Number(r.amount) ? gbp(Number(r.amount)) : '—', 11) + ' ' +
+           pad(FREQ[r.freq] ? FREQ[r.freq].label : '', 14) +
+           pad((r.from ? pretty(r.from) : '?') + ' to ' + (r.to ? pretty(r.to) : 'ongoing'), 30) +
+           rpad(t ? gbp(t) : '—', 12) + '\n';
+      if (r.note) o += '      ' + r.note + '\n';
+    });
+    o += '\n';
+  });
+
+  const total = benefit + earn;
+  o += line + '\n';
+  o += pad('Benefits and allowances', 62) + rpad(gbp(benefit), 12) + '\n';
+  o += pad('Earnings and other income', 62) + rpad(gbp(earn), 12) + '\n';
+  o += pad('TOTAL INCOME FOR THE PERIOD', 62) + rpad(gbp(total), 12) + '\n';
+  o += line + '\n';
+  o += pad('Average a week', 62) + rpad(gbp(total / R.days * 7), 12) + '\n';
+  o += pad('Average a month', 62) + rpad(gbp(total / R.days * (365/12)), 12) + '\n';
+  o += pad('Annual equivalent at this rate', 62) + rpad(gbp(total / R.days * 365), 12) + '\n';
+  if (nonincome) o += '\n' + pad('Help that is not income (not included above)', 62) + rpad(gbp(nonincome), 12) + '\n';
+
+  o += '\n' + line + '\nHOW THESE FIGURES ARE WORKED OUT\n' + line + '\n';
+  o += 'Each source is reduced to a daily amount — the sum received divided by the\n' +
+       'number of days in its payment cycle — and multiplied by the number of days\n' +
+       'that source was in payment within the period above. A source that started or\n' +
+       'stopped part way through is counted only for the days it ran.\n\n' +
+       'Figures are as received. They are taken from award letters, benefit\n' +
+       'statements and payslips, not from any calculation of entitlement.\n\n';
+
+  o += line + '\nDECLARATION\n' + line + '\n';
+  o += 'The figures above are a true record of the income received by this household\n' +
+       'during the period stated, to the best of my knowledge and belief.\n\n' +
+       'Signed: ......................................................\n\n' +
+       'Name:   ......................................................\n\n' +
+       'Date:   ......................................................\n\n';
+  o += line + '\nPrepared with the Savvy Renter record of income (savvyrenter.co.uk).\n' +
+       'A record of stated income, not an assessment of entitlement.\n' + line + '\n';
+
+  drop(new Blob([o], { type:'text/plain;charset=utf-8' }), 'statement-of-income-' + stamp() + '.txt');
+  say('Statement saved to your downloads.');
+}
+
+// ---------------------------------------------------------------- save/load
+function saveCase() {
+  const data = { app:'savvyrenter-income', version:1, savedAt:new Date().toISOString(),
+    system, supported: document.getElementById('xSupported').checked,
+    from: document.getElementById('from').value, to: document.getElementById('to').value,
+    rows };
+  drop(new Blob([JSON.stringify(data, null, 1)], { type:'application/json' }),
+       'income-record-' + stamp() + '.json');
+  say('Saved to your downloads.');
+}
+function loadCase(input) {
+  const f = input.files && input.files[0];
+  input.value = '';
+  if (!f) return;
+  const r = new FileReader();
+  r.onload = () => {
+    let d;
+    try { d = JSON.parse(r.result); } catch (e) { say('That file could not be read.'); return; }
+    if (!d || d.app !== 'savvyrenter-income') { say('That is not a saved income record.'); return; }
+    document.getElementById('xSupported').checked = !!d.supported;
+    document.getElementById('from').value = d.from || '';
+    document.getElementById('to').value = d.to || '';
+    rows = Array.isArray(d.rows) ? d.rows : [];
+    nextId = rows.reduce((m, r) => Math.max(m, r.id || 0), 0) + 1;
+    setSystem(d.system || 'uc');
+    drawRows(); draw();
+    const when = d.savedAt ? new Date(d.savedAt) : null;
+    say(when ? 'Loaded — saved ' + when.toLocaleString('en-GB') + '.' : 'Loaded.');
+  };
+  r.readAsText(f);
+}
+
+// ---------------------------------------------------------------- feedback
+function showFeedback() {
+  const w = ['feedback', 'savvyrenter.co.uk'].join('@');
+  const p = document.getElementById('fbPanel');
+  p.innerHTML = '<button type="button" id="fbClose" title="Close" onclick="hideFeedback()">✕</button>' +
+    '<p style="margin:0 0 6px">Suggestions, corrections, or an open-source tool we could host — we read everything, though we can’t promise to answer every email. Use a suggestion and we’ll credit you on the page.</p>' +
+    '<a href="mailto:' + w + '?subject=Savvy%20Renter%20feedback">' + w + '</a>';
+  p.classList.remove('hidden');
+}
+function hideFeedback() { document.getElementById('fbPanel').classList.add('hidden'); }
+
+// ---------------------------------------------------------------- start
+setRange('ytd');
+setSystem('uc');
+drawRows();
+draw();
+</script>
+</body>
+</html>

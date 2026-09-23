@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bank statement redaction — Savvy Renter</title>
+<meta name="description" content="Black out your account number, sort code and anything else private on a bank statement before you send it to a landlord, agent or court. The file never leaves your computer.">
+<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#001e3d">
+<link rel="canonical" href="https://www.savvyrenter.co.uk/bank-statement-redaction.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Savvy Renter">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Bank statement redaction — Savvy Renter">
+<meta property="og:description" content="Black out your account number, sort code and anything else private on a bank statement before you send it to a landlord, agent or court. The file never leaves your computer.">
+<meta property="og:url" content="https://www.savvyrenter.co.uk/bank-statement-redaction.html">
+<meta property="og:image" content="https://www.savvyrenter.co.uk/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.5; color:#e2e8f0; max-width:1180px; margin:0 auto; padding:0 18px 24px; background:#0f172a; }
+  h1 { color:#f8fafc; font-size:24px; margin-top:0; }
+  h2 { color:#f1f5f9; font-size:18px; margin:16px 0 4px; border-bottom:1px solid #334155; padding-bottom:5px; }
+  p { margin:6px 0; font-size:14px; }
+  .intro, .note { background:#1e293b; border-left:4px solid #38bdf8; padding:10px 14px; margin:0 0 12px; border-radius:4px; font-size:14px; color:#c9d4e0; }
+  .brand { display:flex; align-items:center; gap:14px; border-bottom:2px solid #334155;
+           padding:10px 0 8px; margin-bottom:10px; background:#0f172a; }
+  .brand h1 { border:none; padding:0; margin:0; font-size:30px; letter-spacing:-0.2px; }
+  .brand .sub { color:#94a3b8; font-size:13px; margin-top:2px; }
+  .courtlink { margin-left:auto; display:block; text-align:center; background:#0284c7; color:#fff;
+               text-decoration:none; font-weight:bold; font-size:13px; padding:5px 12px; border-radius:5px;
+               border:none; cursor:pointer; font-family:inherit; }
+  .guidewrap { position:fixed; inset:0; z-index:4000; background:rgba(2,6,23,.72);
+               display:flex; align-items:flex-start; justify-content:center; padding:4vh 16px; overflow-y:auto; }
+  .guide { position:relative; max-width:720px; width:100%; background:#1e293b; border:1px solid #334155;
+           border-left:4px solid #38bdf8; border-radius:8px; padding:16px 20px 18px; font-size:14px; color:#e2e8f0; }
+  .guide h2 { margin:0 0 6px; font-size:20px; border:none; padding:0; }
+  .guide h3 { margin:14px 0 4px; font-size:13px; text-transform:uppercase; letter-spacing:.5px; color:#38bdf8; }
+  .guide ul { margin:0; padding-left:18px; }
+  .guide li { margin:3px 0; line-height:1.45; }
+  .guide p { margin:6px 0; line-height:1.5; }
+  .guide .glead { color:#c9d4e0; }
+  .guide .gwarn { margin-top:14px; padding:8px 10px; background:#0b1220; border:1px solid #334155;
+                  border-radius:5px; font-size:12.5px; color:#cbd5e1; }
+  .gclose { position:absolute; top:8px; right:8px; background:#334155; color:#fff; border:none;
+            border-radius:4px; width:26px; height:26px; font-size:16px; line-height:1; cursor:pointer; }
+  .gclose:hover { background:#475569; }
+  .courtlink:hover { background:#0369a1; }
+  .courtlink span { display:block; font-weight:400; font-size:10.5px; color:#dbeafe; margin-top:1px; }
+  .hidden { display:none !important; }
+  .shell { display:flex; gap:20px; align-items:flex-start; }
+  .rail { width:200px; flex:none; position:sticky; top:12px; margin-top:12px;
+          max-height:calc(100vh - 24px); overflow-y:auto; overscroll-behavior:contain; }
+  .tools { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:12px; }
+  .sidelogo { display:block; width:196px; max-width:100%; height:auto; border-radius:10px; margin:14px auto 0; }
+  .tools a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold; font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .tools a:hover { background:#0369a1; }
+  .tools a.on { background:#38bdf8; color:#0f172a; }
+  .tools .grp { margin-bottom:8px; }
+  .tools .grp > summary { list-style:none; cursor:pointer; background:#1e293b; border:1px solid #475569;
+     color:#e2e8f0; font-weight:bold; font-size:14px; padding:5px 12px; border-radius:5px;
+     display:flex; align-items:center; justify-content:space-between; gap:6px; }
+  .tools .grp > summary::-webkit-details-marker { display:none; }
+  .tools .grp > summary::after { content:"\25BE"; font-size:11px; color:#94a3b8; }
+  .tools .grp[open] > summary::after { content:"\25B4"; }
+  .tools .grp > summary:hover { border-color:#38bdf8; color:#fff; }
+  .tools .grp > summary:focus-visible { outline:2px solid #38bdf8; outline-offset:1px; }
+  .tools .grp[open] > summary { margin-bottom:6px; }
+  .tools .grp a { margin-left:10px; font-size:13px; padding:4px 10px; }
+  .page { flex:1; min-width:0; }
+  .pagebar { background:#0b1220; border:1px solid #1e293b; border-radius:6px;
+             padding:5px 12px; margin-bottom:10px; display:flex; align-items:center;
+             justify-content:space-between; gap:14px; font-size:11.5px; }
+  .pagebar a { color:#94a3b8; text-decoration:none; font-weight:bold; letter-spacing:.6px;
+               text-transform:uppercase; white-space:nowrap; }
+  .pagebar a:hover { color:#38bdf8; }
+  .pagebar span { color:#64748b; text-align:right; min-width:0;
+                  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .pagebar .brief { display:none; }
+  @media (max-width:700px) { .pagebar .full { display:none; } .pagebar .brief { display:inline; } }
+  @media (max-width:800px) { .shell { display:block; } .rail { width:auto; position:static; margin-bottom:14px; max-height:none; overflow:visible; } .sidelogo { max-width:208px; } }
+  @media (max-width:700px) { body { padding:18px 12px; } .brand { flex-wrap:wrap; } }
+
+  /* ---- Bank statement redaction ---------------------------------------- */
+  .rdsteps { display:flex; flex-direction:column; gap:8px; }
+  /* The controls, the offer and the rules are nailed to the top of the page.
+     They used to sit under a canvas three quarters of a screen tall, so the
+     rules could not be seen until the page had already been worked through. */
+  /* ONLY the rules are pinned: one row at the top of the page, so a rule can
+     be made and switched on or off without leaving the statement. Everything
+     else scrolls as it did. */
+  .rulestrip { position:sticky; top:0; z-index:25; background:#0f172a; padding:2px 0 4px;
+               display:flex; flex-direction:column; gap:5px; }
+  .rules .tip { font-weight:400; text-transform:none; letter-spacing:0; color:#64748b; font-size:11px; margin-left:6px; }
+  .rdbar { display:flex; flex-wrap:wrap; align-items:center; gap:8px; background:#1e293b; border:1px solid #334155; border-radius:6px; padding:8px 10px; }
+  .rdbar .lbl { font-size:12px; font-weight:700; color:#94a3b8; text-transform:uppercase; letter-spacing:.5px; margin-right:2px; }
+  .rdbar button, .rdbar label.filebtn { background:#0284c7; color:#fff; border:none; border-radius:5px; padding:8px 13px; font-size:13px; font-weight:bold; cursor:pointer; font-family:inherit; }
+  .rdbar button.sec { background:#334155; }
+  .rdbar button:disabled { opacity:.45; cursor:default; }
+  .rdbar input[type=number] { width:64px; background:#0f172a; border:1px solid #334155; color:#f8fafc; padding:6px 8px; border-radius:5px; font-size:13px; }
+  .rdbar .fname { font-size:12.5px; color:#94a3b8; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  /* empty, it is still a full screen of box with the logo in the middle, so
+     you can see where the page will land before one is open */
+  .rdwrap { position:relative; margin-top:0; border:1px solid #334155; border-radius:6px;
+           min-height:calc(100vh - 92px);
+           background:#0b1220 url('SavvyRenter-sml.png') center center no-repeat;
+           background-size:220px auto; }
+  .rdwrap.on { min-height:0; background-image:none; }
+  #sheet { display:block; margin:0 auto; cursor:crosshair; }
+  .rdhint { font-size:12px; color:#94a3b8; padding:6px 2px; }
+  .note a, .intro a { color:#38bdf8; font-weight:bold; text-decoration:underline; }
+  .note a:visited, .intro a:visited { color:#38bdf8; }
+  .note a:hover, .intro a:hover { color:#7dd3fc; }
+  .rules { display:flex; align-items:flex-start; gap:8px; background:#1e293b; border:1px solid #334155; border-radius:6px; padding:6px 8px; margin-top:0; }
+  .railtools { display:flex; flex-direction:column; align-items:flex-end; gap:3px; margin-top:10px; width:196px; align-self:center; }
+  .railtools .act { width:132px; text-align:center; padding:3px 8px; font-size:11.5px; font-weight:bold;
+                    background:#334155; color:#fff; border:none; border-radius:4px; cursor:pointer; font-family:inherit; }
+  .railtools .act.go { background:#0284c7; }
+  .railtools .act:disabled { opacity:.45; cursor:default; }
+  .railtools .savenote { font-size:11px; color:#38bdf8; text-align:right; }
+  .rules .lbl { font-size:11px; font-weight:700; color:#94a3b8; text-transform:uppercase; letter-spacing:.5px; }
+  .rules #ruleList { display:flex; flex-wrap:wrap; align-content:flex-start; align-items:center; gap:5px;
+                     flex:1 1 auto; min-width:0; max-height:132px; overflow-y:auto; padding-right:2px; }
+  .rules .act { background:#334155; color:#fff; border:none; border-radius:4px; padding:4px 9px; font-size:11.5px; font-weight:bold; cursor:pointer; font-family:inherit; }
+  .rules .savenote { font-size:11px; color:#38bdf8; flex:none; align-self:flex-end; }
+  .rules h3 { margin:0 0 6px; font-size:12px; text-transform:uppercase; letter-spacing:.5px; color:#94a3b8; }
+  .rule { display:inline-flex; align-items:center; gap:6px; padding:2px 7px; background:#0f172a; border:1px solid #334155; border-radius:5px; font-size:12px; }
+  .rule .what { max-width:210px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .rule.off { opacity:.45; }
+  .rule button { background:#334155; color:#fff; border:none; border-radius:4px; padding:1px 6px; font-size:12px; line-height:1.3; cursor:pointer; }
+  .rule .what { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .rule .kind { font-size:11px; color:#94a3b8; white-space:nowrap; }
+  .rule button { background:#334155; color:#fff; border:none; border-radius:4px; padding:3px 9px; font-size:11.5px; cursor:pointer; }
+  .rule input[type=checkbox] { width:16px; height:16px; accent-color:#0284c7; }
+  .rule label.keep { font-size:11px; color:#94a3b8; display:flex; align-items:center; gap:4px; white-space:nowrap; }
+  .rule label.keep input { width:44px; background:#0f172a; border:1px solid #334155; color:#f8fafc; padding:2px 4px; border-radius:4px; font-size:11.5px; }
+  .offer { display:flex; flex-wrap:wrap; align-items:center; gap:8px; background:#0b2537; border:1px solid #0284c7; border-radius:6px; padding:6px 10px; margin-top:0; font-size:13px; }
+  .offer button { background:#0284c7; color:#fff; border:none; border-radius:4px; padding:5px 10px; font-size:12px; font-weight:bold; cursor:pointer; }
+  .rdbar label.sugg { display:flex; align-items:center; gap:6px; font-size:12.5px; color:#94a3b8; }
+  .rdbar label.sugg input { width:15px; height:15px; accent-color:#0284c7; }
+  .rdbar label.sugg select { background:#0f172a; border:1px solid #334155; color:#f8fafc; padding:5px 7px; border-radius:5px; font-size:12px; }
+  .working { font-size:12.5px; color:#38bdf8; }
+  .bad { color:#f87171; }
+
+  /* ---- Site menu: the fly-out layout, in our own styling ---------------- */
+  /* Fixed sidebar down the left, categories that fly out on hover or keyboard
+     focus. The card, the blue pill links and the colours are the site's own. */
+  .rail { position:fixed; top:0; left:0; width:236px; height:100vh; box-sizing:border-box;
+          padding:14px 12px; overflow:visible; background:#0f172a;
+          display:flex; flex-direction:column; max-height:none; z-index:2000; }
+  .tools { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:12px; }
+  .tools > a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold;
+               font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .tools > a:hover { background:#0369a1; }
+  .tools > a.on { background:#38bdf8; color:#0f172a; }
+  .navlist { list-style:none; margin:0; padding:0; }
+  .navitem { position:relative; margin-bottom:8px; }
+  .navitem > .navcat { display:flex; align-items:center; justify-content:space-between; gap:8px;
+                       background:#1e293b; border:1px solid #475569; border-radius:5px; color:#e2e8f0;
+                       font-size:13px; font-weight:600; padding:5px 10px; cursor:pointer; user-select:none; }
+  .navitem > .navcat::after { content:"\25B8"; font-size:11px; color:#94a3b8; }
+  .navitem:hover > .navcat, .navitem:focus-within > .navcat { background:#334155; border-color:#0284c7; color:#fff; }
+  .navitem.here > .navcat { border-color:#38bdf8; color:#38bdf8; }
+  .flyout { visibility:hidden; opacity:0;
+            transition:visibility 0s linear .4s, opacity .12s ease .4s;
+            position:absolute; top:50%; transform:translateY(-50%); left:100%; margin-left:10px; width:246px;
+            max-height:92vh; overflow-y:auto; list-style:none; padding:12px; margin-bottom:0;
+            background:#1e293b; border:1px solid #334155; border-left:3px solid #0284c7;
+            border-radius:8px; box-shadow:6px 4px 18px rgba(0,0,0,.5); z-index:2001; }
+  .navitem:hover > .flyout, .navitem:focus-within > .flyout, .flyout:hover { visibility:visible; opacity:1; transition-delay:0s; }
+  /* The gap between the row and its fly-out belongs to the row, so crossing it
+     at any angle keeps the menu open; the fly-out then holds itself open. */
+  .navitem > .flyout::before { content:''; position:absolute; top:-40px; bottom:-40px; left:-26px; width:26px; }
+  .navitem::after { content:''; position:absolute; top:-6px; bottom:-6px; left:100%; width:28px; }
+  .flyout a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold;
+              font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .flyout li:last-child a { margin-bottom:0; }
+  .flyout a:hover { background:#0369a1; }
+  .flyout a.on { background:#38bdf8; color:#0f172a; }
+  .sidelogo { display:block; width:196px; max-width:100%; height:auto; border-radius:10px; margin:14px auto 0; }
+  .shell { display:block; }
+  main.page, .page { margin-left:252px; max-width:none; position:relative; z-index:1; }
+  /* Narrow windows and phones: the sidebar stops being fixed and every item is
+     listed openly, so nothing has to be hovered to be found. */
+  @media (max-width:860px) {
+    .rail { position:static; width:auto; height:auto; padding:0; display:block; z-index:auto; }
+    main.page, .page { margin-left:0; }
+    .navitem > .navcat::after { content:""; }
+    .flyout, .navitem.resitem > .flyout { visibility:visible; opacity:1; pointer-events:auto; position:static; transform:none; width:auto; margin:8px 0 0; max-height:none; inset:auto;
+              border-left:1px solid #334155; box-shadow:none; }
+  }
+  /* Other resources: the row is a link to the page, and the fly-out carries the
+     links themselves, so nothing needs two clicks to reach. */
+  .navitem > a.navcat { text-decoration:none; }
+  .navitem.resitem { position:static; }
+  /* The long one is pinned to the window instead, so all 39 links stay on screen. */
+  .navitem.resitem > .flyout { position:fixed; top:2vh; bottom:2vh; left:221px; margin-left:0; transform:none; max-height:none; }
+  .flyout.wide { width:300px; max-height:94vh; }
+  .flyout .sect { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.6px;
+                  color:#94a3b8; margin:10px 2px 5px; }
+  .flyout a.hot { background:#15803d; }
+  .flyout a.hot:hover { background:#166534; }
+  .flyout a.ext { background:#0f172a; border:1px solid #334155; color:#e2e8f0; font-weight:600;
+                  font-size:12.5px; padding:4px 10px; margin-bottom:4px; }
+  .flyout a.ext:hover { background:#334155; border-color:#0284c7; color:#fff; }
+  .flyout a.ext::after { content:" \2197"; color:#94a3b8; font-size:11px; }
+  /* A category inside a fly-out: the Redaction Suite sits under Financial Tools,
+     so what it redacts is said by where it lives. Its parent must not clip it. */
+  .flyout.hassub { overflow:visible; max-height:none; }
+  .flyout .navitem.sub { margin:2px 0 0; }
+  .flyout .navitem.sub > .navcat { background:#0f172a; }
+  .flyout .navitem.sub > .flyout { margin-left:14px; }
+  /* keep the long one in the flow on a phone (this comes last on purpose) */
+  @media (max-width:860px) { .navitem.resitem > .flyout { position:static; inset:auto; transform:none; } }
+  @media print { .rail { display:none !important; } main.page, .page { margin-left:0; } }
+</style>
+<script>
+/* Reloading a tool page puts you back at the top, where the controls are,
+   instead of wherever you had scrolled to. */
+try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) { }
+window.addEventListener('load', () => window.scrollTo(0, 0));
+</script>
+</head>
+<body>
+<div class="shell">
+<div class="rail"><aside class="tools"><a href="index.html">Home</a><ul class="navlist"><li class="navitem"><span class="navcat" tabindex="0">Location</span><ul class="flyout"><li><a href="area.html">What rent costs here</a></li><li><a href="counciltax.html">Council tax here</a></li></ul></li><li class="navitem"><span class="navcat" tabindex="0">Tenancy &amp; Rent</span><ul class="flyout"><li><a href="moving-in_audit.html">Moving in audit</a></li></ul></li><li class="navitem here"><span class="navcat" tabindex="0">Financial Tools</span><ul class="flyout hassub"><li><a href="interest.html">Interest owed to you</a></li><li><a href="arrears.html">Paying off arrears</a></li><li><a href="benefits.html">Benefit entitlements</a></li><li><a href="incoming-benefit-calc.html">Record of income</a></li><li class="navitem sub here"><span class="navcat" tabindex="0">Redaction Suite</span><ul class="flyout"><li><a href="bank-statement-redaction.html" class="hot on">⚡ Redact a statement page</a></li><li><a href="bank-statement-split.html">Split a PDF into pages</a></li><li><a href="bank-statement-rename.html">Name statements by date</a></li></ul></li></ul></li><li class="navitem"><span class="navcat" tabindex="0">Complaints &amp; Claims</span><ul class="flyout"><li><a href="scrubber.html">🔍 Web page data scrubber</a></li><li><a href="PRS_Tenant_Workspace.html">PRS complaint</a></li><li><a href="TPO_Tenant_Workspace.html">TPO complaint</a></li><li><a href="court_forms_workspace.html">Money Claim Online</a></li></ul></li><li class="navitem resitem"><a class="navcat" href="resources.html">Data &amp; Resources</a><ul class="flyout wide"><li><a href="resources.html">Other resources — the page</a></li><li class="sect">Certificates and safety</li><li><a class="ext" href="https://www.gov.uk/find-energy-certificate" target="_blank" rel="noopener">Energy Performance Certificate</a></li><li><a class="ext" href="https://www.scottishepcregister.org.uk/" target="_blank" rel="noopener">EPC register</a></li><li><a class="ext" href="https://www.gassaferegister.co.uk/find-an-engineer-or-check-the-register/" target="_blank" rel="noopener">Gas Safe Register</a></li><li><a class="ext" href="https://www.niceic.com/find-a-contractor" target="_blank" rel="noopener">Electrical safety</a></li><li><a class="ext" href="https://search.napit.org.uk/" target="_blank" rel="noopener">NAPIT</a></li><li><a class="ext" href="https://www.electricalsafetyfirst.org.uk/" target="_blank" rel="noopener">Electrical Safety First</a></li><li><a class="ext" href="https://www.gov.uk/government/publications/how-to-rent" target="_blank" rel="noopener">How to Rent</a></li><li class="sect">Deposits</li><li><a class="ext" href="https://www.gov.uk/tenancy-deposit-protection" target="_blank" rel="noopener">Tenancy deposit protection</a></li><li><a class="ext" href="https://www.depositprotection.com/" target="_blank" rel="noopener">Deposit Protection Service</a></li><li><a class="ext" href="https://www.tenancydepositscheme.com/" target="_blank" rel="noopener">Tenancy Deposit Scheme</a></li><li><a class="ext" href="https://www.mydeposits.co.uk/" target="_blank" rel="noopener">mydeposits</a></li><li class="sect">Who owns and who manages</li><li><a class="ext" href="https://find-and-update.company-information.service.gov.uk/" target="_blank" rel="noopener">Companies House</a></li><li><a class="ext" href="https://www.gov.uk/search-property-information-land-registry" target="_blank" rel="noopener">HM Land Registry</a></li><li><a class="ext" href="https://www.tpos.co.uk/" target="_blank" rel="noopener">Property Ombudsman</a></li><li><a class="ext" href="https://www.theprs.co.uk/" target="_blank" rel="noopener">Property Redress Scheme</a></li><li><a class="ext" href="https://www.rentsmart.gov.wales/" target="_blank" rel="noopener">Rent Smart Wales</a></li><li><a class="ext" href="https://www.landlordregistrationscotland.gov.uk/" target="_blank" rel="noopener">Scottish Landlord Register</a></li><li><a class="ext" href="https://www.london.gov.uk/programmes-strategies/housing-and-land/improving-private-rented-sector/rogue-landlord-and-agent-checker" target="_blank" rel="noopener">London rogue landlord and agent checker</a></li><li><a class="ext" href="https://www.gov.uk/find-local-council" target="_blank" rel="noopener">Find your local council</a></li><li class="sect">Rent, notices and the law</li><li><a class="ext" href="https://www.gov.uk/private-renting/rent-increases" target="_blank" rel="noopener">Rent increases</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1988/50/section/13" target="_blank" rel="noopener">Housing Act 1988</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2019/4" target="_blank" rel="noopener">Tenant Fees Act 2019</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1985/70/section/11" target="_blank" rel="noopener">Landlord and Tenant Act 1985</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2018/34" target="_blank" rel="noopener">Homes Act 2018</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1977/43" target="_blank" rel="noopener">Protection from Eviction Act 1977</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2015/20" target="_blank" rel="noopener">Deregulation Act 2015</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1984/28/section/69" target="_blank" rel="noopener">County Courts Act 1984</a></li><li><a class="ext" href="https://www.legislation.gov.uk/all?title=Renters%27%20Rights%20Act" target="_blank" rel="noopener">Renters' Rights Act</a></li><li class="sect">Taking it further</li><li><a class="ext" href="https://buntool.co.uk/" target="_blank" rel="noopener">BunTool</a></li><li><a class="ext" href="https://www.gov.uk/make-court-claim-for-money" target="_blank" rel="noopener">Make a court claim for money</a></li><li><a class="ext" href="https://www.moneyclaim.gov.uk/" target="_blank" rel="noopener">Money Claim Online</a></li><li><a class="ext" href="https://www.gov.uk/get-help-with-court-fees" target="_blank" rel="noopener">Help with court fees</a></li><li><a class="ext" href="https://www.gov.uk/government/collections/county-court-forms" target="_blank" rel="noopener">County court forms</a></li><li><a class="ext" href="https://www.gov.uk/housing-tribunals" target="_blank" rel="noopener">Housing tribunals</a></li><li><a class="ext" href="https://www.housing-ombudsman.org.uk/" target="_blank" rel="noopener">Housing Ombudsman</a></li><li class="sect">Free advice</li><li><a class="ext" href="https://england.shelter.org.uk/housing_advice" target="_blank" rel="noopener">Shelter</a></li><li><a class="ext" href="https://www.citizensadvice.org.uk/housing/" target="_blank" rel="noopener">Citizens Advice</a></li><li><a class="ext" href="https://www.lawcentres.org.uk/" target="_blank" rel="noopener">Law Centres Network</a></li><li><a class="ext" href="https://www.advicenow.org.uk/" target="_blank" rel="noopener">Advicenow</a></li></ul></li></ul></aside><img class="sidelogo" src="SavvyRenter-sml.png" alt="Savvy Renter"><div class="railtools"><button type="button" class="act" onclick="document.getElementById('rulesFile').click()" title="Opens a rules file you saved earlier.">&#128193; Load rules</button><input type="file" id="rulesFile" accept=".json,application/json" class="hidden" onchange="loadRules(this)"><button type="button" class="act" onclick="saveRules()" title="Saves the rules to a file on this computer, so you can use the same ones another day.">&#128190; Save rules</button><button type="button" class="act go" id="applyBtn" onclick="applyRules(false)" disabled title="Lays every rule on this page.">&#9881; Apply rules</button><button type="button" class="act" id="pdfBtn" onclick="savePage('pdf')" disabled title="Saves this page, with the black boxes burned into it, to your downloads.">&#128190; Save as PDF</button><button type="button" class="act" id="pngBtn" onclick="savePage('png')" disabled title="The same page as a picture.">&#128247; Save as PNG</button><div class="savenote" id="saveNote"></div></div></div><main class="page">
+<div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
+  <div class="brand"><div><h1>Bank statement redaction</h1><div class="sub">Black out what nobody else needs to see, before you hand a statement over</div></div><button type="button" class="courtlink" onclick="openGuide()">What to leave on show<span>a rough guide &mdash; opens over this page</span></button>
+  </div>
+
+  <div class="intro">
+    A statement proves what you paid. It also carries your account number, your sort code, and every other payment you have ever made &mdash; none of which a landlord, an agent or an opponent is entitled to see. This blacks them out properly: the marks are burned into the picture, so there is nothing underneath to copy out again.
+    <b>Your file never leaves this computer.</b> Nothing is uploaded and nothing is stored; close the page and it is gone.
+  </div>
+
+  <div class="rdsteps">
+    <div class="rdbar">
+      <span class="lbl">1 &middot; The page</span>
+      <label class="filebtn" for="pageFile">&#128194; Choose a file</label>
+      <input type="file" id="pageFile" accept=".pdf,image/*" class="hidden" onchange="pickFile(this)">
+      <span>Page <input type="number" id="pageNo" value="1" min="1" onchange="openPage()"></span>
+      <span class="fname" id="fname">No file open. A PDF, or a photo or scan of a page.</span>
+    </div>
+
+    <div class="rdbar">
+      <span class="lbl">2 &middot; Black it out</span>
+      <button type="button" id="scanBtn" onclick="scanPage()" disabled title="The page is read the moment it opens. Press this to read it again with OCR, for when a PDF carries no text of its own or the text is wrong.">&#128269; Read it again (OCR)</button>
+      <label class="sugg"><input type="checkbox" id="showSugg" checked onchange="paint()"> Show outlines</label>
+      <button type="button" class="sec" id="undoBtn" onclick="undoBox()" disabled>&#8630; Undo last box</button>
+      <button type="button" class="sec" id="clearBtn" onclick="clearBoxes()" disabled>Clear this page</button>
+      <span class="working" id="working"></span>
+    </div>
+
+    <div class="rdhint">Every line is outlined. <b>Click the last word you want to KEEP</b> — everything after it goes black and the amount goes with it; the balance never does. On the account-number line each word is its own box, and a long number keeps its last four. Click a black box to lift it, or drag across anything missed. <b>A rule made here stays while this page is open</b>: open the next statement page and press Apply rules. Refreshing the browser clears them — Save rules keeps them in a file.</div>
+
+    <div class="rulestrip">
+    <div class="offer hidden" id="offer">
+      <span id="offerTxt"></span>
+      <button type="button" onclick="ruleFromBox('word')">Same words on every page</button>
+      <button type="button" onclick="ruleFromBox('place')">Same place on every page</button>
+      <button type="button" class="sec" onclick="hideOffer()" style="background:#334155">Just this page</button>
+    </div>
+
+    <div class="rules">
+      <div id="ruleList"></div>
+    </div>
+    </div>
+
+    <div class="rdwrap"><canvas id="sheet" width="10" height="10"></canvas></div>
+
+  </div>
+
+  <div class="note" style="margin-top:10px"><b>Nothing to hand?</b> Try it on these made-up statements first:
+    <a href="sample-statement-1.pdf" target="_blank">sample 1</a>,
+    <a href="sample-statement-2.pdf" target="_blank">sample 2</a>,
+    <a href="sample-statement-3.pdf" target="_blank">sample 3</a>.
+    They are from a bank that does not exist and are marked as samples, so you can find your way around without putting anything of yours at risk.</div>
+  <div class="note" style="margin-top:10px">
+    <b>Before you send it.</b> Open the saved file and read it as if you were the other side. The black boxes are part of the picture, so nothing can be selected or copied from underneath &mdash; but only what you covered is covered. Check the top of the page, the running balance, and any other payment that has nothing to do with the dispute.
+  </div>
+</main>
+
+<div class="guidewrap hidden" id="guideWrap" onclick="if(event.target===this)closeGuide()">
+  <div class="guide" role="dialog" aria-label="What to leave on show">
+    <button type="button" class="gclose" onclick="closeGuide()" title="Close">&times;</button>
+    <h2>What to leave on show</h2>
+    <p class="glead">A rough guide for a rent dispute. The point of handing over a statement is to prove you paid.
+       Cover too much and it proves nothing; cover too little and you have handed over your whole life. This is what
+       has worked, not a rule of law.</p>
+
+    <h3>It depends on what is in dispute</h3>
+    <p>There is no fixed list, and this is the part that matters most. Work out what the other side is likely to say,
+       then leave showing whatever answers it &mdash; even where you would rather cover it.</p>
+    <ul>
+      <li><b>You say you paid.</b> Leave every payment out to them, in full, with the date and the amount.</li>
+      <li><b>They say they paid you back.</b> Leave <i>every credit into the account</i> for that period, with the name
+         of whoever sent it showing. Cover the sources and they can point at any deposit and say &ldquo;that was us&rdquo;.
+         With the sources on show it is plain on the face of the statement that none of them was.</li>
+      <li><b>They say you underpaid in a particular month.</b> Leave that whole month, both columns, not only the one
+         line you are relying on. A single line lifted out of a covered page invites the question of what is around it.</li>
+      <li><b>They rely on a document of their own.</b> Leave whatever of yours meets it head on, in the same period.</li>
+    </ul>
+    <p>So tailor it to your own case. The same figure can help you on one issue and hurt you on another, and only you
+       know what is being argued about &mdash; the decision is yours, and this page is a guide, not a ruling.</p>
+
+    <h3>Leave it showing</h3>
+    <ul>
+      <li><b>Every rent payment</b> &mdash; the date, the amount, and who it went to. That is the evidence. Never cover it.</li>
+      <li><b>The running balance column.</b> A balance that runs unbroken down the page shows nothing has been taken out of the middle.</li>
+      <li><b>Your name and address at the top.</b> Your landlord or agent already has both, so there is nothing to protect, and they tie the account to you.</li>
+      <li><b>The last four digits of the account number</b>, the bank&rsquo;s name, the statement period and the page numbers (&ldquo;page 4 of 37&rdquo;). The last four are how the account is identified in evidence without giving the number away.</li>
+    </ul>
+
+    <h3>Cover it</h3>
+    <ul>
+      <li>The rest of the account number, and the sort code.</li>
+      <li>Everything you spent that has nothing to do with the dispute &mdash; the payee <i>and</i> the amount. An intact column of figures can be read out in a hearing and turned into a story about you.</li>
+      <li>Other people&rsquo;s names, references and account details, including anyone who pays money in.</li>
+      <li>Card numbers, telephone numbers, and anything that identifies a third party.</li>
+    </ul>
+
+    <h3>Never do this</h3>
+    <ul>
+      <li><b>Do not crop or delete rows.</b> Cover them. A statement with lines removed looks edited, and the balance will not add up.</li>
+      <li><b>Do not use a highlighter, a shape in Word, or a black box you can drag off.</b> Only a mark burned into the picture is a redaction. That is what this page does.</li>
+      <li><b>Do not hand over your only copy.</b> Keep the original, unredacted, somewhere safe &mdash; the court can order it.</li>
+    </ul>
+
+    <h3>Before you send it</h3>
+    <p>Open the saved file and read it as if you were the other side. Then <b>ask the court, or the other side&rsquo;s solicitor,
+       whether what you have sent is acceptable</b> &mdash; it is far better to be told now than at a hearing. If you cover
+       something the other side says they need, they can ask the court to order an unredacted copy, and the court decides.</p>
+
+    <p class="gwarn"><b>We are not lawyers and this is not legal advice.</b> It is one renter&rsquo;s experience of preparing
+       documents for a county court claim, written down in case it helps. Rules differ between courts and between kinds of case.
+       If anything turns on it, get advice &mdash; Shelter, Citizens Advice and your local Law Centre are free.</p>
+  </div>
+</div>
+</div>
+
+<div style="max-width:1100px; margin:18px auto 30px; padding:0 18px; font-size:12px; color:#94a3b8; line-height:1.5; border-top:1px solid #334155; padding-top:8px;">
+  Savvy Renter &mdash; savvyrenter.co.uk &middot; free tools for renters &middot;
+  This page runs entirely in your browser. No file you open here is uploaded, stored or sent anywhere.
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.1.4/dist/tesseract.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script>
+/* Bank statement redaction — the desktop app's engine, stripped to one page
+   at a time. Everything happens in this browser tab: the file is read with
+   FileReader, drawn on a canvas, and the black boxes are painted ONTO the
+   picture before it is saved, so there is nothing underneath to recover.
+   Nothing is uploaded. The measurements below are the app's own, ported as
+   they stand — the same row geometry, the same "you click the last word to
+   KEEP", the same rules by kind of payment. */
+
+const RENDER_WIDTH = 1500;
+let base = document.createElement('canvas');
+let rows = [];            // [{ words:[{t,x,y,w,h,conf}], cy, mh }]
+let marks = [];           // the black boxes on this page
+let rules = [];           // rules, kept while this page is open
+let pdfDoc = null, pageCount = 1, fileLabel = '', worker = null, ruleId = 1;
+let pageTag = 0;          // changes with every page; the caches hang off it
+let rowAt = null;         // the row the pointer is over
+let applying = false;
+
+const $ = (id) => document.getElementById(id);
+const say = (msg, bad) => { const el = $('working'); el.textContent = msg || ''; el.className = 'working' + (bad ? ' bad' : ''); };
+const note = (msg) => { const el = $('saveNote'); el.textContent = msg || ''; };
+const esc = (t) => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+/* ====================================================================== */
+/* The app's measurements. Comments kept where they say WHY.              */
+/* ====================================================================== */
+
+function median(a) {
+  if (!a.length) return 0;
+  const b = a.slice().sort((x, y) => x - y);
+  const m = b.length >> 1;
+  return b.length % 2 ? b[m] : (b[m - 1] + b[m]) / 2;
+}
+function norm(t) { return String(t || '').toUpperCase().replace(/[^A-Z0-9]/g, ''); }
+function near(a, b) {                       // one letter wrong: the scan's usual slip
+  if (a === b) return true;
+  if (!a || !b || Math.min(a.length, b.length) < 5 || Math.abs(a.length - b.length) > 1) return false;
+  let i = 0, j = 0, d = 0;
+  while (i < a.length && j < b.length) {
+    if (a[i] === b[j]) { i++; j++; continue; }
+    if (++d > 1) return false;
+    if (a.length > b.length) i++; else if (b.length > a.length) j++; else { i++; j++; }
+  }
+  return d + (a.length - i) + (b.length - j) <= 1;
+}
+const MAX_SKEW_DEG = 3;
+
+/* The words of a row that actually sit on its line. */
+const JUNK_CONF = 45;
+/* A RULED LINE IS NOT A WORD. Under each row of a statement is a printed
+   rule, and the reader takes it for a "word" a thousand pixels wide and
+   fourteen tall at low confidence. Left in, it becomes a row of its own
+   lying between two real rows — and one click on it lays a black bar clean
+   across the page. Punctuation, smudges and low-confidence scraps of one or
+   two characters go the same way. */
+function isJunkWord(w) {
+  const t = String((w && w.t) || '');
+  if (!t.trim()) return true;
+  if (!/[A-Za-z0-9]/.test(t)) return true;
+  if (Number(w.w) > Number(w.h) * 12 && !/[A-Za-z]{2}/.test(t)) return true;
+  const conf = Number(w.conf);
+  const c = Number.isFinite(conf) ? conf : 100;
+  return t.length <= 2 && c < JUNK_CONF;
+}
+function onLine(words) {
+  const ws = words || [];
+  if (ws.length < 2) return ws;
+  const cy = median(ws.map(w => w.y + w.h / 2));
+  const mh = median(ws.map(w => w.h)) || 12;
+  return ws.filter(w => Math.abs((w.y + w.h / 2) - cy) <= mh);
+}
+
+/* Where the money sits, and what may never be covered. If a row's
+   description is redacted its BALANCE must stay fully visible, so the court
+   can check the redacted spend against the balance drop. The amount itself
+   is covered: an intact column of figures can be turned into a story in a
+   hearing, a column reconstructed from balances cannot. A negative balance
+   is still money. */
+const MONEY = /^[-£]{0,2}[\d,]+\.\d{2}(?:-|CR|DR)?$/i;
+function moneyFrom(words) {
+  let from = words.length;
+  for (let i = words.length - 1; i >= 0 && words.length - i <= 3; i--) {
+    if (MONEY.test(String(words[i].t || ''))) from = i; else break;
+  }
+  return from;
+}
+
+/* THE BALANCE COLUMN IS MEASURED FROM THE PAGE, NOT THE ROW. A balance
+   column is right-aligned in the same place on every line, so the rows that
+   came out clean — exactly two trailing figures — give the right edge of the
+   amount column and the left edge of the balance column between them. The
+   line halfway between is a boundary no redaction may cross, whatever one
+   row's reading made of itself. Four clean rows are wanted before the page
+   is trusted to say. */
+let boundFor = null, boundCache = null;
+function colBound() {
+  if (boundFor === pageTag) return boundCache;
+  boundFor = pageTag; boundCache = null;
+  const aR = [], bL = [];
+  rows.forEach(row => {
+    const ws = (row && row.words) || [];
+    if (ws.length < 3) return;
+    const stop = moneyFrom(ws);
+    if (ws.length - stop !== 2) return;
+    aR.push(ws[stop].x + ws[stop].w);
+    bL.push(ws[stop + 1].x);
+  });
+  if (aR.length >= 4) {
+    const a = median(aR), b = median(bL);
+    if (b > a) boundCache = { bal: (a + b) / 2, amt0: Math.min.apply(null, aR) - 10 };
+  }
+  return boundCache;
+}
+
+/* A row in three parts: description, amount, balance. Where a description
+   wraps, the figures print a little below its baseline, so WHAT is covered
+   is decided by column and WHERE the box is drawn is decided by the words
+   themselves — the amount gets a box of its own. A figure the regex cannot
+   read is still a figure: everything past the balance boundary is balance,
+   and the last real word before it standing in the figures column, with a
+   digit in it, is the amount. */
+function rowParts(rawWords) {
+  const raw = (rawWords || []).slice();
+  if (!raw.length) return { desc: [], amt: [], bal: [] };
+  const bnd = colBound();
+  if (!bnd) {
+    const stop = moneyFrom(raw);
+    const tail = raw.slice(stop);
+    const cut = Math.max(0, tail.length - 1);
+    return { desc: onLine(raw.slice(0, stop)), amt: tail.slice(0, cut), bal: tail.slice(cut) };
+  }
+  const bal = [], mid = [];
+  raw.forEach(w => ((w.x + w.w) > bnd.bal ? bal : mid).push(w));
+  const real = w => /[A-Za-z0-9]/.test(String(w.t || ''));
+  let amt = [];
+  for (let i = mid.length - 1; i >= 0; i--) {
+    if (!real(mid[i])) continue;                     // a speck is not the amount
+    const w = mid[i];
+    if ((w.x + w.w) >= bnd.amt0 && /\d/.test(String(w.t || ''))) amt = [w];
+    break;
+  }
+  const body = mid.filter(w => amt.indexOf(w) === -1);
+  return { desc: onLine(body), amt: amt, bal: bal };
+}
+
+/* The box over a run of words: ALONG the text, not across it. Pages are
+   scanned askew, so an upright rectangle tall enough to cover a sloping line
+   eats into the line above. The angle is a line fitted through every word in
+   the span, the height is the median word height plus a quarter, and the
+   tilt is clamped to three degrees — steeper means the span crossed lines.
+   Specks are trimmed off the ends, and a hairline under 40% of the span's
+   median height is not text. */
+function boxOf(ws, pad, hCap) {
+  let src = (ws || []).slice();
+  const speck = (w) => !w || !/[A-Za-z0-9]/.test(String(w.t || ''));
+  while (src.length && speck(src[0])) src.shift();
+  while (src.length && speck(src[src.length - 1])) src.pop();
+  if (src.length > 2) {
+    const hm = median(src.map(w => w.h));
+    src = src.filter(w => w.h >= hm * 0.4);
+  }
+  if (!src.length) return null;
+  const band = src.length > 1 ? onLine(src) : src.slice();
+  if (!band.length) return null;
+  const p = pad || 0;
+  const x1 = Math.min.apply(null, band.map(w => w.x)) - p;
+  const x2 = Math.max.apply(null, band.map(w => w.x + w.w)) + p;
+  let hh = Math.round((median(band.map(w => w.h)) || 12) * 1.25) + (p ? 2 : 0);
+  if (hCap) hh = Math.max(Math.round(hCap * 1.1), Math.min(hh, Math.round(hCap * 1.9)));
+  const cxs = band.map(w => w.x + w.w / 2);
+  const cys = band.map(w => w.y + w.h / 2);
+  const mx = cxs.reduce((s, v) => s + v, 0) / cxs.length;
+  const my = cys.reduce((s, v) => s + v, 0) / cys.length;
+  let num = 0, den = 0;
+  for (let i = 0; i < cxs.length; i++) { num += (cxs[i] - mx) * (cys[i] - my); den += (cxs[i] - mx) * (cxs[i] - mx); }
+  let slope = den ? num / den : 0;
+  let ang = Math.atan(slope) * 180 / Math.PI;
+  if (Math.abs(ang) > MAX_SKEW_DEG) { ang = 0; slope = 0; }
+  const yAt = my + slope * (x1 - mx);
+  const len = (x2 - x1) / Math.cos(ang * Math.PI / 180);
+  return { x: x1, y: yAt - hh / 2, w: len, h: hh, a: ang };
+}
+
+/* One geometry per row, used both to draw it and to work out which row a
+   click belongs to. */
+let bandsFor = null, bandsCache = null;
+function rowBands() {
+  if (bandsFor === pageTag && bandsCache) return bandsCache;
+  bandsFor = pageTag;
+  bandsCache = rows.map(r => {
+    const ws = (r && r.words) || [];
+    if (!ws.length) return null;
+    const band = onLine(ws);
+    if (!band.length) return null;
+    return {
+      x0: Math.min.apply(null, band.map(w => w.x)),
+      x1: Math.max.apply(null, band.map(w => w.x + w.w)),
+      cy: median(band.map(w => w.y + w.h / 2)),
+      mh: median(band.map(w => w.h)) || 12,
+    };
+  });
+  return bandsCache;
+}
+
+/* EVERY ROW OWNS ITS HALF OF THE GAP, where there is a neighbour to share it
+   with — and neighbours are measured in the box's OWN column, because the
+   amounts print a line lower than their description. */
+function clampBox(box, rowIndex) {
+  if (!box) return null;
+  const bands = rowBands();
+  const b = bands[rowIndex];
+  if (!b) return box;
+  const x0 = box.x, x1 = box.x + box.w;
+  const cy = box.y + box.h / 2;
+  let top = cy - b.mh * 2.5, bottom = cy + b.mh * 2.5;
+  rows.forEach((row, i) => {
+    if (i === rowIndex || !row || !bands[i]) return;
+    const ws = (row.words || []).filter(w => w.x < x1 + 4 && w.x + w.w > x0 - 4 && w.h < b.mh * 2);
+    if (!ws.length) return;                          // nothing of theirs in this column
+    const oc = median(ws.map(w => w.y + w.h / 2));
+    if (Math.abs(oc - cy) < b.mh) return;            // same line, not a neighbour
+    if (oc < cy) top = Math.max(top, (oc + cy) / 2);
+    else bottom = Math.min(bottom, (cy + oc) / 2);
+  });
+  const bot = Math.min(box.y + box.h, bottom);
+  const y = Math.max(box.y, top);
+  return { x: box.x, y: y, w: box.w, h: Math.max(6, bot - y), a: box.a };
+}
+
+/* WHICH ROW YOU CLICKED IS A MEASUREMENT, NOT A STACKING ORDER: the row
+   whose text line is nearest, within its own line height, and whose text
+   spans that point across. */
+function rowAtPoint(px, py) {
+  const bands = rowBands();
+  let best = null, bestD = Infinity;
+  bands.forEach((b, i) => {
+    if (!b) return;
+    if (px < b.x0 - 8 || px > b.x1 + 8) return;
+    const d = Math.abs(py - b.cy);
+    if (d > b.mh * 1.4) return;
+    if (d < bestD) { bestD = d; best = i; }
+  });
+  return best;
+}
+
+function isPayment(i) {
+  const ws = (rows[i] && rows[i].words) || [];
+  const t = ws.map(w => String(w.t || '')).join(' ');
+  return /\b(CARD|PAYMENT|PAYPAL|DIRECT DEBIT|STANDING ORDER|FASTER PAYMENT)\b/i.test(t)
+      && !/Account|Sort Code|IBAN|BIC|Telephone/i.test(t);
+}
+function moneyIn(i) {
+  const ws = (rows[i] && rows[i].words) || [];
+  return /\b(CREDIT|RECEIPT|DEPOSIT|REFUND)\b/i.test(ws.map(w => w.t).join(' '));
+}
+function isCheque(i) {                               // a cheque line is the rent: no rule ever touches it
+  const ws = (rows[i] && rows[i].words) || [];
+  return /\bCHEQUE\b/i.test(ws.map(w => w.t).join(' '));
+}
+
+/* Where the money-out figures sit on this page, for a payment whose figure
+   the reading never found. */
+let amtColFor = null, amtCol = null;
+function guessAmtBox(desc) {
+  if (amtColFor !== pageTag) {
+    amtColFor = pageTag; amtCol = null;
+    const xs0 = [], xs1 = [], offs = [], hs = [];
+    rows.forEach((row, i) => {
+      if (!row || !(row.words || []).length || !isPayment(i)) return;
+      const pr = rowParts(row.words);
+      if (!pr.amt.length || !pr.desc.length) return;
+      const a = pr.amt[0];
+      if (!/\d[.,]\d\d/.test(String(a.t || ''))) return;
+      if (/\bCREDIT\b/i.test(row.words.map(w => w.t).join(' '))) return;
+      xs0.push(a.x); xs1.push(a.x + a.w); hs.push(a.h);
+      offs.push((a.y + a.h / 2) - median(onLine(pr.desc).map(w => w.y + w.h / 2)));
+    });
+    if (xs0.length >= 3) {
+      offs.sort((p, q) => p - q);
+      const r = median(xs1), wide = Math.max.apply(null, xs1.map((v, k) => Math.abs(v - r) < 12 ? v - xs0[k] : 0));
+      amtCol = { x0: r - wide, x1: r + 4, h: median(hs), lo: Math.min(0, offs[0]), hi: offs[Math.floor(offs.length * 0.9)] };
+    }
+  }
+  if (!amtCol || !desc || !desc.length) return null;
+  const cy = median(onLine(desc).map(w => w.y + w.h / 2));
+  const c = amtCol;
+  const y0 = cy + c.lo - c.h * 0.8, y1 = cy + c.hi + c.h * 0.8;
+  return { x: c.x0 - 3, y: y0, w: (c.x1 - c.x0) + 6, h: y1 - y0, a: 0 };
+}
+
+/* YOU CLICK THE LAST WORD TO KEEP, not the first to hide. On a PayPal row
+   you click the payee and the payee survives. Two boxes, not one stretched
+   between them: the description along its own line, the amount along its. */
+function spansFor(parts, at, rowIndex) {
+  const desc = (parts && parts.desc) || [];
+  if (at < 0 || at >= desc.length) return null;
+  const rest = desc.slice(at + 1);
+  const cap = median(desc.map(w => w.h)) || 12;
+  const d = clampBox(rest.length ? boxOf(rest, 0, cap) : null, rowIndex);
+  let mb = ((parts.amt || []).length) ? boxOf(parts.amt, 2, cap) : null;
+  if (mb) {
+    const aw = parts.amt[0];
+    const t0 = Math.min(mb.y, aw.y - 2), t1 = Math.max(mb.y + mb.h, aw.y + aw.h + 2);
+    mb = Object.assign({}, mb, { y: t0, h: t1 - t0, a: 0 });
+  }
+  if (!mb && isPayment(rowIndex)) mb = guessAmtBox(desc);
+  const m = clampBox(mb, rowIndex);
+  return (d || m) ? { desc: d, amt: m } : null;
+}
+
+/* A line with no figures on it — the account-number line at the top — is
+   redacted word by word instead. */
+function wordByWord(i) {
+  if (!rows[i]) return false;
+  if (isPayment(i)) return false;
+  const parts = rowParts(rows[i].words || []);
+  const moneyish = w => { const t = String((w && w.t) || ''); return /\d[.,]\d\d/.test(t) || /\d{3,}/.test(t); };
+  return !(parts.amt || []).some(moneyish) && !(parts.bal || []).some(moneyish);
+}
+function singleWords(i) {
+  const ws = (rows[i] && rows[i].words) || [];
+  return onLine(ws.filter(w => /[A-Za-z0-9]/.test(String(w.t || ''))));
+}
+/* A sort code printed as three groups — "09 01 32" — is three separate words,
+   so no rule made of one word can catch it, and nothing was covering it. The
+   first two groups go black and the last one stays: the same thinking as the
+   last four of an account number. */
+function sortTriple(i) {
+  const ds = singleWords(i);
+  const two = k => /^\d{2}$/.test(String((ds[k] || {}).t || ''));
+  for (let k = 0; k + 2 < ds.length; k++) {
+    if (!(two(k) && two(k + 1) && two(k + 2))) continue;
+    const gap = (a, b) => ds[b].x - (ds[a].x + ds[a].w);
+    if (gap(k, k + 1) > ds[k].h * 2 || gap(k + 1, k + 2) > ds[k].h * 2) continue;   // they run along the line
+    const before = ds.slice(Math.max(0, k - 3), k).map(w => norm(w.t)).join(' ');
+    if (!/SORT|CODE/.test(before)) continue;                                        // and are announced as a sort code
+    return [k, k + 1];
+  }
+  return null;
+}
+function longNumber(t) {
+  const m = /^([^\dOIl]?)([\dOIl]{5,})([^\d]*)$/.exec(String(t || ''));
+  return (m && /\d{3}/.test(m[2])) ? m[1].length + m[2].length : 0;
+}
+
+/* ====================================================================== */
+/* The rules — BY KIND OF PAYMENT AND BY POSITION, NOT BY WORD. "CARD     */
+/* PAYMENT" is printed against the card icon and a scan mangles it        */
+/* differently on every line, so a rule made of the words read matches    */
+/* nothing but its own line. A line's kind is told from what reads        */
+/* reliably, and the rule is WHERE ACROSS THE PAGE the cut was made,      */
+/* which on a printed statement is the same on every line of that kind.   */
+/* One rule per kind: cutting another line of the same kind replaces it.  */
+/* ====================================================================== */
+const KIND_NAME = { card: 'Card payments', dd: 'Direct debits', so: 'Standing orders', other: 'Other payments' };
+function rowKind(i) {
+  const ws = (rows[i] && rows[i].words) || [];
+  const t = ws.map(w => String(w.t || '')).join(' ');
+  if (/\bCHEQUE\b/i.test(t)) return 'cheque';
+  if (moneyIn(i)) return 'in';
+  if (/\bSTANDING\b/i.test(t)) return 'so';
+  if (/\b(DEBIT|MANDATE)\b/i.test(t) && !/\bRATE\b/i.test(t)) return 'dd';
+  if (/\bRATE\b|\bGBP\b|\/GBP|\bCARD\b/i.test(t)) return 'card';
+  return isPayment(i) ? 'other' : null;
+}
+function toWordIn(ds) {
+  return ds.findIndex(x => /^TO$/i.test(String(x.t || '')) && x.x > base.width * 0.1);
+}
+/* what was kept, said in words a scan cannot mangle */
+function keptLabel(kind, ds, wordIndex) {
+  const canon = { card: 'CARD PAYMENT', dd: 'DIRECT DEBIT PAYMENT', so: 'STANDING ORDER', other: '' }[kind] || '';
+  const cutX = ds[wordIndex].x + ds[wordIndex].w;
+  const toI = toWordIn(ds);
+  const toW = toI >= 0 ? ds[toI] : null;
+  if (!toW || cutX < toW.x) return canon || ds.slice(0, wordIndex + 1).map(w => w.t).join(' ');
+  const after = ds.filter(w => w.x >= toW.x && w.x + w.w <= cutX + 2).map(w => w.t).join(' ');
+  return (canon ? canon + ' ' : '') + after;
+}
+function recordCut(i, wordIndex) {
+  if (applying) return false;
+  const kind = rowKind(i);
+  if (!kind || kind === 'cheque') return false;
+  const ds = rowParts(rows[i].words || []).desc;
+  const w = ds[wordIndex];
+  if (!w) return false;
+  /* MONEY IN IS RECORDED BY ITS REFERENCE: a credit whose reference rules it
+     out is redacted the same way every time, so it is a decision to repeat,
+     not a pattern guessed at. */
+  if (kind === 'in') {
+    const anchor = norm(w.t), prev = wordIndex > 0 ? norm(ds[wordIndex - 1].t) : '';
+    if (!anchor || prev.length < 2) return false;
+    if (rules.some(r => r.kind === 'cut' && r.type === 'in' && r.anchor === anchor && r.prev === prev)) return false;
+    const label = 'Money in with "' + ds[wordIndex - 1].t + ' ' + w.t + '": keep up to ' + w.t + ', hide the rest';
+    rules.push({ id: ruleId++, kind: 'cut', type: 'in', anchor: anchor, prev: prev, label: label, on: true });
+    rulesChanged('Added to rules: ' + label);
+    return true;
+  }
+  const cutX = Math.round(w.x + w.w);
+  const label = KIND_NAME[kind] + ': keep ' + keptLabel(kind, ds, wordIndex) + ', hide the rest';
+  const had = rules.find(r => r.kind === 'cut' && r.type === kind);
+  if (had && Math.abs(had.cutX - cutX) <= 8) return false;            // the same rule again
+  rules = rules.filter(r => !(r.kind === 'cut' && r.type === kind));  // one rule per kind
+  /* measured from the "TO" of each line where there is one: pages are
+     scanned a few pixels left or right of each other, and a fixed position
+     on its own lets "TO" through */
+  const toI = toWordIn(ds);
+  const rel = toI < 0 ? null : (wordIndex < toI ? -1 : wordIndex - toI);
+  rules.push({ id: ruleId++, kind: 'cut', type: kind, cutX: cutX, rel: rel, label: label, on: true });
+  rulesChanged((had ? 'Rule changed: ' : 'Added to rules: ') + label);
+  return true;
+}
+function recordWord(w) {
+  const text = norm(w.t);
+  if (text.length < 2) return false;            // one stray letter is not a rule
+  if (rules.some(r => r.kind === 'word' && r.text === text)) return false;
+  const n = longNumber(w.t);
+  const label = n ? ('••••' + String(w.t).slice(-4).replace(/[^0-9]/g, '') + ' → all but the last 4')
+                  : ('"' + w.t + '" → hide');
+  rules.push({ id: ruleId++, kind: 'word', text: text, label: label, on: true });
+  if (!applying) rulesChanged('Added to rules: ' + label);
+  return true;
+}
+/* Where two rules match one line, the one that keeps LEAST wins. */
+function ruleMatch(i) {
+  const kind = rowKind(i);
+  if (!kind || kind === 'cheque') return -1;
+  const ds = rowParts(rows[i].words || []).desc;
+  if (kind === 'in') {
+    let best = -1;
+    rules.forEach(r => {
+      if (!r.on || r.kind !== 'cut' || r.type !== 'in') return;
+      for (let k = 1; k < ds.length - 1; k++) {
+        if (best !== -1 && k >= best) break;
+        if (near(norm(ds[k].t), r.anchor) && near(norm(ds[k - 1].t), r.prev)) { best = k; break; }
+      }
+    });
+    return best;
+  }
+  const r = rules.find(x => x.on && x.kind === 'cut' && x.type === kind);
+  if (!r) return -1;
+  const toI = toWordIn(ds);
+  if (r.rel !== null && r.rel !== undefined && toI >= 0) {
+    const k = toI + r.rel;
+    return (k >= 0 && k < ds.length - 1) ? k : -1;
+  }
+  let at = -1;
+  ds.forEach((w, k) => { if (w.x + w.w <= r.cutX + 8) at = k; });
+  return (at >= 0 && at < ds.length - 1) ? at : -1;
+}
+
+/* ---- laying the boxes -------------------------------------------------- */
+/* the cut itself, shared by a click and by the rules */
+function cutRow(rowIndex, wordIndex) {
+  const parts = rowParts(rows[rowIndex].words || []);
+  const spans = spansFor(parts, wordIndex, rowIndex);
+  if (!spans) return false;
+  const keep = parts.desc.slice(0, wordIndex + 1).map(w => w.t).join(' ');
+  const g = 'g' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6) + '-' + rowIndex;
+  marks = marks.filter(m => m.row !== rowIndex);          // a new cut replaces the old one
+  [['description', spans.desc], ['amount', spans.amt]].forEach(pair => {
+    const s = pair[1];
+    if (!s) return;
+    marks.push({ x: s.x, y: s.y, w: s.w, h: s.h, a: s.a, row: rowIndex, from: wordIndex, keep: keep, g: g, part: pair[0] });
+  });
+  return true;
+}
+function cutAt(rowIndex, wordIndex) {
+  if (!cutRow(rowIndex, wordIndex)) { say('Nothing after that word to hide on this row.'); return; }
+  const added = recordCut(rowIndex, wordIndex);
+  rowAt = null; paint();
+  if (!added) say(marks.length + ' redaction box(es) on this page.');
+}
+function wordMark(rowIndex, wordIndex) {
+  const had = marks.findIndex(m => m.row === rowIndex && m.part === 'word' && m.from === wordIndex);
+  if (had !== -1) { const m = marks[had]; marks.splice(had, 1); if (!applying && unrule(m)) { drawRuleList(); paint(); say('Box lifted, and its rule with it.'); return; } }
+  else {
+    const ds = singleWords(rowIndex);
+    const w = ds[wordIndex];
+    if (!w) return;
+    const t = String(w.t || '');
+    const n = longNumber(t);
+    // digits print at an even width, so the last four are that share of it
+    const ww = n ? Math.max(1, Math.round(w.w * (n - 4) / t.length) - 2) : w.w;
+    const cap = median(ds.map(x => x.h)) || 12;
+    const b = clampBox(boxOf([Object.assign({}, w, { w: ww })], 2, cap), rowIndex);
+    if (!b) return;
+    marks.push({ x: b.x, y: b.y, w: b.w, h: b.h, a: b.a, row: rowIndex, from: wordIndex,
+                 part: 'word', keepLast: n ? 4 : 0, g: 'w' + Date.now().toString(36) + '-' + rowIndex });
+    if (!applying && recordWord(w)) { paint(); return; }
+  }
+  if (applying) return;
+  paint();
+  say(marks.length + ' redaction box(es) on this page.');
+}
+
+/* CLICKING A BOX AWAY TAKES ITS RULE WITH IT. A rule is a decision, and the
+   decision is the state you left the row in: click once and it is recorded,
+   click again and it is as though it never happened, so nothing gets set by
+   accident. A box laid BY a rule is left alone — lifting one of those is a
+   change to this page, not to the rule. */
+function unrule(m) {
+  if (!m || m.auto) return false;
+  const before = rules.length;
+  if (m.part === 'box' && m.rule) {
+    rules = rules.filter(r => r.id !== m.rule);
+  } else if (m.part === 'word' && rows[m.row]) {
+    const w = singleWords(m.row)[m.from];
+    if (w) {
+      const t = norm(w.t);
+      const tn = /\d/.test(t) ? t.replace(/O/g, '0').replace(/[IL]/g, '1') : t;
+      rules = rules.filter(r => !(r.kind === 'word' && (r.text === t || r.text === tn ||
+                                  (tn.length >= 6 && /^\d+$/.test(tn) && near(r.text, tn)))));
+      const tr = sortTriple(m.row);
+      if (tr && tr.indexOf(m.from) >= 0) rules = rules.filter(r => r.kind !== 'sort3');
+    }
+  } else if (m.row !== undefined && rows[m.row]) {
+    const kind = rowKind(m.row);
+    if (kind && kind !== 'cheque') {
+      if (kind === 'in') {
+        const ds = rowParts(rows[m.row].words || []).desc;
+        const w = ds[m.from], prev = m.from > 0 ? norm(ds[m.from - 1].t) : '';
+        if (w) rules = rules.filter(r => !(r.kind === 'cut' && r.type === 'in' && r.anchor === norm(w.t) && r.prev === prev));
+      } else {
+        rules = rules.filter(r => !(r.kind === 'cut' && r.type === kind));
+      }
+    }
+  }
+  return rules.length < before;
+}
+function applyRules(auto) {
+  if (!rows.length) return;
+  if (!rules.some(r => r.on)) { if (!auto) say('No rules yet — redact a line and it is recorded as one.'); return; }
+  applying = true;
+  let done = 0;
+  if (!auto) marks = marks.filter(m => !m.auto);     // redo what the rules did; your own cuts are left alone
+  try {
+    rows.forEach((row, i) => {
+      if (!row || !(row.words || []).length) return;
+      if (isCheque(i)) { marks = marks.filter(m => m.row !== i); return; }   // never on the rent
+      if (moneyIn(i) || isPayment(i)) {
+        if (marks.some(m => m.row === i)) return;
+        const k = ruleMatch(i);
+        if (k >= 0 && cutRow(i, k)) { marks.forEach(m => { if (m.row === i) m.auto = true; }); done++; }
+        return;
+      }
+      if (rules.some(r => r.on && r.kind === 'sort3')) {
+        const tr = sortTriple(i);
+        if (tr) tr.forEach(wi => {
+          if (marks.some(m => m.row === i && m.part === 'word' && m.from === wi)) return;
+          wordMark(i, wi); done++;
+        });
+      }
+      const wbw = wordByWord(i);
+      const hits = [];
+      singleWords(i).forEach((w, wi) => {
+        const t = norm(w.t);
+        const tn = /\d/.test(t) ? t.replace(/O/g, '0').replace(/[IL]/g, '1') : t;
+        if (!rules.some(r => r.on && r.kind === 'word' && (r.text === t || r.text === tn || (tn.length >= 6 && /^\d+$/.test(tn) && near(r.text, tn))))) return;
+        if (marks.some(m => m.row === i && m.part === 'word' && m.from === wi)) return;
+        hits.push({ wi: wi, short: tn.length < 4 });
+      });
+      /* off a word-by-word line, a short piece counts only beside another of
+         his pieces — the sort code — never a date on its own */
+      const shorts = hits.filter(h => h.short).length;
+      hits.forEach(h => { if (!wbw && h.short && shorts < 2) return; wordMark(i, h.wi); done++; });
+    });
+    rules.forEach(r => {                              // boxes drawn by hand, by their place on the page
+      if (!r.on || r.kind !== 'box') return;
+      if (marks.some(m => m.rule === r.id)) return;
+      marks.push({ x: r.fx * base.width, y: r.fy * base.height, w: r.fw * base.width, h: r.fh * base.height,
+                   a: 0, part: 'box', auto: true, rule: r.id, g: 'b' + r.id });
+      done++;
+    });
+  } finally { applying = false; }
+  rowAt = null; paint();
+  say('Rules applied: ' + done + ' redaction' + (done === 1 ? '' : 's') + ' made.');
+}
+
+/* ---- the rules row ----------------------------------------------------- */
+function drawRuleList() {
+  const list = $('ruleList');
+  if (!list) return;
+  if (!rules.length) { list.innerHTML = '<span class="rdhint">None yet — every redaction you make is recorded here, and goes on the next page.</span>'; return; }
+  list.innerHTML = rules.map(r =>
+    '<span class="rule' + (r.on ? '' : ' off') + '"><input type="checkbox" ' + (r.on ? 'checked' : '') +
+    ' onchange="toggleRule(' + r.id + ', this.checked)">' +
+    '<span class="what" title="' + esc(r.label) + '">' + esc(r.label) + '</span>' +
+    '<button type="button" title="Remove this rule" onclick="dropRule(' + r.id + ')">×</button></span>').join('');
+}
+function rulesChanged(msg) {
+  drawRuleList(); paint();
+  if (msg) say(msg + ' (' + rules.filter(r => r.on).length + ' rule' + (rules.length === 1 ? '' : 's') + ' on)');
+}
+function toggleRule(id, on) { const r = rules.find(x => x.id === id); if (r) { r.on = on; drawRuleList(); paint(); } }
+function dropRule(id) { rules = rules.filter(x => x.id !== id); drawRuleList(); paint(); }
+
+/* ---- opening a page ---------------------------------------------------- */
+function pickFile(input) {
+  const f = input.files && input.files[0];
+  if (!f) return;
+  fileLabel = f.name.replace(/\.[^.]+$/, '');
+  $('fname').textContent = f.name;
+  marks = []; rows = []; rowAt = null;
+  const r = new FileReader();
+  r.onload = async () => {
+    try {
+      if (/\.pdf$/i.test(f.name)) {
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+        pdfDoc = await pdfjsLib.getDocument({ data: new Uint8Array(r.result) }).promise;
+        pageCount = pdfDoc.numPages;
+        $('pageNo').value = 1;
+        await openPage();
+      } else {
+        pdfDoc = null; pageCount = 1;
+        const img = new Image();
+        img.onload = () => {
+          const sc = RENDER_WIDTH / img.naturalWidth;
+          base.width = Math.round(img.naturalWidth * sc); base.height = Math.round(img.naturalHeight * sc);
+          base.getContext('2d').drawImage(img, 0, 0, base.width, base.height);
+          freshPage(null);
+        };
+        img.src = URL.createObjectURL(f);
+      }
+    } catch (e) { say('That file could not be opened: ' + e.message, true); }
+  };
+  r.readAsArrayBuffer(f);
+}
+async function openPage() {
+  if (!pdfDoc) return;
+  const n = Math.min(Math.max(1, Number($('pageNo').value) || 1), pageCount);
+  $('pageNo').value = n;
+  say('Drawing page ' + n + '…');
+  const page = await pdfDoc.getPage(n);
+  const v1 = page.getViewport({ scale: 1 });
+  const vp = page.getViewport({ scale: RENDER_WIDTH / v1.width });
+  base.width = Math.round(vp.width); base.height = Math.round(vp.height);
+  await page.render({ canvasContext: base.getContext('2d'), viewport: vp }).promise;
+  freshPage(await textWordsOf(page, vp));
+}
+/* A statement downloaded from a bank carries its own text, so there is
+   nothing to guess at. Only a scan or a photograph needs OCR. */
+async function textWordsOf(page, vp) {
+  try {
+    const content = await page.getTextContent();
+    const out = [];
+    content.items.forEach(item => {
+      const str = String(item.str || '');
+      if (!str.trim()) return;
+      const tx = pdfjsLib.Util.transform(vp.transform, item.transform);
+      const h = Math.hypot(tx[2], tx[3]) || 10;
+      const x = tx[4], y = tx[5] - h, w = (item.width || 0) * (vp.scale || 1);
+      if (!(w > 0)) return;
+      const per = w / str.length;
+      let at = 0;
+      str.split(/(\s+)/).forEach(part => {
+        const pw = part.length * per;
+        if (part.trim()) out.push({ t: part, x: x + at, y: y, w: pw, h: h, conf: 95 });
+        at += pw;
+      });
+    });
+    return out.length > 8 ? out : null;
+  } catch (e) { return null; }
+}
+/* Words into rows. A row keeps the centre it was started at and never moves
+   it, so one row cannot creep down the page and swallow the next. */
+function rowsFromWords(ws) {
+  const out = [];
+  ws.filter(w => !isJunkWord(w)).sort((a, b) => ((a.y + a.h / 2) - (b.y + b.h / 2)) || (a.x - b.x)).forEach(w => {
+    const cy = w.y + w.h / 2;
+    let best = null, bd = Infinity;
+    out.forEach(R => { const d = Math.abs(R.cy - cy); if (d < bd) { bd = d; best = R; } });
+    if (best && bd <= Math.min(best.mh, w.h) * 0.6) best.words.push(w);
+    else out.push({ words: [w], cy: cy, mh: w.h });
+  });
+  out.forEach(R => { R.words.sort((a, b) => a.x - b.x); R.mh = median(R.words.map(x => x.h)) || 12; });
+  return out.sort((a, b) => a.cy - b.cy);
+}
+function freshPage(textWords) {
+  rows = []; marks = []; rowAt = null; pageTag++;
+  ['scanBtn', 'applyBtn', 'undoBtn', 'clearBtn', 'pdfBtn', 'pngBtn'].forEach(id => { if ($(id)) $(id).disabled = false; });
+  paint();
+  if (textWords && textWords.length) {
+    rows = rowsFromWords(textWords);
+    afterRead(rows.length + ' lines read from the PDF itself.');
+  } else {
+    say('Page open. Reading it…');
+    scanPage();
+  }
+}
+function afterRead(msg) {
+  autoAccountRules();
+  const had = rules.some(r => r.on);
+  applyRules(true);
+  drawRuleList();
+  paint();
+  say(msg + ' ' + (had ? 'Your rules have been applied.'
+                       : 'Click the LAST WORD YOU WANT TO KEEP on a row — everything after it, and the amount, go black.'));
+}
+/* The account number and the sort code, recorded as rules the first time a
+   page is read, so they are covered on every page after without being asked
+   again. The last four of an account number stay readable: a statement with
+   the number wiped out entirely proves nothing to a court. */
+function autoAccountRules() {
+  const ACCT = /^\d{8}$/, SORT = /^\d{2}[-.\s]?\d{2}[-.\s]?\d{2}$/;
+  applying = true;
+  try {
+    rows.forEach((row, i) => {
+      if (!wordByWord(i)) return;
+      singleWords(i).forEach(w => {
+        const t = String(w.t || '');
+        if (ACCT.test(t.replace(/\s/g, '')) || SORT.test(t)) recordWord(w);
+      });
+      if (sortTriple(i) && !rules.some(r => r.kind === 'sort3'))
+        rules.push({ id: ruleId++, kind: 'sort3', label: 'Sort code in three groups \u2192 first two hidden', on: true });
+    });
+  } finally { applying = false; }
+}
+async function scanPage() {
+  if (!base.width) return;
+  $('scanBtn').disabled = true;
+  try {
+    say('Reading the page… the first time also downloads the reader, which takes a moment.');
+    if (!worker) {
+      worker = await Tesseract.createWorker({ logger: m => { if (m.status === 'recognizing text') say('Reading the page… ' + Math.round(m.progress * 100) + '%'); } });
+      await worker.loadLanguage('eng');
+      await worker.initialize('eng');
+    }
+    const { data } = await worker.recognize(base);
+    pageTag++;
+    const lines = (data.lines || []).filter(L => (L.words || []).length);
+    if (lines.length) {
+      rows = lines.map(L => {
+        const ws = L.words.map(w => ({ t: w.text, x: w.bbox.x0, y: w.bbox.y0, w: w.bbox.x1 - w.bbox.x0, h: w.bbox.y1 - w.bbox.y0, conf: w.confidence }))
+                          .filter(w => w.w > 0 && w.h > 0 && !isJunkWord(w))
+                          .sort((a, b) => a.x - b.x);
+        return { words: ws, cy: median(ws.map(w => w.y + w.h / 2)), mh: median(ws.map(w => w.h)) || 12 };
+      }).filter(R => R.words.length);
+    } else {
+      rows = rowsFromWords((data.words || []).map(w => ({ t: w.text, x: w.bbox.x0, y: w.bbox.y0, w: w.bbox.x1 - w.bbox.x0, h: w.bbox.y1 - w.bbox.y0, conf: w.confidence })));
+    }
+    afterRead(rows.length + ' lines read.');
+  } catch (e) {
+    say('The page could not be read: ' + e.message, true);
+  } finally { $('scanBtn').disabled = false; }
+}
+
+/* ---- painting ---------------------------------------------------------- */
+function fillMark(ctx, m) {
+  ctx.save();
+  ctx.translate(m.x, m.y + m.h / 2);                  // rotate about the left edge, mid height
+  if (m.a) ctx.rotate(m.a * Math.PI / 180);
+  ctx.fillRect(0, -m.h / 2, m.w, m.h);
+  ctx.restore();
+}
+function paint() {
+  const c = $('sheet');
+  c.width = base.width || 10; c.height = base.height || 10;
+  c.style.width = '100%'; c.style.maxWidth = (base.width || 10) + 'px';   // full width of the column
+  const ctx = c.getContext('2d');
+  ctx.drawImage(base, 0, 0);
+  $('sheet').parentNode.classList.toggle('on', base.width > 10);
+  const show = ($('showSugg') || {}).checked;
+  if (show && rows.length) {
+    const bands = rowBands();
+    ctx.strokeStyle = 'rgba(2,132,199,.5)'; ctx.lineWidth = 1; ctx.setLineDash([4, 3]);
+    bands.forEach((b, i) => { if (b && i !== rowAt) ctx.strokeRect(b.x0 - 3, b.cy - b.mh, (b.x1 - b.x0) + 6, b.mh * 2); });
+    ctx.setLineDash([]);
+    if (rowAt !== null && bands[rowAt]) {              // the row under the pointer: every word a target
+      const b = bands[rowAt];
+      ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2;
+      ctx.strokeRect(b.x0 - 4, b.cy - b.mh - 1, (b.x1 - b.x0) + 8, b.mh * 2 + 2);
+      const ds = wordByWord(rowAt) ? singleWords(rowAt) : rowParts(rows[rowAt].words || []).desc;
+      ctx.lineWidth = 1.5; ctx.strokeStyle = 'rgba(56,189,248,.95)';
+      ds.forEach(w => ctx.strokeRect(w.x - 1, w.y - 1, w.w + 2, w.h + 2));
+    }
+  }
+  ctx.fillStyle = '#000';
+  marks.forEach(m => fillMark(ctx, m));
+}
+
+/* ---- the mouse --------------------------------------------------------- */
+function atPoint(e) {
+  const c = $('sheet'), r = c.getBoundingClientRect();
+  return { x: (e.clientX - r.left) * (c.width / r.width), y: (e.clientY - r.top) * (c.height / r.height) };
+}
+function hitMark(p) {
+  for (let i = marks.length - 1; i >= 0; i--) {
+    const m = marks[i];
+    const dx = p.x - m.x, dy = p.y - (m.y + m.h / 2);
+    const ang = -(m.a || 0) * Math.PI / 180;
+    const rx = dx * Math.cos(ang) - dy * Math.sin(ang), ry = dx * Math.sin(ang) + dy * Math.cos(ang);
+    if (rx >= 0 && rx <= m.w && Math.abs(ry) <= m.h / 2) return i;
+  }
+  return -1;
+}
+let drag = null;
+$('sheet').addEventListener('mousemove', (e) => {
+  if (!base.width || drag) return;
+  const p = atPoint(e);
+  const r = rowAtPoint(p.x, p.y);
+  if (r !== rowAt) { rowAt = r; paint(); }
+});
+$('sheet').addEventListener('mouseleave', () => { if (rowAt !== null && !drag) { rowAt = null; paint(); } });
+$('sheet').addEventListener('mousedown', (e) => {
+  if (!base.width) return;
+  const p = atPoint(e);
+  const hit = hitMark(p);
+  if (hit >= 0) {                                      // click a black box to take it off, with its pair
+    const m = marks[hit];
+    const killed = unrule(m);
+    marks = marks.filter(x => x !== m && !(m.g && x.g === m.g));
+    if (killed) { drawRuleList(); paint(); say('Box lifted, and its rule with it \u2014 it will not go on the next page.'); return; }
+    paint(); say(marks.length + ' redaction box(es) on this page.');
+    return;
+  }
+  const i = rowAtPoint(p.x, p.y);
+  if (i !== null) {
+    const wbw = wordByWord(i);
+    const ds = wbw ? singleWords(i) : rowParts(rows[i].words || []).desc;
+    let at = -1;
+    ds.forEach((w, k) => { if (p.x >= w.x - 3 && p.x <= w.x + w.w + 3) at = k; });
+    if (at < 0) ds.forEach((w, k) => { if (w.x + w.w <= p.x) at = k; });   // between words: the last one before the click
+    if (at >= 0) { if (wbw) wordMark(i, at); else cutAt(i, at); return; }
+  }
+  drag = { x0: p.x, y0: p.y, x1: p.x, y1: p.y };
+});
+window.addEventListener('mousemove', (e) => {
+  if (!drag) return;
+  const p = atPoint(e); drag.x1 = p.x; drag.y1 = p.y;
+  paint();
+  const ctx = $('sheet').getContext('2d');
+  ctx.fillStyle = 'rgba(0,0,0,.65)';
+  ctx.fillRect(Math.min(drag.x0, drag.x1), Math.min(drag.y0, drag.y1), Math.abs(drag.x1 - drag.x0), Math.abs(drag.y1 - drag.y0));
+});
+window.addEventListener('mouseup', () => {
+  if (!drag) return;
+  const b = { x: Math.min(drag.x0, drag.x1), y: Math.min(drag.y0, drag.y1), w: Math.abs(drag.x1 - drag.x0), h: Math.abs(drag.y1 - drag.y0) };
+  drag = null;
+  if (b.w < 4 || b.h < 4) { paint(); return; }
+  const id = ruleId++;
+  marks.push({ x: b.x, y: b.y, w: b.w, h: b.h, a: 0, part: 'box', rule: id, g: 'b' + id });
+  /* a box drawn by hand is kept as a share of the page, and laid in the same
+     place on the next one; untick it in the rules row if it was a one-off */
+  rules.push({ id: id, kind: 'box', label: 'Box at the same place on the page', on: true,
+               fx: b.x / base.width, fy: b.y / base.height, fw: b.w / base.width, fh: b.h / base.height });
+  rulesChanged('Added to rules: box at the same place on the page');
+});
+function undoBox() { const m = marks.pop(); if (m && m.g) marks = marks.filter(x => x.g !== m.g); paint(); }
+function clearBoxes() { marks = []; paint(); }
+
+/* ---- keeping it -------------------------------------------------------- */
+function finished() {           // the outlines are guides on screen only: never saved
+  const out = document.createElement('canvas');
+  out.width = base.width; out.height = base.height;
+  const ctx = out.getContext('2d');
+  ctx.drawImage(base, 0, 0);
+  ctx.fillStyle = '#000';
+  marks.forEach(m => fillMark(ctx, m));
+  return out;
+}
+function download(href, name) {
+  const a = document.createElement('a');
+  a.href = href; a.download = name;
+  document.body.appendChild(a); a.click();
+  setTimeout(() => a.remove(), 0);
+}
+function savePage(how) {
+  if (!base.width) return;
+  const c = finished();
+  const stem = (fileLabel || 'statement') + ' page ' + ($('pageNo').value || 1) + ' - redacted';
+  if (how === 'png') { download(c.toDataURL('image/png'), stem + '.png'); note('Saved to your downloads.'); return; }
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit: 'px', format: [c.width, c.height], orientation: c.width > c.height ? 'l' : 'p' });
+  doc.addImage(c.toDataURL('image/png'), 'PNG', 0, 0, c.width, c.height);
+  doc.save(stem + '.pdf');
+  note('Saved to your downloads.');
+}
+function saveRules() {
+  if (!rules.length) { note('There are no rules to save yet.'); return; }
+  const blob = new Blob([JSON.stringify({ app: 'savvyrenter-redaction', version: 2, savedAt: new Date().toISOString(), rules: rules }, null, 1)], { type: 'application/json' });
+  download(URL.createObjectURL(blob), 'redaction rules - Savvy Renter.json');
+  note('Rules saved to your downloads.');
+}
+function loadRules(input) {
+  const f = input.files && input.files[0]; input.value = '';
+  if (!f) return;
+  const r = new FileReader();
+  r.onload = () => {
+    try {
+      const c = JSON.parse(r.result);
+      if (!c || c.app !== 'savvyrenter-redaction') { note('That is not a saved rules file.'); return; }
+      rules = (c.rules || []).map(x => Object.assign({}, x, { id: ruleId++, on: x.on !== false }));
+      drawRuleList();
+      if (rows.length) applyRules(true);
+      paint();
+      note(rules.length + ' rule(s) loaded.');
+    } catch (e) { note('That file could not be read.'); }
+  };
+  r.readAsText(f);
+}
+function openGuide() { $('guideWrap').classList.remove('hidden'); }
+function closeGuide() { $('guideWrap').classList.add('hidden'); }
+window.addEventListener('keydown', e => { if (e.key === 'Escape') closeGuide(); });
+drawRuleList();
+</script>
+
+</body>
+</html>

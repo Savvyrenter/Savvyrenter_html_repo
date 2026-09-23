@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Claim Online workspace — Savvy Renter</title>
+    <link rel="canonical" href="https://www.savvyrenter.co.uk/court_forms_workspace.html">
+    <style>
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.5; color:#e2e8f0; max-width:1180px; margin:0 auto; padding:0 18px 24px; background:#0f172a; }
+  .brand { display:flex; align-items:center; gap:14px; border-bottom:2px solid #334155;
+           padding:12px 0 10px; margin-bottom:14px;
+           position:sticky; top:0; z-index:30; background:#0f172a; }
+  .brand h1 { border:none; padding:0; margin:0; font-size:30px; letter-spacing:-0.2px; }
+  .brand .sub { color:#94a3b8; font-size:13px; margin-top:2px; }
+  .brand .acts { margin-left:auto; display:flex; align-items:center; justify-content:flex-end;
+                 gap:6px; flex-wrap:wrap; }
+  .brand .act { background:#334155; color:#fff; border:none; border-radius:5px; font-size:13px;
+                font-weight:bold; padding:9px 12px; cursor:pointer; font-family:inherit; white-space:nowrap; }
+  .brand .act:hover { background:#475569; }
+  .brand .fbwrap { position:relative; }
+  .brand .savenote { flex-basis:100%; text-align:right; font-size:11px; color:#94a3b8; min-height:14px; margin:0; }
+  .hidden { display:none !important; }
+  .shell { display:flex; gap:20px; align-items:flex-start; }
+  .rail { width:200px; flex:none; position:sticky; top:12px; margin-top:12px;
+          max-height:calc(100vh - 24px); overflow-y:auto; overscroll-behavior:contain; }
+  .tools { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:12px; }
+  .sidelogo { display:block; width:196px; max-width:100%; height:auto; border-radius:10px; margin:14px auto 0; }
+  .tools h3 { margin:0 0 10px; font-size:12px; text-transform:uppercase; letter-spacing:.5px; color:#94a3b8; }
+  .tools a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold; font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .tools a:hover { background:#0369a1; }
+  .tools a.on { background:#38bdf8; color:#0f172a; }
+  .tools .grp { margin-bottom:8px; }
+  .tools .grp > summary { list-style:none; cursor:pointer; background:#1e293b; border:1px solid #475569;
+     color:#e2e8f0; font-weight:bold; font-size:14px; padding:5px 12px; border-radius:5px;
+     display:flex; align-items:center; justify-content:space-between; gap:6px; }
+  .tools .grp > summary::-webkit-details-marker { display:none; }
+  .tools .grp > summary::after { content:"\25BE"; font-size:11px; color:#94a3b8; }
+  .tools .grp[open] > summary::after { content:"\25B4"; }
+  .tools .grp > summary:hover { border-color:#38bdf8; color:#fff; }
+  .tools .grp > summary:focus-visible { outline:2px solid #38bdf8; outline-offset:1px; }
+  .tools .grp[open] > summary { margin-bottom:6px; }
+  .tools .grp a { margin-left:10px; font-size:13px; padding:4px 10px; }
+  .unverified { background:#3b2f0b; border-left:4px solid #f2c94c; color:#f5e6b8;
+     padding:8px 14px; margin:0 0 10px; border-radius:4px; font-size:13px; }
+  .tools .tiny { font-size:11px; color:#94a3b8; margin-top:6px; }
+  .page { flex:1; min-width:0; }
+  @media (max-width:800px) { .shell { display:block; } .rail { width:auto; position:static; margin-bottom:14px; max-height:none; overflow:visible; } .sidelogo { max-width:208px; } }
+  @media (max-width:700px) {
+    body { padding:18px 12px; }
+    .brand { flex-wrap:wrap; }
+    .brand .acts { margin-left:0; justify-content:flex-start; width:100%; }
+    .brand .savenote { text-align:left; }
+  }
+  .pagebar { background:#0b1220; border:1px solid #1e293b; border-radius:6px;
+             padding:5px 12px; margin-bottom:10px; display:flex; align-items:center;
+             justify-content:space-between; gap:14px; font-size:11.5px; }
+  .pagebar a { color:#94a3b8; text-decoration:none; font-weight:bold; letter-spacing:.6px;
+               text-transform:uppercase; white-space:nowrap; }
+  .pagebar a:hover { color:#38bdf8; }
+  .pagebar span { color:#64748b; text-align:right; min-width:0;
+                  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .pagebar .brief { display:none; }
+  @media (max-width:700px) { .pagebar .full { display:none; } .pagebar .brief { display:inline; } }
+/* ---- page-specific, inside the site shell ---- */
+/* Restyled into the Savvy Renter site's own look.
+   The colours were swapped in 513, but the SHAPE was still the government
+   design system: a heavy black masthead, the grey phase banner with its
+   coloured tag, the thick yellow focus ring, the green start button. Those
+   are recognisable patterns in their own right, and the point of this page
+   is that it is plainly ours. So the structure goes too -- same class names,
+   same markup, house furniture.
+   Palette and spacing match tools.html and the other ported tool pages. */
+* { box-sizing: border-box; }
+.page { font-size: 13px; }
+.unverified p { margin: 0 0 6px; font-size: 13px; color: #f5e6b8; }
+.unverified p:last-child { margin-bottom: 0; }
+.unverified a { color: #f2c94c; font-weight: bold; }
+
+
+/* was the phase banner -- now an ordinary note, above its content, tight */
+.phase-banner { margin: 0 0 6px; padding: 7px 12px; background: #1e293b;
+                border-left: 4px solid #38bdf8; border-radius: 4px;
+                font-size: 12px; color: #c9d4e0; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.phase-tag { flex: 0 0 auto; font-size: 10px; font-weight: bold; letter-spacing: .5px;
+             text-transform: uppercase; background: #2a2410; color: #f2c94c;
+             border-radius: 8px; padding: 1px 7px; }
+
+.container { display: flex; gap: 8px; align-items: flex-start; padding: 0; }
+.main-content { flex: 1 1 auto; min-width: 0; }
+.sidebar { flex: 0 0 280px; background: #1e293b; border: 1px solid #334155; border-radius: 5px; padding: 8px 10px; }
+.sidebar h3 { margin: 0 0 2px; font-size: 13px; font-weight: bold; color: #fff; }
+
+.case-header { display: flex; flex-wrap: wrap; gap: 4px 14px; background: #1e293b;
+               border: 1px solid #334155; border-radius: 5px; padding: 6px 10px; margin-bottom: 6px; }
+.case-header p { margin: 0; font-size: 12px; color: #94a3b8; display: flex; align-items: center; gap: 6px; }
+.case-header strong { color: #c9d4e0; font-weight: 600; }
+.case-field { font-weight: normal; background: #0f172a; border: 1px solid #475569; color: #fff;
+              padding: 3px 6px; border-radius: 3px; font-size: 12px; min-width: 190px; }
+.case-field:focus { outline: none; border-color: #38bdf8; }
+
+.tabs { display: flex; gap: 4px; margin-bottom: 6px; }
+.tab-button { background: #1e293b; color: #94a3b8; border: 1px solid #334155; border-radius: 3px;
+              padding: 4px 11px; font-size: 12px; font-weight: bold; cursor: pointer; font-family: inherit; }
+.tab-button:hover { color: #fff; background: #334155; }
+.tab-button.active { background: #f2c94c; border-color: #f2c94c; color: #1a1a1a; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+.tab-content h2 { margin: 0 0 2px; font-size: 14px; font-weight: bold; color: #fff; }
+.tab-content > p { margin: 0 0 6px; font-size: 12px; color: #94a3b8; }
+
+.form-group { margin-bottom: 7px; }
+.form-group label { display: block; font-size: 12.5px; font-weight: 600; color: #c9d4e0; }
+.hint { display: block; font-size: 11px; color: #94a3b8; line-height: 1.35; margin-bottom: 2px; }
+textarea { width: 100%; min-height: 120px; resize: vertical; background: #0f172a; border: 1px solid #475569;
+           color: #fff; padding: 6px 8px; border-radius: 3px; font-size: 12.5px;
+           font-family: inherit; line-height: 1.5; }
+textarea:focus { outline: none; border-color: #38bdf8; }
+.char-count { font-size: 10.5px; color: #64748b; font-family: monospace; text-align: right; margin-top: 1px; }
+
+.radio-group { display: flex; gap: 14px; margin-top: 2px; }
+.radio-item { display: flex; align-items: center; gap: 5px; font-size: 12.5px; color: #e2e8f0; }
+
+.btn { background: #38bdf8; color: #fff; border: none; border-radius: 3px;
+       padding: 5px 13px; font-size: 12px; font-weight: bold; cursor: pointer; font-family: inherit; }
+.btn:hover { background: #0369a1; }
+
+.file-list { list-style: none; margin: 4px 0 0; padding: 0; }
+.file-item { display: flex; align-items: center; gap: 8px; padding: 3px 4px;
+             border-bottom: 1px solid #334155; }
+.file-item:last-child { border-bottom: none; }
+.file-info { flex: 1 1 auto; min-width: 0; }
+.file-info h4 { margin: 0; font-size: 12px; font-weight: 600; color: #e2e8f0; }
+.file-info p { margin: 0; font-size: 11px; color: #94a3b8; }
+.file-item.active .file-info h4 { color: #6fdf9f; }
+.checkbox-action { flex: 0 0 auto; }
+
+.notice-box { margin-top: 8px; background: #1e293b; border: 1px solid #334155;
+              border-radius: 4px; padding: 6px 9px; }
+.notice-box h4 { margin: 0 0 2px; font-size: 12px; font-weight: bold; color: #fff; }
+.notice-box p { margin: 0; font-size: 11.5px; color: #94a3b8; line-height: 1.45; }
+
+@media (max-width: 820px) { .container { flex-direction: column; } .sidebar { flex: 1 1 auto; width: 100%; } }
+
+  /* ---- Site menu: the fly-out layout, in our own styling ---------------- */
+  /* Fixed sidebar down the left, categories that fly out on hover or keyboard
+     focus. The card, the blue pill links and the colours are the site's own. */
+  .rail { position:fixed; top:0; left:0; width:236px; height:100vh; box-sizing:border-box;
+          padding:14px 12px; overflow:visible; background:#0f172a;
+          display:flex; flex-direction:column; max-height:none; z-index:2000; }
+  .tools { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:12px; }
+  .tools > a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold;
+               font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .tools > a:hover { background:#0369a1; }
+  .tools > a.on { background:#38bdf8; color:#0f172a; }
+  .navlist { list-style:none; margin:0; padding:0; }
+  .navitem { position:relative; margin-bottom:8px; }
+  .navitem > .navcat { display:flex; align-items:center; justify-content:space-between; gap:8px;
+                       background:#1e293b; border:1px solid #475569; border-radius:5px; color:#e2e8f0;
+                       font-size:13px; font-weight:600; padding:5px 10px; cursor:pointer; user-select:none; }
+  .navitem > .navcat::after { content:"\25B8"; font-size:11px; color:#94a3b8; }
+  .navitem:hover > .navcat, .navitem:focus-within > .navcat { background:#334155; border-color:#0284c7; color:#fff; }
+  .navitem.here > .navcat { border-color:#38bdf8; color:#38bdf8; }
+  .flyout { visibility:hidden; opacity:0;
+            transition:visibility 0s linear .4s, opacity .12s ease .4s;
+            position:absolute; top:50%; transform:translateY(-50%); left:100%; margin-left:10px; width:246px;
+            max-height:92vh; overflow-y:auto; list-style:none; padding:12px; margin-bottom:0;
+            background:#1e293b; border:1px solid #334155; border-left:3px solid #0284c7;
+            border-radius:8px; box-shadow:6px 4px 18px rgba(0,0,0,.5); z-index:2001; }
+  .navitem:hover > .flyout, .navitem:focus-within > .flyout, .flyout:hover { visibility:visible; opacity:1; transition-delay:0s; }
+  /* The gap between the row and its fly-out belongs to the row, so crossing it
+     at any angle keeps the menu open; the fly-out then holds itself open. */
+  .navitem > .flyout::before { content:''; position:absolute; top:-40px; bottom:-40px; left:-26px; width:26px; }
+  .navitem::after { content:''; position:absolute; top:-6px; bottom:-6px; left:100%; width:28px; }
+  .flyout a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold;
+              font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .flyout li:last-child a { margin-bottom:0; }
+  .flyout a:hover { background:#0369a1; }
+  .flyout a.on { background:#38bdf8; color:#0f172a; }
+  .sidelogo { display:block; width:196px; max-width:100%; height:auto; border-radius:10px; margin:14px auto 0; }
+  .shell { display:block; }
+  main.page, .page { margin-left:252px; max-width:none; position:relative; z-index:1; }
+  /* Narrow windows and phones: the sidebar stops being fixed and every item is
+     listed openly, so nothing has to be hovered to be found. */
+  @media (max-width:860px) {
+    .rail { position:static; width:auto; height:auto; padding:0; display:block; z-index:auto; }
+    main.page, .page { margin-left:0; }
+    .navitem > .navcat::after { content:""; }
+    .flyout, .navitem.resitem > .flyout { visibility:visible; opacity:1; pointer-events:auto; position:static; transform:none; width:auto; margin:8px 0 0; max-height:none; inset:auto;
+              border-left:1px solid #334155; box-shadow:none; }
+  }
+  /* Other resources: the row is a link to the page, and the fly-out carries the
+     links themselves, so nothing needs two clicks to reach. */
+  .navitem > a.navcat { text-decoration:none; }
+  .navitem.resitem { position:static; }
+  /* The long one is pinned to the window instead, so all 39 links stay on screen. */
+  .navitem.resitem > .flyout { position:fixed; top:2vh; bottom:2vh; left:221px; margin-left:0; transform:none; max-height:none; }
+  .flyout.wide { width:300px; max-height:94vh; }
+  .flyout .sect { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.6px;
+                  color:#94a3b8; margin:10px 2px 5px; }
+  .flyout a.hot { background:#15803d; }
+  .flyout a.hot:hover { background:#166534; }
+  .flyout a.ext { background:#0f172a; border:1px solid #334155; color:#e2e8f0; font-weight:600;
+                  font-size:12.5px; padding:4px 10px; margin-bottom:4px; }
+  .flyout a.ext:hover { background:#334155; border-color:#0284c7; color:#fff; }
+  .flyout a.ext::after { content:" \2197"; color:#94a3b8; font-size:11px; }
+  /* A category inside a fly-out: the Redaction Suite sits under Financial Tools,
+     so what it redacts is said by where it lives. Its parent must not clip it. */
+  .flyout.hassub { overflow:visible; max-height:none; }
+  .flyout .navitem.sub { margin:2px 0 0; }
+  .flyout .navitem.sub > .navcat { background:#0f172a; }
+  .flyout .navitem.sub > .flyout { margin-left:14px; }
+  /* keep the long one in the flow on a phone (this comes last on purpose) */
+  @media (max-width:860px) { .navitem.resitem > .flyout { position:static; inset:auto; transform:none; } }
+  @media print { .rail { display:none !important; } main.page, .page { margin-left:0; } }
+</style>
+</head>
+<body>
+<div class="shell">
+<div class="rail"><aside class="tools"><a href="index.html">Home</a><ul class="navlist"><li class="navitem"><span class="navcat" tabindex="0">Location</span><ul class="flyout"><li><a href="area.html">What rent costs here</a></li><li><a href="counciltax.html">Council tax here</a></li></ul></li><li class="navitem"><span class="navcat" tabindex="0">Tenancy &amp; Rent</span><ul class="flyout"><li><a href="moving-in_audit.html">Moving in audit</a></li></ul></li><li class="navitem"><span class="navcat" tabindex="0">Financial Tools</span><ul class="flyout hassub"><li><a href="interest.html">Interest owed to you</a></li><li><a href="arrears.html">Paying off arrears</a></li><li><a href="benefits.html">Benefit entitlements</a></li><li><a href="incoming-benefit-calc.html">Record of income</a></li><li class="navitem sub"><span class="navcat" tabindex="0">Redaction Suite</span><ul class="flyout"><li><a href="bank-statement-redaction.html" class="hot">⚡ Redact a statement page</a></li><li><a href="bank-statement-split.html">Split a PDF into pages</a></li><li><a href="bank-statement-rename.html">Name statements by date</a></li></ul></li></ul></li><li class="navitem here"><span class="navcat" tabindex="0">Complaints &amp; Claims</span><ul class="flyout"><li><a href="scrubber.html">🔍 Web page data scrubber</a></li><li><a href="PRS_Tenant_Workspace.html">PRS complaint</a></li><li><a href="TPO_Tenant_Workspace.html">TPO complaint</a></li><li><a href="court_forms_workspace.html" class="on">Money Claim Online</a></li></ul></li><li class="navitem resitem"><a class="navcat" href="resources.html">Data &amp; Resources</a><ul class="flyout wide"><li><a href="resources.html">Other resources — the page</a></li><li class="sect">Certificates and safety</li><li><a class="ext" href="https://www.gov.uk/find-energy-certificate" target="_blank" rel="noopener">Energy Performance Certificate</a></li><li><a class="ext" href="https://www.scottishepcregister.org.uk/" target="_blank" rel="noopener">EPC register</a></li><li><a class="ext" href="https://www.gassaferegister.co.uk/find-an-engineer-or-check-the-register/" target="_blank" rel="noopener">Gas Safe Register</a></li><li><a class="ext" href="https://www.niceic.com/find-a-contractor" target="_blank" rel="noopener">Electrical safety</a></li><li><a class="ext" href="https://search.napit.org.uk/" target="_blank" rel="noopener">NAPIT</a></li><li><a class="ext" href="https://www.electricalsafetyfirst.org.uk/" target="_blank" rel="noopener">Electrical Safety First</a></li><li><a class="ext" href="https://www.gov.uk/government/publications/how-to-rent" target="_blank" rel="noopener">How to Rent</a></li><li class="sect">Deposits</li><li><a class="ext" href="https://www.gov.uk/tenancy-deposit-protection" target="_blank" rel="noopener">Tenancy deposit protection</a></li><li><a class="ext" href="https://www.depositprotection.com/" target="_blank" rel="noopener">Deposit Protection Service</a></li><li><a class="ext" href="https://www.tenancydepositscheme.com/" target="_blank" rel="noopener">Tenancy Deposit Scheme</a></li><li><a class="ext" href="https://www.mydeposits.co.uk/" target="_blank" rel="noopener">mydeposits</a></li><li class="sect">Who owns and who manages</li><li><a class="ext" href="https://find-and-update.company-information.service.gov.uk/" target="_blank" rel="noopener">Companies House</a></li><li><a class="ext" href="https://www.gov.uk/search-property-information-land-registry" target="_blank" rel="noopener">HM Land Registry</a></li><li><a class="ext" href="https://www.tpos.co.uk/" target="_blank" rel="noopener">Property Ombudsman</a></li><li><a class="ext" href="https://www.theprs.co.uk/" target="_blank" rel="noopener">Property Redress Scheme</a></li><li><a class="ext" href="https://www.rentsmart.gov.wales/" target="_blank" rel="noopener">Rent Smart Wales</a></li><li><a class="ext" href="https://www.landlordregistrationscotland.gov.uk/" target="_blank" rel="noopener">Scottish Landlord Register</a></li><li><a class="ext" href="https://www.london.gov.uk/programmes-strategies/housing-and-land/improving-private-rented-sector/rogue-landlord-and-agent-checker" target="_blank" rel="noopener">London rogue landlord and agent checker</a></li><li><a class="ext" href="https://www.gov.uk/find-local-council" target="_blank" rel="noopener">Find your local council</a></li><li class="sect">Rent, notices and the law</li><li><a class="ext" href="https://www.gov.uk/private-renting/rent-increases" target="_blank" rel="noopener">Rent increases</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1988/50/section/13" target="_blank" rel="noopener">Housing Act 1988</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2019/4" target="_blank" rel="noopener">Tenant Fees Act 2019</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1985/70/section/11" target="_blank" rel="noopener">Landlord and Tenant Act 1985</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2018/34" target="_blank" rel="noopener">Homes Act 2018</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1977/43" target="_blank" rel="noopener">Protection from Eviction Act 1977</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2015/20" target="_blank" rel="noopener">Deregulation Act 2015</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1984/28/section/69" target="_blank" rel="noopener">County Courts Act 1984</a></li><li><a class="ext" href="https://www.legislation.gov.uk/all?title=Renters%27%20Rights%20Act" target="_blank" rel="noopener">Renters' Rights Act</a></li><li class="sect">Taking it further</li><li><a class="ext" href="https://buntool.co.uk/" target="_blank" rel="noopener">BunTool</a></li><li><a class="ext" href="https://www.gov.uk/make-court-claim-for-money" target="_blank" rel="noopener">Make a court claim for money</a></li><li><a class="ext" href="https://www.moneyclaim.gov.uk/" target="_blank" rel="noopener">Money Claim Online</a></li><li><a class="ext" href="https://www.gov.uk/get-help-with-court-fees" target="_blank" rel="noopener">Help with court fees</a></li><li><a class="ext" href="https://www.gov.uk/government/collections/county-court-forms" target="_blank" rel="noopener">County court forms</a></li><li><a class="ext" href="https://www.gov.uk/housing-tribunals" target="_blank" rel="noopener">Housing tribunals</a></li><li><a class="ext" href="https://www.housing-ombudsman.org.uk/" target="_blank" rel="noopener">Housing Ombudsman</a></li><li class="sect">Free advice</li><li><a class="ext" href="https://england.shelter.org.uk/housing_advice" target="_blank" rel="noopener">Shelter</a></li><li><a class="ext" href="https://www.citizensadvice.org.uk/housing/" target="_blank" rel="noopener">Citizens Advice</a></li><li><a class="ext" href="https://www.lawcentres.org.uk/" target="_blank" rel="noopener">Law Centres Network</a></li><li><a class="ext" href="https://www.advicenow.org.uk/" target="_blank" rel="noopener">Advicenow</a></li></ul></li></ul></aside><img class="sidelogo" src="SavvyRenter-sml.png" alt="Savvy Renter"></div><main class="page">
+<div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
+
+<div class="brand"><div><h1>Money Claim Online Workspace</h1><div class="sub">Draft it here at your own pace · paste it into the real service when it is ready</div></div></div>
+
+    <div class="phase-banner">
+        <span class="phase-tag">DRAFTING SPACE</span>
+        <span>An independent drafting space for people using the Money Claim Online service. Not connected to, or endorsed by, Money Claim Online, HM Courts &amp; Tribunals Service or any court service. Nothing here is submitted anywhere.</span>
+    </div>
+
+    <div class="unverified"><p><b>Untested, unverified and possibly incomplete.</b> This workspace has not been checked end to end against the live service. Treat everything it produces as a draft, and check it against the real form before you rely on it.</p><p><b>Found a step we have not covered?</b> If the real service asks you something this page does not, send us that page &mdash; but <b>save it before you type anything into it</b>. An empty form has nothing personal in it to take out, which makes this safe and easy: press Ctrl+S (Cmd+S on a Mac), choose &ldquo;Webpage, complete&rdquo;, and then carry on and fill it in as normal. Do that at each new step, and when you are finished put the saved pages in a zip file and email them to <span id="cfMail">us</span>. If you only think of it after filling a page in, run it through our <a href="scrubber.html">web page data scrubber</a> first &mdash; it takes out your answers, your contact details and your claim number, shows you every change it makes, and never uploads the file anywhere. Worth doing even with a blank page: your claim number is usually in the web address at the top, which gets saved with it. We aim to have a missing step written and on the site within a couple of days, so the next person through gets an easier time of it — but this is a volunteer project run in whatever spare time there is, so that is an aim and not a promise. Real life very often gets in the way.</p></div>
+
+    <div class="container">
+        <div class="main-content">
+            <div class="case-header">
+                <p><strong>Claim number:</strong> <input type="text" id="case-number" placeholder="as shown on your claim form" class="case-field"></p>
+                <p><strong>Claimant:</strong> <input type="text" id="case-claimant" placeholder="your name" class="case-field"></p>
+                <p><strong>Defendant:</strong> <input type="text" id="case-defendant" placeholder="who you are claiming against" class="case-field"></p>
+            </div>
+
+            <div class="tabs">
+                <button class="tab-button active" onclick="switchTab(event, 'tab-n181')">Directions Questionnaire (N181)</button>
+                <button class="tab-button" onclick="switchTab(event, 'tab-summary')">Summary Judgment (N244)</button>
+            </div>
+            <!-- TAB 1: DIRECTIONS QUESTIONNAIRE -->
+            <div id="tab-n181" class="tab-content active">
+                <h2>Directions Questionnaire (Form N181)</h2>
+                <p>Draft your answers here in plain English, at your own pace, then copy them into the real form when you are ready.</p>
+                
+                <div class="form-group">
+                    <label>Section D: Additional Support, Health Needs &amp; Vulnerabilities</label>
+                    <span class="hint">State any physical or mental health needs that require adjustments from the court manager or judge.</span>
+                    <textarea id="vulnerability-input" oninput="updateCount('vulnerability-input', 'vulnerability-count', 4000)" placeholder="Any adjustments you need, in your own words..."></textarea>
+                    <div class="char-count" id="vulnerability-count">4000 characters remaining</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Section E: Special Applications or Technical Requirements</label>
+                    <span class="hint">Anything the court needs to know about how you will take part, or any application you are making alongside the claim.</span>
+                    <textarea id="tech-input" oninput="updateCount('tech-input', 'tech-count', 2000)" placeholder="Any special arrangements or applications..."></textarea>
+                    <div class="char-count" id="tech-count">2000 characters remaining</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Do you request that this case be allocated to the Small Claims Track?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="track-yes" name="track" checked>
+                            <label for="track-yes" style="font-weight: normal; font-size: 16px; margin: 0; padding-left: 5px;">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="track-no" name="track">
+                            <label for="track-no" style="font-weight: normal; font-size: 16px; margin: 0; padding-left: 5px;">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn" onclick="alert('This is a drafting space \u2014 copy your text out before you close the page.')">Save Draft Layout</button>
+            </div>
+
+            <!-- TAB 2: SUMMARY JUDGMENT -->
+            <div id="tab-summary" class="tab-content">
+                <h2>Summary Judgment Application (Form N244)</h2>
+                <p>Draft your grounds here. Summary judgment is dealt with under CPR Part 24 — check the rule and the current form before you rely on this.</p>
+
+                <div class="form-group">
+                    <label>Section 10: Evidence in Support / Grounds for Application</label>
+                    <span class="hint">Set out the evidence you rely on and why you say the other side has no real prospect of succeeding.</span>
+                    <textarea id="n244-input" oninput="updateCount('n244-input', 'n244-count', 8000)" placeholder="Your grounds and the evidence behind them..."></textarea>
+                    <div class="char-count" id="n244-count">8000 characters remaining</div>
+                </div>
+
+                <button class="btn" onclick="alert('This is a drafting space \u2014 copy your text out before you close the page.')">Save Draft Layout</button>
+            </div>
+        </div>
+
+        <aside class="sidebar">
+            <h3>Evidence checklist</h3>
+            <p class="hint">Tick each one off as you check it, so you can see at a glance what is ready and what is not. These are examples — use whatever exhibits your own case has.</p>
+            
+            <ul class="file-list">
+                <li class="file-item" id="item-ex-a">
+                    <div class="file-info">
+                        <h4>Exhibit A: Foundation document</h4>
+                        <p>The contract or agreement the case rests on</p>
+                    </div>
+                    <input type="checkbox" class="checkbox-action" onchange="toggleFile('item-ex-a', this)">
+                </li>
+                <li class="file-item" id="item-ex-d">
+                    <div class="file-info">
+                        <h4>Exhibit B: Financial records</h4>
+                        <p>Statements, receipts or proof of payment</p>
+                    </div>
+                    <input type="checkbox" class="checkbox-action" onchange="toggleFile('item-ex-d', this)">
+                </li>
+                <li class="file-item" id="item-ex-i">
+                    <div class="file-info">
+                        <h4>Exhibit C: Calculations</h4>
+                        <p>Any schedule of sums claimed</p>
+                    </div>
+                    <input type="checkbox" class="checkbox-action" onchange="toggleFile('item-ex-i', this)">
+                </li>
+                <li class="file-item" id="item-ex-k">
+                    <div class="file-info">
+                        <h4>Exhibit D: Correspondence</h4>
+                        <p>The letters or emails you rely on</p>
+                    </div>
+                    <input type="checkbox" class="checkbox-action" onchange="toggleFile('item-ex-k', this)">
+                </li>
+                <li class="file-item" id="item-ex-l">
+                    <div class="file-info">
+                        <h4>Exhibit E: Compliance records</h4>
+                        <p>Certificates, inspections or notices</p>
+                    </div>
+                    <input type="checkbox" class="checkbox-action" onchange="toggleFile('item-ex-l', this)">
+                </li>
+            </ul>
+
+            <div class="notice-box">
+                <h4>Your data</h4>
+                <p>Nothing typed here leaves this page.</p>
+                <p>Nothing is sent to a court or anyone else.</p>
+                <p>Close the page and it is gone — copy your text out first.</p>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        (function () {
+            var who = ['feedback', 'savvyrenter.co.uk'].join('@');
+            var el = document.getElementById('cfMail');
+            if (el) el.innerHTML = '<a href="mailto:' + who +
+                '?subject=Money%20Claim%20Online%20-%20a%20step%20you%20have%20not%20covered">' + who + '</a>';
+        })();
+        function switchTab(evt, tabId) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabId).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        function updateCount(inputId, countId, maxChars) {
+            var input = document.getElementById(inputId);
+            var countDisplay = document.getElementById(countId);
+            var remaining = maxChars - input.value.length;
+            
+            countDisplay.textContent = remaining + " characters remaining";
+            
+            if (remaining < 0) {
+                countDisplay.style.color = "var(--ui-red)";
+                countDisplay.style.fontWeight = "bold";
+            } else {
+                countDisplay.style.color = "var(--ui-text-grey)";
+                countDisplay.style.fontWeight = "normal";
+            }
+        }
+
+        function toggleFile(itemId, checkbox) {
+            var element = document.getElementById(itemId);
+            if (checkbox.checked) {
+                element.className = "file-item done";
+            } else {
+                element.className = "file-item";
+            }
+        }
+    </script>
+</main>
+</div>
+    <div style="max-width:1100px; margin:18px auto 30px; padding:0 18px; font-size:12px; color:#94a3b8; line-height:1.5; border-top:1px solid #334155; padding-top:8px;">
+        Savvy Renter &mdash; savvyrenter.co.uk &middot; free tools for renters &middot;
+        Not connected to, or endorsed by, HM Courts &amp; Tribunals Service or any court service.
+        This page drafts text for you to copy; it submits nothing. Check the current form and rules before you rely on anything here.
+    </div>
+</body>
+</html>

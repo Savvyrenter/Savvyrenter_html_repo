@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interest owed to you — Savvy Renter</title>
+<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#0f172a">
+<meta name="description" content="Work out exactly what you are owed on rent you have overpaid, payment by payment, with interest at 8% under s.69 County Courts Act 1984. Produces a dated statement you can print for court. Nothing you type is stored or sent anywhere.">
+<link rel="canonical" href="https://www.savvyrenter.co.uk/interest.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Savvy Renter">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Rent overpayment interest calculator — Savvy Renter">
+<meta property="og:description" content="Work out exactly what you are owed on rent you have overpaid, payment by payment, with interest at 8% under s.69 County Courts Act 1984. Produces a dated statement you can print for court. Nothing you type is stored or sent anywhere.">
+<meta property="og:url" content="https://www.savvyrenter.co.uk/interest.html">
+<meta property="og:image" content="https://www.savvyrenter.co.uk/og-image.png">
+<meta property="og:image:secure_url" content="https://www.savvyrenter.co.uk/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Savvy Renter — free calculators for renters">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Rent overpayment interest calculator — Savvy Renter">
+<meta name="twitter:description" content="Work out exactly what you are owed on rent you have overpaid, payment by payment, with interest at 8% under s.69 County Courts Act 1984. Produces a dated statement you can print for court. Nothing you type is stored or sent anywhere.">
+<meta name="twitter:image" content="https://www.savvyrenter.co.uk/og-image.png">
+<style>
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.5; color:#e2e8f0; max-width:960px; margin:0 auto; padding:24px 18px; background:#0f172a; }
+  h1 { color:#f8fafc; border-bottom:2px solid #334155; padding-bottom:10px; font-size:24px; margin-top:0; }
+  h2 { color:#f1f5f9; font-size:18px; margin:22px 0 6px; border-bottom:1px solid #334155; padding-bottom:6px; }
+  .intro, .note { background:#1e293b; border-left:4px solid #38bdf8; padding:10px 14px; margin:0 0 14px; border-radius:4px; font-size:14px; color:#c9d4e0; }
+  .note.warn { border-left-color:#fbbf24; color:#fde68a; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:10px 16px; }
+  /* build 610 -- rate and Paid to share one cell, so the form does not grow a row */
+  .duo { display:grid; grid-template-columns:110px 1fr; gap:10px; }
+  .duo input { width:100%; }
+  .field { background:#1e293b; padding:10px 12px; border-radius:6px; border:1px solid #334155; }
+  label { display:block; font-weight:600; margin-bottom:5px; font-size:13px; color:#94a3b8; }
+  input, select { padding:7px 8px; border:1px solid #475569; border-radius:5px; font-size:14px; background:#0f172a; color:#f8fafc; box-sizing:border-box; }
+  input:focus, select:focus { outline:none; border-color:#38bdf8; box-shadow:0 0 0 3px rgba(56,189,248,.15); }
+  .dsel { display:inline-flex; gap:4px; }
+  .dsel select { padding:7px 4px; }
+  button { background:#0284c7; color:#fff; padding:10px 20px; border:none; border-radius:5px; font-size:15px; cursor:pointer; font-weight:bold; }
+  button:hover { background:#0369a1; }
+  button.secondary { background:#334155; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:10px; margin:14px 0; }
+  .card { background:#1e293b; padding:12px; border:1px solid #334155; border-radius:8px; text-align:center; }
+  .card div:first-child { font-size:12px; text-transform:uppercase; letter-spacing:.5px; color:#94a3b8; font-weight:600; }
+  .card .value { font-size:22px; font-weight:700; color:#f8fafc; margin-top:4px; }
+  .card.total { border-top:4px solid #38bdf8; } .card.total .value { color:#38bdf8; }
+  table { width:100%; border-collapse:collapse; margin-top:8px; background:#1e293b; font-size:13px; border:1px solid #334155; }
+  th, td { padding:6px 10px; border-bottom:1px solid #334155; text-align:right; white-space:nowrap; }
+  th.l, td.l { text-align:left; }
+  th { background:#334155; color:#f8fafc; }
+  .hidden { display:none !important; }
+  /* Build: every date control on the page is the same grid, so the day,
+     month and year boxes line up down the form however they are labelled. */
+  .dsel select[data-p=d] { width:58px; }
+  .dsel select[data-p=m] { width:70px; }
+  .dsel select[data-p=y] { width:78px; }
+  .ongo { display:flex; align-items:center; gap:8px; margin:8px 0 0; font-weight:600; font-size:13px; color:#94a3b8; cursor:pointer; }
+  .ongo input { width:18px; height:18px; margin:0; accent-color:#38bdf8; cursor:pointer; }
+  /* Payment method. Mixed unlocks multi-select; otherwise one at a time. */
+  .pmgrid { display:grid; grid-template-columns:1fr 1fr; gap:2px 10px; margin-top:4px; }
+  .pmgrid label { display:flex; align-items:center; gap:7px; font-size:12.5px; font-weight:600; color:#cbd5e1; cursor:pointer; margin:0; padding:1px 0; }
+  .pmgrid input { width:16px; height:16px; margin:0; accent-color:#38bdf8; cursor:pointer; flex:none; }
+  .pmgrid label.mixed { grid-column:1 / -1; color:#38bdf8; border-bottom:1px solid #334155; padding-bottom:3px; margin-bottom:2px; }
+  /* Dates that have not arrived yet: readable, but plainly not yet real. */
+  .fut, .fut td, tr.fut td { color:#7c8ba1; }
+  tr.fut td b { color:#8fa3bd; }
+  /* The period we are standing in, and today itself, stay in the live
+     colour — everything past them is grey. */
+  tr.now td { color:#e2e8f0; }
+  tr.now td b { color:#f8fafc; }
+  tr.today td { color:#38bdf8; font-weight:600; }
+  tr.today td b { color:#38bdf8; }
+  .todaytag { font-size:10.5px; font-weight:700; color:#0f172a; background:#38bdf8; border-radius:3px; padding:1px 5px; margin-left:7px; }
+  .daymonth { margin-top:14px; }
+  .daymonth h3 { font-size:14px; color:#cbd5e1; margin:0 0 4px; border-bottom:1px solid #334155; padding-bottom:3px; }
+  table.day td, table.day th { padding:3px 10px; }
+  /* Jump links. Real anchors, so they work on the page for certain and
+     carry into the saved PDF as internal links where the browser supports
+     it; where it does not, the month name is still printed beside the row. */
+  a.jump { color:inherit; text-decoration:none; border-bottom:1px dotted #64748b; }
+  a.jump:hover { color:#38bdf8; border-bottom-color:#38bdf8; }
+  .monthindex { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0 2px; }
+  .monthindex a { background:#1e293b; border:1px solid #334155; border-radius:4px; padding:4px 9px; font-size:12.5px; color:#cbd5e1; text-decoration:none; }
+  .monthindex a:hover { border-color:#38bdf8; color:#38bdf8; }
+  .backup { font-size:11.5px; color:#64748b; text-decoration:none; border-bottom:1px dotted #475569; margin-left:10px; font-weight:normal; }
+  .backup:hover { color:#38bdf8; }
+  .endbar { display:flex; gap:10px; align-items:center; margin:18px 0 0; }
+  /* Advanced mode — the cleared date of each payment. */
+  .adv .advrow { display:flex; align-items:flex-start; gap:9px; }
+  .adv input[type=checkbox] { width:18px; height:18px; margin:1px 0 0; accent-color:#38bdf8; flex:none; cursor:pointer; }
+  .adv .advtxt { font-size:12px; color:#94a3b8; line-height:1.45; }
+  #clearedBox { background:#1e293b; border:1px solid #334155; border-radius:6px; padding:10px 12px; margin:12px 0 0; }
+  #clearedBox .ch { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:6px; }
+  #clearedBox .ch b { color:#f8fafc; font-size:14px; }
+  #clearedBox .ch span { font-size:12px; color:#94a3b8; }
+  #clearedList { max-height:420px; overflow-y:auto; }
+  .crow { display:flex; align-items:center; gap:8px; padding:2px 0; border-bottom:1px solid #26364a; }
+  .crow:last-child { border-bottom:none; }
+  .cn { font-size:11px; color:#64748b; font-family:monospace; width:34px; flex:none; text-align:right; }
+  .cm { font-size:12px; color:#94a3b8; width:74px; flex:none; }
+  /* Seven fixed slots, so the days line up in columns all the way down
+     the list however wide the label is ("1" against "29 May"). */
+  .cdays { display:grid; grid-template-columns:repeat(7, 60px); gap:3px; flex:none; }
+  .cd { background:#0f172a; border:1px solid #334155; color:#cbd5e1; border-radius:4px; font-size:12px; padding:3px 2px; cursor:pointer; line-height:1.2; text-align:center; box-sizing:border-box; }
+  .cd:hover { border-color:#38bdf8; }
+  .cd.due { border-style:dashed; }
+  .cd.on { background:#38bdf8; border-color:#38bdf8; color:#0f172a; font-weight:bold; }
+  .cx { background:#334155; border:none; color:#cbd5e1; border-radius:4px; font-size:11px; padding:3px 2px; cursor:pointer; flex:none; width:56px; text-align:center; }
+  .cday1 { font-size:12px; color:#cbd5e1; width:150px; flex:none; }
+  /* A hand-entered date sits in the due day's own slot, so the blue stays
+     on the same column as every other row and nothing shifts right. */
+  .cd.picked { font-size:11px; padding:3px 1px; }
+  /* A note against one payment. It prints on the statement, so it is a
+     record for the court, not a reminder for the person filling the form in. */
+  .cnb { background:#0f172a; border:1px solid #334155; color:#94a3b8; border-radius:4px; font-size:11px; padding:3px 6px; cursor:pointer; flex:none; margin-left:6px; line-height:1.2; }
+  .cnb:hover { border-color:#38bdf8; }
+  .cnb.on { background:#334155; border-color:#64748b; color:#f8fafc; }
+  .cnin { flex:1; min-width:0; background:#0f172a; border:1px solid #38bdf8; color:#e2e8f0; border-radius:4px; font-size:12px; padding:3px 6px; font-family:inherit; }
+  td.noteCell { white-space:normal; font-size:12.5px; }
+  .cxw { background:#334155; border:none; color:#cbd5e1; border-radius:4px; font-size:11px; padding:3px 8px; cursor:pointer; flex:none; white-space:nowrap; margin-left:6px; }
+  .cxw:hover { background:#475569; color:#f8fafc; }
+  .cx:hover { background:#475569; }
+  .crow .dsel select { padding:3px 2px; font-size:12px; }
+  /* Per-payment method, shown on each row once Mixed is on. */
+  .cmeth { display:flex; gap:3px; flex:none; border-left:1px solid #334155; padding-left:8px; margin-left:2px; }
+  .cm2 { background:#0f172a; border:1px solid #334155; color:#94a3b8; border-radius:4px; font-size:11px; padding:3px 6px; cursor:pointer; line-height:1.2; }
+  .cm2:hover { border-color:#38bdf8; }
+  .cm2.on { background:#334155; border-color:#64748b; color:#f8fafc; font-weight:bold; }
+  .crec { display:flex; align-items:center; gap:4px; font-size:11px; color:#94a3b8; cursor:pointer; flex:none; white-space:nowrap; }
+  .crec input { width:14px; height:14px; margin:0; accent-color:#38bdf8; cursor:pointer; }
+  .crow.inherit .cm2.on { background:#1e293b; color:#94a3b8; font-weight:normal; font-style:italic; }
+  .brand { display:flex; align-items:center; gap:14px; border-bottom:2px solid #334155; padding-bottom:10px; margin-bottom:14px; }
+  .brand img { height:56px; width:auto; border-radius:8px; }
+  .brand h1 { border:none; padding:0; margin:0; font-size:26px; letter-spacing:-0.2px; }
+  .brand .sub { color:#94a3b8; font-size:13px; margin-top:2px; }
+  /* Feedback. The address is assembled in script when the button is used, so
+     it is not sitting in the page source for a harvester to scrape. */
+  .brand .fbwrap { margin-left:auto; text-align:right; position:relative; }
+  #fbBtn { background:#0284c7; color:#fff; border:none; border-radius:5px; font-size:13px; font-weight:bold; padding:9px 14px; cursor:pointer; font-family:inherit; }
+  #fbBtn:hover { background:#0369a1; }
+  #fbPanel { position:absolute; top:0; right:0; z-index:20; width:470px; max-width:calc(100vw - 40px); box-sizing:border-box; background:#1e293b; border:1px solid #475569; border-radius:6px; padding:10px 30px 10px 12px; text-align:left; font-size:12.5px; color:#c9d4e0; line-height:1.5; box-shadow:0 6px 18px rgba(0,0,0,.45); }
+  #fbClose { position:absolute; top:4px; right:6px; background:none; border:none; color:#94a3b8; font-size:16px; line-height:1; padding:2px 5px; cursor:pointer; font-family:inherit; }
+  #fbClose:hover { color:#f8fafc; }
+  #fbPanel a { color:#38bdf8; font-weight:bold; text-decoration:none; font-size:14px; }
+  #fbPanel a:hover { text-decoration:underline; }
+  @media print { .brand .fbwrap { display:none !important; } }
+  button.small { padding:6px 12px; font-size:13px; }
+  .brand .aboutlink { margin-left:auto; background:#334155; color:#fff; text-decoration:none; font-weight:bold; font-size:13px; padding:7px 13px; border-radius:5px; white-space:nowrap; }
+  .brand .aboutlink:hover { background:#475569; }
+  #about { position:fixed; inset:0; background:rgba(2,6,23,.82); display:flex; align-items:center; justify-content:center; padding:20px; z-index:20; }
+  #about[hidden] { display:none; }
+  .about-box { background:#1e293b; border:1px solid #334155; border-radius:10px; max-width:720px; max-height:90vh; overflow:auto; padding:18px 22px; box-shadow:0 10px 30px rgba(0,0,0,.5); }
+  .about-box h2 { margin-top:14px; }
+  .about-box p { margin:6px 0; font-size:14px; }
+  .about-bar { display:flex; align-items:center; gap:12px; }
+  .about-bar img { height:44px; border-radius:6px; }
+  .about-bar h1 { font-size:20px; border:none; margin:0; padding:0; }
+  .about-bar button { margin-left:auto; }
+  @media print { #about, .brand button, .brand .aboutlink, .endbar { display:none !important; } .brand img { height:40px; } a.jump, .monthindex a, .backup { color:#0b57d0 !important; border:none; text-decoration:underline; -webkit-print-color-adjust:exact; print-color-adjust:exact; } .monthindex a { border:1px solid #0b57d0 !important; text-decoration:none; } tr.now td, tr.today td, tr.today td b { color:#000 !important; } tr.now td a.jump, tr.today td a.jump { color:#0b57d0 !important; } tr.today td { font-weight:bold; } .todaytag { background:none; color:#000; border:1px solid #000; } }
+  .foot { font-size:12px; color:#94a3b8; margin-top:18px; border-top:1px solid #334155; padding-top:8px; }
+  @media print {
+    body { background:#fff; color:#000; max-width:none; padding:0; font-size:11px; }
+    #form, #runBtn, #printBtn, .brand .acts, #clearedBox, .endbar, .intro, .foot .nostore { display:none !important; }
+    h1, h2, .card .value, .card.total .value, th { color:#000; }
+    .card, table, th, td { border-color:#999; background:#fff; }
+    th { background:#eee; }
+    .note { background:#f4f4f4; color:#000; } .note.warn { color:#000; }
+  }
+  body { max-width:1180px; }
+  .shell { display:flex; gap:20px; align-items:flex-start; }
+  /* Capped to the screen: a sticky column taller than the viewport pins at
+     the top and whatever sits below the fold can never be reached. */
+  .rail { width:200px; flex:none; position:sticky; top:18px;
+           max-height:calc(100vh - 36px); overflow-y:auto; overscroll-behavior:contain; }
+  .tools { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:12px; }
+  .sidelogo { display:block; width:196px; max-width:100%; height:auto; border-radius:10px; margin:14px auto 0; }
+  /* The two actions live in the rail, under the logo, so they are on
+     screen wherever the reader has scrolled to. */
+  .railbtns { margin-top:12px; }
+  .railbtns button { display:block; width:100%; box-sizing:border-box; margin-bottom:8px; padding:10px 12px; font-size:14px; }
+  /* Save and load sit under the two action buttons, smaller, because they are
+     housekeeping rather than the job itself. */
+  /* Save and Load live in the masthead, where the other pages keep them, so
+     the rail is left holding the one button that does the work. */
+  .brand .acts { margin-left:auto; display:flex; align-items:center; justify-content:flex-end;
+                 gap:6px; flex-wrap:wrap; }
+  .brand .acts .fbwrap { margin-left:0; }
+  .brand .act { background:#334155; color:#fff; border:none; border-radius:5px; font-size:13px;
+                font-weight:bold; padding:9px 12px; cursor:pointer; font-family:inherit; margin:0; white-space:nowrap; }
+  .brand .act:hover { background:#475569; }
+  .brand .savenote { flex-basis:100%; text-align:right; font-size:11px; color:#94a3b8; min-height:14px; margin:0; }
+  /* Build 611, his: the title and Save / Load are nailed to the top as a banner;
+     everything below the line under the title scrolls beneath it. */
+  .brand { position:sticky; top:0; z-index:20; background:#0f172a; padding-top:6px; }
+  @media print { .brand { position:static; } }
+  /* Build 613, his: the month buttons printed as dark boxes on white paper and
+     their text could not be read. On paper they are white with a blue outline
+     and blue text, still clickable in the saved PDF. */
+  /* Build 616, his: (1) the statement printed pale grey -- its rows kept the
+     app's screen text colour on white paper; on paper they are black. (2) The
+     twelve-month run-on starts on a fresh page, so the statement to date can be
+     printed and handed over on its own, for a negotiation, without the run-on. */
+  @media print { #rows td, #rows td b { color:#000 !important; } #projWrap { break-before:page; page-break-before:always; } }
+  @media print { .monthindex a { background:#fff !important; border:1px solid #0b57d0 !important; color:#0b57d0 !important; text-decoration:none !important; } }
+
+  .tools h3 { margin:0 0 10px; font-size:12px; text-transform:uppercase; letter-spacing:.5px; color:#94a3b8; }
+  .tools a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold; font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .tools a:hover { background:#0369a1; }
+  .tools a.on { background:#38bdf8; color:#0f172a; }
+  /* Grouped rail -- the flat list of eleven buttons was getting long, so the
+     related ones fold up. <details>/<summary>, so it works with no JS at all;
+     the group holding the page you are on is written out already open. */
+  .tools .grp { margin-bottom:8px; }
+  .tools .grp > summary { list-style:none; cursor:pointer; background:#1e293b; border:1px solid #475569;
+     color:#e2e8f0; font-weight:bold; font-size:14px; padding:5px 12px; border-radius:5px;
+     display:flex; align-items:center; justify-content:space-between; gap:6px; }
+  .tools .grp > summary::-webkit-details-marker { display:none; }
+  .tools .grp > summary::after { content:"\25BE"; font-size:11px; color:#94a3b8; }
+  .tools .grp[open] > summary::after { content:"\25B4"; }
+  .tools .grp > summary:hover { border-color:#38bdf8; color:#fff; }
+  .tools .grp > summary:focus-visible { outline:2px solid #38bdf8; outline-offset:1px; }
+  .tools .grp[open] > summary { margin-bottom:6px; }
+  .tools .grp a { margin-left:10px; font-size:13px; padding:4px 10px; }
+  .unverified { background:#3b2f0b; border-left:4px solid #f2c94c; color:#f5e6b8;
+     padding:8px 14px; margin:0 0 10px; border-radius:4px; font-size:13px; }
+  .tools .tiny { font-size:11px; color:#94a3b8; margin-top:6px; }
+  .page { flex:1; min-width:0; }
+  /* Phones. The form goes to one column, and anything that genuinely cannot
+     shrink -- the wide tables, the row of day buttons -- scrolls sideways
+     inside its own box rather than dragging the whole page with it. */
+  @media (max-width:700px) {
+    body { padding:18px 12px; }
+    .grid { grid-template-columns:1fr; }
+    .field { min-width:0; }
+    .dsel { flex-wrap:wrap; }
+    table { display:block; width:100%; overflow-x:auto; }
+    table thead, table tbody { white-space:nowrap; }
+    #clearedList { overflow-x:auto; }
+    .crow { width:max-content; min-width:100%; }
+    .monthindex { max-width:100%; }
+    #fbPanel { width:calc(100vw - 36px); }
+  }
+  @media (max-width:800px) { .shell { display:block; } .rail { width:auto; position:static; margin-bottom:14px; max-height:none; overflow:visible; } .sidelogo { max-width:208px; } }
+  /* Other resources: the row is a link to the page, and the fly-out carries the
+     links themselves, so nothing needs two clicks to reach. */
+  .navitem > a.navcat { text-decoration:none; }
+  .navitem.resitem { position:static; }
+  /* The long one is pinned to the window instead, so all 39 links stay on screen. */
+  .navitem.resitem > .flyout { position:fixed; top:2vh; bottom:2vh; left:221px; margin-left:0; transform:none; max-height:none; }
+  .flyout.wide { width:300px; max-height:94vh; }
+  .flyout .sect { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.6px;
+                  color:#94a3b8; margin:10px 2px 5px; }
+  .flyout a.hot { background:#15803d; }
+  .flyout a.hot:hover { background:#166534; }
+  .flyout a.ext { background:#0f172a; border:1px solid #334155; color:#e2e8f0; font-weight:600;
+                  font-size:12.5px; padding:4px 10px; margin-bottom:4px; }
+  .flyout a.ext:hover { background:#334155; border-color:#0284c7; color:#fff; }
+  .flyout a.ext::after { content:" \2197"; color:#94a3b8; font-size:11px; }
+  /* A category inside a fly-out: the Redaction Suite sits under Financial Tools,
+     so what it redacts is said by where it lives. Its parent must not clip it. */
+  .flyout.hassub { overflow:visible; max-height:none; }
+  .flyout .navitem.sub { margin:2px 0 0; }
+  .flyout .navitem.sub > .navcat { background:#0f172a; }
+  .flyout .navitem.sub > .flyout { margin-left:14px; }
+  /* keep the long one in the flow on a phone (this comes last on purpose) */
+  @media (max-width:860px) { .navitem.resitem > .flyout { position:static; inset:auto; transform:none; } }
+  @media print { .rail { display:none !important; } }
+
+  /* A thin strip across the top of the page itself: the site's name, above the
+     content and clear of the navigation, costing one line of height. */
+  .pagebar { background:#0b1220; border:1px solid #1e293b; border-radius:6px;
+             padding:5px 12px; margin-bottom:10px; display:flex; align-items:center;
+             justify-content:space-between; gap:14px; font-size:11.5px; }
+  .pagebar a { color:#94a3b8; text-decoration:none; font-weight:bold; letter-spacing:.6px;
+               text-transform:uppercase; white-space:nowrap; }
+  .pagebar a:hover { color:#38bdf8; }
+  .pagebar span { color:#64748b; text-align:right; min-width:0;
+                  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .pagebar .brief { display:none; }
+  @media (max-width:700px) { .pagebar .full { display:none; } .pagebar .brief { display:inline; } }
+
+  /* ---- Site menu: the fly-out layout, in our own styling ---------------- */
+  /* Fixed sidebar down the left, categories that fly out on hover or keyboard
+     focus. The card, the blue pill links and the colours are the site's own. */
+  .rail { position:fixed; top:0; left:0; width:236px; height:100vh; box-sizing:border-box;
+          padding:14px 12px; overflow:visible; background:#0f172a;
+          display:flex; flex-direction:column; max-height:none; z-index:2000; }
+  .tools { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:12px; }
+  .tools > a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold;
+               font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .tools > a:hover { background:#0369a1; }
+  .tools > a.on { background:#38bdf8; color:#0f172a; }
+  .navlist { list-style:none; margin:0; padding:0; }
+  .navitem { position:relative; margin-bottom:8px; }
+  .navitem > .navcat { display:flex; align-items:center; justify-content:space-between; gap:8px;
+                       background:#1e293b; border:1px solid #475569; border-radius:5px; color:#e2e8f0;
+                       font-size:13px; font-weight:600; padding:5px 10px; cursor:pointer; user-select:none; }
+  .navitem > .navcat::after { content:"\25B8"; font-size:11px; color:#94a3b8; }
+  .navitem:hover > .navcat, .navitem:focus-within > .navcat { background:#334155; border-color:#0284c7; color:#fff; }
+  .navitem.here > .navcat { border-color:#38bdf8; color:#38bdf8; }
+  .flyout { visibility:hidden; opacity:0;
+            transition:visibility 0s linear .4s, opacity .12s ease .4s;
+            position:absolute; top:50%; transform:translateY(-50%); left:100%; margin-left:10px; width:246px;
+            max-height:92vh; overflow-y:auto; list-style:none; padding:12px; margin-bottom:0;
+            background:#1e293b; border:1px solid #334155; border-left:3px solid #0284c7;
+            border-radius:8px; box-shadow:6px 4px 18px rgba(0,0,0,.5); z-index:2001; }
+  .navitem:hover > .flyout, .navitem:focus-within > .flyout, .flyout:hover { visibility:visible; opacity:1; transition-delay:0s; }
+  /* The gap between the row and its fly-out belongs to the row, so crossing it
+     at any angle keeps the menu open; the fly-out then holds itself open. */
+  .navitem > .flyout::before { content:''; position:absolute; top:-40px; bottom:-40px; left:-26px; width:26px; }
+  .navitem::after { content:''; position:absolute; top:-6px; bottom:-6px; left:100%; width:28px; }
+  .flyout a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold;
+              font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
+  .flyout li:last-child a { margin-bottom:0; }
+  .flyout a:hover { background:#0369a1; }
+  .flyout a.on { background:#38bdf8; color:#0f172a; }
+  .sidelogo { display:block; width:196px; max-width:100%; height:auto; border-radius:10px; margin:14px auto 0; }
+  .shell { display:block; }
+  main.page, .page { margin-left:252px; max-width:none; position:relative; z-index:1; }
+  /* Narrow windows and phones: the sidebar stops being fixed and every item is
+     listed openly, so nothing has to be hovered to be found. */
+  @media (max-width:860px) {
+    .rail { position:static; width:auto; height:auto; padding:0; display:block; z-index:auto; }
+    main.page, .page { margin-left:0; }
+    .navitem > .navcat::after { content:""; }
+    .flyout, .navitem.resitem > .flyout { visibility:visible; opacity:1; pointer-events:auto; position:static; transform:none; width:auto; margin:8px 0 0; max-height:none; inset:auto;
+              border-left:1px solid #334155; box-shadow:none; }
+  }
+  @media print { .rail { display:none !important; } main.page, .page { margin-left:0; } }
+</style>
+</head>
+<body>
+<div class="shell">
+<div class="rail"><aside class="tools"><a href="index.html">Home</a><ul class="navlist"><li class="navitem"><span class="navcat" tabindex="0">Location</span><ul class="flyout"><li><a href="area.html">What rent costs here</a></li><li><a href="counciltax.html">Council tax here</a></li></ul></li><li class="navitem"><span class="navcat" tabindex="0">Tenancy &amp; Rent</span><ul class="flyout"><li><a href="moving-in_audit.html">Moving in audit</a></li></ul></li><li class="navitem here"><span class="navcat" tabindex="0">Financial Tools</span><ul class="flyout hassub"><li><a href="interest.html" class="on">Interest owed to you</a></li><li><a href="arrears.html">Paying off arrears</a></li><li><a href="benefits.html">Benefit entitlements</a></li><li><a href="incoming-benefit-calc.html">Record of income</a></li><li class="navitem sub"><span class="navcat" tabindex="0">Redaction Suite</span><ul class="flyout"><li><a href="bank-statement-redaction.html" class="hot">⚡ Redact a statement page</a></li><li><a href="bank-statement-split.html">Split a PDF into pages</a></li><li><a href="bank-statement-rename.html">Name statements by date</a></li></ul></li></ul></li><li class="navitem"><span class="navcat" tabindex="0">Complaints &amp; Claims</span><ul class="flyout"><li><a href="scrubber.html">🔍 Web page data scrubber</a></li><li><a href="PRS_Tenant_Workspace.html">PRS complaint</a></li><li><a href="TPO_Tenant_Workspace.html">TPO complaint</a></li><li><a href="court_forms_workspace.html">Money Claim Online</a></li></ul></li><li class="navitem resitem"><a class="navcat" href="resources.html">Data &amp; Resources</a><ul class="flyout wide"><li><a href="resources.html">Other resources — the page</a></li><li class="sect">Certificates and safety</li><li><a class="ext" href="https://www.gov.uk/find-energy-certificate" target="_blank" rel="noopener">Energy Performance Certificate</a></li><li><a class="ext" href="https://www.scottishepcregister.org.uk/" target="_blank" rel="noopener">EPC register</a></li><li><a class="ext" href="https://www.gassaferegister.co.uk/find-an-engineer-or-check-the-register/" target="_blank" rel="noopener">Gas Safe Register</a></li><li><a class="ext" href="https://www.niceic.com/find-a-contractor" target="_blank" rel="noopener">Electrical safety</a></li><li><a class="ext" href="https://search.napit.org.uk/" target="_blank" rel="noopener">NAPIT</a></li><li><a class="ext" href="https://www.electricalsafetyfirst.org.uk/" target="_blank" rel="noopener">Electrical Safety First</a></li><li><a class="ext" href="https://www.gov.uk/government/publications/how-to-rent" target="_blank" rel="noopener">How to Rent</a></li><li class="sect">Deposits</li><li><a class="ext" href="https://www.gov.uk/tenancy-deposit-protection" target="_blank" rel="noopener">Tenancy deposit protection</a></li><li><a class="ext" href="https://www.depositprotection.com/" target="_blank" rel="noopener">Deposit Protection Service</a></li><li><a class="ext" href="https://www.tenancydepositscheme.com/" target="_blank" rel="noopener">Tenancy Deposit Scheme</a></li><li><a class="ext" href="https://www.mydeposits.co.uk/" target="_blank" rel="noopener">mydeposits</a></li><li class="sect">Who owns and who manages</li><li><a class="ext" href="https://find-and-update.company-information.service.gov.uk/" target="_blank" rel="noopener">Companies House</a></li><li><a class="ext" href="https://www.gov.uk/search-property-information-land-registry" target="_blank" rel="noopener">HM Land Registry</a></li><li><a class="ext" href="https://www.tpos.co.uk/" target="_blank" rel="noopener">Property Ombudsman</a></li><li><a class="ext" href="https://www.theprs.co.uk/" target="_blank" rel="noopener">Property Redress Scheme</a></li><li><a class="ext" href="https://www.rentsmart.gov.wales/" target="_blank" rel="noopener">Rent Smart Wales</a></li><li><a class="ext" href="https://www.landlordregistrationscotland.gov.uk/" target="_blank" rel="noopener">Scottish Landlord Register</a></li><li><a class="ext" href="https://www.london.gov.uk/programmes-strategies/housing-and-land/improving-private-rented-sector/rogue-landlord-and-agent-checker" target="_blank" rel="noopener">London rogue landlord and agent checker</a></li><li><a class="ext" href="https://www.gov.uk/find-local-council" target="_blank" rel="noopener">Find your local council</a></li><li class="sect">Rent, notices and the law</li><li><a class="ext" href="https://www.gov.uk/private-renting/rent-increases" target="_blank" rel="noopener">Rent increases</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1988/50/section/13" target="_blank" rel="noopener">Housing Act 1988</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2019/4" target="_blank" rel="noopener">Tenant Fees Act 2019</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1985/70/section/11" target="_blank" rel="noopener">Landlord and Tenant Act 1985</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2018/34" target="_blank" rel="noopener">Homes Act 2018</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1977/43" target="_blank" rel="noopener">Protection from Eviction Act 1977</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/2015/20" target="_blank" rel="noopener">Deregulation Act 2015</a></li><li><a class="ext" href="https://www.legislation.gov.uk/ukpga/1984/28/section/69" target="_blank" rel="noopener">County Courts Act 1984</a></li><li><a class="ext" href="https://www.legislation.gov.uk/all?title=Renters%27%20Rights%20Act" target="_blank" rel="noopener">Renters' Rights Act</a></li><li class="sect">Taking it further</li><li><a class="ext" href="https://buntool.co.uk/" target="_blank" rel="noopener">BunTool</a></li><li><a class="ext" href="https://www.gov.uk/make-court-claim-for-money" target="_blank" rel="noopener">Make a court claim for money</a></li><li><a class="ext" href="https://www.moneyclaim.gov.uk/" target="_blank" rel="noopener">Money Claim Online</a></li><li><a class="ext" href="https://www.gov.uk/get-help-with-court-fees" target="_blank" rel="noopener">Help with court fees</a></li><li><a class="ext" href="https://www.gov.uk/government/collections/county-court-forms" target="_blank" rel="noopener">County court forms</a></li><li><a class="ext" href="https://www.gov.uk/housing-tribunals" target="_blank" rel="noopener">Housing tribunals</a></li><li><a class="ext" href="https://www.housing-ombudsman.org.uk/" target="_blank" rel="noopener">Housing Ombudsman</a></li><li class="sect">Free advice</li><li><a class="ext" href="https://england.shelter.org.uk/housing_advice" target="_blank" rel="noopener">Shelter</a></li><li><a class="ext" href="https://www.citizensadvice.org.uk/housing/" target="_blank" rel="noopener">Citizens Advice</a></li><li><a class="ext" href="https://www.lawcentres.org.uk/" target="_blank" rel="noopener">Law Centres Network</a></li><li><a class="ext" href="https://www.advicenow.org.uk/" target="_blank" rel="noopener">Advicenow</a></li></ul></li></ul></aside><img class="sidelogo" src="SavvyRenter-sml.png" alt="Savvy Renter"></div><main class="page">
+<div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
+<a id="top"></a>
+<div class="brand"><div><h1>Rent Overpayment Interest Calculator</h1><div class="sub">Increasing Principal Sum method · simple interest, s.69 County Courts Act 1984</div></div><div class="acts"><button type="button" class="act" onclick="saveCase()" title="Saves everything you have entered to a file on this computer, so you can come back and carry on.">&#128190; Save</button><button type="button" class="act" onclick="document.getElementById('loadFile').click()" title="Opens a file you saved earlier and puts every figure back.">&#128193; Load</button><input type="file" id="loadFile" accept=".json,application/json" class="hidden" onchange="loadCase(this)"><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page." onclick="showFeedback()">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div><div class="savenote" id="saveNote"></div></div></div>
+<div class="intro">
+  Worked the way a county court reads it: each overpayment joins the running balance on the day it was paid, and simple interest at 8% a year (County Courts Act 1984, s.69) is charged on that balance for the days until the next payment. A late first payment does not shift the rest — later payments are counted on the day the rent falls due.
+  <b>Nothing you type is stored or sent anywhere.</b> Close the page and it is gone.
+</div>
+
+<div id="form">
+<div class="grid">
+  <div class="field"><label>Date of the first overpayment (the day it left your account)</label><span class="dsel" id="d-start"></span></div>
+  <div class="field"><label>How often the rent is paid</label>
+    <select id="period" onchange="paint()"><option value="monthly">Monthly</option><option value="weekly">Weekly</option><option value="fortnightly">Fortnightly</option><option value="quarterly">Quarterly</option></select></div>
+  <div class="field" id="dueDayBox"><label>Day of the month the rent falls due</label><select id="dueDay"></select></div>
+  <div class="field hidden" id="dueWdBox"><label>Day of the week the rent falls due</label><select id="dueWd"><option value="0">Sunday</option><option value="1" selected>Monday</option><option value="2">Tuesday</option><option value="3">Wednesday</option><option value="4">Thursday</option><option value="5">Friday</option><option value="6">Saturday</option></select></div>
+  <div class="field adv"><label>Advanced mode</label>
+    <div class="advrow"><input type="checkbox" id="adv" onchange="advToggle()">
+    <span class="advtxt">Enter the date each payment actually <b>cleared</b>, rather than the date it was issued. Interest is then charged from the day the landlord had the money in their account, so there is nothing to argue about.</span></div></div>
+  <div class="field"><label>Overpaid each time (£) — what you paid minus what was due</label><input type="number" id="amount" step="0.01" min="0" placeholder="e.g. 50"></div>
+  <div class="field"><label>Date of the last overpayment</label><span class="dsel" id="d-last"></span>
+    <label class="ongo"><input type="checkbox" id="ongoing" checked onchange="paint()"> Still ongoing — use today's date</label></div>
+  <div class="field"><div class="duo"><div><label>Interest rate (% a year)</label><input type="number" id="rate" value="8" step="0.1" min="0"></div><div><label>Paid to (agent or landlord)</label><input type="text" id="payee" maxlength="60" placeholder="Agent / Landlord" title="Who the rent was paid to. Used to name the statement and the saved figures file, so two runs for different agents are told apart."></div></div></div>
+  <div class="field"><label>Payment method</label><div class="pmgrid"><label class="mixed" title="More than one method was used over the period — tick every one that applies."><input type="checkbox" class="pm" id="pm-mixed" data-label="mixed" onchange="pmToggle(this)"> Mixed</label><label class="" title="Bank Transfer (including BACS, Faster Payments, and CHAPS): The most common electronic method. Money moves directly from your account to theirs, leaving an unalterable digital footprint."><input type="checkbox" class="pm" id="pm-transfer" data-label="bank transfer" onchange="pmToggle(this)"> Bank transfer</label><label class="" title="Standing Order: An automated instruction you set up with your bank to pay a fixed amount to the landlord at regular intervals. You maintain full control to cancel or change it."><input type="checkbox" class="pm" id="pm-standing" data-label="standing order" onchange="pmToggle(this)"> Standing order</label><label class="" title="Direct Debit: An authorization you give to the landlord allowing them to pull the funds from your account. (Rare for individual landlords, more common with massive corporate build-to-rent agencies)."><input type="checkbox" class="pm" id="pm-debit" data-label="direct debit" onchange="pmToggle(this)"> Direct debit</label><label class="" title="Cash: A perfectly legal tender, but incredibly risky without an immediate, signed, and dated physical receipt."><input type="checkbox" class="pm" id="pm-cash" data-label="cash" onchange="pmToggle(this)"> Cash</label><label class="" title="Cheque: A traditional paper directive to your bank. It is legally valid but relies on processing days and clearing cycles."><input type="checkbox" class="pm" id="pm-cheque" data-label="cheque" onchange="pmToggle(this)"> Cheque</label><label class="" title="Debit or Credit Card: Processed through an online merchant gateway or card terminal (usually restricted to larger letting agencies with commercial payment processing accounts)."><input type="checkbox" class="pm" id="pm-card" data-label="debit or credit card" onchange="pmToggle(this)"> Debit or credit card</label></div></div>
+</div>
+<div id="clearedBox" class="hidden">
+  <div class="ch"><b id="clearedTitle">Every payment</b><span id="clearedCount"></span><span id="clearedHint"></span></div>
+  <div id="clearedList"></div>
+</div>
+</div>
+
+<div id="results" class="hidden">
+  <h2 id="stmtTitle"></h2>
+  <div class="cards">
+    <div class="card"><div>Payments</div><div class="value" id="sumCount">0</div></div>
+    <div class="card"><div>Sums overpaid</div><div class="value" id="sumPrincipal">£0.00</div></div>
+    <div class="card"><div>Interest to date</div><div class="value" id="sumInterest">£0.00</div></div>
+    <div class="card total"><div>Total</div><div class="value" id="sumTotal">£0.00</div></div>
+  </div>
+  <div class="note" id="basis"></div>
+  <div class="note"><b>How the interest is worked out.</b> Simple interest at <span id="rateTxt">8</span>% a year under section 69 of the County Courts Act 1984, claimed from the date each sum was paid. It is worked on an increasing principal sum: when each payment is made it joins the running balance, and interest for the days until the next payment is charged on that running balance only (balance × rate × days ÷ 365). Interest is never charged on interest. The same total results from charging every payment its own interest from its own date and adding them up. Whether to award interest, and at what rate, is for the court.</div>
+  <div class="note warn hidden" id="ongoingNote"></div>
+  <h2>Statement — one line per payment</h2>
+  <table><thead><tr><th class="l">#</th><th class="l">From</th><th class="l">To</th><th>Days</th><th>Paid</th><th class="mcol hidden l">Method</th><th>Balance</th><th>Interest this period</th><th>Running total</th></tr></thead><tbody id="rows"></tbody></table>
+  <div id="projWrap" class="hidden">
+    <h2>If it runs on — the next twelve months</h2>
+    <div class="note">It carries on from the statement above with no gap and nothing counted twice: the first line IS the last line of the statement, figure for figure, and the second line carries the rest of that same period on from it. Everything after it is grey — those dates have not arrived. They are what the claim becomes if nothing changes: interest keeps running on the balance, and where the overpayment is still going on each further payment joins it as it falls due.</div>
+    <table><thead><tr><th class="l">#</th><th class="l">From</th><th class="l">To</th><th>Days</th><th>Paid</th><th>Balance</th><th>Interest this period</th><th>Running total</th></tr></thead><tbody id="projRows"></tbody></table>
+  </div>
+
+  <div id="dailyWrap" class="hidden">
+    <h2>Day by day — the exact figure due on any date in the next twelve months</h2>
+    <div class="note">For the hearing. Find the date the case is heard and read the total for that day: it is the sums overpaid plus the interest earned up to and including that date, on the same basis as the statement above. It starts at today, marked in blue; every date after that has not arrived yet.</div>
+    <div class="monthindex" id="monthIndex"></div>
+    <div id="dailyMonths"></div>
+  </div>
+
+  <div class="endbar">
+    <a href="#top" class="jump">↑ Back to the top</a>
+  </div>
+  <div class="foot">Prepared with the Savvy Renter rent overpayment interest calculator (savvyrenter.co.uk, increasing principal sum) on <span id="preparedOn"></span>. Figures only. <span class="nostore">Nothing entered here is stored or sent anywhere.</span><span class="nostore"> · <a href="resources.html#sources" style="color:#38bdf8;text-decoration:none">Data sources &amp; licences</a></span></div>
+</div>
+
+</main>
+</div>
+<script>
+// Savvy Renter — the interest engine (savvyrenter.co.uk).
+//
+// ONE engine for simple interest on an INCREASING PRINCIPAL SUM — money paid out in instalments
+// (County Courts Act 1984 s.69, 8% a year unless told otherwise). Used by
+// the Create a new case page (Money owed) and, inlined, by the standalone
+// web calculator. Pure functions, no storage, no personal data — dates and
+// numbers in, a ledger out.
+//
+// The ledger reads exactly like a month-by-month statement: at each payment
+// date the overpayment joins the running principal; interest for the days
+// until the next payment is charged on that running balance. Summing those
+// intervals is the same figure as charging each payment its own interest
+// from its own date (the "rungs") — it is just laid out the way a court
+// expects to read it.
+(function (root) {
+    const DAY = 86400000;
+    const iso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    const parse = (s) => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(s || '')); return m ? new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3])) : null; };
+    const clampDay = (y, mo, d) => new Date(y, mo, Math.min(d, new Date(y, mo + 1, 0).getDate()));
+
+    // The dates of the payments: the FIRST on the day it was actually made
+    // (it can be late), then every due date after it — the due day of the
+    // month for monthly/quarterly rent (31st pulls back in short months),
+    // the due weekday for weekly/fortnightly — up to and including `to`
+    // (today when blank).
+    function paymentDates(from, to, period, dueDay, dueWeekday) {
+        const a = parse(from); const b = to ? parse(to) : new Date();
+        if (!a || !b || b < a) return [];
+        const out = [a];
+        if (period === 'weekly' || period === 'fortnightly') {
+            const step = period === 'weekly' ? 7 : 14;
+            const wd = (dueWeekday === '' || dueWeekday === undefined || dueWeekday === null) ? a.getDay() : Number(dueWeekday);
+            let d = new Date(a); d.setDate(d.getDate() + ((wd - d.getDay() + 7) % 7 || 7));
+            while (d <= b && out.length < 3000) { out.push(new Date(d)); d = new Date(d); d.setDate(d.getDate() + step); }
+            return out;
+        }
+        const stepM = period === 'quarterly' ? 3 : 1;
+        const dd = Number(dueDay) || 1;
+        let d = clampDay(a.getFullYear(), a.getMonth(), dd);
+        if (d <= a) d = clampDay(a.getFullYear(), a.getMonth() + 1, dd);
+        while (d <= b && out.length < 1200) { out.push(d); d = clampDay(d.getFullYear(), d.getMonth() + stepM, dd); }
+        return out;
+    }
+
+    // events: [{ date: 'YYYY-MM-DD' | Date, amount: number, label?: string }]
+    // Returns the statement: one row per interval between payments.
+    function ledger(events, endDate, rate) {
+        const r = (rate === undefined || rate === null) ? 0.08 : Number(rate);
+        const end = endDate ? (endDate instanceof Date ? endDate : parse(endDate)) : new Date();
+        const byDay = new Map();
+        (events || []).forEach(e => {
+            const d = e.date instanceof Date ? e.date : parse(e.date);
+            const amt = Number(e.amount) || 0;
+            if (!d || amt <= 0 || d > end) return;
+            const k = iso(d);
+            const cur = byDay.get(k) || { date: new Date(d.getFullYear(), d.getMonth(), d.getDate()), amount: 0, labels: [] };
+            cur.amount += amt; if (e.label) cur.labels.push(e.label);
+            byDay.set(k, cur);
+        });
+        const days = Array.from(byDay.values()).sort((x, y) => x.date - y.date);
+        const rows = []; let principal = 0, interest = 0;
+        days.forEach((ev, i) => {
+            principal += ev.amount;
+            const next = i + 1 < days.length ? days[i + 1].date : end;
+            const n = Math.max(0, Math.floor((next - ev.date) / DAY));
+            const int = principal * r * n / 365;
+            interest += int;
+            rows.push({ n: i + 1, from: iso(ev.date), to: iso(next), days: n, added: ev.amount, principal, interest: int, running: principal + interest, labels: ev.labels });
+        });
+        return { rows, count: days.length, principal, interest, total: principal + interest, asAt: iso(end), rate: r, perDay: principal * r / 365 };
+    }
+
+    const api = { paymentDates, ledger, iso, parse };
+    if (typeof module !== 'undefined' && module.exports) module.exports = api;
+    root.LadderInterest = api;
+})(typeof window !== 'undefined' ? window : globalThis);
+// ---- page ----
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const gbp = (n) => '£' + (Math.round(n * 100) / 100).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const long = (isoS) => { const d = LadderInterest.parse(isoS); return d ? d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : ''; };
+const ord = (n) => n + (n % 10 === 1 && n !== 11 ? 'st' : n % 10 === 2 && n !== 12 ? 'nd' : n % 10 === 3 && n !== 13 ? 'rd' : 'th');
+function dateSel(id, preset) {
+  const y0 = new Date().getFullYear();
+  const el = document.getElementById(id);
+  el.innerHTML = `<select data-p="d">${Array.from({length:31},(_,i)=>`<option value="${i+1}">${i+1}</option>`).join('')}</select>` +
+    `<select data-p="m">${MONTHS.map((t,i)=>`<option value="${i+1}">${t}</option>`).join('')}</select>` +
+    `<select data-p="y">${Array.from({length:31},(_,i)=>`<option value="${y0-i}">${y0-i}</option>`).join('')}</select>`;
+  if (preset) { el.querySelector('[data-p=d]').value = preset.getDate(); el.querySelector('[data-p=m]').value = preset.getMonth()+1; el.querySelector('[data-p=y]').value = preset.getFullYear(); }
+}
+function dateVal(id) {
+  const el = document.getElementById(id);
+  const d = Number(el.querySelector('[data-p=d]').value), m = Number(el.querySelector('[data-p=m]').value), y = Number(el.querySelector('[data-p=y]').value);
+  const dim = new Date(y, m, 0).getDate();
+  return `${y}-${String(m).padStart(2,'0')}-${String(Math.min(d, dim)).padStart(2,'0')}`;
+}
+function paint() {
+  const weekly = ['weekly','fortnightly'].includes(document.getElementById('period').value);
+  document.getElementById('dueDayBox').classList.toggle('hidden', weekly);
+  document.getElementById('dueWdBox').classList.toggle('hidden', !weekly);
+  // Ongoing means today, so the date control has nothing to say.
+  const on = isOngoing();
+  document.getElementById('d-last').querySelectorAll('select').forEach(sel => { sel.disabled = on; sel.style.opacity = on ? 0.45 : 1; });
+  if (listOn()) buildCleared();
+}
+function isOngoing() { return !!document.getElementById('ongoing').checked; }
+// Mixed is the switch: with it ticked any number of methods can be on, with
+// it off the list behaves as one choice. Nothing here changes the
+// arithmetic; it records how the rent was actually paid.
+function pmToggle(el) {
+  setTimeout(refreshIfShown, 0);
+  setTimeout(syncList, 0);
+  const mixed = document.getElementById('pm-mixed');
+  const all = [...document.querySelectorAll('.pm')].filter(x => x !== mixed);
+  if (el === mixed) {
+    if (!mixed.checked) { const on = all.filter(x => x.checked); on.slice(1).forEach(x => { x.checked = false; }); }
+    return;
+  }
+  if (!mixed.checked) all.forEach(x => { if (x !== el) x.checked = false; });
+}
+function pmText() {
+  const mixed = document.getElementById('pm-mixed');
+  const on = [...document.querySelectorAll('.pm')].filter(x => x !== mixed && x.checked).map(x => x.dataset.label);
+  if (!on.length) return '';
+  if (on.length === 1) return ` Paid by ${on[0]}.`;
+  return ` Paid by more than one method: ${on.slice(0, -1).join(', ')} and ${on[on.length - 1]}.`;
+}
+const todayIso = () => LadderInterest.iso(new Date());
+// The last overpayment: today if it is still going on, otherwise the date given.
+function lastPaymentIso() { return isOngoing() ? todayIso() : dateVal('d-last'); }
+// The statement is always worked out as at today — interest runs on after
+// the overpayments stop, so the two are not the same question.
+function addMonths(iso, n) {
+  const d = LadderInterest.parse(iso);
+  const day = d.getDate();
+  const t = new Date(d.getFullYear(), d.getMonth() + n, 1);
+  t.setDate(Math.min(day, new Date(t.getFullYear(), t.getMonth() + 1, 0).getDate()));
+  return LadderInterest.iso(t);
+}
+// ---- advanced mode: the cleared date of every payment ----------------
+//
+// The point of it, in his words: so the figures put to a court are
+// unarguable. Interest is charged from the day the landlord actually had
+// the money, not the day the tenant sent it — so every payment carries the
+// date it CLEARED. The schedule is built from the same due dates as normal
+// mode; each row offers the due day and three days either side, and
+// "date…" opens a full day/month/year picker for a payment that landed
+// further out than that.
+let clearedPick = [];   // one ISO date per payment, in schedule order
+let clearedBase = [];   // the due date each row was built from
+let clearedMethod = [];  // how each payment was made, once Mixed is on
+let clearedInherit = []; // true where the method came from a "from here on" tick
+let methodOpen = [];     // an inherited row opened up to change that one payment
+
+// Short labels for the row chips; the full names go on the statement.
+const PM_SHORT = { transfer:'Bank', standing:'SO', debit:'DD', cash:'Cash', cheque:'Chq', card:'Card' };
+const PM_FULL = { transfer:'Bank transfer', standing:'Standing order', debit:'Direct debit', cash:'Cash', cheque:'Cheque', card:'Debit or credit card' };
+const PM_RECURRING = ['standing', 'debit'];
+function pmMixedOn() { const m = document.getElementById('pm-mixed'); return !!(m && m.checked); }
+function pmChosen() {
+  return [...document.querySelectorAll('.pm')].filter(x => x.id !== 'pm-mixed' && x.checked).map(x => x.id.replace('pm-', ''));
+}
+function pmPerRowOn() { return pmMixedOn(); }
+function pmRowChoices() { const c = pmChosen(); return c.length ? c : Object.keys(PM_SHORT); }
+// Once the statement is on screen it keeps up with the ticks, so the
+// Method column fills in as the payments are marked rather than waiting
+// for the button to be pressed again.
+function refreshIfShown() {
+  const r = document.getElementById('results');
+  if (r && !r.classList.contains('hidden')) run();
+}
+function setMethod(i, key) {
+  const owns = !!recurAt[i];
+  clearedMethod[i] = (clearedMethod[i] === key) ? '' : key;
+  clearedInherit[i] = false;
+  methodOpen[i] = false;
+  // Only the row that OWNS a "from here on" tick can break the chain. An
+  // interruption on one month -- the standing order did not clear, so it was
+  // made up by bank transfer -- changes that month and nothing else.
+  if (owns && !PM_RECURRING.includes(clearedMethod[i])) { clearRecurFrom(i); return; }
+  redrawRow(i);
+}
+// An inherited row shows only the method it inherited. Clicking it opens the
+// full set for that one payment.
+function openMethods(i) { methodOpen[i] = true; redrawRow(i); }
+// "Recurring from this point forward": a standing order or direct debit set
+// up once keeps running, so rather than ticking three years of rows by hand
+// it fills every later row with the same method. Picking a method on a later
+// row by hand breaks the chain from there.
+function setRecur(i, on) {
+  const key = clearedMethod[i];
+  for (let k = i + 1; k < clearedBase.length; k++) {
+    if (on) { if (!clearedMethod[k] || clearedInherit[k]) { clearedMethod[k] = key; clearedInherit[k] = true; } }
+    else if (clearedInherit[k]) { clearedMethod[k] = ''; clearedInherit[k] = false; }
+  }
+  recurAt[i] = !!on;
+  buildClearedRows();
+  refreshIfShown();
+}
+function clearRecurFrom(i) { if (recurAt[i]) { recurAt[i] = false; setRecur(i, false); } }
+let recurAt = [];
+let clearedNote = [];   // free text against one payment, printed on the statement
+let clearedUnknown = []; // true where the date could not be established and month end was taken
+// The latest day the payment could have been made: the end of its month, or
+// today if that month has not finished yet. Taking the latest possible date
+// means the interest charged on it is the least the records support.
+function latestInMonth(iso) {
+  const d = LadderInterest.parse(iso);
+  const end = new Date(d.getFullYear(), d.getMonth() + 1, 0);
+  const today = new Date();
+  return LadderInterest.iso(end > today ? today : end);
+}
+function markUnknown(i) {
+  const iso = latestInMonth(clearedBase[i]);
+  clearedPick[i] = iso;
+  clearedUnknown[i] = true;
+  clearedNote[i] = `Payment date not established from available records. Taken as ${long(iso)} — the latest date it could have been — so the interest claimed on this payment is the least the records support.`;
+  redrawRow(i);
+}
+const esc = (t) => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+// The note button sits at the end of the row, where the pointer already is
+// after setting the date and the method.
+function noteBtnHtml(i) {
+  const n = clearedNote[i] || '';
+  return `<button type="button" class="cnb${n ? ' on' : ''}" title="${n ? esc(n) : 'Add a note that prints on the statement for this payment'}" onclick="openNote(${i})">note${n ? ' \u2713' : '\u2026'}</button>`;
+}
+function openNote(i) {
+  const row = document.getElementById('crow-' + i);
+  const due = LadderInterest.parse(clearedBase[i]);
+  row.innerHTML = `<span class="cn">#${i + 1}</span><span class="cm">${MONTHS[due.getMonth()]} ${due.getFullYear()}</span>` +
+    `<input class="cnin" id="cnote-${i}" type="text" maxlength="240" placeholder="Printed on the statement against this payment" value="${esc(clearedNote[i] || '')}">` +
+    `<button type="button" class="cx" onclick="closeNote(${i})">done</button>`;
+  const el = document.getElementById('cnote-' + i);
+  el.focus();
+  el.addEventListener('keydown', (e) => { if (e.key === 'Enter') closeNote(i); });
+}
+function closeNote(i) {
+  clearedNote[i] = document.getElementById('cnote-' + i).value.trim();
+  redrawRow(i);
+}
+function redrawRow(i) { document.getElementById('crow-' + i).outerHTML = rowHtml(i, LadderInterest.parse(clearedBase[i])); refreshIfShown(); }
+function buildClearedRows() {
+  document.getElementById('clearedList').innerHTML = clearedBase.map((iso, i) => rowHtml(i, LadderInterest.parse(iso))).join('');
+}
+function methodCellsHtml(i) {
+  if (!pmPerRowOn()) return '';
+  const chosen = pmRowChoices();
+  // A row carried by a "from here on" tick shows just that one method, so the
+  // list stays readable -- click it and the other methods come back for that
+  // payment alone.
+  const chips = (clearedInherit[i] && !methodOpen[i])
+    ? `<button type="button" class="cm2 on" title="${PM_FULL[clearedMethod[i]]} — click to change this one payment" onclick="openMethods(${i})">${PM_SHORT[clearedMethod[i]]}</button>`
+    : chosen.map(k =>
+        `<button type="button" class="cm2${clearedMethod[i] === k ? ' on' : ''}" title="${PM_FULL[k]}" onclick="setMethod(${i},'${k}')">${PM_SHORT[k]}</button>`).join('');
+  // Only a row set by hand offers 'from here on' — an inherited row is
+  // already covered by the one above it.
+  const rec = PM_RECURRING.includes(clearedMethod[i]) && !clearedInherit[i]
+    ? `<label class="crec" title="This ${PM_FULL[clearedMethod[i]].toLowerCase()} keeps running, so mark every payment from here on the same way."><input type="checkbox" ${recurAt[i] ? 'checked' : ''} onchange="setRecur(${i}, this.checked)"> from here on</label>`
+    : '';
+  return `<span class="cmeth">${chips}</span>${rec}`;
+}
+
+function advOn() { const el = document.getElementById('adv'); return !!(el && el.checked); }
+// The per-payment list is needed by EITHER feature: Advanced mode to set the
+// date each payment cleared, Mixed to say how each one was made. It used to
+// hang off Advanced mode alone, so ticking Mixed by itself produced nothing
+// to tick against.
+function listOn() { return advOn() || pmMixedOn(); }
+function advToggle() { syncList(); }
+function syncList() {
+  const on = listOn();
+  document.getElementById('clearedBox').classList.toggle('hidden', !on);
+  if (!on) return;
+  const t = document.getElementById('clearedTitle');
+  const h = document.getElementById('clearedHint');
+  if (advOn() && pmMixedOn()) {
+    t.textContent = 'Every payment — the date it cleared, and how it was made';
+    h.innerHTML = 'The dashed day is the day the rent fell due. Pick the day it actually reached them — three days either side, or <b>date…</b> for any other day — then the method on the right.';
+  } else if (advOn()) {
+    t.textContent = 'The date each payment cleared';
+    h.innerHTML = 'The dashed day is the day the rent fell due. Pick the day it actually reached them — three days either side, or <b>date…</b> for any other day.';
+  } else {
+    t.textContent = 'How each payment was made';
+    h.innerHTML = 'Mark every payment with the method it was made by. Tick <b>Advanced mode</b> as well if you also want to set the date each one cleared.';
+  }
+  buildCleared();
+}
+function scheduleDates() {
+  const period = document.getElementById('period').value;
+  const from = dateVal('d-start');
+  const to = lastPaymentIso();
+  const dueDay = Number(document.getElementById('dueDay').value), dueWd = Number(document.getElementById('dueWd').value);
+  return LadderInterest.paymentDates(from, to, period, dueDay, dueWd);
+}
+const shortDate = (d) => `${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+function buildCleared() {
+  const dates = scheduleDates();
+  const keep = {};
+  clearedBase.forEach((iso, i) => { if (clearedPick[i] && clearedPick[i] !== iso) keep[iso] = clearedPick[i]; });
+  const keepM = {};
+  clearedBase.forEach((iso, i) => { if (clearedMethod[i]) keepM[iso] = [clearedMethod[i], clearedInherit[i], recurAt[i]]; });
+  const keepN = {};
+  clearedBase.forEach((iso, i) => { if (clearedNote[i]) keepN[iso] = clearedNote[i]; });
+  const keepU = {};
+  clearedBase.forEach((iso, i) => { if (clearedUnknown[i]) keepU[iso] = true; });
+  clearedBase = dates.map(LadderInterest.iso);
+  clearedPick = clearedBase.map(iso => keep[iso] || iso);
+  clearedMethod = clearedBase.map(iso => (keepM[iso] || [''])[0]);
+  clearedInherit = clearedBase.map(iso => !!(keepM[iso] || [])[1]);
+  recurAt = clearedBase.map(iso => !!(keepM[iso] || [])[2]);
+  clearedNote = clearedBase.map(iso => keepN[iso] || '');
+  clearedUnknown = clearedBase.map(iso => !!keepU[iso]);
+  methodOpen = clearedBase.map(() => false);
+  document.getElementById('clearedCount').textContent =
+    dates.length + (dates.length === 1 ? ' payment' : ' payments');
+  buildClearedRows();
+}
+function rowHtml(i, due) {
+  const days = [];
+  for (let k = -3; k <= 3; k++) {
+    const d = new Date(due.getFullYear(), due.getMonth(), due.getDate() + k);
+    days.push(d);
+  }
+  const picked = clearedPick[i];
+  // A date entered by hand takes the due day's own slot — the middle one — so
+  // the blue chip stays on the same column as every other row and the seven
+  // day buttons keep their places. Clicking it reopens the picker; setting it
+  // back to the due date brings the normal buttons back.
+  const outside = !days.some(d => LadderInterest.iso(d) === picked);
+  const btns = days.map((d, k) => {
+    if (outside && k === 3) {
+      const pd = LadderInterest.parse(picked);
+      return `<button type="button" class="cd on picked" title="${long(picked)} — click to change" onclick="openPicker(${i})">${pd.getDate()} ${MONTHS[pd.getMonth()]}</button>`;
+    }
+    const iso = LadderInterest.iso(d);
+    const cross = d.getMonth() !== due.getMonth();
+    return `<button type="button" class="cd${iso === LadderInterest.iso(due) ? ' due' : ''}${iso === picked ? ' on' : ''}" onclick="pickCleared(${i},'${iso}')">${d.getDate()}${cross ? ' ' + MONTHS[d.getMonth()] : ''}</button>`;
+  }).join('');
+  const dayPart = advOn()
+    ? `<span class="cdays">${btns}</span>` +
+      `<button type="button" class="cx" onclick="openPicker(${i})">date…</button>`
+    : `<span class="cday1">${long(clearedPick[i])}</span>`;
+  return `<div class="crow${clearedInherit[i] ? ' inherit' : ''}" id="crow-${i}"><span class="cn">#${i + 1}</span>` +
+         `<span class="cm">${MONTHS[due.getMonth()]} ${due.getFullYear()}</span>` +
+         dayPart + methodCellsHtml(i) + noteBtnHtml(i) + `</div>`;
+}
+function pickCleared(i, iso) {
+  clearedPick[i] = iso;
+  // Picking a real day means the date IS established, so the standing note goes
+  // with it -- but a note the user wrote themselves is left alone.
+  if (clearedUnknown[i]) { clearedUnknown[i] = false; clearedNote[i] = ''; }
+  document.getElementById('crow-' + i).outerHTML = rowHtml(i, LadderInterest.parse(clearedBase[i]));
+  refreshIfShown();
+}
+// A payment that landed further out than three days gets the full
+// day/month/year control for that row alone.
+function openPicker(i) {
+  const row = document.getElementById('crow-' + i);
+  const due = LadderInterest.parse(clearedBase[i]);
+  row.innerHTML = `<span class="cn">#${i + 1}</span><span class="cm">${MONTHS[due.getMonth()]} ${due.getFullYear()}</span>` +
+    `<span class="cdays" style="display:block;"><span class="dsel" id="cpick-${i}"></span></span>` +
+    `<button type="button" class="cx" onclick="closePicker(${i})">done</button>` +
+    `<button type="button" class="cxw" title="Sets this payment to the last day of its month — the latest it could have been — and prints a note on the statement saying the date could not be established." onclick="markUnknown(${i})">date not established</button>`;
+  dateSel('cpick-' + i, LadderInterest.parse(clearedPick[i]));
+  row.querySelectorAll('#cpick-' + i + ' select').forEach(sel => sel.onchange = () => { clearedPick[i] = dateVal('cpick-' + i); });
+}
+function closePicker(i) {
+  clearedPick[i] = dateVal('cpick-' + i);
+  document.getElementById('crow-' + i).outerHTML = rowHtml(i, LadderInterest.parse(clearedBase[i]));
+}
+// Anything that changes which payments there are rebuilds the list, keeping
+// any cleared date already chosen for a due date that survives the change.
+['period', 'ongoing', 'dueDay', 'dueWd'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('change', () => { if (listOn()) buildCleared(); });
+});
+['d-start', 'd-last'].forEach(id => {
+  document.getElementById(id).addEventListener('change', () => { if (listOn()) buildCleared(); });
+});
+
+// ---- saving and loading the figures --------------------------------
+//
+// Everything typed in goes to a small file on the user's own computer and
+// comes back from it. Nothing is uploaded and nothing is kept by the page:
+// the file is theirs, it sits with the rest of the paperwork, and it is what
+// lets them come back in six months and carry on from where they stopped.
+const CASE_VERSION = 1;
+function dsetVal(id, iso) {
+  const el = document.getElementById(id);
+  if (!el || !iso) return;
+  const d = LadderInterest.parse(iso);
+  const set = (p, v) => { const x = el.querySelector(`[data-p=${p}]`); if (x) x.value = v; };
+  set('d', d.getDate()); set('m', d.getMonth() + 1); set('y', d.getFullYear());
+}
+function caseData() {
+  return {
+    app: 'savvyrenter-interest', version: CASE_VERSION, savedAt: new Date().toISOString(),
+    amount: document.getElementById('amount').value,
+    payee: (document.getElementById('payee') || {}).value || '',   // build 610
+    rate: document.getElementById('rate').value,
+    period: document.getElementById('period').value,
+    dueDay: document.getElementById('dueDay').value,
+    dueWd: document.getElementById('dueWd').value,
+    start: dateVal('d-start'),
+    last: dateVal('d-last'),
+    ongoing: isOngoing(),
+    adv: advOn(),
+    methods: [...document.querySelectorAll('.pm')].filter(x => x.checked).map(x => x.id),
+    base: clearedBase, pick: clearedPick, method: clearedMethod,
+    inherit: clearedInherit, recur: recurAt, note: clearedNote, unknown: clearedUnknown
+  };
+}
+function saySaved(msg) {
+  const el = document.getElementById('saveNote');
+  el.textContent = msg;
+  setTimeout(() => { if (el.textContent === msg) el.textContent = ''; }, 6000);
+}
+// Build 610, his: the file is named for who was paid and the dates it covers,
+// so runs for different agents or landlords cannot be mixed up in a
+// folder. "Paid to" first when it is filled in; the dates in year-month-day
+// order so the files sort themselves; the brand on the end.
+function outName() {
+  const payee = String((document.getElementById('payee') || {}).value || '').replace(/[\\/:*?"<>|]+/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 60);
+  const from = dateVal('d-start') || '';
+  const to = lastPaymentIso() || '';
+  const run = (from && to) ? ` ${from} to ${to}${isOngoing() ? ' ongoing' : ''}` : '';
+  return `${payee ? payee + ' ' : ''}rent overpayment interest${run} - Savvy Renter`;
+}
+function saveCase() {
+  const d = new Date();
+  const stamp = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}-${String(d.getHours()).padStart(2, '0')}${String(d.getMinutes()).padStart(2, '0')}`;
+  const blob = new Blob([JSON.stringify(caseData(), null, 1)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `${outName()} figures.json`;   // build 610
+  document.body.appendChild(a); a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 0);
+  saySaved('Saved to your downloads.');
+}
+function loadCase(input) {
+  const f = input.files && input.files[0];
+  input.value = '';
+  if (!f) return;
+  const r = new FileReader();
+  r.onload = () => {
+    let c;
+    try { c = JSON.parse(r.result); } catch (e) { saySaved('That file could not be read.'); return; }
+    if (!c || c.app !== 'savvyrenter-interest') { saySaved('That is not a saved figures file.'); return; }
+    applyCase(c);
+  };
+  r.readAsText(f);
+}
+function applyCase(c) {
+  document.getElementById('amount').value = c.amount || '';
+  if (document.getElementById('payee')) document.getElementById('payee').value = c.payee || '';   // build 610
+  document.getElementById('rate').value = c.rate || 8;
+  document.getElementById('period').value = c.period || 'monthly';
+  document.getElementById('dueDay').value = c.dueDay || 1;
+  document.getElementById('dueWd').value = c.dueWd || 1;
+  dsetVal('d-start', c.start); dsetVal('d-last', c.last);
+  document.getElementById('ongoing').checked = !!c.ongoing;
+  document.getElementById('adv').checked = !!c.adv;
+  const want = new Set(c.methods || []);
+  document.querySelectorAll('.pm').forEach(x => { x.checked = want.has(x.id); });
+  paint();
+  syncList();
+  // The schedule is rebuilt from the dates above, then each payment gets back
+  // what was recorded against it, matched on the due date it was built from.
+  const by = {};
+  (c.base || []).forEach((iso, i) => {
+    by[iso] = [ (c.pick || [])[i], (c.method || [])[i], (c.inherit || [])[i], (c.recur || [])[i], (c.note || [])[i], (c.unknown || [])[i] ];
+  });
+  clearedPick = clearedBase.map((iso, i) => (by[iso] && by[iso][0]) || clearedPick[i] || iso);
+  clearedMethod = clearedBase.map(iso => (by[iso] && by[iso][1]) || '');
+  clearedInherit = clearedBase.map(iso => !!(by[iso] && by[iso][2]));
+  recurAt = clearedBase.map(iso => !!(by[iso] && by[iso][3]));
+  clearedNote = clearedBase.map(iso => (by[iso] && by[iso][4]) || '');
+  clearedUnknown = clearedBase.map(iso => !!(by[iso] && by[iso][5]));
+  methodOpen = clearedBase.map(() => false);
+  if (listOn()) buildClearedRows();
+  run();
+  const when = c.savedAt ? new Date(c.savedAt) : null;
+  saySaved(when ? `Loaded — saved ${long(LadderInterest.iso(when))}.` : 'Loaded.');
+}
+
+// Build 611, his: pressing Work it out looked as if nothing happened, because
+// the answer appeared further down the page. The page now moves down to the
+// statement heading, stopping just under the nailed banner, so the totals are
+// the first thing in view. Only on the button -- a load or a re-paint does
+// not move the page.
+function runAndShow() {
+  run();
+  const res = document.getElementById('results'), h = document.getElementById('stmtTitle');
+  if (!res || res.classList.contains('hidden') || !h) return;
+  const brand = document.querySelector('.brand');
+  h.style.scrollMarginTop = ((brand ? brand.offsetHeight : 0) + 8) + 'px';
+  h.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+function run() {
+  const amount = Number(document.getElementById('amount').value);
+  const rate = Number(document.getElementById('rate').value) / 100;
+  if (!(amount > 0)) { document.getElementById('amount').focus(); return; }
+  const period = document.getElementById('period').value;
+  const ongoing = isOngoing();
+  const from = dateVal('d-start'), asAt = todayIso();
+  const to = lastPaymentIso();
+  const dueDay = Number(document.getElementById('dueDay').value), dueWd = Number(document.getElementById('dueWd').value);
+  let dates = LadderInterest.paymentDates(from, to, period, dueDay, dueWd);
+  const advanced = advOn();
+  if (advanced) { buildCleared(); dates = clearedPick.map(LadderInterest.parse); }
+  else if (pmMixedOn()) buildCleared();   // keeps the per-payment methods in step with the schedule
+  const led = LadderInterest.ledger(dates.map(d => ({ date: d, amount })), asAt, rate);
+  document.getElementById('stmtTitle').textContent = `Statement of sums overpaid and interest — as at ${long(led.asAt)}`;
+  document.getElementById('sumCount').textContent = led.count;
+  document.getElementById('sumPrincipal').textContent = gbp(led.principal);
+  document.getElementById('sumInterest').textContent = gbp(led.interest);
+  document.getElementById('sumTotal').textContent = gbp(led.total);
+  document.getElementById('rateTxt').textContent = (rate * 100).toFixed(rate * 100 % 1 ? 1 : 0);
+  const per = { monthly: 'month', weekly: 'week', fortnightly: 'fortnight', quarterly: 'quarter' }[period];
+  const dueTxt = ['weekly','fortnightly'].includes(period) ? ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][dueWd] : `the ${ord(dueDay)} of the month`;
+  // Where a date could not be established the latest possible one was used, so
+  // the figure is the lowest the records support rather than the highest. Said
+  // once, at the top, rather than argued for on every row.
+  const unknownCount = clearedUnknown.filter(Boolean).length;
+  const unknownTxt = unknownCount
+    ? ` Where the exact date of a payment could not be established from the available records, it has been taken as the last day of that month — the latest date it could have been — so that the interest claimed on it is the least the records support. ${unknownCount === 1 ? 'One payment is' : unknownCount + ' payments are'} treated this way and marked in the statement below.`
+    : '';
+  document.getElementById('basis').innerHTML = `<b>Basis.</b> Overpaid ${gbp(amount)} a ${per}, first paid on ${long(from)}${ongoing ? ' and continuing' : ', last paid on ' + long(to)}; rent falls due on ${dueTxt}.${pmText()} ${advanced ? ' Every payment is counted on the date it CLEARED the landlord’s account, entered payment by payment.' : ' The first payment is counted on the day it was made; every later payment on the due date.'}${unknownTxt}`;
+  const on = document.getElementById('ongoingNote');
+  on.classList.toggle('hidden', !ongoing);
+  if (ongoing) on.innerHTML = `<b>This figure is still rising.</b> The overpayment is continuing, so the total is correct only as at ${long(led.asAt)}: it grows by about ${gbp(led.perDay)} a day in interest, plus each further payment as it falls due. Work it again on the day of the hearing and hand up the updated statement with this one.`;
+  // Where each payment carries its own method, the statement says so —
+  // otherwise the row ticks would go nowhere.
+  // Two ways a row knows how it was paid. With Mixed on, each payment
+  // carries its own method from the list. With a single method ticked,
+  // every payment was made that way, so the column fills itself in.
+  const methodByIso = {};
+  if (pmMixedOn()) {
+    const src = advanced ? clearedPick : clearedBase;
+    src.forEach((iso, i) => { if (clearedMethod[i]) methodByIso[iso] = PM_FULL[clearedMethod[i]]; });
+  }
+  const only = pmChosen();
+  const blanket = (!pmMixedOn() && only.length === 1) ? PM_FULL[only[0]] : '';
+  const methodForRow = (iso) => methodByIso[iso] || blanket || '';
+  const showM = !!blanket || Object.keys(methodByIso).length > 0;
+  document.querySelectorAll('.mcol').forEach(el => el.classList.toggle('hidden', !showM));
+  // A payment carrying a note gives up its two date cells to make room for it:
+  // the month and year stand in their place, and the note says what could not
+  // be established and what date the figures were worked from. Everything else
+  // on the row is unchanged, so every number still reconciles.
+  const noteByIso = {};
+  (advanced ? clearedPick : clearedBase).forEach((iso, i) => { if (clearedNote[i]) noteByIso[iso] = clearedNote[i]; });
+  // Build 609, his: "500 pounds in one month... that interest this period
+  // figure's in the wrong place. It needs to be after the break." Once the
+  // overpayments have stopped, the last payment's row used to carry every day
+  // from that payment to today -- three years of interest printed against the
+  // month the last £50 was paid (and with a note on the row, the To date was
+  // not even shown). The payment now stands on its own row, and the interest
+  // earned since goes on a row of its own AFTER it, dated from the last
+  // payment to today. The figures are the same ledger split in two, so every
+  // total still reconciles to the penny.
+  const lastIdx = led.rows.length - 1;
+  document.getElementById('rows').innerHTML = led.rows.map((r, i) => {
+    const note = noteByIso[r.from];
+    const split = !ongoing && i === lastIdx && r.days > 0;
+    let dateCells;
+    if (note) {
+      const d = LadderInterest.parse(r.from);
+      dateCells = `<td class="l noteCell" colspan="2"><b>${MONTHS[d.getMonth()]} ${d.getFullYear()}</b> — ${esc(note)}</td>`;
+    } else if (split) {
+      dateCells = `<td class="l">${long(r.from)}</td><td class="l">—</td>`;
+    } else {
+      dateCells = `<td class="l">${long(r.from)}</td><td class="l">${long(r.to)}</td>`;
+    }
+    const method = showM ? `<td class="l">${methodForRow(r.from)}</td>` : '';
+    if (!split) {
+      return `<tr><td class="l">${r.n}</td>${dateCells}<td>${r.days}</td><td>${gbp(r.added)}</td>${method}<td>${gbp(r.principal)}</td><td>${gbp(r.interest)}</td><td><b>${gbp(r.running)}</b></td></tr>`;
+    }
+    const payRow = `<tr><td class="l">${r.n}</td>${dateCells}<td>—</td><td>${gbp(r.added)}</td>${method}<td>${gbp(r.principal)}</td><td>—</td><td><b>${gbp(r.running - r.interest)}</b></td></tr>`;
+    const gapRow = `<tr><td class="l"></td><td class="l noteCell" colspan="2">${long(r.from)} to ${long(r.to)} — no further overpayments; interest runs on the balance</td><td>${r.days}</td><td>—</td>${showM ? '<td class="l"></td>' : ''}<td>${gbp(r.principal)}</td><td>${gbp(r.interest)}</td><td><b>${gbp(r.running)}</b></td></tr>`;
+    return payRow + gapRow;
+  }).join('');
+  // The moment it was produced, on the page and in the saved file's name. Two
+  // statements run on the same day are then told apart by their filenames, and
+  // the bundle sorts itself into order.
+  const now = new Date();
+  const hhmm = String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
+  document.getElementById('preparedOn').textContent = `${long(led.asAt)} at ${hhmm}`;
+  const stamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${hhmm.replace(':', '')}`;
+  document.title = outName();   // build 610 -- the PDF takes its name from the title
+  buildProjection(dates, amount, rate, asAt, ongoing, period, dueDay, dueWd);
+  document.getElementById('results').classList.remove('hidden');
+  document.getElementById('printBtn').classList.remove('hidden');
+}
+
+// ---- the next twelve months ------------------------------------------
+//
+// Two outputs from one walk. The first is the same statement carried
+// forward twelve months, greyed because those dates have not arrived. The
+// second is every single day of those months with the total due on it, so
+// on the day of the hearing the figure can be read off the page instead of
+// worked out in the room.
+function buildProjection(pastDates, amount, rate, asAt, ongoing, period, dueDay, dueWd) {
+  const horizon = addMonths(asAt, 12);
+  let all = pastDates.slice();
+  if (ongoing) {
+    // carry the schedule on past today to the horizon
+    const future = LadderInterest.paymentDates(LadderInterest.iso(pastDates[pastDates.length - 1] || LadderInterest.parse(asAt)), horizon, period, dueDay, dueWd);
+    const seen = new Set(all.map(LadderInterest.iso));
+    future.forEach(d => { if (!seen.has(LadderInterest.iso(d))) { seen.add(LadderInterest.iso(d)); all.push(d); } });
+  }
+  const events = all.map(d => ({ date: d, amount }));
+  const far = LadderInterest.ledger(events, horizon, rate);
+  // No gap: the run-on starts at the payment we are standing on, not at the
+  // next one — so the rest of THIS month is on the page. Where the
+  // overpayments have stopped there are no further payments to break the
+  // period up, so it is cut into months by hand instead of showing one
+  // 365-day line.
+  let futureRows = far.rows.filter(r => r.to > asAt);
+  const atNow = LadderInterest.ledger(events, asAt, rate);
+  // The period we are standing in is BOTH part-happened and part-future, and
+  // showing it as one line gave payment 77 two different running totals --
+  // one on the statement (cut off at today) and a bigger one here (the whole
+  // month). So it is split in two at today: the first line IS the statement's
+  // last line, figure for figure, and the second carries the rest of that
+  // same period on from it. Nothing is counted twice.
+  if (ongoing && futureRows.length && futureRows[0].from < asAt) {
+    const span = futureRows.shift();
+    const head = atNow.rows[atNow.rows.length - 1];
+    const days = Math.round((LadderInterest.parse(span.to) - LadderInterest.parse(asAt)) / 86400000);
+    const int = span.principal * rate * days / 365;
+    futureRows.unshift(
+      { n: head.n, from: head.from, to: head.to, days: head.days, added: head.added, principal: head.principal, interest: head.interest, running: head.running, here: true },
+      { n: '', from: asAt, to: span.to, days, added: 0, principal: span.principal, interest: int, running: head.running + int }
+    );
+  }
+  if (!ongoing && futureRows.length === 1) {
+    // The overpayments stopped, so the last payment may be years back and
+    // that stretch is already on the statement above. The run-on therefore
+    // starts at TODAY and is cut into months, rather than one long line.
+    const base = futureRows[0];
+    const cuts = [asAt];
+    for (let k = 1; k <= 12; k++) { const c = addMonths(asAt, k); if (c > asAt && c <= base.to) cuts.push(c); }
+    if (cuts[cuts.length - 1] !== base.to) cuts.push(base.to);
+    let acc = atNow.total;
+    futureRows = [];
+    for (let k = 0; k + 1 < cuts.length; k++) {
+      const days = Math.round((LadderInterest.parse(cuts[k + 1]) - LadderInterest.parse(cuts[k])) / 86400000);
+      const int = atNow.principal * rate * days / 365;
+      acc += int;
+      futureRows.push({ n: '', from: cuts[k], to: cuts[k + 1], days, added: 0, principal: atNow.principal, interest: int, running: acc, here: k === 0 });
+    }
+  }
+  // Every projected row links to its own month in the day-by-day pages, so
+  // in the hearing you scroll to the month, click it, and land on the days.
+  const anchorOf = (iso) => 'm-' + iso.slice(0, 7);
+  document.getElementById('projRows').innerHTML = futureRows.map(r =>
+    `<tr class="${r.here ? 'now' : 'fut'}"><td class="l">${r.n}</td><td class="l"><a class="jump" href="#${anchorOf(r.from)}">${long(r.from)}</a>${r.here ? '<span class="todaytag">you are here</span>' : ''}</td><td class="l">${long(r.to)}</td><td>${r.days}</td><td>${gbp(r.added)}</td><td>${gbp(r.principal)}</td><td>${gbp(r.interest)}</td><td><b>${gbp(r.running)}</b></td></tr>`).join('');
+  document.getElementById('projWrap').classList.toggle('hidden', !futureRows.length);
+
+  // Day by day. The same arithmetic as the engine, one day at a time:
+  // payments dated that day join the balance, the total is read, then a
+  // single day of interest is charged on the balance.
+  const byDay = new Map();
+  events.forEach(e => {
+    const k = LadderInterest.iso(e.date instanceof Date ? e.date : LadderInterest.parse(e.date));
+    byDay.set(k, (byDay.get(k) || 0) + e.amount);
+  });
+  const start = LadderInterest.parse(LadderInterest.iso(events[0].date));
+  const end = LadderInterest.parse(horizon);
+  let principal = 0, interest = 0;
+  const months = new Map();
+  for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+    const iso = LadderInterest.iso(d);
+    principal += (byDay.get(iso) || 0);
+    if (iso >= asAt) {
+      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+      if (!months.has(key)) months.set(key, { label: `${['January','February','March','April','May','June','July','August','September','October','November','December'][d.getMonth()]} ${d.getFullYear()}`, rows: [] });
+      months.get(key).rows.push({ iso, principal, interest, total: principal + interest });
+    }
+    interest += principal * rate / 365;
+  }
+  document.getElementById('monthIndex').innerHTML = [...months.entries()].map(([k, m]) =>
+    `<a href="#m-${k}">${m.label}</a>`).join('');
+  document.getElementById('dailyMonths').innerHTML = [...months.entries()].map(([k, m]) =>
+    `<div class="daymonth" id="m-${k}"><h3 class="fut">${m.label}<a class="backup" href="#projWrap">↑ back to the twelve-month table</a></h3>` +
+    `<table class="day"><thead><tr><th class="l">Date</th><th>Sums overpaid</th><th>Interest to that day</th><th>Total due that day</th></tr></thead><tbody>` +
+    m.rows.map(r => `<tr class="${r.iso === asAt ? 'today' : 'fut'}"><td class="l">${long(r.iso)}${r.iso === asAt ? '<span class="todaytag">today</span>' : ''}</td><td>${gbp(r.principal)}</td><td>${gbp(r.interest)}</td><td><b>${gbp(r.total)}</b></td></tr>`).join('') +
+    `</tbody></table><div style="text-align:right; margin-top:3px;"><a class="backup" href="#top" style="margin:0;">&uarr; back to the top</a></div></div>`).join('');
+  document.getElementById('dailyWrap').classList.toggle('hidden', !months.size);
+}
+document.getElementById('dueDay').innerHTML = Array.from({length:31},(_,i)=>`<option value="${i+1}">${ord(i+1)}</option>`).join('');
+dateSel('d-start'); dateSel('d-last', new Date());
+paint();
+</script>
+<script>
+// The address is never written into the page source. It is put together only
+// when someone asks for it, which keeps the harvesters off it.
+function showFeedback() {
+  const who = ['feedback', 'savvyrenter.co.uk'].join('\u0040');
+  const p = document.getElementById('fbPanel');
+  p.innerHTML =
+    '<button type="button" id="fbClose" title="Close" onclick="hideFeedback()">\u2715</button>' +
+    '<p style="margin:0 0 6px">Suggestions, corrections, or an open-source tool we could host \u2014 we read everything, though we can\u2019t promise to answer every email. Use a suggestion and we\u2019ll credit you on the page.</p>' +
+    '<a href="mailto:' + who + '?subject=Savvy%20Renter%20feedback">' + who + '</a>';
+  p.classList.remove('hidden');
+}
+function hideFeedback() { document.getElementById('fbPanel').classList.add('hidden'); }
+</script>
+</body>
+</html>
