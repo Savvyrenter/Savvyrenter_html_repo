@@ -335,6 +335,12 @@
               border-left:1px solid #334155; box-shadow:none; }
   }
   @media print { .rail { display:none !important; } main.page, .page { margin-left:0; } }
+  .intro.xp { cursor:pointer; }
+  .intro .xbtn { float:right; margin:0 0 2px 10px; background:none; border:1px solid #475569; border-radius:4px; color:#38bdf8; font-family:inherit; font-size:12px; font-weight:bold; line-height:1.4; padding:1px 8px; cursor:pointer; }
+  .intro .xbtn:hover { border-color:#38bdf8; }
+  .intro .xlbl { color:#f1f5f9; font-weight:bold; margin-right:6px; }
+  .intro .xfull p { margin:0 0 6px; font-size:14px; }
+  .intro .xfull .xbtn.end { float:none; display:block; margin:4px 0 0 auto; }
 </style>
 </head>
 <body>
@@ -343,9 +349,16 @@
 <div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
 <a id="top"></a>
 <div class="brand"><div><h1>Rent Overpayment Interest Calculator</h1><div class="sub">Increasing Principal Sum method · simple interest, s.69 County Courts Act 1984</div></div><div class="acts"><button type="button" class="act" onclick="saveCase()" title="Saves everything you have entered to a file on this computer, so you can come back and carry on.">&#128190; Save</button><button type="button" class="act" onclick="document.getElementById('loadFile').click()" title="Opens a file you saved earlier and puts every figure back.">&#128193; Load</button><input type="file" id="loadFile" accept=".json,application/json" class="hidden" onchange="loadCase(this)"><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page." onclick="showFeedback()">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div><div class="savenote" id="saveNote"></div></div></div>
-<div class="intro">
-  Worked the way a county court reads it: each overpayment joins the running balance on the day it was paid, and simple interest at 8% a year (County Courts Act 1984, s.69) is charged on that balance for the days until the next payment. A late first payment does not shift the rest — later payments are counted on the day the rent falls due.
-  <b>Nothing you type is stored or sent anywhere.</b> Close the page and it is gone.
+<div class="intro xp">
+  <div class="xsum"><button type="button" class="xbtn">&#9662; Full explanation</button><span class="xlbl">Summary</span> Worked the way a county court reads it: each overpayment joins the running balance on the day it was paid, and simple interest at 8% a year (County Courts Act 1984, s.69) is charged on that balance for the days until the next payment. A late first payment does not shift the rest — later payments are counted on the day the rent falls due.
+  <b>Nothing you type is stored or sent anywhere.</b> Close the page and it is gone.</div>
+  <div class="xfull hidden"><button type="button" class="xbtn">&#9652; Summary</button><span class="xlbl">Full explanation</span>
+  <p>Most calculators put interest on one lump sum from one date. That is wrong for rent overpayments, because you paid month by month: the principal sum owed to you was increasing the whole time. Your first overpayment has been held the longest and earns the most interest; your last one the least.</p>
+  <p>This calculator adds each payment to the running balance on the day it was made, charges simple interest on that balance for the days until the next payment (balance × rate × days ÷ 365), and adds it all up. Interest is never charged on interest. A late first payment does not shift the rest &mdash; later payments are counted on the day the rent falls due.</p>
+  <p><b>Advanced mode</b> lets you enter the date each payment actually cleared, rather than the date it was issued, so interest runs from the day the landlord had the money. Marking how each payment was made adds to the record. The more of each payment you record, the less there is to argue with.</p>
+  <p>The statement is laid out for the court: one line per payment, and, where the overpayment is still going on, a twelve-month run-on and a day-by-day table giving the exact figure due on any date, so it can be read off on the day of the hearing.</p>
+  <p>The 8% rate is the usual county-court rate (County Courts Act 1984, s.69); you can change it if the court directs a different one.</p>
+  <p><b>Nothing you type is stored or sent anywhere.</b> Close the page and it is gone.</p><button type="button" class="xbtn end">&#9652; Summary</button></div>
 </div>
 
 <div id="form">
@@ -1112,6 +1125,10 @@ function showFeedback() {
   p.classList.remove('hidden');
 }
 function hideFeedback() { document.getElementById('fbPanel').classList.add('hidden'); }
+</script>
+<script>
+function xpSwap(box){var s=box.querySelector('.xsum'),f=box.querySelector('.xfull');var open=f.classList.contains('hidden');f.classList.toggle('hidden',!open);s.classList.toggle('hidden',open);}
+document.addEventListener('click',function(e){var box=e.target.closest&&e.target.closest('.intro.xp');if(!box)return;if(e.target.closest('a'))return;if(!e.target.closest('.xbtn')&&String(window.getSelection())!=='')return;xpSwap(box);});
 </script>
 </body>
 </html>
