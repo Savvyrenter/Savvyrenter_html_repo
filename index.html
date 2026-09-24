@@ -167,6 +167,11 @@
   /* keep the long one in the flow on a phone (this comes last on purpose) */
   @media (max-width:860px) { .navitem.resitem > .flyout { position:static; inset:auto; transform:none; } }
   @media print { .rail { display:none !important; } main.page, .page { margin-left:0; } }
+  .toolgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:0 18px; margin:2px 0 6px; }
+  .toolgrid h3 { margin:6px 0 2px; }
+  .toolgrid ul { list-style:none; margin:0; padding:0; }
+  .toolgrid li { font-size:14px; margin:1px 0; line-height:1.4; }
+  .toolgrid li a { font-weight:bold; text-decoration:none; }
   .steps { margin:6px 0 10px; padding-left:22px; }
   .steps li { margin:4px 0; line-height:1.5; }
   .steps code { background:#0b1220; padding:1px 5px; border-radius:3px; font-size:13px; }
@@ -181,55 +186,80 @@
 <div class="rail"><aside class="tools" id="siteMenu"><noscript><a href="index.html">Home</a><a href="resources.html">Data &amp; Resources</a></noscript></aside><script src="menu.js"></script><img class="sidelogo" src="SavvyRenter-sml.png" alt="Savvy Renter"></div><main class="page">
 <div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
 
-<div class="brand"><div><h1>Savvy Renter</h1><div class="sub">Free calculators and resources for renters · savvyrenter.co.uk</div></div><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page." onclick="showFeedback()">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div></div>
+<div class="brand"><div><h1>Savvy Renter</h1><div class="sub">Free tools for private renters · savvyrenter.co.uk</div></div><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page." onclick="showFeedback()">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div></div>
 
 <div class="intro">
-  Two calculators for the two ways rent money goes wrong — money the landlord owes you, and money you owe the landlord — plus an index of the official places to check certificates, deposits, owners, agents and the law.
-  <b>Everything runs in your browser. Nothing you type is stored or sent anywhere.</b> Close the page and it is gone. There is no sign-up, no account and no charge.
+  Savvy Renter is a free toolkit for private renters. It helps you check a home before you sign, work out money owed in either direction, get evidence ready, and write complaints and court paperwork properly.
+  <b>There is no sign-up, no account and no charge, and nothing you type leaves your browser.</b>
 </div>
 
+<h2>Why this site exists</h2>
+<p>This site began with one tenant&rsquo;s problem. A letting agent&rsquo;s error led to an ongoing rent increase, and working out exactly what was owed &mdash; to the day, with the interest a court would allow &mdash; took far longer than it should have. Once the sums were right, the tool went online for free so the next tenant would not have to do it by hand. Everything since has been added the same way: something one tenant needed, built so that others can use it too. It is a volunteer project, run in spare time.</p>
 
-<h2>Interest owed to you — the increasing principal sum</h2>
-<p>I built this tool to work out exactly how much my property agent owed me after an error led to an ongoing rent increase. Once I had the sums right for myself, I put it online for free to save other tenants the headache of working it out by hand.</p>
-<h3>How the sums work</h3>
-<p>Most calculators put interest on one lump sum from one date. That is wrong for rent overpayments, because you paid month by month: the principal sum owed to you was increasing the whole time. Your first overpayment has been held the longest and earns the most interest; your last one the least. This tool adds each payment to the running balance on the day it was made, charges simple interest on that balance for the days until the next payment (balance × rate × days ÷ 365), and adds it all up. Interest is never charged on interest. A late first payment does not shift the rest — later payments are counted on the day the rent falls due.</p>
+<h2>What&rsquo;s here</h2>
+<div class="toolgrid">
+  <div><h3>Location</h3><ul>
+    <li><a href="area.html">What rent costs here</a> &mdash; what rents in an area have done since 2015, against housing allowance.</li>
+    <li><a href="counciltax.html">Council tax here</a> &mdash; every band for a postcode, discounts and the monthly figure.</li>
+  </ul></div>
+  <div><h3>Tenancy &amp; Rent</h3><ul>
+    <li><a href="moving-in_audit.html">Moving in audit</a> &mdash; gas, electrics, EPC, deposit and licence on one sheet, with the official register beside each.</li>
+    <li><a href="section_8_eviction_defense_advisor.html">Section 8 notice checker</a> &mdash; the notice period, the grounds and the defences you can raise.</li>
+  </ul></div>
+  <div><h3>Financial Tools</h3><ul>
+    <li><a href="interest.html">Interest owed to you</a> &mdash; interest on overpaid rent, payment by payment, laid out for court.</li>
+    <li><a href="arrears.html">Paying off arrears</a> &mdash; an instalment plan you can afford, with interest only on what is left.</li>
+    <li><a href="benefits.html">Benefit entitlements</a> &mdash; a Universal Credit estimate showing every line of the sum.</li>
+    <li><a href="incoming-benefit-calc.html">Record of income</a> &mdash; all household income in one dated statement.</li>
+  </ul></div>
+  <div><h3>Redaction Suite</h3><ul>
+    <li><a href="bank-statement-redaction.html">Redact a statement page</a> &mdash; black out account numbers and anything else, for good.</li>
+    <li><a href="bank-statement-split.html">Split a PDF into pages</a> &mdash; one file per page.</li>
+    <li><a href="bank-statement-rename.html">Name statements by date</a> &mdash; rename a batch by the period each covers.</li>
+  </ul></div>
+  <div><h3>Complaints &amp; Claims</h3><ul>
+    <li><a href="PRS_Tenant_Workspace.html">PRS complaint</a> &mdash; draft a Property Redress Scheme complaint and save it as you go.</li>
+    <li><a href="TPO_Tenant_Workspace.html">TPO complaint</a> &mdash; the same for The Property Ombudsman, letter of authority included.</li>
+    <li><a href="court_forms_workspace.html">Money Claim Online</a> &mdash; draft the N181 and N244 to length.</li>
+    <li><a href="scrubber.html">Web page data scrubber</a> &mdash; strip your details from a saved web page before you send it.</li>
+  </ul></div>
+</div>
+
+<h2>Your data</h2>
+<p>Everything runs in your browser. Nothing you type is stored, sent anywhere or remembered between visits &mdash; close the page and it is gone. There is no server, no account and no cookie. You do not have to take the site&rsquo;s word for it: <a href="#takehome">take the site home</a> and run it with the internet switched off.</p>
+
+<h2>How each tool works</h2>
+
+<h3>Interest owed to you &mdash; the increasing principal sum</h3>
+<p>Most calculators put interest on one lump sum from one date. That is wrong for rent overpayments, because you paid month by month: the principal sum owed to you was increasing the whole time. Your first overpayment has been held the longest and earns the most interest; your last one the least. <a href="interest.html">The interest calculator</a> adds each payment to the running balance on the day it was made, charges simple interest on that balance for the days until the next payment (balance × rate × days ÷ 365), and adds it all up. Interest is never charged on interest. A late first payment does not shift the rest &mdash; later payments are counted on the day the rent falls due.</p>
 <p>The 8% rate is the usual county-court rate (County Courts Act 1984, s.69); you can change it on the page if the court directs a different one.</p>
 
-<h2>Paying off arrears — the decreasing principal sum</h2>
-<p>This tool is to help tenants figure out a fair instalment plan when they fall behind on rent. If your landlord or a court applies statutory interest to your debt, you should only pay interest on what is actually left to pay — not the original lump sum. This calculation tracks that shrinking balance monthly payment by monthly payment (or weekly, fortnightly or quarterly if that is how you pay).</p>
-<h3>How the engine works</h3>
-<p>Standard debt calculators apply interest to the whole lump sum all at once, which is a scam. As you pay off your arrears payment by payment, the core debt shrinks. This tool calculates flat, non-compounding simple interest (like the UK statutory 8% rate) on that declining balance. Every time you make a payment, the principal drops, and the interest charge goes down with it. The loop runs until the debt hits zero, tracking the exact number of payments, the final odd-sized payment, and the true interest cost.</p>
+<h3>Paying off arrears &mdash; the decreasing principal sum</h3>
+<p><a href="arrears.html">The arrears calculator</a> helps you work out a fair instalment plan when you have fallen behind on rent. If your landlord or a court applies statutory interest to the debt, you should only pay interest on what is actually left to pay &mdash; not the original lump sum. Standard debt calculators charge interest on the whole lump sum all the way through, which overcharges you. This one charges flat, non-compounding simple interest (like the UK statutory 8% rate) on the shrinking balance, payment by payment &mdash; monthly, or weekly, fortnightly or quarterly if that is how you pay. Every payment brings the balance down, and the interest with it. It runs until the debt reaches zero, showing the number of payments, the final odd-sized payment, and the true interest cost.</p>
 
-<h2>Drafting a complaint to the Property Redress Scheme</h2>
-<p>Every letting agent in England has to belong to a redress scheme, and the Property Redress Scheme is one of the two. Once you have been through the agent's own complaints procedure and had their final answer, you can take it to the scheme &mdash; free, and it can order an agent to put things right and to pay compensation.</p>
-<h3>Why there is a workspace for it</h3>
-<p>The scheme's own portal will not let you save a part-finished complaint. The main box takes four thousand characters and there is a second one for what you are asking for, and if you walk away from it, or the session drops, you start again. That is a hard way to write the most important part of your case.</p>
+<h3>Drafting a complaint to the Property Redress Scheme</h3>
+<p>Every letting agent in England has to belong to a redress scheme, and the Property Redress Scheme is one of the two. Once you have been through the agent&rsquo;s own complaints procedure and had their final answer, you can take it to the scheme &mdash; free, and it can order an agent to put things right and to pay compensation.</p>
+<p>The scheme&rsquo;s own portal will not let you save a part-finished complaint. The main box takes four thousand characters and there is a second one for what you are asking for, and if you walk away from it, or the session drops, you start again. That is a hard way to write the most important part of your case.</p>
 <p><a href="PRS_Tenant_Workspace.html" style="color:#38bdf8;font-weight:bold;text-decoration:none">The complaint workspace</a> is the same questions with the same limits, on your own computer. Write it over as many days as you need, save the draft to a file and load it back, and only when it is finished do you open the real portal and paste it across. The counters keep counting past the limit instead of cutting you off mid-sentence, so you can write it long and then trim it deliberately. It submits nothing and it is not connected to the scheme &mdash; the complaint itself is still made on their site. <b style="color:#f2c94c">Untested, unverified and possibly incomplete.</b></p>
 
-<h2>Drafting a complaint to The Property Ombudsman</h2>
+<h3>Drafting a complaint to The Property Ombudsman</h3>
 <p>The Property Ombudsman is the other scheme, and an agent belongs to one or the other, not both. Check which before you write anything &mdash; a complaint written for the wrong scheme goes nowhere, and both workspaces start with a member check for exactly that reason.</p>
-<h3>Why this one is worse to write in</h3>
-<p>The Ombudsman's portal does not save a part-finished complaint either, and it goes further: the case forms do not appear at all until a signed Letter of Authority has been attached. So you cannot read the questions before you write the letter, and you cannot see how much room you have until you are already committed to the sitting.</p>
+<p>The Ombudsman&rsquo;s portal does not save a part-finished complaint either, and it goes further: the case forms do not appear at all until a signed Letter of Authority has been attached. So you cannot read the questions before you write the letter, and you cannot see how much room you have until you are already committed to the sitting.</p>
 <p><a href="TPO_Tenant_Workspace.html" style="color:#38bdf8;font-weight:bold;text-decoration:none">The Ombudsman workspace</a> keeps the same gate, because it is what happens on the day &mdash; but it shows you the letter first, fills it in from what you have already typed, and lets you download it to print and sign. Past that it is the same questions with the same limits, saved to your own computer, plus the two time limits worked out for you: the eight weeks the agent gets to answer, and the twelve months you have once they have answered. <b style="color:#f2c94c">Untested, unverified and possibly incomplete.</b></p>
 
-<h2>Drafting your Money Claim Online paperwork</h2>
+<h3>Drafting your Money Claim Online paperwork</h3>
 <p>If a claim has been issued, the paperwork arrives with deadlines attached and boxes that are smaller than what you need to say. The forms themselves are not the hard part &mdash; writing to length, in plain English, under a deadline, is.</p>
 <p><a href="court_forms_workspace.html" style="color:#38bdf8;font-weight:bold;text-decoration:none">The Money Claim Online workspace</a> gives you somewhere to draft the two that come up most: the Directions Questionnaire (N181) and an application for summary judgment (N244). It counts your characters as you go, so you find out you are over the limit here rather than when you are pasting into the real form, and it carries an evidence checklist you can tick off as you get each exhibit ready. <b style="color:#f2c94c">Untested, unverified and possibly incomplete.</b></p>
 <p>It is a drafting space and nothing more. It is not connected to, or endorsed by, HM Courts &amp; Tribunals Service or any court service, it submits nothing, and the form numbers and rules change &mdash; check the current versions before you rely on anything you write here.</p>
 
-<h2>Blacking out a bank statement before you hand it over</h2>
-<p>A bank statement proves what you paid and when. It also carries your account number, your sort code, and every other payment you have made that month — none of which a landlord, an agent or the other side in a claim is entitled to see. I needed to hand over three years of statements to prove an overpayment, and I was not about to hand over the rest of my life with them.</p>
-<p>So <a href="bank-statement-redaction.html">the redaction tool</a> does it properly. Open a PDF or a photo of the page, let it read the page, and it blacks out the account numbers and sort codes it finds. Drag across anything else you want covered. What you cover can be turned into a rule — the same words, or the same spot on the page — and the rule stays for the next page you open, so a run of statements does not mean starting again every time. You can save the rules to a file and load them back another day.</p>
-<p>The black is painted into the picture before the file is saved. That matters: a black rectangle drawn over text in a word processor or a PDF editor usually leaves the text sitting underneath, where anyone can select it or lift it out with a free tool. Here there is nothing underneath.</p>
-<p>It all happens in your browser. The file is never uploaded, never stored and never logged.</p>
+<h3>Blacking out a bank statement before you hand it over</h3>
+<p>A bank statement proves what you paid and when. It also carries your account number, your sort code, and every other payment you made that month &mdash; none of which a landlord, an agent or the other side in a claim is entitled to see. The tenant behind this site had to hand over three years of statements to prove an overpayment, and was not about to hand over the rest of their life with them.</p>
+<p>So <a href="bank-statement-redaction.html">the redaction tool</a> does it properly. Open a PDF or a photo of the page, let it read the page, and it blacks out the account numbers and sort codes it finds. Drag across anything else you want covered. What you cover can be turned into a rule &mdash; the same words, or the same spot on the page &mdash; and the rule stays for the next page you open, so a run of statements does not mean starting again every time. You can save the rules to a file and load them back another day.</p>
+<p>The black is painted into the picture before the file is saved. That matters: a black rectangle drawn over text in a word processor or a PDF editor usually leaves the text sitting underneath, where anyone can select it or lift it out with a free tool. Here there is nothing underneath. The file is never uploaded, never stored and never logged.</p>
 
-<h2>Your data</h2>
-<p>Everything runs in your browser. Nothing you type is stored, sent anywhere, or remembered — close the page and it is gone. There is no server, no account, no cookie and no network call. Nothing is remembered between visits, on purpose.</p>
-
-
-<h2>&ldquo;But it&rsquo;s an online tool. I don&rsquo;t want to risk it.&rdquo;</h2>
-<p>That&rsquo;s okay. We perfectly understand. Between bank statement redaction and tenancy and rent agreements, we could quite honestly steal a great deal of your data if we were bad actors &mdash; and it would not surprise us to see a site very much like this one appear on the internet trying to do exactly that.</p>
-<p>The site runs entirely in your browser, and it is open source for that very reason: you do not have to take our word for any of it. You can download the whole site as a zip file, open it on your own machine with no internet connection at all, and know your data never went anywhere.</p>
+<h2 id="takehome">&ldquo;But it&rsquo;s an online tool. I don&rsquo;t want to risk it.&rdquo;</h2>
+<p>That&rsquo;s fair. Between bank statement redaction and tenancy and rent agreements, a site like this could steal a great deal of your data if it were run by bad actors &mdash; and it would be no surprise to see one very much like it appear, trying to do exactly that.</p>
+<p>This site runs entirely in your browser, and it is open source for that very reason: you do not have to take its word for any of it. You can download the whole site as a zip file, open it on your own machine with no internet connection at all, and know your data never went anywhere.</p>
 
 <h3>Take the site home</h3>
 <ol class="steps">
@@ -242,7 +272,7 @@
 
 <h3>What works straight away, and what needs the data too</h3>
 <p>Those five steps give you nearly everything: the interest calculator, the arrears calculator, the redaction suite, the complaint workspaces and all the guides. They are plain pages and they work with the plug pulled.</p>
-<p>Three pages &mdash; <b>What rent costs here</b>, <b>Council tax here</b> and <b>Benefit entitlements</b> &mdash; look things up in our open data (postcodes, rents by local authority, and Local Housing Allowance rates). That lives in a second repository, because it is thousands of small files and most people never need it:</p>
+<p>Three pages &mdash; <b>What rent costs here</b>, <b>Council tax here</b> and <b>Benefit entitlements</b> &mdash; look things up in the site&rsquo;s open data (postcodes, rents by local authority, and Local Housing Allowance rates). That lives in a second repository, because it is thousands of small files and most people never need it:</p>
 <ol class="steps">
   <li><b>Download the data</b> the same way &mdash; <a class="ext" href="https://github.com/Savvyrenter/Savvyrenter_data_repo" target="_blank" rel="noopener">GitHub &mdash; Savvy Renter data, data source</a>, green <b>Code</b> button, <b>Download ZIP</b>.</li>
   <li><b>Put the <code>v1</code> folder from it inside your site folder</b>, in a folder called <code>data</code>, so the path reads <code>data/v1/</code>.</li>
@@ -254,10 +284,10 @@
 <p>The redaction page borrows three ready-made pieces of software to read PDFs, read scanned pages and write PDFs back out, and fetches them from a public library service the first time you use it. Open that page once while you are still online so your browser keeps a copy, and it will then work offline; the repository&rsquo;s <code>README</code> explains how to keep the three files in the folder instead.</p>
 
 <h3>Check it yourself, or get someone to</h3>
-<p>Every page is a single readable file &mdash; open one in Notepad and the whole thing is there, comments and all. If you know someone technical, hand them the zip and ask them to look for anything that sends your data out. There is nothing to find, and we would far rather you checked than trusted us.</p>
+<p>Every page is a single readable file &mdash; open one in Notepad and the whole thing is there, comments and all. If you know someone technical, hand them the zip and ask them to look for anything that sends your data out. There is nothing to find, and the site would far rather you checked than took it on trust.</p>
 
 <h2>The legal bit</h2>
-<p>These tools are provided as they are, with no guarantees. They are a guide, not formal legal advice, and you use them entirely at your own risk. I am not a solicitor and accept no liability for your claim, your debt or your tenancy status.</p>
+<p>These tools are provided as they are, with no guarantees. They are a guide, not formal legal advice, and you use them entirely at your own risk. The site&rsquo;s author is not a solicitor and accepts no liability for your claim, your debt or your tenancy status.</p>
 <p>Double-check every figure before you rely on it. Check it with Citizens Advice or Shelter before putting it to a court, a tribunal, or in a Letter Before Action, and before you put a repayment figure to your landlord &mdash; make sure you are not accidentally working from an increased amount and overpaying. If you are relying on the arrears figures as a defence against eviction, make sure they are cast iron first. If a landlord turns down a mathematically correct repayment plan, showing that you tried to establish a reasonable schedule can form part of your legal backing &mdash; but only if the numbers are completely accurate.</p>
 
 <div class="foot">Savvy Renter — savvyrenter.co.uk · free tools for renters · <a href="resources.html#sources" style="color:#38bdf8;text-decoration:none">Data sources &amp; licences</a></div>
