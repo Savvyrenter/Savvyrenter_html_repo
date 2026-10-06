@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Benefit entitlements — Savvy Renter</title>
-<meta name="description" content="A Universal Credit estimate on the April 2026 rates that shows every line of the sum, with the housing element worked out from the real allowance for your area. Free, and nothing you type is stored.">
+<meta name="description" content="Universal Credit calculator on April 2026 rates that shows every line of the sum, with the housing element from your area's Local Housing Allowance. Free.">
 <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="shortcut icon" href="favicon.ico">
@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Savvy Renter">
 <meta property="og:locale" content="en_GB">
 <meta property="og:title" content="Benefit entitlements — Savvy Renter">
-<meta property="og:description" content="A Universal Credit estimate on the April 2026 rates that shows every line of the sum, with the housing element worked out from the real allowance for your area.">
+<meta property="og:description" content="Universal Credit calculator on April 2026 rates that shows every line of the sum, with the housing element from your area's Local Housing Allowance. Free.">
 <meta property="og:url" content="https://www.savvyrenter.co.uk/benefits.html">
 <meta property="og:image" content="https://www.savvyrenter.co.uk/og-image.png">
 <meta property="og:image:secure_url" content="https://www.savvyrenter.co.uk/og-image.png">
@@ -26,9 +26,12 @@
 <meta property="og:image:alt" content="Savvy Renter — free calculators for renters">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Benefit entitlements — Savvy Renter">
-<meta name="twitter:description" content="A Universal Credit estimate that shows its working, with the housing part from the real allowance for your area.">
+<meta name="twitter:description" content="Universal Credit calculator on April 2026 rates that shows every line of the sum, with the housing element from your area's Local Housing Allowance. Free.">
 <meta name="twitter:image" content="https://www.savvyrenter.co.uk/og-image.png">
 <style>
+  /* Any link without its own colour: light blue, never the browser's dark blue on our dark pages. */
+  :where(body) a { color:#38bdf8; }
+
   body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.5; color:#e2e8f0; max-width:1180px; margin:0 auto; padding:24px 18px; background:#0f172a; }
   h1 { color:#f8fafc; font-size:24px; margin-top:0; }
   h2 { color:#f1f5f9; font-size:18px; margin:20px 0 8px; border-bottom:1px solid #334155; padding-bottom:6px; }
@@ -433,6 +436,7 @@ async function look() {
     place = p;
     rates = rates || await SavvyData.lha();
     fillBrmaList();
+    await autoBrma(p.postcode);
     say('');
     document.getElementById('out').classList.remove('hidden');
     drawKids(); applyHousehold();
@@ -442,9 +446,16 @@ async function look() {
 }
 document.getElementById('pc').addEventListener('keydown', e => { if (e.key === 'Enter') look(); });
 
-// The postcode-to-area lookup for housing allowance is a separate dataset and
-// is not in yet, so the area is picked from the list — pre-selected where the
-// names match, which they do for most places.
+// The area comes from the postcode (shared savvy-data module, built by
+// shared-modules/brma-lookup). If the postcode is not in the lookup, or the
+// area has no allowance figures (Northern Ireland), the list is left for the
+// person to choose from.
+async function autoBrma(pc) {
+  const name = await SavvyData.brma(pc).catch(() => null);
+  const k = name ? SavvyData.brmaKey(name) : '';
+  if (k && rates.brma[k]) { document.getElementById('brma').value = k; return true; }
+  return false;
+}
 function fillBrmaList() {
   const sel = document.getElementById('brma');
   if (sel.dataset.filled) return;
