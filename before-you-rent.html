@@ -280,6 +280,8 @@
   #pqText { margin-top:6px; }
   @media (max-width:700px) { .vi { flex-wrap:wrap; } .vi .vt { flex-basis:100%; } .vi select { flex:1 1 120px; } .vi input { flex:2 1 160px; width:auto; } }
   @media print { .vi.hot, .vi.bad { background:#fff !important; } .vi { border-left-color:#000; } .vi .tag { color:#000; } #qs { height:auto; } }
+  .beta { display:inline-block; vertical-align:middle; margin-left:8px; font-size:12px; font-weight:700; color:#0f172a !important; background:#f2c94c; border-radius:4px; padding:1px 7px; letter-spacing:.4px; text-decoration:none !important; }
+  @media print { .beta { display:none !important; } }
 </style>
 <script type="application/ld+json">
 {
@@ -309,11 +311,13 @@
 <script defer src="https://cloud.umami.is/script.js" data-website-id="586e56fe-239b-4e82-be1e-c483dfdfeda1"></script>
 </head>
 <body>
+<nav id="siteRibbon" aria-label="Site menu"><a href="index.html">Home</a> <a href="resources.html">Resources</a> <a href="about.html">About</a></nav>
+<script src="ribbon.js"></script>
 <div class="shell">
-<div class="rail"><aside class="tools" id="siteMenu"><noscript><a href="index.html">Home</a><a href="resources.html">Data &amp; Resources</a></noscript></aside><script src="menu.js"></script><img class="sidelogo" src="SavvyRenter-sml.png" alt="Savvy Renter"></div><main class="page">
+<main class="page">
 <div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
 
-<div class="brand"><div><h1>Before you rent</h1><div class="sub">Look a place up before you view it · know what to look for when you are standing in it</div></div><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page." onclick="showFeedback()">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div></div>
+<div class="brand"><div><h1>Before you rent <a class="beta" href="#betanote" title="Still being tested — see the note at the bottom of the page">Beta*</a></h1><div class="sub">Look a place up before you view it · know what to look for when you are standing in it</div></div><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page." onclick="showFeedback()">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div></div>
 
 <div class="intro xp">
   <div class="xsum"><button type="button" class="xbtn">&#9662; Full explanation</button><span class="xlbl">Summary</span> Start this when you first see an advert and carry it with you to the viewing. Put the address in and it points you to the free public records for the place &mdash; the energy certificate, the agent, licensing, flood risk, crime &mdash; then turns what you find into a list of things to look for when you walk round. Nothing here costs money to look up. <b>Nothing you type is stored or sent anywhere</b> unless you save it to a file yourself.</div>
@@ -325,8 +329,6 @@
   <p>Save it to a file after your research and open it again on your phone at the viewing.</p>
   <p><b>Nothing you type is stored or sent anywhere.</b> The postcode is used to fetch the same small area file everyone in that postcode district gets. Crime figures and the other records are only fetched or opened when you press their button. Close the page and it is gone, unless you saved it.</p><button type="button" class="xbtn end">&#9652; Summary</button></div>
 </div>
-
-<div class="unverified"><b>Beta.</b> This page is new. It is a guide to what to look for and what to ask, not a survey and not legal advice, and the rules it mentions are for England unless it says otherwise.</div>
 
 <div class="acts noprint topacts">
   <button type="button" class="pr" onclick="$('ld').click()">Open a saved file</button>
@@ -982,6 +984,7 @@ refresh();
   Savvy Renter &mdash; savvyrenter.co.uk &middot; free tools for renters &middot;
   Everything on this page happens in your browser. Nothing you type is stored, uploaded or sent anywhere unless you press a button that says where it goes &mdash; save it to a file, or it is gone when you close the tab.
 </div>
+<div class="unverified" id="betanote"><b>* Beta.</b> This page is new. It is a guide to what to look for and what to ask, not a survey and not legal advice, and the rules it mentions are for England unless it says otherwise.</div>
 </main>
 </div>
 </body>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Savvy Renter — why it exists and how the tools work</title>
+<meta name="description" content="Why Savvy Renter exists, how each free renter tool works out its figures, how to run it on your own computer, and the legal bit.">
+<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#001e3d">
+<link rel="canonical" href="https://www.savvyrenter.co.uk/about.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Savvy Renter">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="About Savvy Renter — why it exists and how the tools work">
+<meta property="og:description" content="Why Savvy Renter exists, how each free renter tool works out its figures, how to run it on your own computer, and the legal bit.">
+<meta property="og:url" content="https://www.savvyrenter.co.uk/about.html">
+<meta property="og:image" content="https://www.savvyrenter.co.uk/og-image.png">
+<meta property="og:image:secure_url" content="https://www.savvyrenter.co.uk/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Savvy Renter — free calculators for renters">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About Savvy Renter — why it exists and how the tools work">
+<meta name="twitter:description" content="Why Savvy Renter exists, how each free renter tool works out its figures, how to run it on your own computer, and the legal bit.">
+<meta name="twitter:image" content="https://www.savvyrenter.co.uk/og-image.png">
+<style>
+  :where(body) a { color:#38bdf8; }
+  html, body { margin:0; padding:0; }
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.5; color:#e2e8f0; background:#0f172a; }
+  .wrap { max-width:1216px; margin:0 auto; padding:12px 18px 24px; box-sizing:border-box; }
+@media (max-width:700px) { .wrap { padding:12px 12px 24px; } }
+  h1 { color:#f8fafc; font-size:24px; margin:0; }
+  h2 { color:#f1f5f9; font-size:18px; margin:22px 0 6px; border-bottom:1px solid #334155; padding-bottom:6px; }
+  h3 { color:#f1f5f9; font-size:15px; margin:14px 0 4px; }
+  p { margin:6px 0; font-size:14px; }
+  .hidden { display:none !important; }
+
+  /* The opening strip: what the site is, in two lines, and the feedback button. */
+  .hero { display:flex; align-items:flex-start; gap:12px; background:#1e293b; border-left:4px solid #38bdf8;
+          border-radius:5px; padding:10px 14px; margin:0 0 12px; }
+  .hero p { margin:3px 0 0; color:#c9d4e0; }
+  .hero .fbwrap { margin-left:auto; position:relative; flex:none; }
+  #fbBtn { background:#0284c7; color:#fff; border:none; border-radius:5px; font-size:13px; font-weight:bold; padding:8px 13px; cursor:pointer; font-family:inherit; }
+  #fbBtn:hover { background:#0369a1; }
+  #fbPanel { position:absolute; top:0; right:0; z-index:20; width:470px; max-width:calc(100vw - 40px); box-sizing:border-box; background:#1e293b; border:1px solid #475569; border-radius:6px; padding:10px 30px 10px 12px; box-shadow:0 6px 18px rgba(0,0,0,.5); font-size:14px; }
+  #fbClose { position:absolute; top:4px; right:6px; background:none; border:none; color:#94a3b8; font-size:16px; line-height:1; padding:2px 5px; cursor:pointer; font-family:inherit; }
+  #fbPanel a { color:#38bdf8; font-weight:bold; text-decoration:none; }
+
+  /* ---- The tools, one box each ------------------------------------------
+     As many boxes across as the screen has room for: one on a phone, two on a
+     tablet, three or four on a computer. A section heading runs the full width. */
+  .boxes { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:10px; }
+  .boxes .grp { grid-column:1/-1; margin:8px 0 0; font-size:12px; text-transform:uppercase; letter-spacing:.7px;
+                color:#94a3b8; border-bottom:1px solid #334155; padding-bottom:3px; }
+  .box { display:flex; flex-direction:column; background:#1e293b; border:1px solid #334155; border-radius:8px; padding:10px 12px; }
+  .box h3 { margin:0 0 2px; font-size:16px; }
+  .box p { margin:0 0 8px; color:#c9d4e0; font-size:13.5px; }
+  .box .go { margin-top:auto; display:flex; gap:6px; }
+  .box .go input { flex:1; min-width:0; background:#0f172a; color:#f1f5f9; border:1px solid #475569; border-radius:5px;
+               padding:7px 9px; font-size:15px; text-transform:uppercase; letter-spacing:.5px; font-family:inherit; }
+  .box .go input::placeholder { text-transform:none; letter-spacing:0; color:#64748b; }
+  .box .go { align-items:center; }
+  .box button { flex:none; background:#0284c7; color:#fff; border:none; border-radius:5px; font-weight:bold;
+                font-size:14px; padding:7px 14px; cursor:pointer; font-family:inherit; }
+  .box button:hover { background:#0369a1; }
+  .box .filebtn { display:inline-block; background:#0284c7; color:#fff; border-radius:5px; font-weight:bold;
+                  font-size:14px; padding:7px 14px; cursor:pointer; }
+  .box .filebtn:hover { background:#0369a1; }
+  .box.hot .filebtn { background:#15803d; }
+  .box .go button.open { background:#334155; }
+  .box .go button.open:hover { background:#475569; }
+  .box .go .filebtn + button.open { margin-left:auto; }
+  .mini { display:grid; grid-template-columns:1fr 1fr; gap:6px 8px; margin:0 0 8px; }
+  .mini label { display:flex; flex-direction:column; gap:3px; font-size:12px; color:#94a3b8; font-weight:600; }
+  .mini label.full { grid-column:1/-1; }
+  .mini label.chk { flex-direction:row; align-items:flex-start; gap:6px; font-weight:400; color:#c9d4e0; font-size:12.5px; }
+  .mini input[type=checkbox] { margin:2px 0 0; width:16px; height:16px; flex:none; accent-color:#0284c7; }
+  .mini select, .mini input[type=number] { width:100%; box-sizing:border-box; background:#0f172a; color:#f1f5f9; border:1px solid #475569; border-radius:5px;
+               padding:6px 6px; font-size:14px; font-family:inherit; min-width:0; text-transform:none; letter-spacing:0; }
+  .mini .dsel { display:flex; gap:4px; }
+  .mini .dsel select { flex:1; }
+  .box.hot button { background:#15803d; }
+  .beta { display:inline-block; vertical-align:middle; margin-left:6px; font-size:11.5px; font-weight:700; color:#0f172a !important;
+          background:#f2c94c; border-radius:4px; padding:0 6px; letter-spacing:.4px; text-decoration:none !important; }
+  .src { background:#1e293b; border:1px solid #334155; border-radius:6px; padding:8px 10px; margin-bottom:6px; }
+  .src b { color:#f8fafc; font-size:14px; }
+  .src .who { font-size:12px; color:#94a3b8; }
+  .src p { margin:3px 0 0; font-size:12.5px; color:#c9d4e0; line-height:1.45; }
+  .src .lic { display:inline-block; font-size:11px; color:#0f172a; background:#38bdf8; border-radius:3px; padding:1px 6px; font-weight:bold; margin-left:6px; vertical-align:1px; }
+  .src .attrib { display:block; font-size:11.5px; color:#94a3b8; font-family:ui-monospace,Consolas,monospace; background:#0f172a; border-radius:4px; padding:5px 7px; margin-top:4px; }
+  .src a { font-size:11.5px; text-decoration:none; }
+  .aboutline { font-size:13.5px; color:#c9d4e0; margin:16px 0 0; }
+  .betanote { font-size:12.5px; color:#f5e6b8; margin:8px 0 0; }
+  .box.hot button:hover { background:#166534; }
+
+  /* ---- A tool, opened out from its box -----------------------------------
+     The page itself fills the screen, with a bar to get back to the boxes. */
+  #toolView { position:fixed; inset:0; z-index:1000; background:#0f172a; display:flex; flex-direction:column; }
+  #toolView .tv-bar { display:flex; align-items:center; gap:8px; padding:6px 10px; background:#0b1220; border-bottom:1px solid #1e293b; }
+  #tvBack { background:#1e293b; border:1px solid #38bdf8; color:#38bdf8; font:inherit; font-weight:bold; font-size:14px;
+            padding:6px 12px; border-radius:5px; cursor:pointer; white-space:nowrap; }
+  #tvTitle { color:#f1f5f9; font-weight:bold; font-size:14px; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  #tvOpen { margin-left:auto; color:#94a3b8; font-size:12.5px; text-decoration:none; white-space:nowrap; }
+  #tvOpen:hover { color:#38bdf8; }
+  #tvFrame { flex:1; width:100%; border:0; background:#0f172a; }
+  body.tv-on { overflow:hidden; }
+
+  .steps { margin:6px 0 10px; padding-left:22px; }
+  .steps li { margin:4px 0; line-height:1.5; }
+  .steps code { background:#0b1220; padding:1px 5px; border-radius:3px; font-size:13px; }
+  .wrap a { color:#38bdf8; }
+  .wrap a:hover { color:#7dd3fc; }
+  .foot { font-size:12px; color:#94a3b8; margin-top:18px; border-top:1px solid #334155; padding-top:8px; }
+  .foot a { text-decoration:none; }
+  @media (max-width:520px) { .hero { flex-direction:column; } .hero .fbwrap { margin-left:0; } h1 { font-size:21px; } }
+</style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "AboutPage",
+ "name": "About Savvy Renter",
+ "url": "https://www.savvyrenter.co.uk/about.html",
+ "description": "Why Savvy Renter exists, how each free renter tool works out its figures, how to run it on your own computer, and the legal bit.",
+ "inLanguage": "en-GB",
+ "isPartOf": {
+  "@type": "WebSite",
+  "name": "Savvy Renter",
+  "url": "https://www.savvyrenter.co.uk/"
+ }
+}
+</script>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="586e56fe-239b-4e82-be1e-c483dfdfeda1"></script>
+</head>
+<body>
+<nav id="siteRibbon" aria-label="Site menu"><a href="index.html">Home</a> <a href="resources.html">Resources</a></nav>
+<script src="ribbon.js"></script>
+<div class="wrap">
+<div class="hero"><div><h1>About Savvy Renter</h1>
+<p>Why the site exists, how the tools work out their figures, and how to check for yourself that nothing you type goes anywhere.</p></div>
+<div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page." onclick="showFeedback()">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div></div>
+<h2>Why this site exists</h2>
+<p>This site began with one tenant&rsquo;s problem. A letting agent&rsquo;s error led to an ongoing rent increase, and working out exactly what was owed &mdash; to the day, with the interest a court would allow &mdash; took far longer than it should have. Once the sums were right, the tool went online for free so the next tenant would not have to do it by hand. Everything since has been added the same way: something one tenant needed, built so that others can use it too. It is a volunteer project, run in spare time.</p>
+
+<h2>Your data</h2>
+<p>Everything runs in your browser. Nothing you type is stored, sent anywhere or remembered between visits &mdash; close the page and it is gone. There is no server, no account and no cookie. You do not have to take the site&rsquo;s word for it: <a href="#takehome">take the site home</a> and run the tools that handle your own documents and figures with the internet switched off.</p>
+
+<h2>How each tool works</h2>
+
+<h3>Interest owed to you &mdash; the increasing principal sum</h3>
+<p>Most calculators put interest on one lump sum from one date. That is wrong for rent overpayments, because you paid month by month: the principal sum owed to you was increasing the whole time. Your first overpayment has been held the longest and earns the most interest; your last one the least. <a href="interest.html">The interest calculator</a> adds each payment to the running balance on the day it was made, charges simple interest on that balance for the days until the next payment (balance × rate × days ÷ 365), and adds it all up. Interest is never charged on interest. A late first payment does not shift the rest &mdash; later payments are counted on the day the rent falls due.</p>
+<p>The 8% rate is the usual county-court rate (County Courts Act 1984, s.69); you can change it on the page if the court directs a different one.</p>
+
+<h3>Paying off arrears &mdash; the decreasing principal sum</h3>
+<p><a href="arrears.html">The arrears calculator</a> helps you work out a fair instalment plan when you have fallen behind on rent. If your landlord or a court applies statutory interest to the debt, you should only pay interest on what is actually left to pay &mdash; not the original lump sum. Standard debt calculators charge interest on the whole lump sum all the way through, which overcharges you. This one charges flat, non-compounding simple interest (like the UK statutory 8% rate) on the shrinking balance, payment by payment &mdash; monthly, or weekly, fortnightly or quarterly if that is how you pay. Every payment brings the balance down, and the interest with it. It runs until the debt reaches zero, showing the number of payments, the final odd-sized payment, and the true interest cost.</p>
+
+<h3>Drafting a complaint to the Property Redress Scheme</h3>
+<p>Every letting agent in England has to belong to a redress scheme, and the Property Redress Scheme is one of the two. Once you have been through the agent&rsquo;s own complaints procedure and had their final answer, you can take it to the scheme &mdash; free, and it can order an agent to put things right and to pay compensation.</p>
+<p>The scheme&rsquo;s own portal will not let you save a part-finished complaint. The main box takes four thousand characters and there is a second one for what you are asking for, and if you walk away from it, or the session drops, you start again. That is a hard way to write the most important part of your case.</p>
+<p><a href="PRS_Tenant_Workspace.html" style="color:#38bdf8;font-weight:bold;text-decoration:none">The complaint workspace</a> is the same questions with the same limits, on your own computer. Write it over as many days as you need, save the draft to a file and load it back, and only when it is finished do you open the real portal and paste it across. The counters keep counting past the limit instead of cutting you off mid-sentence, so you can write it long and then trim it deliberately. It submits nothing and it is not connected to the scheme &mdash; the complaint itself is still made on their site. <a class="beta" href="#betanote">Beta*</a></p>
+
+<h3>Drafting a complaint to The Property Ombudsman</h3>
+<p>The Property Ombudsman is the other scheme, and an agent belongs to one or the other, not both. Check which before you write anything &mdash; a complaint written for the wrong scheme goes nowhere, and both workspaces start with a member check for exactly that reason.</p>
+<p>The Ombudsman&rsquo;s portal does not save a part-finished complaint either, and it goes further: the case forms do not appear at all until a signed Letter of Authority has been attached. So you cannot read the questions before you write the letter, and you cannot see how much room you have until you are already committed to the sitting.</p>
+<p><a href="TPO_Tenant_Workspace.html" style="color:#38bdf8;font-weight:bold;text-decoration:none">The Ombudsman workspace</a> keeps the same gate, because it is what happens on the day &mdash; but it shows you the letter first, fills it in from what you have already typed, and lets you download it to print and sign. Past that it is the same questions with the same limits, saved to your own computer, plus the two time limits worked out for you: the eight weeks the agent gets to answer, and the twelve months you have once they have answered. <a class="beta" href="#betanote">Beta*</a></p>
+
+<h3>Drafting your Money Claim Online paperwork</h3>
+<p>If a claim has been issued, the paperwork arrives with deadlines attached and boxes that are smaller than what you need to say. The forms themselves are not the hard part &mdash; writing to length, in plain English, under a deadline, is.</p>
+<p><a href="court_forms_workspace.html" style="color:#38bdf8;font-weight:bold;text-decoration:none">The Money Claim Online workspace</a> gives you somewhere to draft the two that come up most: the Directions Questionnaire (N181) and an application for summary judgment (N244). It counts your characters as you go, so you find out you are over the limit here rather than when you are pasting into the real form, and it carries an evidence checklist you can tick off as you get each exhibit ready. <a class="beta" href="#betanote">Beta*</a></p>
+<p>It is a drafting space and nothing more. It is not connected to, or endorsed by, HM Courts &amp; Tribunals Service or any court service, it submits nothing, and the form numbers and rules change &mdash; check the current versions before you rely on anything you write here.</p>
+
+<h3>Blacking out a bank statement before you hand it over</h3>
+<p>A bank statement proves what you paid and when. It also carries your account number, your sort code, and every other payment you made that month &mdash; none of which a landlord, an agent or the other side in a claim is entitled to see. The tenant behind this site had to hand over three years of statements to prove an overpayment, and was not about to hand over the rest of their life with them.</p>
+<p>So <a href="bank-statement-redaction.html">the redaction tool</a> does it properly. Open a PDF or a photo of the page, let it read the page, and it blacks out the account numbers and sort codes it finds. Drag across anything else you want covered. What you cover can be turned into a rule &mdash; the same words, or the same spot on the page &mdash; and the rule stays for the next page you open, so a run of statements does not mean starting again every time. You can save the rules to a file and load them back another day.</p>
+<p>The black is painted into the picture before the file is saved. That matters: a black rectangle drawn over text in a word processor or a PDF editor usually leaves the text sitting underneath, where anyone can select it or lift it out with a free tool. Here there is nothing underneath. The file is never uploaded, never stored and never logged.</p>
+
+<h2 id="takehome">&ldquo;But it&rsquo;s an online tool. I don&rsquo;t want to risk it.&rdquo;</h2>
+<p>That&rsquo;s fair. Between bank statement redaction and tenancy and rent agreements, a site like this could steal a great deal of your data if it were run by bad actors &mdash; and it would be no surprise to see one very much like it appear, trying to do exactly that.</p>
+<p>This site runs entirely in your browser, and it is open source for that very reason: you do not have to take its word for any of it. You can download the whole site as a zip file, open it on your own machine, and use every tool that touches your own documents and figures with no internet connection at all &mdash; and so know your data never went anywhere.</p>
+
+<h3>Take the site home</h3>
+<ol class="steps">
+  <li><b>Go to the repository</b> &mdash; <a class="ext" href="https://github.com/Savvyrenter/Savvyrenter_html_repo" target="_blank" rel="noopener">GitHub &mdash; Savvy Renter, HTML pages</a>. The whole site lives there &mdash; every page you can see here.</li>
+  <li><b>Download it.</b> Press the green <b>Code</b> button near the top right, then <b>Download ZIP</b>. You do not need a GitHub account and you do not need to install git.</li>
+  <li><b>Unzip it</b> anywhere you like &mdash; your Documents folder is fine. You will get one folder with all the pages inside it.</li>
+  <li><b>Open <code>index.html</code></b> in that folder by double-clicking it. The site opens in your browser, exactly as you see it here, from your own hard drive.</li>
+  <li><b>Now pull the plug.</b> Turn off your wi-fi, or unplug the cable, and use it. Everything that handles your own documents and figures still works. That is the proof: if it can redact a statement with no internet connection, nothing was ever being sent anywhere.</li>
+</ol>
+
+<h3>What works with the plug pulled, and what needs the internet</h3>
+<p><b>Works with no internet at all</b> &mdash; everything that handles your own documents and figures: the interest calculator, the arrears calculator, the record of income, the bank statement redaction, splitting and naming tools, the PRS, Ombudsman and Money Claim workspaces, the Section 8 notice checker, the Moving in audit, the web page data scrubber and all the guides. The software that reads PDFs and scanned pages comes in the download, in the <code>lib</code> folder, so nothing is fetched from anywhere. The first scanned page you read takes a little longer while the reader starts up.</p>
+<p><b>Needs the internet</b> &mdash; the pages that look up general facts about an area from a postcode: <b>What rent costs here</b>, <b>Council tax here</b>, <b>Before you rent</b>, and the housing allowance part of <b>Benefit entitlements</b>. What they fetch is public data about the area, the same file for everyone in that part of the postcode; nothing you have typed about yourself goes with it. <b>Before you rent</b> also asks police.uk for street-level crime figures for the area, and that one always needs the internet.</p>
+
+<h3>Run the area lookups on your own computer too</h3>
+<p>Optional, and only if you want those lookups without the internet. The data lives in a second repository, because it is thousands of small files and most people never need it:</p>
+<ol class="steps">
+  <li><b>Download the data</b> the same way &mdash; <a class="ext" href="https://github.com/Savvyrenter/Savvyrenter_data_repo" target="_blank" rel="noopener">GitHub &mdash; Savvy Renter data, data source</a>, green <b>Code</b> button, <b>Download ZIP</b>.</li>
+  <li><b>Make a folder called <code>data</code></b> inside your site folder, beside <code>index.html</code>.</li>
+  <li><b>Copy the <code>v1</code> folder</b> from the data download into it, so you have <code>data\v1</code>. There is nothing to edit: the pages look there first.</li>
+  <li><b>Serve the folder rather than double-clicking.</b> Browsers will not let a page opened straight off your drive read the files beside it, so these pages need a tiny local web server. If you have Python: open a command prompt in the site folder and run <code>python -m http.server</code>, then go to <code>http://localhost:8000</code> in your browser. It is still entirely on your own machine, and it works whichever drive the folder is on.</li>
+</ol>
+<p>Opened by double-clicking, those pages simply use the online data instead, so they still work whenever you are connected.</p>
+
+<h3>Check it yourself, or get someone to</h3>
+<p>Every page is a single readable file &mdash; open one in Notepad and the whole thing is there, comments and all. If you know someone technical, hand them the zip and ask them to look for anything that sends your data out. There is nothing to find, and the site would far rather you checked than took it on trust.</p>
+
+<h2>The legal bit</h2>
+<p>These tools are provided as they are, with no guarantees. They are a guide, not formal legal advice, and you use them entirely at your own risk. The site&rsquo;s author is not a solicitor and accepts no liability for your claim, your debt or your tenancy status.</p>
+<p>Double-check every figure before you rely on it. Check it with Citizens Advice or Shelter before putting it to a court, a tribunal, or in a Letter Before Action, and before you put a repayment figure to your landlord &mdash; make sure you are not accidentally working from an increased amount and overpaying. If you are relying on the arrears figures as a defence against eviction, make sure they are cast iron first. If a landlord turns down a mathematically correct repayment plan, showing that you tried to establish a reasonable schedule can form part of your legal backing &mdash; but only if the numbers are completely accurate.</p>
+
+<h2 id="sources">Where the data comes from</h2>
+<p>Every figure the site works out from a dataset comes from one of these. All of it is published by government or under an open licence, and the required attribution is shown with each. Nothing here is the site&rsquo;s own data, and nothing about you is added to it. The files themselves are in the <a href="https://github.com/Savvyrenter/Savvyrenter_data_repo" target="_blank" rel="noopener">open data repository</a>.</p>
+<div class="src" id="src-lha"><b>Local Housing Allowance rates</b><span class="lic">OGL v3.0</span><div class="who">Department for Work and Pensions</div><p>The maximum housing benefit or Universal Credit housing element payable in each Broad Rental Market Area, by bedroom category. Reset each April.</p><span class="attrib">Source: Department for Work and Pensions, licensed under the Open Government Licence v3.0</span><a href="https://www.gov.uk/government/publications/understanding-local-housing-allowance-rates" target="_blank" rel="noopener">gov.uk &#8599;</a></div>
+<div class="src" id="src-pipr"><b>Price Index of Private Rents</b><span class="lic">OGL v3.0</span><div class="who">Office for National Statistics</div><p>Average private rents by local authority, monthly from January 2015, overall and by bedroom count. Used to show what rents in an area have actually done over time, and how that compares with the LHA rate.</p><span class="attrib">Source: Office for National Statistics licensed under the Open Government Licence v.3.0</span><a href="https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/privaterentandhousepricesuk/latest" target="_blank" rel="noopener">ons.gov.uk &#8599;</a></div>
+<div class="src" id="src-nspl"><b>National Statistics Postcode Lookup</b><span class="lic">OGL v3.0</span><div class="who">Office for National Statistics &middot; Ordnance Survey &middot; Royal Mail</div><p>Every UK postcode with the local authority it sits in, and its coordinates. It is what turns a postcode you type into the right area for every other lookup here.</p><span class="attrib">Contains OS data &copy; Crown copyright and database right 2026<br>Contains Royal Mail data &copy; Royal Mail copyright and database right 2026<br>Source: Office for National Statistics licensed under the Open Government Licence v.3.0</span><a href="https://geoportal.statistics.gov.uk/" target="_blank" rel="noopener">geoportal.statistics.gov.uk &#8599;</a></div>
+<div class="src" id="src-brma"><b>Postcode to Broad Rental Market Area lookup</b><span class="lic">OGL v3.0</span><div class="who">Built by Savvy Renter from the official boundaries</div><p>Links each postcode to its Broad Rental Market Area, the area Local Housing Allowance is set for. Each postcode above is placed inside the official boundaries: Valuation Office Agency (England, 2012), Scottish Government (Scotland, 2009) and Rent Officers Wales (2014), with Northern Ireland by postcode district from the Housing Executive&rsquo;s published list. The method follows Bailey, N. (2025) <i>Postcode to Broad Rental Market Areas (BRMAs) Lookup v2.2</i>, Urban Big Data Centre, University of Glasgow; their lookup file itself is not used.</p><span class="attrib">Contains public sector information licensed under the Open Government Licence v3.0<br>Contains Ordnance Survey data &copy; Crown copyright and database right</span><a href="https://github.com/nick-bailey/Postcode-to-BRMA-lookup" target="_blank" rel="noopener">method &#8599;</a></div>
+<div class="src" id="src-ctax"><b>Council tax Band D charges</b><span class="lic">CC BY 4.0</span><div class="who">Compiled by PlainCouncilTax from MHCLG, the Scottish Government, StatsWales and the Valuation Office Agency</div><p>The Band D charge for every council in England, Scotland and Wales. The other bands are fixed fractions of Band D in law, so they are worked out from it. Parish and town council precepts are not included.</p><span class="attrib">Council tax data: PlainCouncilTax (plaincounciltax.co.uk), licensed under CC BY 4.0<br>Contains public sector information licensed under the Open Government Licence v3.0</span><a href="https://plaincounciltax.co.uk/" target="_blank" rel="noopener">plaincounciltax.co.uk &#8599;</a></div>
+<div class="foot">Savvy Renter — savvyrenter.co.uk · free tools for renters · <a href="index.html">All tools</a> · <a href="#sources">Data sources &amp; licences</a></div>
+<div class="sr-count" style="text-align:center;margin:6px 0 14px"><style>@media print{.sr-count{display:none!important}}</style><script type="text/javascript" src="https://counter.websiteout.com/js/2/0/172/0"></script></div>
+
+</div>
+<script>
+// The address is never written into the page source. It is put together only
+// when someone asks for it, which keeps the harvesters off it.
+function showFeedback() {
+  const who = ['feedback', 'savvyrenter.co.uk'].join('\u0040');
+  const p = document.getElementById('fbPanel');
+  p.innerHTML =
+    '<button type="button" id="fbClose" title="Close" onclick="hideFeedback()">\u2715</button>' +
+    '<p style="margin:0 0 6px">Suggestions, corrections, or an open-source tool we could host \u2014 we read everything, though we can\u2019t promise to answer every email. Use a suggestion and we\u2019ll credit you on the page.</p>' +
+    '<a href="mailto:' + who + '?subject=Savvy%20Renter%20feedback">' + who + '</a>';
+  p.classList.remove('hidden');
+}
+function hideFeedback() { document.getElementById('fbPanel').classList.add('hidden'); }
+</script>
+</body>
+</html>

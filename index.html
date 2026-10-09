@@ -29,159 +29,95 @@
 <meta name="twitter:description" content="Free tools for UK renters: overpaid rent interest, arrears plans, Universal Credit, council tax and rents by postcode, Section 8 checks and complaint drafting.">
 <meta name="twitter:image" content="https://www.savvyrenter.co.uk/og-image.png">
 <style>
-  /* Any link without its own colour: light blue, never the browser's dark blue on our dark pages. */
   :where(body) a { color:#38bdf8; }
-
-  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.5; color:#e2e8f0; max-width:1180px; margin:0 auto; padding:24px 18px; background:#0f172a; }
-  h1 { color:#f8fafc; font-size:24px; margin-top:0; }
+  html, body { margin:0; padding:0; }
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.5; color:#e2e8f0; background:#0f172a; }
+  .wrap { max-width:1216px; margin:0 auto; padding:12px 18px 24px; box-sizing:border-box; }
+@media (max-width:700px) { .wrap { padding:12px 12px 24px; } }
+  h1 { color:#f8fafc; font-size:24px; margin:0; }
   h2 { color:#f1f5f9; font-size:18px; margin:22px 0 6px; border-bottom:1px solid #334155; padding-bottom:6px; }
   h3 { color:#f1f5f9; font-size:15px; margin:14px 0 4px; }
   p { margin:6px 0; font-size:14px; }
-  .intro, .note { background:#1e293b; border-left:4px solid #38bdf8; padding:10px 14px; margin:0 0 14px; border-radius:4px; font-size:14px; color:#c9d4e0; }
-  .brand { display:flex; align-items:center; gap:14px; border-bottom:2px solid #334155; padding-bottom:10px; margin-bottom:14px; }
-  .brand img { height:56px; width:auto; border-radius:8px; }
-  .brand h1 { border:none; padding:0; margin:0; font-size:32px; letter-spacing:-0.2px; }
-  .brand .sub { color:#94a3b8; font-size:13px; margin-top:2px; }
-  /* Feedback. The address is assembled in script when the button is used, so
-     it is not sitting in the page source for a harvester to scrape. */
-  .brand .fbwrap { margin-left:auto; text-align:right; position:relative; }
-  #fbBtn { background:#0284c7; color:#fff; border:none; border-radius:5px; font-size:13px; font-weight:bold; padding:9px 14px; cursor:pointer; font-family:inherit; }
-  #fbBtn:hover { background:#0369a1; }
-  #fbPanel { position:absolute; top:0; right:0; z-index:20; width:470px; max-width:calc(100vw - 40px); box-sizing:border-box; background:#1e293b; border:1px solid #475569; border-radius:6px; padding:10px 30px 10px 12px; text-align:left; font-size:12.5px; color:#c9d4e0; line-height:1.5; box-shadow:0 6px 18px rgba(0,0,0,.45); }
-  #fbClose { position:absolute; top:4px; right:6px; background:none; border:none; color:#94a3b8; font-size:16px; line-height:1; padding:2px 5px; cursor:pointer; font-family:inherit; }
-  #fbClose:hover { color:#f8fafc; }
-  #fbPanel a { color:#38bdf8; font-weight:bold; text-decoration:none; font-size:14px; }
-  #fbPanel a:hover { text-decoration:underline; }
   .hidden { display:none !important; }
-  .foot { font-size:12px; color:#94a3b8; margin-top:18px; border-top:1px solid #334155; padding-top:8px; }
-  .shell { display:flex; gap:20px; align-items:flex-start; }
-  /* Capped to the screen: a sticky column taller than the viewport pins at
-     the top and whatever sits below the fold can never be reached. */
-  .rail { width:200px; flex:none; position:sticky; top:18px;
-           max-height:calc(100vh - 36px); overflow-y:auto; overscroll-behavior:contain; }
-  .tools { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:12px; }
-  .sidelogo { display:block; width:196px; max-width:100%; height:auto; border-radius:10px; margin:14px auto 0; }
-  .tools h3 { margin:0 0 10px; font-size:12px; text-transform:uppercase; letter-spacing:.5px; color:#94a3b8; }
-  .tools a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold; font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
-  .tools a:hover { background:#0369a1; }
-  .tools a.on { background:#38bdf8; color:#0f172a; }
-  /* Grouped rail -- the flat list of eleven buttons was getting long, so the
-     related ones fold up. <details>/<summary>, so it works with no JS at all;
-     the group holding the page you are on is written out already open. */
-  .tools .grp { margin-bottom:8px; }
-  .tools .grp > summary { list-style:none; cursor:pointer; background:#1e293b; border:1px solid #475569;
-     color:#e2e8f0; font-weight:bold; font-size:14px; padding:5px 12px; border-radius:5px;
-     display:flex; align-items:center; justify-content:space-between; gap:6px; }
-  .tools .grp > summary::-webkit-details-marker { display:none; }
-  .tools .grp > summary::after { content:"\25BE"; font-size:11px; color:#94a3b8; }
-  .tools .grp[open] > summary::after { content:"\25B4"; }
-  .tools .grp > summary:hover { border-color:#38bdf8; color:#fff; }
-  .tools .grp > summary:focus-visible { outline:2px solid #38bdf8; outline-offset:1px; }
-  .tools .grp[open] > summary { margin-bottom:6px; }
-  .tools .grp a { margin-left:10px; font-size:13px; padding:4px 10px; }
-  .unverified { background:#3b2f0b; border-left:4px solid #f2c94c; color:#f5e6b8;
-     padding:8px 14px; margin:0 0 10px; border-radius:4px; font-size:13px; }
-  .tools .tiny { font-size:11px; color:#94a3b8; margin-top:6px; }
-  .page { flex:1; min-width:0; }
-  @media (max-width:800px) { .shell { display:block; } .rail { width:auto; position:static; margin-bottom:14px; max-height:none; overflow:visible; } .sidelogo { max-width:208px; } }
 
+  /* The opening strip: what the site is, in two lines, and the feedback button. */
+  .hero { display:flex; align-items:flex-start; gap:12px; background:#1e293b; border-left:4px solid #38bdf8;
+          border-radius:5px; padding:10px 14px; margin:0 0 12px; }
+  .hero p { margin:3px 0 0; color:#c9d4e0; }
+  .hero .fbwrap { margin-left:auto; position:relative; flex:none; }
+  #fbBtn { background:#0284c7; color:#fff; border:none; border-radius:5px; font-size:13px; font-weight:bold; padding:8px 13px; cursor:pointer; font-family:inherit; }
+  #fbBtn:hover { background:#0369a1; }
+  #fbPanel { position:absolute; top:0; right:0; z-index:20; width:470px; max-width:calc(100vw - 40px); box-sizing:border-box; background:#1e293b; border:1px solid #475569; border-radius:6px; padding:10px 30px 10px 12px; box-shadow:0 6px 18px rgba(0,0,0,.5); font-size:14px; }
+  #fbClose { position:absolute; top:4px; right:6px; background:none; border:none; color:#94a3b8; font-size:16px; line-height:1; padding:2px 5px; cursor:pointer; font-family:inherit; }
+  #fbPanel a { color:#38bdf8; font-weight:bold; text-decoration:none; }
 
-  /* A thin strip across the top of the page itself: the site's name, above the
-     content and clear of the navigation, costing one line of height. */
-  .pagebar { background:#0b1220; border:1px solid #1e293b; border-radius:6px;
-             padding:5px 12px; margin-bottom:10px; display:flex; align-items:center;
-             justify-content:space-between; gap:14px; font-size:11.5px; }
-  .pagebar a { color:#94a3b8; text-decoration:none; font-weight:bold; letter-spacing:.6px;
-               text-transform:uppercase; white-space:nowrap; }
-  .pagebar a:hover { color:#38bdf8; }
-  .pagebar span { color:#64748b; text-align:right; min-width:0;
-                  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-  .pagebar .brief { display:none; }
-  @media (max-width:700px) { .pagebar .full { display:none; } .pagebar .brief { display:inline; } }
+  /* ---- The tools, one box each ------------------------------------------
+     As many boxes across as the screen has room for: one on a phone, two on a
+     tablet, three or four on a computer. A section heading runs the full width. */
+  .boxes { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:10px; }
+  .boxes .grp { grid-column:1/-1; margin:8px 0 0; font-size:12px; text-transform:uppercase; letter-spacing:.7px;
+                color:#94a3b8; border-bottom:1px solid #334155; padding-bottom:3px; }
+  .box { display:flex; flex-direction:column; background:#1e293b; border:1px solid #334155; border-radius:8px; padding:10px 12px; }
+  .box h3 { margin:0 0 2px; font-size:16px; }
+  .box p { margin:0 0 8px; color:#c9d4e0; font-size:13.5px; }
+  .box .go { margin-top:auto; display:flex; gap:6px; }
+  .box .go input { flex:1; min-width:0; background:#0f172a; color:#f1f5f9; border:1px solid #475569; border-radius:5px;
+               padding:7px 9px; font-size:15px; text-transform:uppercase; letter-spacing:.5px; font-family:inherit; }
+  .box .go input::placeholder { text-transform:none; letter-spacing:0; color:#64748b; }
+  .box .go { align-items:center; }
+  .box button { flex:none; background:#0284c7; color:#fff; border:none; border-radius:5px; font-weight:bold;
+                font-size:14px; padding:7px 14px; cursor:pointer; font-family:inherit; }
+  .box button:hover { background:#0369a1; }
+  .box .filebtn { display:inline-block; background:#0284c7; color:#fff; border-radius:5px; font-weight:bold;
+                  font-size:14px; padding:7px 14px; cursor:pointer; }
+  .box .filebtn:hover { background:#0369a1; }
+  .box.hot .filebtn { background:#15803d; }
+  .box .go button.open { background:#334155; }
+  .box .go button.open:hover { background:#475569; }
+  .box .go .filebtn + button.open { margin-left:auto; }
+  .mini { display:grid; grid-template-columns:1fr 1fr; gap:6px 8px; margin:0 0 8px; }
+  .mini label { display:flex; flex-direction:column; gap:3px; font-size:12px; color:#94a3b8; font-weight:600; }
+  .mini label.full { grid-column:1/-1; }
+  .mini label.chk { flex-direction:row; align-items:flex-start; gap:6px; font-weight:400; color:#c9d4e0; font-size:12.5px; }
+  .mini input[type=checkbox] { margin:2px 0 0; width:16px; height:16px; flex:none; accent-color:#0284c7; }
+  .mini select, .mini input[type=number] { width:100%; box-sizing:border-box; background:#0f172a; color:#f1f5f9; border:1px solid #475569; border-radius:5px;
+               padding:6px 6px; font-size:14px; font-family:inherit; min-width:0; text-transform:none; letter-spacing:0; }
+  .mini .dsel { display:flex; gap:4px; }
+  .mini .dsel select { flex:1; }
+  .box.hot button { background:#15803d; }
+  .beta { display:inline-block; vertical-align:middle; margin-left:6px; font-size:11.5px; font-weight:700; color:#0f172a !important;
+          background:#f2c94c; border-radius:4px; padding:0 6px; letter-spacing:.4px; text-decoration:none !important; }
+  .src { background:#1e293b; border:1px solid #334155; border-radius:6px; padding:8px 10px; margin-bottom:6px; }
+  .src b { color:#f8fafc; font-size:14px; }
+  .src .who { font-size:12px; color:#94a3b8; }
+  .src p { margin:3px 0 0; font-size:12.5px; color:#c9d4e0; line-height:1.45; }
+  .src .lic { display:inline-block; font-size:11px; color:#0f172a; background:#38bdf8; border-radius:3px; padding:1px 6px; font-weight:bold; margin-left:6px; vertical-align:1px; }
+  .src .attrib { display:block; font-size:11.5px; color:#94a3b8; font-family:ui-monospace,Consolas,monospace; background:#0f172a; border-radius:4px; padding:5px 7px; margin-top:4px; }
+  .src a { font-size:11.5px; text-decoration:none; }
+  .aboutline { font-size:13.5px; color:#c9d4e0; margin:16px 0 0; }
+  .betanote { font-size:12.5px; color:#f5e6b8; margin:8px 0 0; }
+  .box.hot button:hover { background:#166534; }
 
-  /* ---- Site menu: the fly-out layout, in our own styling ---------------- */
-  /* Fixed sidebar down the left, categories that fly out on hover or keyboard
-     focus. The card, the blue pill links and the colours are the site's own. */
-  .rail { position:fixed; top:0; left:0; width:236px; height:100vh; box-sizing:border-box;
-          padding:14px 12px; overflow:visible; background:#0f172a;
-          display:flex; flex-direction:column; max-height:none; z-index:2000; }
-  .tools { background:#1e293b; border:1px solid #334155; border-radius:8px; padding:12px; }
-  .tools > a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold;
-               font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
-  .tools > a:hover { background:#0369a1; }
-  .tools > a.on { background:#38bdf8; color:#0f172a; }
-  .navlist { list-style:none; margin:0; padding:0; }
-  .navitem { position:relative; margin-bottom:8px; }
-  .navitem > .navcat { display:flex; align-items:center; justify-content:space-between; gap:8px;
-                       background:#1e293b; border:1px solid #475569; border-radius:5px; color:#e2e8f0;
-                       font-size:13px; font-weight:600; padding:5px 10px; cursor:pointer; user-select:none; }
-  .navitem > .navcat::after { content:"\25B8"; font-size:11px; color:#94a3b8; }
-  .navitem:hover > .navcat, .navitem:focus-within > .navcat { background:#334155; border-color:#0284c7; color:#fff; }
-  .navitem.here > .navcat { border-color:#38bdf8; color:#38bdf8; }
-  .flyout { visibility:hidden; opacity:0;
-            transition:visibility 0s linear .4s, opacity .12s ease .4s;
-            position:absolute; top:50%; transform:translateY(-50%); left:100%; margin-left:10px; width:246px;
-            max-height:92vh; overflow-y:auto; list-style:none; padding:12px; margin-bottom:0;
-            background:#1e293b; border:1px solid #334155; border-left:3px solid #0284c7;
-            border-radius:8px; box-shadow:6px 4px 18px rgba(0,0,0,.5); z-index:2001; }
-  .navitem:hover > .flyout, .navitem:focus-within > .flyout, .flyout:hover { visibility:visible; opacity:1; transition-delay:0s; }
-  /* The gap between the row and its fly-out belongs to the row, so crossing it
-     at any angle keeps the menu open; the fly-out then holds itself open. */
-  .navitem > .flyout::before { content:''; position:absolute; top:-40px; bottom:-40px; left:-26px; width:26px; }
-  .navitem::after { content:''; position:absolute; top:-6px; bottom:-6px; left:100%; width:28px; }
-  .flyout a { display:block; background:#0284c7; color:#fff; text-decoration:none; font-weight:bold;
-              font-size:14px; padding:5px 12px; border-radius:5px; margin-bottom:8px; }
-  .flyout li:last-child a { margin-bottom:0; }
-  .flyout a:hover { background:#0369a1; }
-  .flyout a.on { background:#38bdf8; color:#0f172a; }
-  .sidelogo { display:block; width:196px; max-width:100%; height:auto; border-radius:10px; margin:14px auto 0; }
-  .shell { display:block; }
-  main.page, .page { margin-left:252px; max-width:none; position:relative; z-index:1; }
-  /* Narrow windows and phones: the sidebar stops being fixed and every item is
-     listed openly, so nothing has to be hovered to be found. */
-  @media (max-width:860px) {
-    .rail { position:static; width:auto; height:auto; padding:0; display:block; z-index:auto; }
-    main.page, .page { margin-left:0; }
-    .navitem > .navcat::after { content:""; }
-    .flyout, .navitem.resitem > .flyout { visibility:visible; opacity:1; pointer-events:auto; position:static; transform:none; width:auto; margin:8px 0 0; max-height:none; inset:auto;
-              border-left:1px solid #334155; box-shadow:none; }
-  }
-  /* Other resources: the row is a link to the page, and the fly-out carries the
-     links themselves, so nothing needs two clicks to reach. */
-  .navitem > a.navcat { text-decoration:none; }
-  .navitem.resitem { position:static; }
-  /* The long one is pinned to the window instead, so all 39 links stay on screen. */
-  .navitem.resitem > .flyout { position:fixed; top:2vh; bottom:2vh; left:221px; margin-left:0; transform:none; max-height:none; }
-  .flyout.wide { width:300px; max-height:94vh; }
-  .flyout .sect { font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.6px;
-                  color:#94a3b8; margin:10px 2px 5px; }
-  .flyout a.hot { background:#15803d; }
-  .flyout a.hot:hover { background:#166534; }
-  .flyout a.ext { background:#0f172a; border:1px solid #334155; color:#e2e8f0; font-weight:600;
-                  font-size:12.5px; padding:4px 10px; margin-bottom:4px; }
-  .flyout a.ext:hover { background:#334155; border-color:#0284c7; color:#fff; }
-  .flyout a.ext::after { content:" \2197"; color:#94a3b8; font-size:11px; }
-  /* A category inside a fly-out: the Redaction Suite sits under Financial Tools,
-     so what it redacts is said by where it lives. Its parent must not clip it. */
-  .flyout.hassub { overflow:visible; max-height:none; }
-  .flyout .navitem.sub { margin:2px 0 0; }
-  .flyout .navitem.sub > .navcat { background:#0f172a; }
-  .flyout .navitem.sub > .flyout { margin-left:14px; }
-  /* keep the long one in the flow on a phone (this comes last on purpose) */
-  @media (max-width:860px) { .navitem.resitem > .flyout { position:static; inset:auto; transform:none; } }
-  @media print { .rail { display:none !important; } main.page, .page { margin-left:0; } }
-  .toolgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:0 18px; margin:2px 0 6px; }
-  .toolgrid h3 { margin:6px 0 2px; }
-  .toolgrid ul { list-style:none; margin:0; padding:0; }
-  .toolgrid li { font-size:14px; margin:1px 0; line-height:1.4; }
-  .toolgrid li a { font-weight:bold; text-decoration:none; }
+  /* ---- A tool, opened out from its box -----------------------------------
+     The page itself fills the screen, with a bar to get back to the boxes. */
+  #toolView { position:fixed; inset:0; z-index:1000; background:#0f172a; display:flex; flex-direction:column; }
+  #toolView .tv-bar { display:flex; align-items:center; gap:8px; padding:6px 10px; background:#0b1220; border-bottom:1px solid #1e293b; }
+  #tvBack { background:#1e293b; border:1px solid #38bdf8; color:#38bdf8; font:inherit; font-weight:bold; font-size:14px;
+            padding:6px 12px; border-radius:5px; cursor:pointer; white-space:nowrap; }
+  #tvTitle { color:#f1f5f9; font-weight:bold; font-size:14px; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  #tvOpen { margin-left:auto; color:#94a3b8; font-size:12.5px; text-decoration:none; white-space:nowrap; }
+  #tvOpen:hover { color:#38bdf8; }
+  #tvFrame { flex:1; width:100%; border:0; background:#0f172a; }
+  body.tv-on { overflow:hidden; }
+
   .steps { margin:6px 0 10px; padding-left:22px; }
   .steps li { margin:4px 0; line-height:1.5; }
   .steps code { background:#0b1220; padding:1px 5px; border-radius:3px; font-size:13px; }
-  main.page a, .page a { color:#38bdf8; text-decoration:underline; }
-  main.page a:visited, .page a:visited { color:#38bdf8; }
-  main.page a:hover, .page a:hover { color:#7dd3fc; }
-  main.page .rail a, .rail a, .pagebar a, .tools a, .flyout a, .foot a { text-decoration:none; }
+  .wrap a { color:#38bdf8; }
+  .wrap a:hover { color:#7dd3fc; }
+  .foot { font-size:12px; color:#94a3b8; margin-top:18px; border-top:1px solid #334155; padding-top:8px; }
+  .foot a { text-decoration:none; }
+  @media (max-width:520px) { .hero { flex-direction:column; } .hero .fbwrap { margin-left:0; } h1 { font-size:21px; } }
 </style>
 <script type="application/ld+json">
 [
@@ -211,120 +147,53 @@
 <script defer src="https://cloud.umami.is/script.js" data-website-id="586e56fe-239b-4e82-be1e-c483dfdfeda1"></script>
 </head>
 <body>
-<div class="shell">
-<div class="rail"><aside class="tools" id="siteMenu"><noscript><a href="index.html">Home</a><a href="resources.html">Data &amp; Resources</a></noscript></aside><script src="menu.js"></script><img class="sidelogo" src="SavvyRenter-sml.png" alt="Savvy Renter"></div><main class="page">
-<div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
+<nav id="siteRibbon" aria-label="Site menu"><a href="index.html">Home</a> <a href="resources.html">Resources</a></nav>
+<script src="ribbon.js"></script>
+<div class="wrap">
 
-<div class="brand"><div><h1>Savvy Renter</h1><div class="sub">Free tools for private renters · savvyrenter.co.uk</div></div><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page." onclick="showFeedback()">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div></div>
+<div class="hero"><div><h1>Free tools for private renters</h1>
+<p>Check a home before you sign, work out money owed in either direction, get evidence ready, and write complaints and court paperwork properly.</p>
+<p><b>No sign-up, no account, no charge, and nothing you type leaves your browser.</b></p></div>
+<div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page." onclick="showFeedback()">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div></div>
 
-<div class="intro">
-  Savvy Renter is a free toolkit for private renters. It helps you check a home before you sign, work out money owed in either direction, get evidence ready, and write complaints and court paperwork properly.
-  <b>There is no sign-up, no account and no charge, and nothing you type leaves your browser.</b>
+<div class="boxes">
+  <h2 class="grp">Location</h2>
+  <div class="box"><h3>What rent costs here</h3><p>What private rents in an area have done since 2015, and how far housing allowance has fallen behind.</p><form class="go" data-page="area.html"><input name="pc" placeholder="Postcode, e.g. SW1A 1AA" autocomplete="postal-code" spellcheck="false" aria-label="Postcode for What rent costs here"><button type="submit">Look it up</button></form></div>
+  <div class="box"><h3>Council tax here</h3><p>Every band for a postcode, what the discounts take off, and what it comes to a month.</p><form class="go" data-page="counciltax.html"><input name="pc" placeholder="Postcode, e.g. SW1A 1AA" autocomplete="postal-code" spellcheck="false" aria-label="Postcode for Council tax here"><button type="submit">Look it up</button></form></div>
+  <h2 class="grp">Tenancy &amp; Rent</h2>
+  <div class="box"><h3>Before you rent <a class="beta" href="#betanote" title="Beta — see the note under the tools">Beta*</a></h3><p>Look a place up on free public records before the viewing, and know what to check when you are standing in it.</p><form class="go" data-page="before-you-rent.html"><input name="pc" placeholder="Postcode, e.g. SW1A 1AA" autocomplete="postal-code" spellcheck="false" aria-label="Postcode for Before you rent"><button type="submit">Look it up</button></form></div>
+  <div class="box"><h3>Moving in audit <a class="beta" href="#betanote" title="Beta — see the note under the tools">Beta*</a></h3><p>Gas, electrics, EPC, deposit and licence on one sheet, with the official register beside each.</p><div class="go"><button type="button" class="open" data-page="moving-in_audit.html">Open</button></div></div>
+  <div class="box"><h3>Section 8 notice checker</h3><p>Been given a Section 8 notice in England? The notice period, the grounds and the defences you can raise.</p><div class="go"><button type="button" class="open" data-page="section_8_eviction_defense_advisor.html">Open</button></div></div>
+  <h2 class="grp">Money</h2>
+  <div class="box"><h3>Interest owed to you</h3><p>Worked the way a county court reads it: each overpayment joins the running balance on the day it was paid, and simple interest at 8% a year (County Courts Act 1984, s.69) is charged on that balance for the days until the next payment. A late first payment does not shift the rest &mdash; later payments are counted on the day the rent falls due.</p><div class="mini" data-page="interest.html"><label class="full">Date of the first overpayment (the day it left your account)<span class="dsel" data-to="#d-start"></span></label><label>How often the rent is paid<select data-to="#period"><option value="monthly">Monthly</option><option value="weekly">Weekly</option><option value="fortnightly">Fortnightly</option><option value="quarterly">Quarterly</option></select></label><label>Day of the month it falls due<select data-to="#dueDay" data-days></select></label><label class="full chk"><input type="checkbox" data-to="#adv"> <span><b>Advanced mode</b> &mdash; enter the date each payment actually cleared</span></label></div><div class="go"><button type="button" class="open" data-page="interest.html">Open</button></div></div>
+  <div class="box"><h3>Paying off arrears</h3><p>A fair instalment plan when you have fallen behind on rent. If interest is added, you should only pay it on what is actually left &mdash; not the original lump sum. Put in what you owe and what you can pay each time, and it works the balance down to nil.</p><div class="mini" data-page="arrears.html"><label>How much you owe today (&pound;)<input type="number" step="0.01" min="0" placeholder="e.g. 1850" data-to="#owed"></label><label>You plan to pay each time (&pound;)<input type="number" step="0.01" min="0" placeholder="e.g. 150" data-to="#pay"></label></div><div class="go"><button type="button" class="open" data-page="arrears.html">Open</button></div></div>
+  <div class="box"><h3>Benefit entitlements</h3><p>A Universal Credit estimate showing every line of the sum, with housing from your area&rsquo;s allowance.</p><form class="go" data-page="benefits.html"><input name="pc" placeholder="Postcode, e.g. SW1A 1AA" autocomplete="postal-code" spellcheck="false" aria-label="Postcode for Benefit entitlements"><button type="submit">Start</button></form></div>
+  <div class="box"><h3>Record of income</h3><p>All household income in one dated statement, for a landlord, a council or a court.</p><div class="go"><button type="button" class="open" data-page="incoming-benefit-calc.html">Open</button></div></div>
+  <h2 class="grp">Redaction</h2>
+  <div class="box hot"><h3>Redact a statement page</h3><p>A statement proves what you paid. It also carries your account number, your sort code, and every other payment you have ever made &mdash; none of which a landlord, an agent or an opponent is entitled to see. This blacks them out properly: the marks are burned into the picture, so there is nothing underneath to copy out again. <b>Your file never leaves this computer.</b></p><div class="go"><label class="filebtn">&#128194; Choose a file<input type="file" accept=".pdf,image/*" data-page="bank-statement-redaction.html" data-to="pageFile" hidden></label><button type="button" class="open" data-page="bank-statement-redaction.html">Open</button></div></div>
+  <div class="box"><h3>Split a PDF into pages</h3><p>A statement usually arrives as one PDF of several sheets. Everything else &mdash; redacting, naming, putting a bundle together &mdash; is easier one page at a time. This splits it: each page comes out as its own PDF, exactly as it was, with its number in the name. <b>The file never leaves this computer.</b></p><div class="go"><label class="filebtn">&#128194; Choose a PDF<input type="file" accept=".pdf" data-page="bank-statement-split.html" data-to="pdfFile" hidden></label><button type="button" class="open" data-page="bank-statement-split.html">Open</button></div></div>
+  <div class="box"><h3>Name statements by date</h3><p>Statements arrive named things like <i>statement_4471.pdf</i>, which sorts into no useful order. This reads the dates on each one and gives it a name that starts with its period, so the folder sorts itself into date order. <b>Your files never leave this computer.</b></p><div class="go"><label class="filebtn">&#128194; Choose files<input type="file" accept=".pdf,image/*" multiple data-page="bank-statement-rename.html" data-to="batch" hidden></label><button type="button" class="open" data-page="bank-statement-rename.html">Open</button></div></div>
+  <h2 class="grp">Complaints &amp; Claims</h2>
+  <div class="box"><h3>PRS complaint <a class="beta" href="#betanote" title="Beta — see the note under the tools">Beta*</a></h3><p>Draft a Property Redress Scheme complaint to the portal&rsquo;s limits, and save it as you go.</p><div class="go"><button type="button" class="open" data-page="PRS_Tenant_Workspace.html">Open</button></div></div>
+  <div class="box"><h3>TPO complaint <a class="beta" href="#betanote" title="Beta — see the note under the tools">Beta*</a></h3><p>The same for The Property Ombudsman, letter of authority included.</p><div class="go"><button type="button" class="open" data-page="TPO_Tenant_Workspace.html">Open</button></div></div>
+  <div class="box"><h3>Money Claim Online <a class="beta" href="#betanote" title="Beta — see the note under the tools">Beta*</a></h3><p>Draft the N181 and N244 to length before you fill in the real forms.</p><div class="go"><button type="button" class="open" data-page="court_forms_workspace.html">Open</button></div></div>
+  <div class="box"><h3>Web page data scrubber</h3><p>Sending a page from a court or complaint service so it can be built into a workspace? Run it through here first: it strips out the answers you typed, the tracking and the reference numbers, and shows you every change before you download anything. <b>The file never leaves your computer.</b></p><div class="go"><label class="filebtn">&#128194; Choose saved pages<input type="file" accept=".html,.htm,text/html" multiple data-page="scrubber.html" data-to="pick" hidden></label><button type="button" class="open" data-page="scrubber.html">Open</button></div></div>
+  <h2 class="grp">Where to check</h2>
+  <div class="box"><h3>Official records and free advice</h3><p>Gas and electrical registers, deposit schemes, who owns a property, agent redress schemes, the law and free advice.</p><div class="go"><button type="button" class="open" data-page="resources.html">Open</button></div></div>
 </div>
+<p class="betanote" id="betanote">* <b>Beta.</b> These tools are new or still being tested. The complaint and claim workspaces are <b>untested, unverified and possibly incomplete</b>: they have not been checked end to end against the live services. Treat what any of them produces as a draft and check it before you rely on it.</p>
 
-<h2>Why this site exists</h2>
-<p>This site began with one tenant&rsquo;s problem. A letting agent&rsquo;s error led to an ongoing rent increase, and working out exactly what was owed &mdash; to the day, with the interest a court would allow &mdash; took far longer than it should have. Once the sums were right, the tool went online for free so the next tenant would not have to do it by hand. Everything since has been added the same way: something one tenant needed, built so that others can use it too. It is a volunteer project, run in spare time.</p>
-
-<h2>What&rsquo;s here</h2>
-<div class="toolgrid">
-  <div><h3>Location</h3><ul>
-    <li><a href="area.html">What rent costs here</a> &mdash; what rents in an area have done since 2015, against housing allowance.</li>
-    <li><a href="counciltax.html">Council tax here</a> &mdash; every band for a postcode, discounts and the monthly figure.</li>
-  </ul></div>
-  <div><h3>Tenancy &amp; Rent</h3><ul>
-    <li><a href="before-you-rent.html">Before you rent</a> &mdash; look a place up on free public records before the viewing, and know what to check when you are standing in it.</li>
-    <li><a href="moving-in_audit.html">Moving in audit</a> &mdash; gas, electrics, EPC, deposit and licence on one sheet, with the official register beside each.</li>
-    <li><a href="section_8_eviction_defense_advisor.html">Section 8 notice checker</a> &mdash; the notice period, the grounds and the defences you can raise.</li>
-  </ul></div>
-  <div><h3>Financial Tools</h3><ul>
-    <li><a href="interest.html">Interest owed to you</a> &mdash; interest on overpaid rent, payment by payment, laid out for court.</li>
-    <li><a href="arrears.html">Paying off arrears</a> &mdash; an instalment plan you can afford, with interest only on what is left.</li>
-    <li><a href="benefits.html">Benefit entitlements</a> &mdash; a Universal Credit estimate showing every line of the sum.</li>
-    <li><a href="incoming-benefit-calc.html">Record of income</a> &mdash; all household income in one dated statement.</li>
-  </ul></div>
-  <div><h3>Redaction Suite</h3><ul>
-    <li><a href="bank-statement-redaction.html">Redact a statement page</a> &mdash; black out account numbers and anything else, for good.</li>
-    <li><a href="bank-statement-split.html">Split a PDF into pages</a> &mdash; one file per page.</li>
-    <li><a href="bank-statement-rename.html">Name statements by date</a> &mdash; rename a batch by the period each covers.</li>
-  </ul></div>
-  <div><h3>Complaints &amp; Claims</h3><ul>
-    <li><a href="PRS_Tenant_Workspace.html">PRS complaint</a> &mdash; draft a Property Redress Scheme complaint and save it as you go.</li>
-    <li><a href="TPO_Tenant_Workspace.html">TPO complaint</a> &mdash; the same for The Property Ombudsman, letter of authority included.</li>
-    <li><a href="court_forms_workspace.html">Money Claim Online</a> &mdash; draft the N181 and N244 to length.</li>
-    <li title="Portals such as the Courts, Property Redress Scheme and The Property Ombudsman are often locked behind registration, or need an active case that takes that particular path for a user to access all the forms. Because of this restriction, we rely on users to send us saved copies of the pages. We assemble them like a jigsaw, and build an emulator for the whole site, allowing our users to prepare their submissions in advance, and lessening the built-in advantage of the familiarity the solicitor who will likely be representing your landlord will have over them."><a href="scrubber.html">Web page data scrubber</a> &mdash; used to strip your details from a saved web page before you send it to us to help us add features to the site.</li>
-  </ul></div>
-</div>
-
-<h2>Your data</h2>
-<p>Everything runs in your browser. Nothing you type is stored, sent anywhere or remembered between visits &mdash; close the page and it is gone. There is no server, no account and no cookie. You do not have to take the site&rsquo;s word for it: <a href="#takehome">take the site home</a> and run it with the internet switched off.</p>
-
-<h2>How each tool works</h2>
-
-<h3>Interest owed to you &mdash; the increasing principal sum</h3>
-<p>Most calculators put interest on one lump sum from one date. That is wrong for rent overpayments, because you paid month by month: the principal sum owed to you was increasing the whole time. Your first overpayment has been held the longest and earns the most interest; your last one the least. <a href="interest.html">The interest calculator</a> adds each payment to the running balance on the day it was made, charges simple interest on that balance for the days until the next payment (balance × rate × days ÷ 365), and adds it all up. Interest is never charged on interest. A late first payment does not shift the rest &mdash; later payments are counted on the day the rent falls due.</p>
-<p>The 8% rate is the usual county-court rate (County Courts Act 1984, s.69); you can change it on the page if the court directs a different one.</p>
-
-<h3>Paying off arrears &mdash; the decreasing principal sum</h3>
-<p><a href="arrears.html">The arrears calculator</a> helps you work out a fair instalment plan when you have fallen behind on rent. If your landlord or a court applies statutory interest to the debt, you should only pay interest on what is actually left to pay &mdash; not the original lump sum. Standard debt calculators charge interest on the whole lump sum all the way through, which overcharges you. This one charges flat, non-compounding simple interest (like the UK statutory 8% rate) on the shrinking balance, payment by payment &mdash; monthly, or weekly, fortnightly or quarterly if that is how you pay. Every payment brings the balance down, and the interest with it. It runs until the debt reaches zero, showing the number of payments, the final odd-sized payment, and the true interest cost.</p>
-
-<h3>Drafting a complaint to the Property Redress Scheme</h3>
-<p>Every letting agent in England has to belong to a redress scheme, and the Property Redress Scheme is one of the two. Once you have been through the agent&rsquo;s own complaints procedure and had their final answer, you can take it to the scheme &mdash; free, and it can order an agent to put things right and to pay compensation.</p>
-<p>The scheme&rsquo;s own portal will not let you save a part-finished complaint. The main box takes four thousand characters and there is a second one for what you are asking for, and if you walk away from it, or the session drops, you start again. That is a hard way to write the most important part of your case.</p>
-<p><a href="PRS_Tenant_Workspace.html" style="color:#38bdf8;font-weight:bold;text-decoration:none">The complaint workspace</a> is the same questions with the same limits, on your own computer. Write it over as many days as you need, save the draft to a file and load it back, and only when it is finished do you open the real portal and paste it across. The counters keep counting past the limit instead of cutting you off mid-sentence, so you can write it long and then trim it deliberately. It submits nothing and it is not connected to the scheme &mdash; the complaint itself is still made on their site. <b style="color:#f2c94c">Untested, unverified and possibly incomplete.</b></p>
-
-<h3>Drafting a complaint to The Property Ombudsman</h3>
-<p>The Property Ombudsman is the other scheme, and an agent belongs to one or the other, not both. Check which before you write anything &mdash; a complaint written for the wrong scheme goes nowhere, and both workspaces start with a member check for exactly that reason.</p>
-<p>The Ombudsman&rsquo;s portal does not save a part-finished complaint either, and it goes further: the case forms do not appear at all until a signed Letter of Authority has been attached. So you cannot read the questions before you write the letter, and you cannot see how much room you have until you are already committed to the sitting.</p>
-<p><a href="TPO_Tenant_Workspace.html" style="color:#38bdf8;font-weight:bold;text-decoration:none">The Ombudsman workspace</a> keeps the same gate, because it is what happens on the day &mdash; but it shows you the letter first, fills it in from what you have already typed, and lets you download it to print and sign. Past that it is the same questions with the same limits, saved to your own computer, plus the two time limits worked out for you: the eight weeks the agent gets to answer, and the twelve months you have once they have answered. <b style="color:#f2c94c">Untested, unverified and possibly incomplete.</b></p>
-
-<h3>Drafting your Money Claim Online paperwork</h3>
-<p>If a claim has been issued, the paperwork arrives with deadlines attached and boxes that are smaller than what you need to say. The forms themselves are not the hard part &mdash; writing to length, in plain English, under a deadline, is.</p>
-<p><a href="court_forms_workspace.html" style="color:#38bdf8;font-weight:bold;text-decoration:none">The Money Claim Online workspace</a> gives you somewhere to draft the two that come up most: the Directions Questionnaire (N181) and an application for summary judgment (N244). It counts your characters as you go, so you find out you are over the limit here rather than when you are pasting into the real form, and it carries an evidence checklist you can tick off as you get each exhibit ready. <b style="color:#f2c94c">Untested, unverified and possibly incomplete.</b></p>
-<p>It is a drafting space and nothing more. It is not connected to, or endorsed by, HM Courts &amp; Tribunals Service or any court service, it submits nothing, and the form numbers and rules change &mdash; check the current versions before you rely on anything you write here.</p>
-
-<h3>Blacking out a bank statement before you hand it over</h3>
-<p>A bank statement proves what you paid and when. It also carries your account number, your sort code, and every other payment you made that month &mdash; none of which a landlord, an agent or the other side in a claim is entitled to see. The tenant behind this site had to hand over three years of statements to prove an overpayment, and was not about to hand over the rest of their life with them.</p>
-<p>So <a href="bank-statement-redaction.html">the redaction tool</a> does it properly. Open a PDF or a photo of the page, let it read the page, and it blacks out the account numbers and sort codes it finds. Drag across anything else you want covered. What you cover can be turned into a rule &mdash; the same words, or the same spot on the page &mdash; and the rule stays for the next page you open, so a run of statements does not mean starting again every time. You can save the rules to a file and load them back another day.</p>
-<p>The black is painted into the picture before the file is saved. That matters: a black rectangle drawn over text in a word processor or a PDF editor usually leaves the text sitting underneath, where anyone can select it or lift it out with a free tool. Here there is nothing underneath. The file is never uploaded, never stored and never logged.</p>
-
-<h2 id="takehome">&ldquo;But it&rsquo;s an online tool. I don&rsquo;t want to risk it.&rdquo;</h2>
-<p>That&rsquo;s fair. Between bank statement redaction and tenancy and rent agreements, a site like this could steal a great deal of your data if it were run by bad actors &mdash; and it would be no surprise to see one very much like it appear, trying to do exactly that.</p>
-<p>This site runs entirely in your browser, and it is open source for that very reason: you do not have to take its word for any of it. You can download the whole site as a zip file, open it on your own machine with no internet connection at all, and know your data never went anywhere.</p>
-
-<h3>Take the site home</h3>
-<ol class="steps">
-  <li><b>Go to the repository</b> &mdash; <a class="ext" href="https://github.com/Savvyrenter/Savvyrenter_html_repo" target="_blank" rel="noopener">GitHub &mdash; Savvy Renter, HTML pages</a>. The whole site lives there &mdash; every page you can see here.</li>
-  <li><b>Download it.</b> Press the green <b>Code</b> button near the top right, then <b>Download ZIP</b>. You do not need a GitHub account and you do not need to install git.</li>
-  <li><b>Unzip it</b> anywhere you like &mdash; your Documents folder is fine. You will get one folder with all the pages inside it.</li>
-  <li><b>Open <code>index.html</code></b> in that folder by double-clicking it. The site opens in your browser, exactly as you see it here, from your own hard drive.</li>
-  <li><b>Now pull the plug.</b> Turn off your wi-fi, or unplug the cable, and use it. Everything still works. That is the proof: if it can redact a statement with no internet connection, nothing was ever being sent anywhere.</li>
-</ol>
-
-<h3>What works straight away, and what needs the data too</h3>
-<p>Those five steps give you nearly everything: the interest calculator, the arrears calculator, the redaction suite, the complaint workspaces and all the guides. They are plain pages and they work with the plug pulled.</p>
-<p>Three pages &mdash; <b>What rent costs here</b>, <b>Council tax here</b> and <b>Benefit entitlements</b> &mdash; look things up in the site&rsquo;s open data (postcodes, rents by local authority, and Local Housing Allowance rates). That lives in a second repository, because it is thousands of small files and most people never need it:</p>
-<ol class="steps">
-  <li><b>Download the data</b> the same way &mdash; <a class="ext" href="https://github.com/Savvyrenter/Savvyrenter_data_repo" target="_blank" rel="noopener">GitHub &mdash; Savvy Renter data, data source</a>, green <b>Code</b> button, <b>Download ZIP</b>.</li>
-  <li><b>Put the <code>v1</code> folder from it inside your site folder</b>, in a folder called <code>data</code>, so the path reads <code>data/v1/</code>.</li>
-  <li><b>Open <code>savvy-data.js</code></b> in Notepad. Near the top is one line:<br>
-      <code>const BASE = 'https://data.savvyrenter.co.uk/v1/';</code><br>
-      Change it to <code>const BASE = 'data/v1/';</code> and save.</li>
-  <li><b>Serve the folder rather than double-clicking.</b> Browsers refuse to let a page opened straight off your hard drive read other files beside it, so those three pages need a tiny local web server. If you have Python: open a command prompt in the site folder and run <code>python -m http.server</code>, then go to <code>http://localhost:8000</code> in your browser. Still entirely on your own machine, still no internet.</li>
-</ol>
-<p>The redaction page borrows three ready-made pieces of software to read PDFs, read scanned pages and write PDFs back out, and fetches them from a public library service the first time you use it. Open that page once while you are still online so your browser keeps a copy, and it will then work offline; the repository&rsquo;s <code>README</code> explains how to keep the three files in the folder instead.</p>
-
-<h3>Check it yourself, or get someone to</h3>
-<p>Every page is a single readable file &mdash; open one in Notepad and the whole thing is there, comments and all. If you know someone technical, hand them the zip and ask them to look for anything that sends your data out. There is nothing to find, and the site would far rather you checked than took it on trust.</p>
-
-<h2>The legal bit</h2>
-<p>These tools are provided as they are, with no guarantees. They are a guide, not formal legal advice, and you use them entirely at your own risk. The site&rsquo;s author is not a solicitor and accepts no liability for your claim, your debt or your tenancy status.</p>
-<p>Double-check every figure before you rely on it. Check it with Citizens Advice or Shelter before putting it to a court, a tribunal, or in a Letter Before Action, and before you put a repayment figure to your landlord &mdash; make sure you are not accidentally working from an increased amount and overpaying. If you are relying on the arrears figures as a defence against eviction, make sure they are cast iron first. If a landlord turns down a mathematically correct repayment plan, showing that you tried to establish a reasonable schedule can form part of your legal backing &mdash; but only if the numbers are completely accurate.</p>
-
-<div class="foot">Savvy Renter — savvyrenter.co.uk · free tools for renters · <a href="resources.html#sources" style="color:#38bdf8;text-decoration:none">Data sources &amp; licences</a></div>
+<p class="aboutline">Why this site exists, how each tool works, how to run it on your own computer and what works with the internet switched off, and the legal bit: <a href="about.html">About Savvy Renter</a>.</p>
+<div class="foot">Savvy Renter — savvyrenter.co.uk · free tools for renters · <a href="about.html">About</a> · <a href="about.html#sources">Data sources &amp; licences</a></div>
 <div class="sr-count" style="text-align:center;margin:6px 0 14px"><style>@media print{.sr-count{display:none!important}}</style><script type="text/javascript" src="https://counter.websiteout.com/js/2/0/172/0"></script></div>
 
-</main>
 </div>
+
+<div id="toolView" class="hidden" role="dialog" aria-modal="true" aria-labelledby="tvTitle">
+  <div class="tv-bar"><button type="button" id="tvBack">&larr; All tools</button><span id="tvTitle"></span><a id="tvOpen" href="#">Open as its own page &#8599;</a></div>
+  <iframe id="tvFrame" title="Tool"></iframe>
+</div>
+
 <script>
 // The address is never written into the page source. It is put together only
 // when someone asks for it, which keeps the harvesters off it.
@@ -338,6 +207,122 @@ function showFeedback() {
   p.classList.remove('hidden');
 }
 function hideFeedback() { document.getElementById('fbPanel').classList.add('hidden'); }
+</script>
+<script>
+// ---- Opening a tool out of its box ------------------------------------------
+// The tool's own page fills the screen, with "All tools" to come back. A postcode
+// typed in the box is handed to the page, which looks it up straight away. The
+// phone's back button closes it as well.
+//
+// Everything typed or picked in a box travels in the tool's web address (?pc=,
+// ?set=), which works on a downloaded copy too. A chosen file cannot travel that
+// way: it is passed into the tool's page directly, which browsers only allow when
+// the site is served (http). Opened from a file, the box opens the tool instead,
+// and the file is chosen there.
+(function () {
+  var view = document.getElementById('toolView'), frame = document.getElementById('tvFrame');
+  var title = document.getElementById('tvTitle'), own = document.getElementById('tvOpen');
+  var pushed = false, pending = null, fromFile = location.protocol === 'file:';
+
+  // Once the tool's page has loaded, hand it whatever was started in the box.
+  frame.addEventListener('load', function () {
+    var job = pending; pending = null;
+    if (!job) return;
+    try { job(frame.contentWindow, frame.contentDocument); } catch (e) { /* the page is still usable by hand */ }
+  });
+
+  function open(page, name, pc, job, set) {
+    var q = pc ? '?pc=' + encodeURIComponent(pc) : '';
+    if (set && set.length) q += (q ? '&' : '?') + 'set=' + encodeURIComponent(JSON.stringify(set));
+    own.href = page + q;
+    title.textContent = name;
+    view.classList.remove('hidden');
+    document.body.classList.add('tv-on');
+    if (history.pushState && !pushed) { history.pushState({ tool: page }, ''); pushed = true; }
+    pending = job || null;
+    // replace(), not src: loading the tool must not add a step to the back button,
+    // or "All tools" would take two presses.
+    frame.contentWindow.location.replace(page + (q ? q + '&embed=1' : '?embed=1'));
+    document.getElementById('tvBack').focus();
+  }
+  function close() {
+    if (view.classList.contains('hidden')) return;
+    view.classList.add('hidden');
+    document.body.classList.remove('tv-on');
+    pending = null;
+    frame.contentWindow.location.replace('about:blank');
+  }
+  document.getElementById('tvBack').addEventListener('click', function () {
+    close();
+    if (pushed) { pushed = false; history.back(); }
+  });
+  window.addEventListener('popstate', function () { pushed = false; close(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !view.classList.contains('hidden')) document.getElementById('tvBack').click();
+  });
+  function nameOf(el) { return el.closest('.box').querySelector('h3').textContent; }
+
+  // Postcode boxes.
+  Array.prototype.forEach.call(document.querySelectorAll('.box form.go'), function (f) {
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      open(f.dataset.page, nameOf(f), f.pc.value.trim());
+    });
+  });
+  // Plain Open buttons.
+  Array.prototype.forEach.call(document.querySelectorAll('.box button.open'), function (b) {
+    b.addEventListener('click', function () { open(b.dataset.page, nameOf(b), ''); });
+  });
+  // Choose a file: the file goes straight into the tool's own file box.
+  Array.prototype.forEach.call(document.querySelectorAll('.box input[type=file]'), function (inp) {
+    inp.addEventListener('click', function (e) {
+      if (!fromFile) return;
+      e.preventDefault();
+      open(inp.dataset.page, nameOf(inp), '');
+    });
+    inp.addEventListener('change', function () {
+      var files = Array.prototype.slice.call(inp.files);
+      inp.value = '';
+      if (!files.length) return;
+      open(inp.dataset.page, nameOf(inp), '', function (win, doc) {
+        var target = doc.getElementById(inp.dataset.to);
+        var dt = new win.DataTransfer();
+        files.forEach(function (f) { dt.items.add(f); });
+        target.files = dt.files;
+        target.dispatchEvent(new win.Event('change', { bubbles: true }));
+      });
+    });
+  });
+  // The first questions of a tool: answer any one and the whole tool opens,
+  // carrying everything already filled in across.
+  var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  Array.prototype.forEach.call(document.querySelectorAll('.mini .dsel'), function (s) {
+    var y0 = new Date().getFullYear(), base = s.dataset.to, h = '';
+    h += '<select data-to="' + base + ' [data-p=d]">';
+    for (var d = 1; d <= 31; d++) h += '<option value="' + d + '">' + d + '</option>';
+    h += '</select><select data-to="' + base + ' [data-p=m]">';
+    MONTHS.forEach(function (m, i) { h += '<option value="' + (i + 1) + '">' + m + '</option>'; });
+    h += '</select><select data-to="' + base + ' [data-p=y]">';
+    for (var y = 0; y <= 30; y++) h += '<option value="' + (y0 - y) + '">' + (y0 - y) + '</option>';
+    s.innerHTML = h + '</select>';
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.mini select[data-days]'), function (s) {
+    var h = '';
+    for (var d = 1; d <= 31; d++) h += '<option value="' + d + '">' + d + (d % 10 === 1 && d !== 11 ? 'st' : d % 10 === 2 && d !== 12 ? 'nd' : d % 10 === 3 && d !== 13 ? 'rd' : 'th') + '</option>';
+    s.innerHTML = h;
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.mini'), function (mini) {
+    mini.addEventListener('change', function () {
+      var fields = Array.prototype.slice.call(mini.querySelectorAll('[data-to]')).filter(function (el) { return el.tagName !== 'SPAN'; });
+      var set = [];
+      fields.forEach(function (el) {
+        if (el.type === 'checkbox') set.push([el.dataset.to, el.checked]);
+        else if (el.value !== '') set.push([el.dataset.to, el.value]);
+      });
+      open(mini.dataset.page, nameOf(mini), '', null, set);
+    });
+  });
+})();
 </script>
 </body>
 </html>

@@ -215,8 +215,10 @@ window.addEventListener('load', () => window.scrollTo(0, 0));
 <script defer src="https://cloud.umami.is/script.js" data-website-id="586e56fe-239b-4e82-be1e-c483dfdfeda1"></script>
 </head>
 <body>
+<nav id="siteRibbon" aria-label="Site menu"><a href="index.html">Home</a> <a href="resources.html">Resources</a> <a href="about.html">About</a></nav>
+<script src="ribbon.js"></script>
 <div class="shell">
-<div class="rail"><aside class="tools" id="siteMenu"><noscript><a href="index.html">Home</a><a href="resources.html">Data &amp; Resources</a></noscript></aside><script src="menu.js"></script><img class="sidelogo" src="SavvyRenter-sml.png" alt="Savvy Renter"></div><main class="page">
+<main class="page">
 <div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
   <div class="brand"><div><h1>Name statements by their dates</h1><div class="sub">Reads the period off each page and renames the file, so a folder of statements falls into order</div></div></div>
   <div class="intro">
@@ -246,9 +248,10 @@ window.addEventListener('load', () => window.scrollTo(0, 0));
     <a href="sample-statement-3.pdf" target="_blank">sample 3</a>.
     They are from a bank that does not exist and are marked as samples, so nothing of yours is at risk while you find your way around.</div>
 
-<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.1.4/dist/tesseract.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script src="lib/pdfjs/pdf.min.js"></script>
+<script src="lib/sr-pdfjs.js"></script>
+<script src="lib/sr-ocr.js"></script>
+<script src="lib/jszip.min.js"></script>
 <script>
 /* Reads the first page of each file, finds the dates on it, and proposes a
    name built from the earliest and latest. Everything happens in this tab. */
@@ -303,7 +306,6 @@ function datesIn(text) {
 }
 async function textOf(it) {
   if (/\.pdf$/i.test(it.file.name)) {
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
     const buf = await it.file.arrayBuffer();
     const doc = await pdfjsLib.getDocument({ data: new Uint8Array(buf) }).promise;
     const page = await doc.getPage(1);
@@ -338,9 +340,7 @@ function imageOf(file) {
 async function ocrOf(canvas) {
   if (!worker) {
     say('Loading the reader… (first time only)');
-    worker = await Tesseract.createWorker();
-    await worker.loadLanguage('eng');
-    await worker.initialize('eng');
+    worker = await SROcr.create();
   }
   const { data } = await worker.recognize(canvas);
   return data.text || '';

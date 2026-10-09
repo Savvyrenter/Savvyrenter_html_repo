@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /proposed_menu.html
 Disallow: /business_card_savvyrenter.html
 
 Sitemap: https://www.savvyrenter.co.uk/sitemap.xml

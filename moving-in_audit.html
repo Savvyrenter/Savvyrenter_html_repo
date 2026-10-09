@@ -275,6 +275,8 @@
   /* keep the long one in the flow on a phone (this comes last on purpose) */
   @media (max-width:860px) { .navitem.resitem > .flyout { position:static; inset:auto; transform:none; } }
   @media print { .rail { display:none !important; } main.page, .page { margin-left:0; } }
+  .beta { display:inline-block; vertical-align:middle; margin-left:8px; font-size:12px; font-weight:700; color:#0f172a !important; background:#f2c94c; border-radius:4px; padding:1px 7px; letter-spacing:.4px; text-decoration:none !important; }
+  @media print { .beta { display:none !important; } }
 </style>
 <script type="application/ld+json">
 {
@@ -304,18 +306,18 @@
 <script defer src="https://cloud.umami.is/script.js" data-website-id="586e56fe-239b-4e82-be1e-c483dfdfeda1"></script>
 </head>
 <body>
+<nav id="siteRibbon" aria-label="Site menu"><a href="index.html">Home</a> <a href="resources.html">Resources</a> <a href="about.html">About</a></nav>
+<script src="ribbon.js"></script>
 <div class="shell">
-<div class="rail"><aside class="tools" id="siteMenu"><noscript><a href="index.html">Home</a><a href="resources.html">Data &amp; Resources</a></noscript></aside><script src="menu.js"></script><img class="sidelogo" src="SavvyRenter-sml.png" alt="Savvy Renter"></div><main class="page">
+<main class="page">
 <div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
 
-<div class="brand"><div><h1>Moving in audit</h1><div class="sub">Get every certificate, date and name down on one sheet before you unpack</div></div></div>
+<div class="brand"><div><h1>Moving in audit <a class="beta" href="#betanote" title="Still being tested — see the note at the bottom of the page">Beta*</a></h1><div class="sub">Get every certificate, date and name down on one sheet before you unpack</div></div></div>
 
 <div class="intro">
   Fill this in on the day you move in &mdash; or better, while you are still looking round. Every box has the official register next to it, so you can look up who really did the gas check, the electrics and the energy certificate, and put their name and number down yourself rather than taking anyone's word for it. Then print it and keep it.
   <b>It works out when each certificate runs out</b>, so when your landlord has gone quiet you can be the one who gets in first: <i>my electrical safety certificate runs out next month, are you getting that booked?</i> That is usually all it takes, and it keeps the place safe to live in.
 </div>
-
-<div class="unverified"><b>Beta.</b> This sheet has been tested, but there may still be bugs, and the rules differ in Wales, Scotland and Northern Ireland. It is a record you keep, not legal advice. Always check the certificate itself &mdash; this page only does the arithmetic on the dates you give it.</div>
 
 <form id="f" autocomplete="off">
 
@@ -830,6 +832,7 @@ function copyNudge() {
   Everything on this page happens in your browser. Nothing you type is stored, uploaded or sent anywhere — print the sheet, or it is gone when you close the tab.
 </div>
 <div class="sr-count" style="text-align:center;margin:6px 0 14px"><style>@media print{.sr-count{display:none!important}}</style><script type="text/javascript" src="https://counter.websiteout.com/js/2/0/172/0"></script></div>
+<div class="unverified" id="betanote"><b>* Beta.</b> This sheet has been tested, but there may still be bugs, and the rules differ in Wales, Scotland and Northern Ireland. It is a record you keep, not legal advice. Always check the certificate itself &mdash; this page only does the arithmetic on the dates you give it.</div>
 </main>
 </div>
 

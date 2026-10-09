@@ -232,6 +232,7 @@ textarea:focus { outline: none; border-color: #38bdf8; }
   /* keep the long one in the flow on a phone (this comes last on purpose) */
   @media (max-width:860px) { .navitem.resitem > .flyout { position:static; inset:auto; transform:none; } }
   @media print { .rail { display:none !important; } main.page, .page { margin-left:0; } }
+  .beta { display:inline-block; vertical-align:middle; margin-left:8px; font-size:12px; font-weight:700; color:#0f172a !important; background:#f2c94c; border-radius:4px; padding:1px 7px; letter-spacing:.4px; text-decoration:none !important; }
 </style>
 <script type="application/ld+json">
 {
@@ -261,20 +262,20 @@ textarea:focus { outline: none; border-color: #38bdf8; }
 <script defer src="https://cloud.umami.is/script.js" data-website-id="586e56fe-239b-4e82-be1e-c483dfdfeda1"></script>
 </head>
 <body>
+<nav id="siteRibbon" aria-label="Site menu"><a href="index.html">Home</a> <a href="resources.html">Resources</a> <a href="about.html">About</a></nav>
+<script src="ribbon.js"></script>
 <div class="shell">
-<div class="rail"><aside class="tools" id="siteMenu"><noscript><a href="index.html">Home</a><a href="resources.html">Data &amp; Resources</a></noscript></aside><script src="menu.js"></script><img class="sidelogo" src="SavvyRenter-sml.png" alt="Savvy Renter"></div><main class="page">
+<main class="page">
 <div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
 
-<div class="brand"><div><h1>Money Claim Online Workspace</h1><div class="sub">Draft it here at your own pace · paste it into the real service when it is ready</div></div></div>
+<div class="brand"><div><h1>Money Claim Online Workspace <a class="beta" href="#betanote" title="Untested and unverified — see the note at the bottom of the page">Beta*</a></h1><div class="sub">Draft it here at your own pace · paste it into the real service when it is ready</div></div></div>
 
     <div class="phase-banner">
         <span class="phase-tag">DRAFTING SPACE</span>
         <span>An independent drafting space for people using the Money Claim Online service. Not connected to, or endorsed by, Money Claim Online, HM Courts &amp; Tribunals Service or any court service. Nothing here is submitted anywhere.</span>
     </div>
 
-    <div class="unverified"><p><b>Untested, unverified and possibly incomplete.</b> This workspace has not been checked end to end against the live service. Treat everything it produces as a draft, and check it against the real form before you rely on it.</p><p><b>Found a step we have not covered?</b> If the real service asks you something this page does not, send us that page &mdash; but <b>save it before you type anything into it</b>. An empty form has nothing personal in it to take out, which makes this safe and easy: press Ctrl+S (Cmd+S on a Mac), choose &ldquo;Webpage, complete&rdquo;, and then carry on and fill it in as normal. Do that at each new step, and when you are finished put the saved pages in a zip file and email them to <span id="cfMail">us</span>. If you only think of it after filling a page in, run it through our <a href="scrubber.html">web page data scrubber</a> first &mdash; it takes out your answers, your contact details and your claim number, shows you every change it makes, and never uploads the file anywhere. Worth doing even with a blank page: your claim number is usually in the web address at the top, which gets saved with it. We aim to have a missing step written and on the site within a couple of days, so the next person through gets an easier time of it — but this is a volunteer project run in whatever spare time there is, so that is an aim and not a promise. Real life very often gets in the way.</p></div>
-
-    <div class="container">
+        <div class="container">
         <div class="main-content">
             <div class="case-header">
                 <p><strong>Claim number:</strong> <input type="text" id="case-number" placeholder="as shown on your claim form" class="case-field"></p>
@@ -441,6 +442,7 @@ textarea:focus { outline: none; border-color: #38bdf8; }
         This page drafts text for you to copy; it submits nothing. Check the current form and rules before you rely on anything here.
     </div>
 <div class="sr-count" style="text-align:center;margin:6px 0 14px"><style>@media print{.sr-count{display:none!important}}</style><script type="text/javascript" src="https://counter.websiteout.com/js/2/0/172/0"></script></div>
+<div class="unverified" id="betanote"><p><b>* Untested, unverified and possibly incomplete.</b> This workspace has not been checked end to end against the live service. Treat everything it produces as a draft, and check it against the real form before you rely on it.</p><p><b>Found a step we have not covered?</b> If the real service asks you something this page does not, send us that page &mdash; but <b>save it before you type anything into it</b>. An empty form has nothing personal in it to take out, which makes this safe and easy: press Ctrl+S (Cmd+S on a Mac), choose &ldquo;Webpage, complete&rdquo;, and then carry on and fill it in as normal. Do that at each new step, and when you are finished put the saved pages in a zip file and email them to <span id="cfMail">us</span>. If you only think of it after filling a page in, run it through our <a href="scrubber.html">web page data scrubber</a> first &mdash; it takes out your answers, your contact details and your claim number, shows you every change it makes, and never uploads the file anywhere. Worth doing even with a blank page: your claim number is usually in the web address at the top, which gets saved with it. We aim to have a missing step written and on the site within a couple of days, so the next person through gets an easier time of it — but this is a volunteer project run in whatever spare time there is, so that is an aim and not a promise. Real life very often gets in the way.</p></div>
 </main>
 </div>
 </body>

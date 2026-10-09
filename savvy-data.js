@@ -2,6 +2,9 @@
  * ---------------------------------------------------------------------------
  * Fetches the small JSON files published at data.savvyrenter.co.uk.
  *
+ * Shared module. MASTER COPY lives in www\shared-modules\savvy-data\.
+ * Projects get a copy through sync-modules.bat; edit here, never in a project.
+ *
  * Nothing about the user is sent anywhere. A postcode typed into a page is
  * used to work out which file to ask for and never leaves the browser beyond
  * that: the request is for a file named after the outcode, the same file
@@ -17,6 +20,15 @@ const SavvyData = (() => {
   // The one place the address lives. Change this and everything follows.
   const BASE = 'https://data.savvyrenter.co.uk/v1/';
 
+  // A copy of the site run on someone's own computer (served at localhost or
+  // any address that is not savvyrenter.co.uk) looks in its own data/v1 folder
+  // first, so the data repository's v1 folder can simply be dropped in as
+  // data/v1 with nothing to edit. Anything not found there comes from BASE.
+  // A page opened straight from a file cannot read files beside it at all, so
+  // that case, like the live site, goes straight to BASE.
+  const LOCAL = 'data/v1/';
+  const tryLocal = /^https?:$/.test(location.protocol) && !/(^|\.)savvyrenter\.co\.uk$/i.test(location.hostname);
+
   // Files fetched once per tab. They never change while someone is looking at
   // the page, so checking three flats in a row costs one request, not three.
   const cache = new Map();
@@ -24,6 +36,14 @@ const SavvyData = (() => {
   // One attempt. 'how' is the browser cache mode: the first go is happy to use
   // a stored copy, the second insists on a fresh one.
   function attempt(path, how) {
+    if (tryLocal) {
+      return fetch(LOCAL + path, { cache: how })
+        .then(r => r.ok ? r.json() : online(path, how))
+        .catch(() => online(path, how));
+    }
+    return online(path, how);
+  }
+  function online(path, how) {
     return fetch(BASE + path, { cache: how }).then(r => {
       if (r.status === 404) return null;            // asked for something that isn't there
       if (!r.ok) throw new Error('Could not load ' + path + ' (' + r.status + ')');
@@ -79,6 +99,23 @@ const SavvyData = (() => {
       lat: row[2],
       lon: row[3]
     };
+  }
+
+  // ---- broad rental market area -----------------------------------------
+  // Which BRMA (the area Local Housing Allowance is set for) a postcode is in.
+  // Built by shared-modules/brma-lookup from the ONS postcode file and the
+  // official boundaries; one small file per postcode district. Returns the
+  // BRMA name — the same names the housing allowance file uses — or null if
+  // the postcode is not found, so a page can fall back to its list.
+  async function brma(raw) {
+    const t = tidy(raw);
+    if (!t) return null;
+    let file;
+    try { file = await get('brma/' + t.outcode + '.json'); } catch (e) { return null; }
+    if (!file) return null;
+    if (file.b) return file.b;
+    const i = file.p ? file.p[t.unit] : undefined;
+    return i === undefined ? null : file.n[i];
   }
 
   // ---- the rent index ----------------------------------------------------
@@ -185,6 +222,6 @@ const SavvyData = (() => {
     };
   }
 
-  return { BASE, postcode, rents, lha, lhaFor, brmaKey, atMonth, change, tidy,
+  return { BASE, postcode, brma, rents, lha, lhaFor, brmaKey, atMonth, change, tidy,
            councils, council, bands, charge };
 })();

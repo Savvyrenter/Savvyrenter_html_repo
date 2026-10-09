@@ -257,6 +257,7 @@
   /* keep the long one in the flow on a phone (this comes last on purpose) */
   @media (max-width:860px) { .navitem.resitem > .flyout { position:static; inset:auto; transform:none; } }
   @media print { .rail { display:none !important; } main.page, .page { margin-left:0; } }
+  .beta { display:inline-block; vertical-align:middle; margin-left:8px; font-size:12px; font-weight:700; color:#0f172a !important; background:#f2c94c; border-radius:4px; padding:1px 7px; letter-spacing:.4px; text-decoration:none !important; }
 </style>
 <script type="application/ld+json">
 {
@@ -286,13 +287,13 @@
 <script defer src="https://cloud.umami.is/script.js" data-website-id="586e56fe-239b-4e82-be1e-c483dfdfeda1"></script>
 </head>
 <body>
+<nav id="siteRibbon" aria-label="Site menu"><a href="index.html">Home</a> <a href="resources.html">Resources</a> <a href="about.html">About</a></nav>
+<script src="ribbon.js"></script>
 <div class="shell">
-<div class="rail"><aside class="tools" id="siteMenu"><noscript><a href="index.html">Home</a><a href="resources.html">Data &amp; Resources</a></noscript></aside><script src="menu.js"></script><img class="sidelogo" src="SavvyRenter-sml.png" alt="Savvy Renter"></div><main class="page">
+<main class="page">
 <div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
 
-<div class="brand"><div><h1>TPO Complaint Workspace</h1><div class="sub">Draft it here at your own pace · paste it into the portal when it is ready</div></div><div class="acts"><button type="button" class="act" onclick="saveDraft()" title="Saves everything you have typed to a file on this computer, so you can come back and carry on.">&#128190; Save</button><button type="button" class="act" onclick="document.getElementById('loadFile').click()" title="Opens a draft you saved earlier and puts every answer back.">&#128193; Load</button><input type="file" id="loadFile" accept=".json,application/json" class="hidden" onchange="loadDraft(this)"><button type="button" class="act" onclick="buildTextFile()" title="Writes a plain text file with every answer in it, ready to copy from when you fill in the real portal.">&#128196; Generate file</button><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page." onclick="showFeedback()">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div><div class="savenote" id="saveNote"></div></div></div>
-
-<div class="unverified"><b>Untested, unverified and possibly incomplete.</b> This workspace has not been checked end to end against the live service. Treat everything it produces as a draft, and check it against the real form before you rely on it. <b>Found a step we have not covered?</b> Save that page from The Property Ombudsman portal before you type anything into it (Ctrl+S, or Cmd+S on a Mac, &ldquo;Webpage, complete&rdquo;), run it through our <a href="scrubber.html" style="color:#f2c94c;font-weight:bold">web page data scrubber</a>, and email it to us so we can build it in. We aim to do that within a couple of days, but this is a volunteer project and that is an aim, not a promise.</div>
+<div class="brand"><div><h1>TPO Complaint Workspace <a class="beta" href="#betanote" title="Untested and unverified — see the note at the bottom of the page">Beta*</a></h1><div class="sub">Draft it here at your own pace · paste it into the portal when it is ready</div></div><div class="acts"><button type="button" class="act" onclick="saveDraft()" title="Saves everything you have typed to a file on this computer, so you can come back and carry on.">&#128190; Save</button><button type="button" class="act" onclick="document.getElementById('loadFile').click()" title="Opens a draft you saved earlier and puts every answer back.">&#128193; Load</button><input type="file" id="loadFile" accept=".json,application/json" class="hidden" onchange="loadDraft(this)"><button type="button" class="act" onclick="buildTextFile()" title="Writes a plain text file with every answer in it, ready to copy from when you fill in the real portal.">&#128196; Generate file</button><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page." onclick="showFeedback()">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div><div class="savenote" id="saveNote"></div></div></div>
 
 <div class="intro">
   The Property Ombudsman is the other redress scheme letting agents can belong to. Its portal hides the case forms entirely until a signed Letter of Authority is attached, and it will not save a part-finished complaint — so a long submission has to be written in one sitting or lost. This page is the same sequence, with the same character limits, kept on your own computer. Write it over days if you need to, save as you go, then paste the finished text into the real portal in one go.
@@ -401,12 +402,13 @@
 
   <div class="navrow">
     <button type="button" class="secondary" id="prevBtn" onclick="move(-1)" disabled>← Back</button>
-    <div class="navfoot"><span>Savvy Renter — savvyrenter.co.uk · free tools for renters</span><span>Not connected to, or endorsed by, The Property Ombudsman</span><span><a href="resources.html#sources">Data sources &amp; licences</a> · this page submits nothing</span></div>
+    <div class="navfoot"><span>Savvy Renter — savvyrenter.co.uk · free tools for renters</span><span>Not connected to, or endorsed by, The Property Ombudsman</span><span><a href="about.html#sources">Data sources &amp; licences</a> · this page submits nothing</span></div>
     <button type="button" id="nextBtn" onclick="move(1)">Next →</button>
   </div>
 
 </form>
 <div class="sr-count" style="text-align:center;margin:6px 0 14px"><style>@media print{.sr-count{display:none!important}}</style><script type="text/javascript" src="https://counter.websiteout.com/js/2/0/172/0"></script></div>
+<div class="unverified" id="betanote"><b>* Untested, unverified and possibly incomplete.</b> This workspace has not been checked end to end against the live service. Treat everything it produces as a draft, and check it against the real form before you rely on it. <b>Found a step we have not covered?</b> Save that page from The Property Ombudsman portal before you type anything into it (Ctrl+S, or Cmd+S on a Mac, &ldquo;Webpage, complete&rdquo;), run it through our <a href="scrubber.html" style="color:#f2c94c;font-weight:bold">web page data scrubber</a>, and email it to us so we can build it in. We aim to do that within a couple of days, but this is a volunteer project and that is an aim, not a promise.</div>
 </main>
 </div>
 <script>

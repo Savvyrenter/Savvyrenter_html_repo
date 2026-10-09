@@ -262,8 +262,10 @@ window.addEventListener('load', () => window.scrollTo(0, 0));
 <script defer src="https://cloud.umami.is/script.js" data-website-id="586e56fe-239b-4e82-be1e-c483dfdfeda1"></script>
 </head>
 <body>
+<nav id="siteRibbon" aria-label="Site menu"><a href="index.html">Home</a> <a href="resources.html">Resources</a> <a href="about.html">About</a></nav>
+<script src="ribbon.js"></script>
 <div class="shell">
-<div class="rail"><aside class="tools" id="siteMenu"><noscript><a href="index.html">Home</a><a href="resources.html">Data &amp; Resources</a></noscript></aside><script src="menu.js"></script><img class="sidelogo" src="SavvyRenter-sml.png" alt="Savvy Renter"><div class="railtools"><button type="button" class="act" onclick="document.getElementById('rulesFile').click()" title="Opens a rules file you saved earlier.">&#128193; Load rules</button><input type="file" id="rulesFile" accept=".json,application/json" class="hidden" onchange="loadRules(this)"><button type="button" class="act" onclick="saveRules()" title="Saves the rules to a file on this computer, so you can use the same ones another day.">&#128190; Save rules</button><button type="button" class="act go" id="applyBtn" onclick="applyRules(false)" disabled title="Lays every rule on this page.">&#9881; Apply rules</button><button type="button" class="act" id="pdfBtn" onclick="savePage('pdf')" disabled title="Saves this page, with the black boxes burned into it, to your downloads.">&#128190; Save as PDF</button><button type="button" class="act" id="pngBtn" onclick="savePage('png')" disabled title="The same page as a picture.">&#128247; Save as PNG</button><div class="savenote" id="saveNote"></div></div></div><main class="page">
+<main class="page">
 <div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
   <div class="brand"><div><h1>Bank statement redaction</h1><div class="sub">Black out what nobody else needs to see, before you hand a statement over</div></div><button type="button" class="courtlink" onclick="openGuide()">What to leave on show<span>a rough guide &mdash; opens over this page</span></button>
   </div>
@@ -289,6 +291,17 @@ window.addEventListener('load', () => window.scrollTo(0, 0));
       <button type="button" class="sec" id="undoBtn" onclick="undoBox()" disabled>&#8630; Undo last box</button>
       <button type="button" class="sec" id="clearBtn" onclick="clearBoxes()" disabled>Clear this page</button>
       <span class="working" id="working"></span>
+    </div>
+
+    <div class="rdbar">
+      <span class="lbl">3 &middot; Rules &amp; saving</span>
+      <button type="button" class="sec" onclick="document.getElementById('rulesFile').click()" title="Opens a rules file you saved earlier.">&#128193; Load rules</button>
+      <input type="file" id="rulesFile" accept=".json,application/json" class="hidden" onchange="loadRules(this)">
+      <button type="button" class="sec" onclick="saveRules()" title="Saves the rules to a file on this computer, so you can use the same ones another day.">&#128190; Save rules</button>
+      <button type="button" id="applyBtn" onclick="applyRules(false)" disabled title="Lays every rule on this page.">&#9881; Apply rules</button>
+      <button type="button" id="pdfBtn" onclick="savePage('pdf')" disabled title="Saves this page, with the black boxes burned into it, to your downloads.">&#128190; Save as PDF</button>
+      <button type="button" id="pngBtn" onclick="savePage('png')" disabled title="The same page as a picture.">&#128247; Save as PNG</button>
+      <span class="working" id="saveNote"></span>
     </div>
 
     <div class="rdhint">Every line is outlined. <b>Click the last word you want to KEEP</b> — everything after it goes black and the amount goes with it; the balance never does. On the account-number line each word is its own box, and a long number keeps its last four. Click a black box to lift it, or drag across anything missed. <b>A rule made here stays while this page is open</b>: open the next statement page and press Apply rules. Refreshing the browser clears them — Save rules keeps them in a file.</div>
@@ -384,9 +397,10 @@ window.addEventListener('load', () => window.scrollTo(0, 0));
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.1.4/dist/tesseract.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script src="lib/pdfjs/pdf.min.js"></script>
+<script src="lib/sr-pdfjs.js"></script>
+<script src="lib/sr-ocr.js"></script>
+<script src="lib/pdf-lib.min.js"></script>
 <script>
 /* Bank statement redaction — the desktop app's engine, stripped to one page
    at a time. Everything happens in this browser tab: the file is read with
@@ -995,7 +1009,6 @@ function pickFile(input) {
   r.onload = async () => {
     try {
       if (/\.pdf$/i.test(f.name)) {
-        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
         pdfDoc = await pdfjsLib.getDocument({ data: new Uint8Array(r.result) }).promise;
         pageCount = pdfDoc.numPages;
         $('pageNo').value = 1;
@@ -1109,15 +1122,14 @@ async function scanPage() {
   if (!base.width) return;
   $('scanBtn').disabled = true;
   try {
-    say('Reading the page… the first time also downloads the reader, which takes a moment.');
+    say('Reading the page… the first time, the reader takes a moment to start.');
     if (!worker) {
-      worker = await Tesseract.createWorker({ logger: m => { if (m.status === 'recognizing text') say('Reading the page… ' + Math.round(m.progress * 100) + '%'); } });
-      await worker.loadLanguage('eng');
-      await worker.initialize('eng');
+      worker = await SROcr.create(m => { if (m.status === 'recognizing text') say('Reading the page… ' + Math.round(m.progress * 100) + '%'); });
     }
-    const { data } = await worker.recognize(base);
+    const { data } = await worker.recognize(base, {}, { blocks: true });
     pageTag++;
-    const lines = (data.lines || []).filter(L => (L.words || []).length);
+    // The reader gives lines inside blocks and paragraphs; lay them out flat.
+    const lines = (data.lines || (data.blocks || []).flatMap(b => (b.paragraphs || []).flatMap(p => p.lines || []))).filter(L => (L.words || []).length);
     if (lines.length) {
       rows = lines.map(L => {
         const ws = L.words.map(w => ({ t: w.text, x: w.bbox.x0, y: w.bbox.y0, w: w.bbox.x1 - w.bbox.x0, h: w.bbox.y1 - w.bbox.y0, conf: w.confidence }))
@@ -1254,15 +1266,19 @@ function download(href, name) {
   document.body.appendChild(a); a.click();
   setTimeout(() => a.remove(), 0);
 }
-function savePage(how) {
+async function savePage(how) {
   if (!base.width) return;
   const c = finished();
   const stem = (fileLabel || 'statement') + ' page ' + ($('pageNo').value || 1) + ' - redacted';
   if (how === 'png') { download(c.toDataURL('image/png'), stem + '.png'); note('Saved to your downloads.'); return; }
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF({ unit: 'px', format: [c.width, c.height], orientation: c.width > c.height ? 'l' : 'p' });
-  doc.addImage(c.toDataURL('image/png'), 'PNG', 0, 0, c.width, c.height);
-  doc.save(stem + '.pdf');
+  // One page, the picture at 96 dots to the inch (a pixel is three-quarters of a point).
+  const doc = await PDFLib.PDFDocument.create();
+  const img = await doc.embedPng(c.toDataURL('image/png'));
+  const w = c.width * 0.75, h = c.height * 0.75;
+  doc.addPage([w, h]).drawImage(img, { x: 0, y: 0, width: w, height: h });
+  const url = URL.createObjectURL(new Blob([await doc.save()], { type: 'application/pdf' }));
+  download(url, stem + '.pdf');
+  setTimeout(() => URL.revokeObjectURL(url), 10000);
   note('Saved to your downloads.');
 }
 function saveRules() {

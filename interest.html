@@ -373,8 +373,10 @@
 <script defer src="https://cloud.umami.is/script.js" data-website-id="586e56fe-239b-4e82-be1e-c483dfdfeda1"></script>
 </head>
 <body>
+<nav id="siteRibbon" aria-label="Site menu"><a href="index.html">Home</a> <a href="resources.html">Resources</a> <a href="about.html">About</a></nav>
+<script src="ribbon.js"></script>
 <div class="shell">
-<div class="rail"><aside class="tools" id="siteMenu"><noscript><a href="index.html">Home</a><a href="resources.html">Data &amp; Resources</a></noscript></aside><script src="menu.js"></script><img class="sidelogo" src="SavvyRenter-sml.png" alt="Savvy Renter"></div><main class="page">
+<main class="page">
 <div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
 <a id="top"></a>
 <div class="brand"><div><h1>Rent Overpayment Interest Calculator</h1><div class="sub">Increasing Principal Sum method · simple interest, s.69 County Courts Act 1984</div></div><div class="acts"><button type="button" class="act" onclick="saveCase()" title="Saves everything you have entered to a file on this computer, so you can come back and carry on.">&#128190; Save</button><button type="button" class="act" onclick="document.getElementById('loadFile').click()" title="Opens a file you saved earlier and puts every figure back.">&#128193; Load</button><input type="file" id="loadFile" accept=".json,application/json" class="hidden" onchange="loadCase(this)"><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page." onclick="showFeedback()">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div><div class="savenote" id="saveNote"></div></div></div>
@@ -441,7 +443,7 @@
   <div class="endbar">
     <a href="#top" class="jump">↑ Back to the top</a>
   </div>
-  <div class="foot">Prepared with the Savvy Renter rent overpayment interest calculator (savvyrenter.co.uk, increasing principal sum) on <span id="preparedOn"></span>. Figures only. <span class="nostore">Nothing entered here is stored or sent anywhere.</span><span class="nostore"> · <a href="resources.html#sources" style="color:#38bdf8;text-decoration:none">Data sources &amp; licences</a></span></div>
+  <div class="foot">Prepared with the Savvy Renter rent overpayment interest calculator (savvyrenter.co.uk, increasing principal sum) on <span id="preparedOn"></span>. Figures only. <span class="nostore">Nothing entered here is stored or sent anywhere.</span><span class="nostore"> · <a href="about.html#sources" style="color:#38bdf8;text-decoration:none">Data sources &amp; licences</a></span></div>
 </div>
 
 <div class="sr-count" style="text-align:center;margin:6px 0 14px"><style>@media print{.sr-count{display:none!important}}</style><script type="text/javascript" src="https://counter.websiteout.com/js/2/0/172/0"></script></div>

@@ -207,8 +207,10 @@ window.addEventListener('load', () => window.scrollTo(0, 0));
 <script defer src="https://cloud.umami.is/script.js" data-website-id="586e56fe-239b-4e82-be1e-c483dfdfeda1"></script>
 </head>
 <body>
+<nav id="siteRibbon" aria-label="Site menu"><a href="index.html">Home</a> <a href="resources.html">Resources</a> <a href="about.html">About</a></nav>
+<script src="ribbon.js"></script>
 <div class="shell">
-<div class="rail"><aside class="tools" id="siteMenu"><noscript><a href="index.html">Home</a><a href="resources.html">Data &amp; Resources</a></noscript></aside><script src="menu.js"></script><img class="sidelogo" src="SavvyRenter-sml.png" alt="Savvy Renter"></div><main class="page">
+<main class="page">
 <div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
   <div class="brand"><div><h1>Split a PDF into single pages</h1><div class="sub">One file per page, named in order &mdash; the first step before anything else</div></div></div>
   <div class="intro">
@@ -241,8 +243,8 @@ window.addEventListener('load', () => window.scrollTo(0, 0));
     <a href="sample-statement-3.pdf" target="_blank">sample 3</a>.
     They are from a bank that does not exist and are marked as samples, so nothing of yours is at risk while you find your way around.</div>
 
-<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script src="lib/pdf-lib.min.js"></script>
+<script src="lib/jszip.min.js"></script>
 <script>
 let bytes = null, stem = 'document', count = 0;
 const $ = (id) => document.getElementById(id);
