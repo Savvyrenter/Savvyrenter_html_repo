@@ -1005,10 +1005,16 @@ function pickFile(input) {
   fileLabel = f.name.replace(/\.[^.]+$/, '');
   $('fname').textContent = f.name;
   marks = []; rows = []; rowAt = null;
+  say('Opening ' + f.name + '…');
   const r = new FileReader();
+  r.onerror = () => say('That file could not be read.', true);
   r.onload = async () => {
     try {
-      if (/\.pdf$/i.test(f.name)) {
+      // A PDF is known by its first bytes, not its name: Android's file picker
+      // often hands over a name with no ".pdf" on the end.
+      const head = new Uint8Array(r.result, 0, Math.min(5, r.result.byteLength));
+      const isPdf = f.type === 'application/pdf' || /\.pdf$/i.test(f.name) || String.fromCharCode.apply(null, head) === '%PDF-';
+      if (isPdf) {
         pdfDoc = await pdfjsLib.getDocument({ data: new Uint8Array(r.result) }).promise;
         pageCount = pdfDoc.numPages;
         $('pageNo').value = 1;
@@ -1022,6 +1028,7 @@ function pickFile(input) {
           base.getContext('2d').drawImage(img, 0, 0, base.width, base.height);
           freshPage(null);
         };
+        img.onerror = () => say('That file could not be opened. Choose a PDF, or a photo or scan of a page.', true);
         img.src = URL.createObjectURL(f);
       }
     } catch (e) { say('That file could not be opened: ' + e.message, true); }

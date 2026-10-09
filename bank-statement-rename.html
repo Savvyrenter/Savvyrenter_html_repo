@@ -305,8 +305,10 @@ function datesIn(text) {
   return found;
 }
 async function textOf(it) {
-  if (/\.pdf$/i.test(it.file.name)) {
-    const buf = await it.file.arrayBuffer();
+  const buf = await it.file.arrayBuffer();
+  // Known by its first bytes as well as its name: Android often drops the ".pdf".
+  const isPdf = it.file.type === 'application/pdf' || /\.pdf$/i.test(it.file.name) || new TextDecoder().decode(new Uint8Array(buf, 0, Math.min(5, buf.byteLength))) === '%PDF-';
+  if (isPdf) {
     const doc = await pdfjsLib.getDocument({ data: new Uint8Array(buf) }).promise;
     const page = await doc.getPage(1);
     const txt = (await page.getTextContent()).items.map(x => x.str).join(' ');
