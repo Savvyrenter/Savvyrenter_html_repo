@@ -71,6 +71,7 @@
       ['bank-statement-split.html', 'Split a PDF into pages'],
       ['bank-statement-rename.html', 'Name statements by date'] ] },
     { label: 'Complaints & Claims', items: [
+      ['letters.html', 'Template letters'],
       ['PRS_Tenant_Workspace.html', 'PRS complaint'],
       ['TPO_Tenant_Workspace.html', 'TPO complaint'],
       ['court_forms_workspace.html', 'Money Claim Online'],
