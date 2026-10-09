@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Viewing notes: talk round, photos by room — Savvy Renter</title>
+<meta name="description" content="Walk round a rental viewing or check-in talking: your notes sort themselves under each room and every photo lands where you took it. Stays on your phone.">
+<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#001e3d">
+<link rel="canonical" href="https://www.savvyrenter.co.uk/viewing-notes.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Savvy Renter">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Viewing notes: talk round, photos by room — Savvy Renter">
+<meta property="og:description" content="Walk round a rental viewing or check-in talking: your notes sort themselves under each room and every photo lands where you took it. Stays on your phone.">
+<meta property="og:url" content="https://www.savvyrenter.co.uk/viewing-notes.html">
+<meta property="og:image" content="https://www.savvyrenter.co.uk/og-image.png">
+<meta property="og:image:secure_url" content="https://www.savvyrenter.co.uk/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Savvy Renter — free calculators for renters">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Viewing notes: talk round, photos by room — Savvy Renter">
+<meta name="twitter:description" content="Walk round a rental viewing or check-in talking: your notes sort themselves under each room and every photo lands where you took it. Stays on your phone.">
+<meta name="twitter:image" content="https://www.savvyrenter.co.uk/og-image.png">
+<style>
+  :where(body) a { color:#38bdf8; }
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.5; color:#e2e8f0; max-width:1180px; margin:0 auto; padding:0 18px 24px; background:#0f172a; }
+  @media (max-width:700px) { body { padding:0 12px 18px; } }
+  h1 { color:#f8fafc; font-size:24px; margin:0; }
+  p { margin:6px 0; font-size:14px; }
+  .hidden { display:none !important; }
+  .pagebar { background:#0b1220; border:1px solid #1e293b; border-radius:6px; padding:5px 12px; margin:10px 0; display:flex; align-items:center; justify-content:space-between; gap:14px; font-size:11.5px; }
+  .pagebar a { color:#94a3b8; text-decoration:none; font-weight:bold; letter-spacing:.6px; text-transform:uppercase; white-space:nowrap; }
+  .pagebar a:hover { color:#38bdf8; }
+  .pagebar span { color:#64748b; text-align:right; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .pagebar .brief { display:none; }
+  @media (max-width:700px) { .pagebar .full { display:none; } .pagebar .brief { display:inline; } }
+  .brand { display:flex; align-items:center; gap:14px; border-bottom:2px solid #334155; padding:4px 0 8px; margin-bottom:10px; }
+  .brand h1 { font-size:28px; letter-spacing:-0.2px; }
+  .brand .sub { color:#94a3b8; font-size:13px; margin-top:2px; }
+  @media (max-width:700px) { .brand { flex-wrap:wrap; } .brand h1 { font-size:24px; } }
+  .beta { display:inline-block; vertical-align:middle; margin-left:8px; font-size:12px; font-weight:700; color:#0f172a !important; background:#f2c94c; border-radius:4px; padding:1px 7px; letter-spacing:.4px; text-decoration:none !important; }
+  .unverified { background:#3b2f0b; border-left:4px solid #f2c94c; color:#f5e6b8; padding:8px 14px; margin:10px 0; border-radius:4px; font-size:13px; }
+  .intro { background:#1e293b; border-left:4px solid #38bdf8; padding:8px 12px; margin:0 0 8px; border-radius:4px; font-size:14px; color:#c9d4e0; }
+  .intro.xp { cursor:pointer; }
+  .intro .xbtn { float:right; margin:0 0 2px 10px; background:none; border:1px solid #475569; border-radius:4px; color:#38bdf8; font-family:inherit; font-size:12px; font-weight:bold; line-height:1.4; padding:1px 8px; cursor:pointer; }
+  .intro .xlbl { color:#f1f5f9; font-weight:bold; margin-right:6px; }
+  .intro .xfull p { margin:0 0 6px; font-size:14px; }
+  .intro .xfull .xbtn.end { float:none; display:block; margin:4px 0 0 auto; }
+  .brand .fbwrap { margin-left:auto; text-align:right; position:relative; }
+  #fbBtn { background:#0284c7; color:#fff; border:none; border-radius:5px; font-size:13px; font-weight:bold; padding:8px 13px; cursor:pointer; font-family:inherit; }
+  #fbPanel { position:absolute; top:0; right:0; z-index:20; width:470px; max-width:calc(100vw - 40px); box-sizing:border-box; background:#1e293b; border:1px solid #475569; border-radius:6px; padding:10px 30px 10px 12px; text-align:left; font-size:12.5px; color:#c9d4e0; line-height:1.5; box-shadow:0 6px 18px rgba(0,0,0,.45); }
+  #fbClose { position:absolute; top:4px; right:6px; background:none; border:none; color:#94a3b8; font-size:16px; line-height:1; padding:2px 5px; cursor:pointer; font-family:inherit; }
+  #fbPanel a { color:#38bdf8; font-weight:bold; text-decoration:none; font-size:14px; }
+
+  /* ---- viewing notes ---- */
+  .lbl { display:block; font-size:10.5px; font-weight:bold; color:#8fa2b8; text-transform:uppercase; letter-spacing:.3px; margin:0 0 2px; }
+  #addr { width:100%; max-width:520px; box-sizing:border-box; background:#0b1220; border:1px solid #334155; color:#e2e8f0; border-radius:4px; padding:6px 8px; font-size:15px; font-family:inherit; }
+  #addr:focus, #notes:focus { outline:none; border-color:#38bdf8; }
+  .vbar { position:sticky; top:0; z-index:40; background:#0f172a; display:flex; align-items:center; flex-wrap:wrap; gap:6px 10px; padding:6px 0; margin-top:6px; border-bottom:1px solid #1e293b; }
+  .cam { display:inline-flex; align-items:center; gap:6px; background:#0284c7; color:#fff; border-radius:6px; font-weight:bold; font-size:16px; padding:8px 16px; cursor:pointer; user-select:none; }
+  .cam:hover { background:#0369a1; }
+  .pick { color:#38bdf8; font-size:12.5px; font-weight:bold; cursor:pointer; text-decoration:underline; }
+  .now { font-size:13px; color:#94a3b8; margin-left:auto; }
+  .now b { color:#f8fafc; font-size:15px; }
+  .chips { display:flex; flex-wrap:wrap; gap:4px; align-items:center; margin:6px 0 2px; }
+  .chips span { font-size:11px; color:#8fa2b8; font-weight:bold; text-transform:uppercase; letter-spacing:.3px; margin-right:2px; }
+  .chips button { background:#1e293b; border:1px solid #475569; color:#e2e8f0; border-radius:14px; font-size:12.5px; font-weight:600; padding:3px 10px; cursor:pointer; font-family:inherit; }
+  .chips button:hover { border-color:#38bdf8; color:#fff; }
+  .hint { font-size:12.5px; color:#9fb0c3; margin:6px 0 3px; line-height:1.45; }
+  .hint b { color:#e2e8f0; }
+  #notes { display:block; width:100%; box-sizing:border-box; min-height:38vh; background:#0b1220; border:1px solid #334155; color:#e2e8f0; border-radius:6px; padding:10px; font-size:16px; line-height:1.5; font-family:inherit; resize:vertical; }
+  .rooms { margin-top:10px; }
+  .room { background:#111c30; border:1px solid #334155; border-radius:6px; padding:7px 10px; margin-bottom:6px; }
+  .room h3 { margin:0 0 3px; font-size:12px; text-transform:uppercase; letter-spacing:.5px; color:#38bdf8; }
+  .room h3 small { color:#64748b; font-weight:normal; text-transform:none; letter-spacing:0; margin-left:6px; }
+  .room .t { font-size:14px; white-space:pre-wrap; color:#dbe4ee; }
+  .room .t .pm { background:#0284c7; color:#fff; border-radius:3px; padding:0 4px; font-size:11.5px; font-weight:bold; }
+  .thumbs { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+  .th { position:relative; width:112px; }
+  .th img { display:block; width:112px; height:84px; object-fit:cover; border-radius:4px; border:1px solid #334155; cursor:zoom-in; background:#0b1220; }
+  .th .cap { font-size:10.5px; color:#94a3b8; line-height:1.3; margin-top:1px; }
+  .th .x { position:absolute; top:2px; right:2px; background:rgba(15,23,42,.85); color:#fecaca; border:1px solid #7f1d1d; border-radius:4px; font-size:12px; line-height:1; padding:2px 5px; cursor:pointer; }
+  .empty { font-size:13px; color:#64748b; font-style:italic; }
+  .acts { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:10px 0 4px; }
+  .acts button, .acts label { border:none; border-radius:5px; font-weight:bold; cursor:pointer; font-size:13.5px; padding:7px 14px; font-family:inherit; }
+  .acts .go { background:#0284c7; color:#fff; }
+  .acts .go:hover { background:#0369a1; }
+  .acts .pr { background:#1e293b; color:#e2e8f0; border:1px solid #475569; }
+  .acts .pr:hover { border-color:#38bdf8; color:#fff; }
+  .acts .warn { background:#1e293b; color:#fca5a5; border:1px solid #7f1d1d; }
+  .acts .warn.arm { background:#7f1d1d; color:#fff; }
+  #msg { font-size:12.5px; color:#38bdf8; }
+  .keep { font-size:12px; color:#8fa2b8; margin:2px 0 0; }
+  .viewer { position:fixed; inset:0; z-index:3000; background:rgba(2,6,23,.94); display:flex; align-items:center; justify-content:center; }
+  .viewer img { max-width:96vw; max-height:90vh; object-fit:contain; }
+  .viewer button { position:absolute; top:10px; right:10px; background:#1e293b; color:#fff; border:1px solid #475569; border-radius:5px; font-size:15px; font-weight:bold; padding:6px 12px; cursor:pointer; }
+</style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebApplication",
+ "name": "Viewing notes",
+ "url": "https://www.savvyrenter.co.uk/viewing-notes.html",
+ "description": "Walk round a rental viewing or check-in talking: your notes sort themselves under each room and every photo lands where you took it. Stays on your phone.",
+ "applicationCategory": "UtilitiesApplication",
+ "operatingSystem": "Any (runs in a web browser)",
+ "browserRequirements": "Requires JavaScript",
+ "isAccessibleForFree": true,
+ "inLanguage": "en-GB",
+ "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
+ "publisher": { "@type": "Organization", "name": "Savvy Renter", "url": "https://www.savvyrenter.co.uk/", "logo": "https://www.savvyrenter.co.uk/logo.png" }
+}
+</script>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="586e56fe-239b-4e82-be1e-c483dfdfeda1"></script>
+</head>
+<body>
+<nav id="siteRibbon" aria-label="Site menu"><a href="index.html">Home</a> <a href="resources.html">Resources</a> <a href="about.html">About</a></nav>
+<script src="ribbon.js"></script>
+<main class="page">
+<div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
+
+<div class="brand"><div><h1>Viewing notes <a class="beta" href="#betanote" title="Still being tested — see the note at the bottom of the page">Beta*</a></h1><div class="sub">Talk your way round · every photo lands under the room you are in</div></div><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback." onclick="showFeedback()">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div></div>
+
+<div class="intro xp">
+  <div class="xsum"><button type="button" class="xbtn">&#9662; Full explanation</button><span class="xlbl">Summary</span> For a viewing, a check-in or a check-out. Talk (or type) your way round; say the room as you walk into it and the notes sort themselves under each room. Every photo you take lands under the room you were in. It all stays on this phone.</div>
+  <div class="xfull hidden"><button type="button" class="xbtn">&#9652; Summary</button><span class="xlbl">Full explanation</span>
+  <p><b>Talking.</b> Tap the notes box, then the microphone on your keyboard, and talk. Say the room as you go in &mdash; &ldquo;now into the kitchen&rdquo;, &ldquo;bedroom two&rdquo;, &ldquo;bathroom.&rdquo; &mdash; and everything after it goes under that room until you name the next. Going back into a room adds to what is already there. The room buttons do the same with a tap.</p>
+  <p><b>Photos.</b> Press &#128247; Photo whenever something needs a picture. The photo goes under the room you were talking about, and a marker like <b>[photo 3]</b> goes into your notes at that point, so the write-up shows it in the right place. Delete the marker and the photo moves to the &ldquo;not placed&rdquo; list at the bottom.</p>
+  <p><b>Your voice.</b> The talking is done by your phone&rsquo;s keyboard, not this page, and some keyboards send your voice to Google or Apple to turn it into text. To keep it on the phone: on Android, open the Gboard settings, then Voice typing, and download English (UK) for offline speech recognition. Newer iPhones do most dictation on the phone itself.</p>
+  <p><b>Nothing leaves this phone.</b> Your notes and photos are kept in this browser tab only, so the camera or a page reload cannot lose them. Close the tab and they are wiped the next time the page opens. To keep them, use Save as PDF, or Save to carry on later and open that file again on another day or on a computer.</p>
+  <button type="button" class="xbtn end">&#9652; Summary</button></div>
+</div>
+
+<label class="lbl" for="addr">Property</label>
+<input id="addr" placeholder="Address, or the agent's reference" autocomplete="off">
+
+<div class="vbar" id="vbar">
+  <label class="cam" title="Take a photo. It goes under the room you are in.">&#128247; Photo<input type="file" id="camIn" accept="image/*" capture="environment" hidden></label>
+  <label class="pick">or choose photos<input type="file" id="pickIn" accept="image/*" multiple hidden></label>
+  <span class="now">Now in: <b id="nowIn">General</b></span>
+</div>
+<div class="chips" id="chips"><span>Room</span></div>
+<div class="hint">Tap the box, then the <b>&#127908; microphone on your keyboard</b>, and talk your way round. Say the room as you walk in.</div>
+<textarea id="notes" spellcheck="true" placeholder="e.g. Now into the kitchen. Tap drips, mould behind the fridge. Bedroom two. Window will not close."></textarea>
+
+<div class="rooms" id="rooms"></div>
+
+<div class="acts">
+  <button type="button" class="go" id="pdfBtn">&#128190; Save as PDF</button>
+  <button type="button" class="pr" id="zipBtn" title="A file with your notes and every photo, to open here again later or on a computer.">&#128190; Save to carry on later</button>
+  <label class="pr" title="Opens a file saved with Save to carry on later.">&#128194; Open saved<input type="file" id="openIn" accept=".zip,application/zip" hidden></label>
+  <button type="button" class="warn" id="clearBtn">Start again</button>
+  <span id="msg"></span>
+</div>
+<p class="keep">Kept in this tab only. Close the tab and it is wiped next time &mdash; save it first.</p>
+
+<div style="margin:18px 0 10px; font-size:12px; color:#94a3b8; line-height:1.5; border-top:1px solid #334155; padding-top:8px;">
+  Savvy Renter &mdash; savvyrenter.co.uk &middot; free tools for renters &middot;
+  Everything on this page happens on your phone. Nothing you type or photograph is uploaded or sent anywhere.
+</div>
+<div class="unverified" id="betanote"><b>* Beta.</b> This page is new and still being tested. It keeps your own record of what you saw; it is not an inventory drawn up by a clerk, and it does not replace the landlord&rsquo;s check-in inventory &mdash; but dated notes and photos taken on the day are good evidence if the deposit is ever disputed.</div>
+</main>
+
+<script src="room-notes.js"></script>
+<script>
+const $ = (id) => document.getElementById(id);
+const ta = $('notes');
+let photos = [];          // { n, blob, url, name, time, type }
+let nextN = 1;
+let lastPos = 0;          // where the cursor was last in the notes box
+
+// ---------------------------------------------------------------- keeping it in this tab
+// IndexedDB holds the notes and photos so the camera opening, or the phone
+// reloading the page, cannot lose them. A new tab wipes what an old one left.
+const DB = 'sr-viewing-notes', ST = 'kv';
+function db() {
+  return new Promise((ok, no) => {
+    const r = indexedDB.open(DB, 1);
+    r.onupgradeneeded = () => r.result.createObjectStore(ST);
+    r.onsuccess = () => ok(r.result);
+    r.onerror = () => no(r.error);
+  });
+}
+async function dbDo(fn) {
+  try {
+    const d = await db();
+    return await new Promise((ok, no) => {
+      const t = d.transaction(ST, 'readwrite'), s = t.objectStore(ST);
+      let out;
+      const req = fn(s);
+      if (req) req.onsuccess = () => { out = req.result; };
+      t.oncomplete = () => { d.close(); ok(out); };
+      t.onerror = () => { d.close(); no(t.error); };
+    });
+  } catch (e) { return undefined; }
+}
+const dbPut = (k, v) => dbDo(s => s.put(v, k));
+const dbDel = (k) => dbDo(s => s.delete(k));
+const dbClear = () => dbDo(s => s.clear());
+async function dbAll() {
+  const out = {};
+  try {
+    const d = await db();
+    await new Promise((ok) => {
+      const c = d.transaction(ST).objectStore(ST).openCursor();
+      c.onsuccess = () => { const k = c.result; if (!k) { d.close(); ok(); return; } out[k.key] = k.value; k.continue(); };
+      c.onerror = () => { d.close(); ok(); };
+    });
+  } catch (e) { /* nothing kept */ }
+  return out;
+}
+let saveT = null;
+function saveText() {
+  clearTimeout(saveT);
+  saveT = setTimeout(() => dbPut('notes', { addr: $('addr').value, text: ta.value, nextN: nextN }), 300);
+}
+
+// ---------------------------------------------------------------- the rooms
+function esc(t) { return String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
+function when(t) {
+  const d = new Date(t);
+  return d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) + ' ' + d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+function thumb(p) {
+  return '<div class="th"><img src="' + p.url + '" alt="Photo ' + p.n + '" data-n="' + p.n + '"><button type="button" class="x" data-del="' + p.n + '" title="Remove this photo">&#10005;</button>' +
+         '<div class="cap">Photo ' + p.n + ' &middot; ' + esc(when(p.time)) + '</div></div>';
+}
+function render() {
+  const rooms = RoomNotes.split(ta.value);
+  const placed = new Set();
+  let h = '';
+  rooms.forEach(r => {
+    const ps = r.photos.map(n => photos.find(p => p.n === n)).filter(Boolean);
+    ps.forEach(p => placed.add(p.n));
+    h += '<div class="room"><h3>' + esc(r.room) + (ps.length ? '<small>' + ps.length + ' photo' + (ps.length > 1 ? 's' : '') + '</small>' : '') + '</h3>' +
+         '<div class="t">' + esc(r.text).replace(/\[photo (\d+)\]/gi, '<span class="pm">&#128247;$1</span>') + '</div>' +
+         (ps.length ? '<div class="thumbs">' + ps.map(thumb).join('') + '</div>' : '') + '</div>';
+  });
+  const loose = photos.filter(p => !placed.has(p.n));
+  if (loose.length) h += '<div class="room"><h3>Photos not placed in the notes</h3><div class="thumbs">' + loose.map(thumb).join('') + '</div></div>';
+  $('rooms').innerHTML = h || '<p class="empty">Your rooms appear here as you go.</p>';
+  $('nowIn').textContent = RoomNotes.roomAt(ta.value, lastPos);
+}
+let renderT = null;
+function changed() { clearTimeout(renderT); renderT = setTimeout(render, 120); saveText(); }
+function track() { lastPos = ta.selectionStart; $('nowIn').textContent = RoomNotes.roomAt(ta.value, lastPos); }
+['input', 'click', 'keyup', 'select', 'focus'].forEach(ev => ta.addEventListener(ev, track));
+ta.addEventListener('input', changed);
+$('addr').addEventListener('input', saveText);
+
+// Put text into the notes at the cursor, keeping a space either side.
+function insertAt(pos, s) {
+  const v = ta.value, before = v.slice(0, pos), after = v.slice(pos);
+  const lead = before && !/\s$/.test(before) ? ' ' : '';
+  const tail = after && !/^\s/.test(after) ? ' ' : (after ? '' : ' ');
+  ta.value = before + lead + s + tail + after;
+  lastPos = (before + lead + s + tail).length;
+  changed();
+}
+
+// ---------------------------------------------------------------- room buttons
+RoomNotes.ROOM_NAMES.forEach(name => {
+  const b = document.createElement('button');
+  b.type = 'button'; b.textContent = name;
+  b.addEventListener('click', () => {
+    let room = name;
+    if (name === 'Bedroom') {
+      const n = RoomNotes.split(ta.value).filter(r => /^Bedroom \d+$/.test(r.room)).length;
+      room = 'Bedroom ' + (n + 1);
+    }
+    const v = ta.value, before = v.slice(0, lastPos);
+    const nl = before && !/\n$/.test(before) ? '\n' : '';
+    insertAt(lastPos, nl + room + '.');
+    ta.focus();
+    ta.setSelectionRange(lastPos, lastPos);
+  });
+  $('chips').appendChild(b);
+});
+
+// ---------------------------------------------------------------- photos
+async function addPhotos(files) {
+  for (const f of files) {
+    if (!/^image\//.test(f.type)) continue;
+    const p = { n: nextN++, blob: f, url: URL.createObjectURL(f), name: f.name || 'photo.jpg', time: f.lastModified || Date.now(), type: f.type };
+    photos.push(p);
+    insertAt(lastPos, '[photo ' + p.n + ']');
+    await dbPut('photo:' + p.n, { n: p.n, blob: f, name: p.name, time: p.time, type: p.type });
+  }
+  saveText();
+  render();
+}
+$('camIn').addEventListener('change', e => { const f = Array.from(e.target.files || []); e.target.value = ''; addPhotos(f); });
+$('pickIn').addEventListener('change', e => { const f = Array.from(e.target.files || []); e.target.value = ''; addPhotos(f); });
+$('rooms').addEventListener('click', e => {
+  const del = e.target.closest('[data-del]');
+  if (del) {
+    const n = +del.dataset.del, p = photos.find(x => x.n === n);
+    if (p) URL.revokeObjectURL(p.url);
+    photos = photos.filter(x => x.n !== n);
+    ta.value = ta.value.replace(new RegExp('\\s?\\[photo ' + n + '\\]', 'gi'), '');
+    dbDel('photo:' + n);
+    saveText(); render();
+    return;
+  }
+  const img = e.target.closest('img[data-n]');
+  if (img) {
+    const v = document.createElement('div');
+    v.className = 'viewer';
+    v.innerHTML = '<img src="' + img.src + '" alt=""><button type="button">&#10005; Close</button>';
+    v.addEventListener('click', () => v.remove());
+    document.body.appendChild(v);
+  }
+});
+
+// ---------------------------------------------------------------- saving
+function say(t) { $('msg').textContent = t || ''; }
+function load(src) {
+  return new Promise((ok, no) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = () => no(new Error('could not load ' + src)); document.head.appendChild(s); });
+}
+function download(blob, name) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = name;
+  document.body.appendChild(a); a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 10000);
+}
+function stem() {
+  const a = $('addr').value.trim().replace(/[\\/:*?"<>|]+/g, ' ').slice(0, 60);
+  return 'Viewing notes - ' + (a || new Date().toISOString().slice(0, 10));
+}
+// A photo, turned the right way up and shrunk to a sensible size for the PDF.
+function shrink(p, max) {
+  return new Promise((ok, no) => {
+    const img = new Image();
+    img.onload = () => {
+      const s = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
+      const c = document.createElement('canvas');
+      c.width = Math.round(img.naturalWidth * s); c.height = Math.round(img.naturalHeight * s);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      c.toBlob(b => b ? b.arrayBuffer().then(buf => ok({ buf, w: c.width, h: c.height })) : no(new Error('photo')), 'image/jpeg', 0.82);
+    };
+    img.onerror = () => no(new Error('photo ' + p.n + ' could not be read'));
+    img.src = p.url;
+  });
+}
+// The PDF fonts only know Western characters: straighten quotes, drop emoji.
+function plain(s) {
+  return String(s).replace(/[‘’]/g, "'").replace(/[“”]/g, '"').replace(/[–—]/g, '-').replace(/…/g, '...')
+    .replace(/[^\n\x20-\x7E\xA0-\xFF€]/g, '');
+}
+$('pdfBtn').addEventListener('click', async () => {
+  try {
+    say('Making the PDF…');
+    if (!window.PDFLib) await load('lib/pdf-lib.min.js');
+    const { PDFDocument, StandardFonts, rgb } = PDFLib;
+    const doc = await PDFDocument.create();
+    const font = await doc.embedFont(StandardFonts.Helvetica), bold = await doc.embedFont(StandardFonts.HelveticaBold);
+    const W = 595.28, H = 841.89, M = 40, CW = W - 2 * M;
+    let page = doc.addPage([W, H]), y = H - M;
+    const room = (need) => { if (y - need < M) { page = doc.addPage([W, H]); y = H - M; } };
+    function lines(text, f, size, width) {
+      const out = [];
+      plain(text).split('\n').forEach(para => {
+        let line = '';
+        para.split(/\s+/).filter(Boolean).forEach(w => {
+          const t = line ? line + ' ' + w : w;
+          if (f.widthOfTextAtSize(t, size) <= width) line = t;
+          else { if (line) out.push(line); line = w; }
+        });
+        out.push(line);
+      });
+      return out;
+    }
+    function write(text, f, size, color, gap) {
+      lines(text, f, size, CW).forEach(l => { room(size + 3); page.drawText(l, { x: M, y: y - size, size, font: f, color }); y -= size + 3.5; });
+      y -= gap || 0;
+    }
+    const grey = rgb(0.35, 0.35, 0.4), black = rgb(0, 0, 0), blue = rgb(0.01, 0.4, 0.62);
+    write('Viewing notes', bold, 18, black, 2);
+    if ($('addr').value.trim()) write($('addr').value.trim(), bold, 12, black, 2);
+    write('Made ' + when(Date.now()) + ' with Savvy Renter Viewing notes (savvyrenter.co.uk). Notes as written or dictated on the day; each photo shows the time it was taken.', font, 8.5, grey, 10);
+    async function photoRow(ps) {
+      for (let i = 0; i < ps.length; i += 2) {
+        const pair = ps.slice(i, i + 2), cell = (CW - 12) / 2;
+        const imgs = [];
+        for (const p of pair) {
+          const s = await shrink(p, 1400);
+          const im = await doc.embedJpg(s.buf);
+          const sc = Math.min(cell / s.w, 220 / s.h);
+          imgs.push({ p, im, w: s.w * sc, h: s.h * sc });
+        }
+        const rowH = Math.max(...imgs.map(x => x.h)) + 14;
+        room(rowH);
+        imgs.forEach((x, k) => {
+          const xx = M + k * (cell + 12);
+          page.drawImage(x.im, { x: xx, y: y - x.h, width: x.w, height: x.h });
+          page.drawText(plain('Photo ' + x.p.n + ' - ' + when(x.p.time)), { x: xx, y: y - x.h - 10, size: 8, font, color: grey });
+        });
+        y -= rowH + 6;
+      }
+    }
+    const rooms = RoomNotes.split(ta.value), placed = new Set();
+    for (const r of rooms) {
+      room(40);
+      write(r.room, bold, 13, blue, 2);
+      if (r.text) write(r.text.replace(/\[photo (\d+)\]/gi, '(photo $1)'), font, 10.5, black, 4);
+      const ps = r.photos.map(n => photos.find(p => p.n === n)).filter(Boolean);
+      ps.forEach(p => placed.add(p.n));
+      await photoRow(ps);
+      y -= 6;
+    }
+    const loose = photos.filter(p => !placed.has(p.n));
+    if (loose.length) { room(40); write('Other photos', bold, 13, blue, 4); await photoRow(loose); }
+    download(new Blob([await doc.save()], { type: 'application/pdf' }), stem() + '.pdf');
+    say('Saved to your downloads.');
+  } catch (e) { say('The PDF could not be made: ' + e.message); }
+});
+
+$('zipBtn').addEventListener('click', async () => {
+  try {
+    say('Packing it up…');
+    if (!window.JSZip) await load('lib/jszip.min.js');
+    const zip = new JSZip();
+    const keep = { app: 'savvyrenter-viewing-notes', version: 1, savedAt: new Date().toISOString(), address: $('addr').value, text: ta.value, nextN: nextN, photos: [] };
+    const rooms = RoomNotes.split(ta.value);
+    let txt = 'Viewing notes' + ($('addr').value.trim() ? ' - ' + $('addr').value.trim() : '') + '\nSaved ' + when(Date.now()) + '\n';
+    rooms.forEach(r => { txt += '\n' + r.room.toUpperCase() + '\n' + r.text + '\n'; });
+    zip.file('notes.txt', txt);
+    photos.forEach(p => {
+      const r = rooms.find(x => x.photos.includes(p.n));
+      const ext = (p.type.split('/')[1] || 'jpg').replace('jpeg', 'jpg');
+      const file = 'photos/photo ' + String(p.n).padStart(2, '0') + (r ? ' - ' + r.room : '') + '.' + ext;
+      zip.file(file, p.blob, { date: new Date(p.time) });
+      keep.photos.push({ n: p.n, file: file, time: p.time, type: p.type, name: p.name });
+    });
+    zip.file('viewing-notes.json', JSON.stringify(keep, null, 1));
+    download(await zip.generateAsync({ type: 'blob' }), stem() + '.zip');
+    say('Saved to your downloads. Open it here again with Open saved.');
+  } catch (e) { say('It could not be saved: ' + e.message); }
+});
+
+$('openIn').addEventListener('change', async (e) => {
+  const f = e.target.files && e.target.files[0]; e.target.value = '';
+  if (!f) return;
+  try {
+    if (!window.JSZip) await load('lib/jszip.min.js');
+    const zip = await JSZip.loadAsync(f);
+    const j = zip.file('viewing-notes.json');
+    if (!j) { say('That is not a file saved from Viewing notes.'); return; }
+    const keep = JSON.parse(await j.async('string'));
+    if (!keep || keep.app !== 'savvyrenter-viewing-notes') { say('That is not a file saved from Viewing notes.'); return; }
+    await wipe();
+    $('addr').value = keep.address || '';
+    ta.value = keep.text || '';
+    nextN = keep.nextN || 1;
+    for (const q of keep.photos || []) {
+      const zf = zip.file(q.file);
+      if (!zf) continue;
+      const blob = new Blob([await zf.async('arraybuffer')], { type: q.type || 'image/jpeg' });
+      photos.push({ n: q.n, blob, url: URL.createObjectURL(blob), name: q.name, time: q.time, type: q.type });
+      await dbPut('photo:' + q.n, { n: q.n, blob, name: q.name, time: q.time, type: q.type });
+      nextN = Math.max(nextN, q.n + 1);
+    }
+    lastPos = ta.value.length;
+    saveText(); render();
+    say('Opened. Carry on where you left off.');
+  } catch (err) { say('That file could not be opened.'); }
+});
+
+async function wipe() {
+  photos.forEach(p => URL.revokeObjectURL(p.url));
+  photos = []; nextN = 1; lastPos = 0;
+  await dbClear();
+}
+let armT = null;
+$('clearBtn').addEventListener('click', async () => {
+  const b = $('clearBtn');
+  if (!b.classList.contains('arm')) {
+    b.classList.add('arm'); b.textContent = 'Tap again to wipe it all';
+    armT = setTimeout(() => { b.classList.remove('arm'); b.textContent = 'Start again'; }, 4000);
+    return;
+  }
+  clearTimeout(armT); b.classList.remove('arm'); b.textContent = 'Start again';
+  await wipe();
+  ta.value = ''; $('addr').value = '';
+  render(); say('Wiped.');
+});
+
+// ---------------------------------------------------------------- the bar stays in reach
+// The photo button rides along at the top of the screen; on a computer it
+// tucks under the site menu, which stays at the top there.
+function stick() {
+  const n = $('siteRibbon');
+  $('vbar').style.top = (n && getComputedStyle(n).position === 'sticky' ? n.offsetHeight : 0) + 'px';
+}
+window.addEventListener('resize', stick);
+
+// ---------------------------------------------------------------- feedback and the explanation box (as on the other tool pages)
+function showFeedback() {
+  const who = ['feedback', 'savvyrenter.co.uk'].join('@');
+  const p = $('fbPanel');
+  p.innerHTML =
+    '<button type="button" id="fbClose" title="Close" onclick="hideFeedback()">✕</button>' +
+    '<p style="margin:0 0 6px">Suggestions, corrections, or an open-source tool we could host — we read everything, though we can’t promise to answer every email. Use a suggestion and we’ll credit you on the page.</p>' +
+    '<a href="mailto:' + who + '?subject=Savvy%20Renter%20feedback">' + who + '</a>';
+  p.classList.remove('hidden');
+}
+function hideFeedback() { $('fbPanel').classList.add('hidden'); }
+function xpSwap(box){var s=box.querySelector('.xsum'),f=box.querySelector('.xfull');var open=f.classList.contains('hidden');f.classList.toggle('hidden',!open);s.classList.toggle('hidden',open);}
+document.addEventListener('click',function(e){var box=e.target.closest&&e.target.closest('.intro.xp');if(!box)return;if(e.target.closest('a'))return;if(!e.target.closest('.xbtn')&&String(window.getSelection())!=='')return;xpSwap(box);});
+
+// ---------------------------------------------------------------- start
+(async function start() {
+  stick();
+  let fresh = true;
+  try { fresh = !sessionStorage.getItem('sr-viewing-notes'); sessionStorage.setItem('sr-viewing-notes', '1'); } catch (e) { /* no tab memory: always fresh */ }
+  if (fresh) { await dbClear(); render(); return; }
+  const all = await dbAll();
+  if (all.notes) { $('addr').value = all.notes.addr || ''; ta.value = all.notes.text || ''; nextN = all.notes.nextN || 1; }
+  Object.keys(all).filter(k => k.indexOf('photo:') === 0).forEach(k => {
+    const q = all[k];
+    photos.push({ n: q.n, blob: q.blob, url: URL.createObjectURL(q.blob), name: q.name, time: q.time, type: q.type });
+    nextN = Math.max(nextN, q.n + 1);
+  });
+  photos.sort((a, b) => a.n - b.n);
+  lastPos = ta.value.length;
+  render();
+})();
+</script>
+</body>
+</html>
