@@ -1031,7 +1031,11 @@ function pickFile(input) {
         img.onerror = () => say('That file could not be opened. Choose a PDF, or a photo or scan of a page.', true);
         img.src = URL.createObjectURL(f);
       }
-    } catch (e) { say('That file could not be opened: ' + e.message, true); }
+    } catch (e) {
+      // Say which browser, so a report from an older phone or tablet tells us what to fix.
+      const ua = (navigator.userAgent.match(/(SamsungBrowser|Edg|OPR|Firefox|Chrome|Version)\/[\d.]+/) || [''])[0];
+      say('That file could not be opened: ' + e.message + (ua ? ' (' + ua + ')' : ''), true);
+    }
   };
   r.readAsArrayBuffer(f);
 }
