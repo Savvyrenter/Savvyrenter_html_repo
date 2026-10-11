@@ -278,11 +278,12 @@
 <body>
 <nav id="siteRibbon" aria-label="Site menu"><a href="index.html">Home</a> <a href="resources.html">Resources</a> <a href="about.html">About</a></nav>
 <script src="ribbon.js"></script>
+<script src="feedback.js"></script>
 <div class="shell">
 <main class="page">
 <div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
 
-<div class="brand"><div><h1>PRS Complaint Workspace <a class="beta" href="#betanote" title="Untested and unverified — see the note at the bottom of the page">Beta*</a></h1><div class="sub">Draft it here at your own pace · paste it into the portal when it is ready</div></div><div class="acts"><button type="button" class="act" onclick="saveDraft()" title="Saves everything you have typed to a file on this computer, so you can come back and carry on.">&#128190; Save</button><button type="button" class="act" onclick="document.getElementById('loadFile').click()" title="Opens a draft you saved earlier and puts every answer back.">&#128193; Load</button><input type="file" id="loadFile" accept=".json,application/json" class="hidden" onchange="loadDraft(this)"><button type="button" class="act" onclick="buildTextFile()" title="Writes a plain text file with every answer in it, ready to copy from when you fill in the real portal.">&#128196; Generate file</button><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page." onclick="showFeedback()">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div><div class="savenote" id="saveNote"></div></div></div>
+<div class="brand"><div><h1>PRS Complaint Workspace <a class="beta" href="#betanote" title="Untested and unverified — see the note at the bottom of the page">Beta*</a></h1><div class="sub">Draft it here at your own pace · paste it into the portal when it is ready</div></div><div class="acts"><button type="button" class="act" onclick="saveDraft()" title="Saves everything you have typed to a file on this computer, so you can come back and carry on.">&#128190; Save</button><button type="button" class="act" onclick="document.getElementById('loadFile').click()" title="Opens a draft you saved earlier and puts every answer back.">&#128193; Load</button><input type="file" id="loadFile" accept=".json,application/json" class="hidden" onchange="loadDraft(this)"><button type="button" class="act" onclick="buildTextFile()" title="Writes a plain text file with every answer in it, ready to copy from when you fill in the real portal.">&#128196; Generate file</button><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page.">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div><div class="savenote" id="saveNote"></div></div></div>
 
 <div class="intro">
   The Property Redress Scheme portal will not let you save a part-finished complaint, so a long submission has to be written in one sitting or lost. This page is the same set of questions with the same character limits, kept on your own computer. Write it over days if you need to, save as you go, then paste the finished text into the real portal in one go.
@@ -603,17 +604,6 @@ function checkAgent() {
   window.open(AGENT_FINDER, '_blank', 'noopener');
 }
 
-// ---- feedback ---------------------------------------------------------
-function showFeedback() {
-  const who = ['feedback', 'savvyrenter.co.uk'].join('@');
-  const p = document.getElementById('fbPanel');
-  p.innerHTML =
-    '<button type="button" id="fbClose" title="Close" onclick="hideFeedback()">✕</button>' +
-    '<p style="margin:0 0 6px">Suggestions, corrections, or an open-source tool we could host — we read everything, though we can’t promise to answer every email. Use a suggestion and we’ll credit you on the page.</p>' +
-    '<a href="mailto:' + who + '?subject=Savvy%20Renter%20feedback">' + who + '</a>';
-  p.classList.remove('hidden');
-}
-function hideFeedback() { document.getElementById('fbPanel').classList.add('hidden'); }
 </script>
 </body>
 </html>

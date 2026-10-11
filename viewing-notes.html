@@ -123,10 +123,11 @@
 <body>
 <nav id="siteRibbon" aria-label="Site menu"><a href="index.html">Home</a> <a href="resources.html">Resources</a> <a href="about.html">About</a></nav>
 <script src="ribbon.js"></script>
+<script src="feedback.js"></script>
 <main class="page">
 <div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
 
-<div class="brand"><div><h1>Viewing notes <a class="beta" href="#betanote" title="Still being tested — see the note at the bottom of the page">Beta*</a></h1><div class="sub">Talk your way round · every photo lands under the room you are in</div></div><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback." onclick="showFeedback()">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div></div>
+<div class="brand"><div><h1>Viewing notes <a class="beta" href="#betanote" title="Still being tested — see the note at the bottom of the page">Beta*</a></h1><div class="sub">Talk your way round · every photo lands under the room you are in</div></div><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback.">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div></div>
 
 <div class="intro xp">
   <div class="xsum"><button type="button" class="xbtn">&#9662; Full explanation</button><span class="xlbl">Summary</span> For a viewing, a check-in or a check-out. Talk (or type) your way round; say the room as you walk into it and the notes sort themselves under each room. Every photo you take lands under the room you were in. It all stays on this phone.</div>
@@ -501,17 +502,7 @@ function stick() {
 }
 window.addEventListener('resize', stick);
 
-// ---------------------------------------------------------------- feedback and the explanation box (as on the other tool pages)
-function showFeedback() {
-  const who = ['feedback', 'savvyrenter.co.uk'].join('@');
-  const p = $('fbPanel');
-  p.innerHTML =
-    '<button type="button" id="fbClose" title="Close" onclick="hideFeedback()">✕</button>' +
-    '<p style="margin:0 0 6px">Suggestions, corrections, or an open-source tool we could host — we read everything, though we can’t promise to answer every email. Use a suggestion and we’ll credit you on the page.</p>' +
-    '<a href="mailto:' + who + '?subject=Savvy%20Renter%20feedback">' + who + '</a>';
-  p.classList.remove('hidden');
-}
-function hideFeedback() { $('fbPanel').classList.add('hidden'); }
+// ---------------------------------------------------------------- the explanation box (as on the other tool pages)
 function xpSwap(box){var s=box.querySelector('.xsum'),f=box.querySelector('.xfull');var open=f.classList.contains('hidden');f.classList.toggle('hidden',!open);s.classList.toggle('hidden',open);}
 document.addEventListener('click',function(e){var box=e.target.closest&&e.target.closest('.intro.xp');if(!box)return;if(e.target.closest('a'))return;if(!e.target.closest('.xbtn')&&String(window.getSelection())!=='')return;xpSwap(box);});
 

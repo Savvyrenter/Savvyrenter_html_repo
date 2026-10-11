@@ -28,6 +28,7 @@
 <meta name="twitter:title" content="Savvy Renter — free tools and calculators for UK renters">
 <meta name="twitter:description" content="Free tools for UK renters: overpaid rent interest, arrears plans, Universal Credit, council tax and rents by postcode, Section 8 checks and complaint drafting.">
 <meta name="twitter:image" content="https://www.savvyrenter.co.uk/og-image.png">
+
 <style>
   :where(body) a { color:#38bdf8; }
   html, body { margin:0; padding:0; }
@@ -149,12 +150,13 @@
 <body>
 <nav id="siteRibbon" aria-label="Site menu"><a href="index.html">Home</a> <a href="resources.html">Resources</a></nav>
 <script src="ribbon.js"></script>
+<script src="feedback.js"></script>
 <div class="wrap">
 
 <div class="hero"><div><h1>Free tools for private renters</h1>
 <p>Check a home before you sign, work out money owed in either direction, get evidence ready, and write complaints and court paperwork properly.</p>
 <p><b>No sign-up, no account, no charge, and nothing you type leaves your browser.</b></p></div>
-<div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page." onclick="showFeedback()">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div></div>
+<div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page.">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div></div>
 
 <div class="boxes">
   <h2 class="grp">Location</h2>
@@ -196,20 +198,6 @@
   <iframe id="tvFrame" title="Tool"></iframe>
 </div>
 
-<script>
-// The address is never written into the page source. It is put together only
-// when someone asks for it, which keeps the harvesters off it.
-function showFeedback() {
-  const who = ['feedback', 'savvyrenter.co.uk'].join('\u0040');
-  const p = document.getElementById('fbPanel');
-  p.innerHTML =
-    '<button type="button" id="fbClose" title="Close" onclick="hideFeedback()">\u2715</button>' +
-    '<p style="margin:0 0 6px">Suggestions, corrections, or an open-source tool we could host \u2014 we read everything, though we can\u2019t promise to answer every email. Use a suggestion and we\u2019ll credit you on the page.</p>' +
-    '<a href="mailto:' + who + '?subject=Savvy%20Renter%20feedback">' + who + '</a>';
-  p.classList.remove('hidden');
-}
-function hideFeedback() { document.getElementById('fbPanel').classList.add('hidden'); }
-</script>
 <script>
 // ---- Opening a tool out of its box ------------------------------------------
 // The tool's own page fills the screen, with "All tools" to come back. A postcode

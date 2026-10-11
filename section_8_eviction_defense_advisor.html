@@ -278,10 +278,11 @@
 <body>
 <nav id="siteRibbon" aria-label="Site menu"><a href="index.html">Home</a> <a href="resources.html">Resources</a> <a href="about.html">About</a></nav>
 <script src="ribbon.js"></script>
+<script src="feedback.js"></script>
 <div class="shell">
 <main class="page">
 <div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
-<div class="brand"><div><h1>Section 8 Notice Checker</h1><div class="sub">England · for notices given on or after 1 May 2026 (Renters' Rights Act 2025) · checks the notice, the grounds and the defences to raise</div></div><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page." onclick="showFeedback()">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div></div>
+<div class="brand"><div><h1>Section 8 Notice Checker</h1><div class="sub">England · for notices given on or after 1 May 2026 (Renters' Rights Act 2025) · checks the notice, the grounds and the defences to raise</div></div><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page.">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div></div>
 <div class="intro">
   <b>A Section 8 notice is not an eviction.</b> It is the landlord saying they may apply to court. You do not have to leave when it runs out. Only a court order followed by court bailiffs can make you leave — anyone who forces you out, changes the locks or cuts off your supply without that is committing a crime (Protection from Eviction Act 1977). Fill in what you know below; the checks update as you go. This is a checking tool, not legal advice — take what it finds to <a href="https://england.shelter.org.uk/housing_advice/eviction" target="_blank" rel="noopener">Shelter</a> or <a href="https://www.citizensadvice.org.uk/housing/" target="_blank" rel="noopener">Citizens Advice</a>.
   <b>Nothing you type is stored or sent anywhere.</b>
@@ -539,20 +540,6 @@ function run() {
 document.getElementById('form').addEventListener('change', run);
 document.getElementById('form').addEventListener('input', run);
 run();
-</script>
-<script>
-// The address is never written into the page source. It is put together only
-// when someone asks for it, which keeps the harvesters off it.
-function showFeedback() {
-  const who = ['feedback', 'savvyrenter.co.uk'].join('\u0040');
-  const p = document.getElementById('fbPanel');
-  p.innerHTML =
-    '<button type="button" id="fbClose" title="Close" onclick="hideFeedback()">\u2715</button>' +
-    '<p style="margin:0 0 6px">Suggestions, corrections, or an open-source tool we could host \u2014 we read everything, though we can\u2019t promise to answer every email. Use a suggestion and we\u2019ll credit you on the page.</p>' +
-    '<a href="mailto:' + who + '?subject=Savvy%20Renter%20feedback">' + who + '</a>';
-  p.classList.remove('hidden');
-}
-function hideFeedback() { document.getElementById('fbPanel').classList.add('hidden'); }
 </script>
 </body>
 </html>

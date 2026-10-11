@@ -139,10 +139,11 @@
 <body>
 <nav id="siteRibbon" aria-label="Site menu"><a href="index.html">Home</a> <a href="resources.html">Resources</a></nav>
 <script src="ribbon.js"></script>
+<script src="feedback.js"></script>
 <div class="wrap">
 <div class="hero"><div><h1>About Savvy Renter</h1>
 <p>Why the site exists, how the tools work out their figures, and how to check for yourself that nothing you type goes anywhere.</p></div>
-<div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page." onclick="showFeedback()">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div></div>
+<div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page.">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div></div>
 <h2>Why this site exists</h2>
 <p>This site began with one tenant&rsquo;s problem. A letting agent&rsquo;s error led to an ongoing rent increase, and working out exactly what was owed &mdash; to the day, with the interest a court would allow &mdash; took far longer than it should have. Once the sums were right, the tool went online for free so the next tenant would not have to do it by hand. Everything since has been added the same way: something one tenant needed, built so that others can use it too. It is a volunteer project, run in spare time.</p>
 
@@ -223,19 +224,5 @@
 <div class="sr-count" style="text-align:center;margin:6px 0 14px"><style>@media print{.sr-count{display:none!important}}</style><script type="text/javascript" src="https://counter.websiteout.com/js/2/0/172/0"></script></div>
 
 </div>
-<script>
-// The address is never written into the page source. It is put together only
-// when someone asks for it, which keeps the harvesters off it.
-function showFeedback() {
-  const who = ['feedback', 'savvyrenter.co.uk'].join('\u0040');
-  const p = document.getElementById('fbPanel');
-  p.innerHTML =
-    '<button type="button" id="fbClose" title="Close" onclick="hideFeedback()">\u2715</button>' +
-    '<p style="margin:0 0 6px">Suggestions, corrections, or an open-source tool we could host \u2014 we read everything, though we can\u2019t promise to answer every email. Use a suggestion and we\u2019ll credit you on the page.</p>' +
-    '<a href="mailto:' + who + '?subject=Savvy%20Renter%20feedback">' + who + '</a>';
-  p.classList.remove('hidden');
-}
-function hideFeedback() { document.getElementById('fbPanel').classList.add('hidden'); }
-</script>
 </body>
 </html>

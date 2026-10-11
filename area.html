@@ -264,11 +264,12 @@
 <body>
 <nav id="siteRibbon" aria-label="Site menu"><a href="index.html">Home</a> <a href="resources.html">Resources</a> <a href="about.html">About</a></nav>
 <script src="ribbon.js"></script>
+<script src="feedback.js"></script>
 <div class="shell">
 <main class="page">
 <div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
 
-<div class="brand"><div><h1>What Rent Costs Round Here</h1><div class="sub">What private rents have actually done since 2015 · and how far housing allowance has fallen behind</div></div><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page." onclick="showFeedback()">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div></div>
+<div class="brand"><div><h1>What Rent Costs Round Here</h1><div class="sub">What private rents have actually done since 2015 · and how far housing allowance has fallen behind</div></div><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page.">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div></div>
 
 <div class="intro">
   Before you sign for somewhere, it is worth knowing what rents in that area have been doing — and if any of your rent is met by housing benefit or the Universal Credit housing element, whether the allowance has kept up. Both figures come from official statistics, and both are linked at the bottom so you can check them.
@@ -818,17 +819,6 @@ function buildTable(spine, pts, lpts) {
     `<table><thead><tr><th>Month</th><th>Average rent</th><th>Allowance</th></tr></thead><tbody>${rows}</tbody></table>`;
 }
 
-// ---------------------------------------------------------------- feedback
-function showFeedback() {
-  const who = ['feedback', 'savvyrenter.co.uk'].join('@');
-  const p = document.getElementById('fbPanel');
-  p.innerHTML =
-    '<button type="button" id="fbClose" title="Close" onclick="hideFeedback()">✕</button>' +
-    '<p style="margin:0 0 6px">Suggestions, corrections, or an open-source tool we could host — we read everything, though we can’t promise to answer every email. Use a suggestion and we’ll credit you on the page.</p>' +
-    '<a href="mailto:' + who + '?subject=Savvy%20Renter%20feedback">' + who + '</a>';
-  p.classList.remove('hidden');
-}
-function hideFeedback() { document.getElementById('fbPanel').classList.add('hidden'); }
 </script>
 </body>
 </html>

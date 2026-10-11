@@ -245,11 +245,12 @@
 <body>
 <nav id="siteRibbon" aria-label="Site menu"><a href="index.html">Home</a> <a href="resources.html">Resources</a> <a href="about.html">About</a></nav>
 <script src="ribbon.js"></script>
+<script src="feedback.js"></script>
 <div class="shell">
 <main class="page">
 <div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
 
-<div class="brand"><div><h1>Council Tax Round Here</h1><div class="sub">What the bill actually is · and what you should be taking off it</div></div><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page." onclick="showFeedback()">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div></div>
+<div class="brand"><div><h1>Council Tax Round Here</h1><div class="sub">What the bill actually is · and what you should be taking off it</div></div><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page.">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div></div>
 
 <div class="intro">
   Council tax is the cost that catches renters out, because it is not in the advertised rent and nobody quotes it at a viewing. On most tenancies it is yours to pay, and on a two bedroom flat it can be another £200 a month on top. This tells you what the charge is for any address in England, Scotland or Wales, and works out the discounts — a quarter off if you live alone, and more than that in cases people often do not realise they are in. <b>Your postcode stays in your browser.</b> It is used to work out which area file to fetch, and nothing about you is sent anywhere.
@@ -447,17 +448,6 @@ function draw() {
     `They do not include a parish or town council precept, so if you are in a parished area your bill will be a little higher — usually £20 to £80 a year.`;
 }
 
-// ---------------------------------------------------------------- feedback
-function showFeedback() {
-  const w = ['feedback', 'savvyrenter.co.uk'].join('@');
-  const p = document.getElementById('fbPanel');
-  p.innerHTML =
-    '<button type="button" id="fbClose" title="Close" onclick="hideFeedback()">✕</button>' +
-    '<p style="margin:0 0 6px">Suggestions, corrections, or an open-source tool we could host — we read everything, though we can’t promise to answer every email. Use a suggestion and we’ll credit you on the page.</p>' +
-    '<a href="mailto:' + w + '?subject=Savvy%20Renter%20feedback">' + w + '</a>';
-  p.classList.remove('hidden');
-}
-function hideFeedback() { document.getElementById('fbPanel').classList.add('hidden'); }
 </script>
 </body>
 </html>

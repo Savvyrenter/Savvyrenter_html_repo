@@ -375,11 +375,12 @@
 <body>
 <nav id="siteRibbon" aria-label="Site menu"><a href="index.html">Home</a> <a href="resources.html">Resources</a> <a href="about.html">About</a></nav>
 <script src="ribbon.js"></script>
+<script src="feedback.js"></script>
 <div class="shell">
 <main class="page">
 <div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
 <a id="top"></a>
-<div class="brand"><div><h1>Rent Overpayment Interest Calculator</h1><div class="sub">Increasing Principal Sum method · simple interest, s.69 County Courts Act 1984</div></div><div class="acts"><button type="button" class="act" onclick="saveCase()" title="Saves everything you have entered to a file on this computer, so you can come back and carry on.">&#128190; Save</button><button type="button" class="act" onclick="document.getElementById('loadFile').click()" title="Opens a file you saved earlier and puts every figure back.">&#128193; Load</button><input type="file" id="loadFile" accept=".json,application/json" class="hidden" onchange="loadCase(this)"><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page." onclick="showFeedback()">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div><div class="savenote" id="saveNote"></div></div></div>
+<div class="brand"><div><h1>Rent Overpayment Interest Calculator</h1><div class="sub">Increasing Principal Sum method · simple interest, s.69 County Courts Act 1984</div></div><div class="acts"><button type="button" class="act" onclick="saveCase()" title="Saves everything you have entered to a file on this computer, so you can come back and carry on.">&#128190; Save</button><button type="button" class="act" onclick="document.getElementById('loadFile').click()" title="Opens a file you saved earlier and puts every figure back.">&#128193; Load</button><input type="file" id="loadFile" accept=".json,application/json" class="hidden" onchange="loadCase(this)"><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them — and if we end up using a suggestion, we'll credit whoever sent it on the page.">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div><div class="savenote" id="saveNote"></div></div></div>
 <div class="intro xp">
   <div class="xsum"><button type="button" class="xbtn">&#9662; Full explanation</button><span class="xlbl">Summary</span> Worked the way a county court reads it: each overpayment joins the running balance on the day it was paid, and simple interest at 8% a year (County Courts Act 1984, s.69) is charged on that balance for the days until the next payment. A late first payment does not shift the rest — later payments are counted on the day the rent falls due.
   <b>Nothing you type is stored or sent anywhere.</b> Close the page and it is gone.</div>
@@ -1143,20 +1144,6 @@ function buildProjection(pastDates, amount, rate, asAt, ongoing, period, dueDay,
 document.getElementById('dueDay').innerHTML = Array.from({length:31},(_,i)=>`<option value="${i+1}">${ord(i+1)}</option>`).join('');
 dateSel('d-start'); dateSel('d-last', new Date());
 paint();
-</script>
-<script>
-// The address is never written into the page source. It is put together only
-// when someone asks for it, which keeps the harvesters off it.
-function showFeedback() {
-  const who = ['feedback', 'savvyrenter.co.uk'].join('\u0040');
-  const p = document.getElementById('fbPanel');
-  p.innerHTML =
-    '<button type="button" id="fbClose" title="Close" onclick="hideFeedback()">\u2715</button>' +
-    '<p style="margin:0 0 6px">Suggestions, corrections, or an open-source tool we could host \u2014 we read everything, though we can\u2019t promise to answer every email. Use a suggestion and we\u2019ll credit you on the page.</p>' +
-    '<a href="mailto:' + who + '?subject=Savvy%20Renter%20feedback">' + who + '</a>';
-  p.classList.remove('hidden');
-}
-function hideFeedback() { document.getElementById('fbPanel').classList.add('hidden'); }
 </script>
 <script>
 function xpSwap(box){var s=box.querySelector('.xsum'),f=box.querySelector('.xfull');var open=f.classList.contains('hidden');f.classList.toggle('hidden',!open);s.classList.toggle('hidden',open);}
