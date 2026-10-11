@@ -217,10 +217,11 @@ window.addEventListener('load', () => window.scrollTo(0, 0));
 <body>
 <nav id="siteRibbon" aria-label="Site menu"><a href="index.html">Home</a> <a href="resources.html">Resources</a> <a href="about.html">About</a></nav>
 <script src="ribbon.js"></script>
+<script src="feedback.js"></script>
 <div class="shell">
 <main class="page">
 <div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
-  <div class="brand"><div><h1>Name statements by their dates</h1><div class="sub">Reads the period off each page and renames the file, so a folder of statements falls into order</div></div></div>
+  <div class="brand"><div><h1>Name statements by their dates</h1><div class="sub">Reads the period off each page and renames the file, so a folder of statements falls into order</div></div><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them &mdash; and if we end up using a suggestion, we'll credit whoever sent it on the page.">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div></div>
   <div class="intro">
     Bank statements arrive named things like <i>statement_4471.pdf</i>, which tells you nothing and sorts into no useful order. This reads the dates on each one and gives it a name that starts with its period &mdash; <i>2026-08-16 to 2026-09-15 &mdash; statement.pdf</i> &mdash; so the folder sorts itself into date order. Nothing else about the file is touched: what comes out is the same document, under a better name.
     <b>Your files never leave this computer.</b> The reading is done here in the browser; nothing is uploaded and nothing is stored.

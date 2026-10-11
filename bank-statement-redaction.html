@@ -264,10 +264,11 @@ window.addEventListener('load', () => window.scrollTo(0, 0));
 <body>
 <nav id="siteRibbon" aria-label="Site menu"><a href="index.html">Home</a> <a href="resources.html">Resources</a> <a href="about.html">About</a></nav>
 <script src="ribbon.js"></script>
+<script src="feedback.js"></script>
 <div class="shell">
 <main class="page">
 <div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
-  <div class="brand"><div><h1>Bank statement redaction</h1><div class="sub">Black out what nobody else needs to see, before you hand a statement over</div></div><button type="button" class="courtlink" onclick="openGuide()">What to leave on show<span>a rough guide &mdash; opens over this page</span></button>
+  <div class="brand"><div><h1>Bank statement redaction</h1><div class="sub">Black out what nobody else needs to see, before you hand a statement over</div></div><button type="button" class="courtlink" onclick="openGuide()">What to leave on show<span>a rough guide &mdash; opens over this page</span></button><div class="fbwrap" style="margin-left:0"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback. We can't promise to respond to every email, but we will read them &mdash; and if we end up using a suggestion, we'll credit whoever sent it on the page.">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div>
   </div>
 
   <div class="intro">
