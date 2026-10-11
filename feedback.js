@@ -25,7 +25,10 @@
     '#siteRibbon.rb-m #fbBtn{font-size:15px;padding:6px 12px}' +
     '#siteRibbon.rb-m .rb-fbt{display:none}' +
     '#siteRibbon #fbPanel{top:calc(100% + 6px);right:0}' +
-    '@media print{.fbwrap{display:none!important}}';
+    '@media print{.fbwrap{display:none!important}}' +
+    // With the menu bar on the page, the title-bar copy is never drawn at all,
+    // so it cannot flash there before it is lifted into the bar.
+    (document.getElementById('siteRibbon') ? '.fbwrap:not(.rb-fb){display:none!important}' : '');
   document.head.appendChild(css);
 
   function show() {
