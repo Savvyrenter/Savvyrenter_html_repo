@@ -47,32 +47,40 @@
     if (p) p.classList.add('hidden');
   }
   // The button lives at the right-hand end of the site menu bar, which is the
-  // same on every page, so it never moves from page to page. Each page still
-  // carries its own button in its title bar (it shows there if the menu bar is
-  // ever missing); this lifts it up into the bar.
-  var nav, wrap, brand;
+  // same on every page, so it never moves from page to page. It is built there
+  // the moment this file runs (the bar is already drawn by then), so it is on
+  // screen with the bar instead of popping in once the page has loaded. Each
+  // page's own title-bar copy is hidden, and removed once the page is in; it is
+  // only used if a page has no menu bar.
+  var nav = document.getElementById('siteRibbon');
+  var brand = nav && nav.querySelector('.rb-brand');
+  var wrap = null;
   function place() {
-    if (!nav || !wrap) return;
+    if (!wrap) return;
     wrap.style.right = getComputedStyle(nav).paddingRight;
     wrap.style.top = Math.round(brand.offsetTop + (brand.offsetHeight - wrap.offsetHeight) / 2) + 'px';
   }
-  function wire() {
-    var b = document.getElementById('fbBtn');
-    if (!b) return;
-    nav = document.getElementById('siteRibbon');
-    wrap = b.closest('.fbwrap');
-    brand = nav && nav.querySelector('.rb-brand');
-    if (nav && wrap && brand) {
-      wrap.classList.add('rb-fb');
-      nav.appendChild(wrap);
-      b.innerHTML = '<span aria-hidden="true">\u2709</span><span class="rb-fbt"> Feedback</span>';
-      place();
-      window.addEventListener('resize', function () { requestAnimationFrame(place); });
-      if (window.matchMedia) { var mq = window.matchMedia('(max-width:860px), (hover:none) and (pointer:coarse)'); if (mq.addEventListener) mq.addEventListener('change', function () { requestAnimationFrame(place); }); }
-      var img = brand.querySelector('img');
-      if (img && !img.complete) img.addEventListener('load', place);
+  if (nav && brand) {
+    wrap = document.createElement('div');
+    wrap.className = 'fbwrap rb-fb';
+    wrap.innerHTML = '<button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback.">' +
+      '<span aria-hidden="true">\u2709</span><span class="rb-fbt"> Feedback</span></button><div id="fbPanel" class="hidden"></div>';
+    nav.appendChild(wrap);
+    wrap.querySelector('#fbBtn').addEventListener('click', show);
+    place();
+    window.addEventListener('resize', function () { requestAnimationFrame(place); });
+    if (window.matchMedia) {
+      var mq = window.matchMedia('(max-width:860px), (hover:none) and (pointer:coarse)');
+      if (mq.addEventListener) mq.addEventListener('change', function () { requestAnimationFrame(place); });
     }
-    b.addEventListener('click', show);
+    var img = brand.querySelector('img');
+    if (img && !img.complete) img.addEventListener('load', place);
+  }
+  function wire() {
+    var old = document.querySelectorAll('.fbwrap:not(.rb-fb)');
+    if (wrap) { for (var k = 0; k < old.length; k++) old[k].parentNode.removeChild(old[k]); place(); return; }
+    var b = document.getElementById('fbBtn');
+    if (b) b.addEventListener('click', show);
   }
   window.showFeedback = show;   // older pages may still call these by name
   window.hideFeedback = hide;
