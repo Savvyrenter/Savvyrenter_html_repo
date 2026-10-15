@@ -76,6 +76,7 @@
       ['TPO_Tenant_Workspace.html', 'TPO complaint'],
       ['court_forms_workspace.html', 'Money Claim Online'],
       ['scrubber.html', 'Web page data scrubber'] ] },
+    { label: 'FAQ', href: 'faq.html' },
     { label: 'Resources', href: 'resources.html' },
     { label: 'About', href: 'about.html' }
   ];
