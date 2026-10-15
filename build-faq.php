@@ -21,7 +21,7 @@
  * ------------------------------------------------------------------------- */
 
 $ROOT = __DIR__;
-$SITE = 'https://www.savvyrenter.co.uk/';
+$SITE = 'https://savvyrenter.co.uk/';
 $UMAMI = '<script defer src="https://cloud.umami.is/script.js" data-website-id="586e56fe-239b-4e82-be1e-c483dfdfeda1"></script>';
 $COUNTER = '<div class="sr-count" style="text-align:center;margin:6px 0 14px"><style>@media print{.sr-count{display:none!important}}</style><script type="text/javascript" src="https://counter.websiteout.com/js/2/0/172/0"></script></div>';
 
@@ -301,8 +301,8 @@ function head($title, $desc, $url, $lds, $base = '') {
      . "<meta name=\"description\" content=\"$de\">\n<link rel=\"canonical\" href=\"$u\">\n"
      . "<meta property=\"og:type\" content=\"article\">\n<meta property=\"og:site_name\" content=\"Savvy Renter\">\n<meta property=\"og:locale\" content=\"en_GB\">\n"
      . "<meta property=\"og:title\" content=\"$t\">\n<meta property=\"og:description\" content=\"$de\">\n<meta property=\"og:url\" content=\"$u\">\n"
-     . "<meta property=\"og:image\" content=\"https://www.savvyrenter.co.uk/og-image.png\">\n<meta property=\"og:image:secure_url\" content=\"https://www.savvyrenter.co.uk/og-image.png\">\n<meta property=\"og:image:type\" content=\"image/png\">\n<meta property=\"og:image:width\" content=\"1200\">\n<meta property=\"og:image:height\" content=\"630\">\n<meta property=\"og:image:alt\" content=\"Savvy Renter — free tools for renters\">\n"
-     . "<meta name=\"twitter:card\" content=\"summary_large_image\">\n<meta name=\"twitter:title\" content=\"$t\">\n<meta name=\"twitter:description\" content=\"$de\">\n<meta name=\"twitter:image\" content=\"https://www.savvyrenter.co.uk/og-image.png\">\n"
+     . "<meta property=\"og:image\" content=\"https://savvyrenter.co.uk/og-image.png\">\n<meta property=\"og:image:secure_url\" content=\"https://savvyrenter.co.uk/og-image.png\">\n<meta property=\"og:image:type\" content=\"image/png\">\n<meta property=\"og:image:width\" content=\"1200\">\n<meta property=\"og:image:height\" content=\"630\">\n<meta property=\"og:image:alt\" content=\"Savvy Renter — free tools for renters\">\n"
+     . "<meta name=\"twitter:card\" content=\"summary_large_image\">\n<meta name=\"twitter:title\" content=\"$t\">\n<meta name=\"twitter:description\" content=\"$de\">\n<meta name=\"twitter:image\" content=\"https://savvyrenter.co.uk/og-image.png\">\n"
      . "<style>\n$CSS\n</style>\n";
   foreach ($lds as $l) $h .= "<script type=\"application/ld+json\">\n" . ld($l) . "\n</script>\n";
   return $h . "$UMAMI\n</head>\n";

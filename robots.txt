@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /business_card_savvyrenter.html
 
-Sitemap: https://www.savvyrenter.co.uk/sitemap.xml
+Sitemap: https://savvyrenter.co.uk/sitemap.xml
