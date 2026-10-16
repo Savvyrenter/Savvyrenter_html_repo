@@ -302,9 +302,14 @@ window.addEventListener('load', () => window.scrollTo(0, 0));
       <button type="button" id="applyBtn" onclick="applyRules(false)" disabled title="Lays every rule on this page.">&#9881; Apply rules</button>
       <button type="button" id="pdfBtn" onclick="savePage('pdf')" disabled title="Saves this page, with the black boxes burned into it, to your downloads.">&#128190; Save as PDF</button>
       <button type="button" id="pngBtn" onclick="savePage('png')" disabled title="The same page as a picture.">&#128247; Save as PNG</button>
+      <button type="button" id="checkBtn" class="sec" onclick="checkReadable()" disabled title="Reads the finished page, black boxes and all, the way anyone you send it to could, and lists every word still readable. Nothing leaves this computer.">&#128270; Check what&rsquo;s still readable</button>
       <span class="working" id="saveNote"></span>
     </div>
 
+    <div id="readOut" class="hidden" style="background:#0f172a;border:1px solid #475569;border-radius:6px;padding:6px 10px;margin:4px 0">
+      <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:#94a3b8"><span style="flex:1">Every word the reader could still pick out of the finished page &mdash; what anyone you send it to could read. Stray letters such as &ldquo;IEEE&rdquo; or &ldquo;|]&rdquo; are the reader trying to read a black box, not text from under it. Want a second opinion? <a href="#checkit">Check it independently</a>.</span><button type="button" class="sec" onclick="$('readOut').classList.add('hidden')" title="Close" style="padding:2px 8px">&times;</button></div>
+      <pre id="readText" style="white-space:pre-wrap;max-height:220px;overflow:auto;margin:4px 0 0;font-size:12px;color:#e2e8f0;font-family:ui-monospace,Consolas,monospace"></pre>
+    </div>
     <div class="rdhint">Every line is outlined. <b>Click the last word you want to KEEP</b> — everything after it goes black and the amount goes with it; the balance never does. On the account-number line each word is its own box, and a long number keeps its last four. Click a black box to lift it, or drag across anything missed. <b>A rule made here stays while this page is open</b>: open the next statement page and press Apply rules. Refreshing the browser clears them — Save rules keeps them in a file.</div>
 
     <div class="rulestrip">
@@ -331,6 +336,16 @@ window.addEventListener('load', () => window.scrollTo(0, 0));
     They are from a bank that does not exist and are marked as samples, so you can find your way around without putting anything of yours at risk.</div>
   <div class="note" style="margin-top:10px">
     <b>Before you send it.</b> Open the saved file and read it as if you were the other side. The black boxes are part of the picture, so nothing can be selected or copied from underneath &mdash; but only what you covered is covered. Check the top of the page, the running balance, and any other payment that has nothing to do with the dispute.
+  </div>
+  <div class="rdexample" style="margin-top:10px;background:#1e293b;border:1px solid #334155;border-radius:6px;padding:8px 12px;font-size:13.5px;color:#c9d4e0;line-height:1.5">
+    <h2 style="font-size:16px;margin:0 0 4px;color:#f1f5f9;border:none;padding:0">What it looks like: a made-up statement, before and after</h2>
+    <p style="margin:0 0 4px"><b>Covered:</b> the account number apart from its last four digits, the sort code, and who every unrelated payment went to and how much. <b>Still readable:</b> the name and address, the statement period, the rent payment with its date and amount, the money paid in, and the running balance on every line &mdash; so the other side can see nothing has been taken out of the middle.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px;margin:4px 0">
+      <figure style="margin:0"><figcaption style="font-size:12px;color:#94a3b8;margin:0 0 2px">Before &mdash; as it arrives from the bank</figcaption><a href="redaction-example-before.jpg" target="_blank"><img src="redaction-example-before.jpg" width="662" height="936" loading="lazy" alt="Sample bank statement before redaction, showing the account number, sort code and every payment" style="width:100%;height:auto;border:1px solid #475569;border-radius:4px;display:block"></a></figure>
+      <figure style="margin:0"><figcaption style="font-size:12px;color:#94a3b8;margin:0 0 2px">After &mdash; saved from this page</figcaption><a href="redaction-example-after.jpg" target="_blank"><img src="redaction-example-after.jpg" width="661" height="935" loading="lazy" alt="The same sample statement after redaction: account number, sort code and unrelated payments blacked out, rent payment and balances still showing" style="width:100%;height:auto;border:1px solid #475569;border-radius:4px;display:block"></a></figure>
+    </div>
+    <p style="margin:4px 0 0"><b>Is it permanent?</b> Yes. When you save, the page is turned into a flat picture with the black boxes painted into it, and that picture is put into a brand-new PDF. There is no text layer under the boxes to copy, search or lift off, and none of the original file&rsquo;s hidden details, such as who made it and with what software, come with it. To check for yourself, open the saved file and try to select or search for any word: nothing will highlight.</p>
+    <p id="checkit" style="margin:4px 0 0"><b>Check it independently.</b> Don&rsquo;t take this site&rsquo;s word for it. The &ldquo;Check what&rsquo;s still readable&rdquo; button reads the finished page here, but you can get a second opinion from a tool you already trust. The text recognition built into your own device keeps the file on it: Live Text on an iPhone or Mac, Google Lens on Android, or Text actions in the Windows Snipping Tool. Well-known online converters, such as Adobe Acrobat&rsquo;s free PDF tools, will also pull out any text they can find &mdash; but that means uploading the file, so use a service you trust. Whatever you use, what it can read is what the other side can read.</p>
   </div>
 <div class="faqlinks" style="font-size:13px;line-height:1.5;margin:14px 0 4px;color:#94a3b8"><b style="color:#cbd5e1">Questions renters ask:</b> <a href="faq/wrong-arrears-notice.html">I&#x27;ve been sent an arrears warning but I&#x27;ve paid my rent. What should I do?</a> · <a href="faq/rent-in-cash-receipts.html">My landlord wants rent in cash. Do I get receipts or a rent statement?</a> · <a href="faq/deposit-claim-went-up.html">My landlord&#x27;s deposit claim went up after I refused to settle privately. What happens now?</a> · <a href="faq/subject-access-request.html">Can I get a copy of everything my landlord or letting agent holds about me?</a> · <a href="faq.html">all questions</a></div>
 <div style="margin:18px 0 30px; font-size:12px; color:#94a3b8; line-height:1.5; border-top:1px solid #334155; padding-top:8px;">
@@ -1104,7 +1119,7 @@ function rowsFromWords(ws) {
 }
 function freshPage(textWords) {
   rows = []; marks = []; rowAt = null; pageTag++;
-  ['scanBtn', 'applyBtn', 'undoBtn', 'clearBtn', 'pdfBtn', 'pngBtn'].forEach(id => { if ($(id)) $(id).disabled = false; });
+  ['scanBtn', 'applyBtn', 'undoBtn', 'clearBtn', 'pdfBtn', 'pngBtn', 'checkBtn'].forEach(id => { if ($(id)) $(id).disabled = false; });
   paint();
   if (textWords && textWords.length) {
     rows = rowsFromWords(textWords);
@@ -1141,6 +1156,23 @@ function autoAccountRules() {
         rules.push({ id: ruleId++, kind: 'sort3', label: 'Sort code in three groups \u2192 first two hidden', on: true });
     });
   } finally { applying = false; }
+}
+async function checkReadable() {
+  if (!base.width) return;
+  $('checkBtn').disabled = true;
+  try {
+    say('Reading the finished page… the first time, the reader takes a moment to start.');
+    if (!worker) {
+      worker = await SROcr.create(m => { if (m.status === 'recognizing text') say('Reading the page… ' + Math.round(m.progress * 100) + '%'); });
+    }
+    const { data } = await worker.recognize(finished());
+    const txt = String(data.text || '').replace(/\n{3,}/g, '\n\n').trim();
+    $('readText').textContent = txt || '(No readable text found.)';
+    $('readOut').classList.remove('hidden');
+    say('Read. Everything listed below is still readable on the finished page.');
+  } catch (e) {
+    say('The page could not be read: ' + e.message, true);
+  } finally { $('checkBtn').disabled = false; }
 }
 async function scanPage() {
   if (!base.width) return;
