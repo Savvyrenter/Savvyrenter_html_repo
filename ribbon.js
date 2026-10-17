@@ -58,6 +58,7 @@
       ['counciltax.html', 'Council tax here'] ] },
     { label: 'Tenancy & Rent', items: [
       ['before-you-rent.html', 'Before you rent'],
+      ['advert-photo-check.html', 'Advert photo check'],
       ['viewing-notes.html', 'Viewing notes'],
       ['moving-in_audit.html', 'Moving in audit'],
       ['section_8_eviction_defense_advisor.html', 'Section 8 notice checker'] ] },

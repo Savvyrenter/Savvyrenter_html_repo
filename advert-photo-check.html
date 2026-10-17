@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advert photo check: real, edited or AI? — Savvy Renter</title>
+<meta name="description" content="Check a photo from a rental advert: read its camera details, editing software and any AI or Content Credentials labels on your own device, then search for copies of it elsewhere.">
+<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#001e3d">
+<link rel="canonical" href="https://savvyrenter.co.uk/advert-photo-check.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Savvy Renter">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Advert photo check: real, edited or AI? — Savvy Renter">
+<meta property="og:description" content="Check a photo from a rental advert: read its camera details, editing software and any AI or Content Credentials labels on your own device, then search for copies of it elsewhere.">
+<meta property="og:url" content="https://savvyrenter.co.uk/advert-photo-check.html">
+<meta property="og:image" content="https://savvyrenter.co.uk/og-image.png">
+<meta property="og:image:secure_url" content="https://savvyrenter.co.uk/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Savvy Renter — free calculators for renters">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Advert photo check: real, edited or AI? — Savvy Renter">
+<meta name="twitter:description" content="Check a photo from a rental advert: read its camera details, editing software and any AI or Content Credentials labels on your own device, then search for copies of it elsewhere.">
+<meta name="twitter:image" content="https://savvyrenter.co.uk/og-image.png">
+<style>
+  :where(body) a { color:#38bdf8; }
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.5; color:#e2e8f0; max-width:1180px; margin:0 auto; padding:0 18px 24px; background:#0f172a; }
+  @media (max-width:700px) { body { padding:0 12px 18px; } }
+  h1 { color:#f8fafc; font-size:24px; margin:0; }
+  h2 { color:#f1f5f9; font-size:17px; margin:18px 0 6px; border-bottom:1px solid #334155; padding-bottom:4px; }
+  p { margin:6px 0; font-size:14px; }
+  .hidden { display:none !important; }
+  .pagebar { background:#0b1220; border:1px solid #1e293b; border-radius:6px; padding:5px 12px; margin:10px 0; display:flex; align-items:center; justify-content:space-between; gap:14px; font-size:11.5px; }
+  .pagebar a { color:#94a3b8; text-decoration:none; font-weight:bold; letter-spacing:.6px; text-transform:uppercase; white-space:nowrap; }
+  .pagebar a:hover { color:#38bdf8; }
+  .pagebar span { color:#64748b; text-align:right; min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .pagebar .brief { display:none; }
+  @media (max-width:700px) { .pagebar .full { display:none; } .pagebar .brief { display:inline; } }
+  .brand { display:flex; align-items:center; gap:14px; border-bottom:2px solid #334155; padding:4px 0 8px; margin-bottom:10px; }
+  .brand h1 { font-size:28px; letter-spacing:-0.2px; }
+  .brand .sub { color:#94a3b8; font-size:13px; margin-top:2px; }
+  @media (max-width:700px) { .brand { flex-wrap:wrap; } .brand h1 { font-size:24px; } }
+  .beta { display:inline-block; vertical-align:middle; margin-left:8px; font-size:12px; font-weight:700; color:#0f172a !important; background:#f2c94c; border-radius:4px; padding:1px 7px; letter-spacing:.4px; text-decoration:none !important; }
+  .unverified { background:#3b2f0b; border-left:4px solid #f2c94c; color:#f5e6b8; padding:8px 14px; margin:10px 0; border-radius:4px; font-size:13px; }
+  .intro { background:#1e293b; border-left:4px solid #38bdf8; padding:8px 12px; margin:0 0 8px; border-radius:4px; font-size:14px; color:#c9d4e0; }
+  .intro.xp { cursor:pointer; }
+  .intro .xbtn { float:right; margin:0 0 2px 10px; background:none; border:1px solid #475569; border-radius:4px; color:#38bdf8; font-family:inherit; font-size:12px; font-weight:bold; line-height:1.4; padding:1px 8px; cursor:pointer; }
+  .intro .xlbl { color:#f1f5f9; font-weight:bold; margin-right:6px; }
+  .intro .xfull p { margin:0 0 6px; font-size:14px; }
+  .intro .xfull .xbtn.end { float:none; display:block; margin:4px 0 0 auto; }
+  .brand .fbwrap { margin-left:auto; text-align:right; position:relative; }
+  #fbBtn { background:#0284c7; color:#fff; border:none; border-radius:5px; font-size:13px; font-weight:bold; padding:8px 13px; cursor:pointer; font-family:inherit; }
+  #fbPanel { position:absolute; top:0; right:0; z-index:20; width:470px; max-width:calc(100vw - 40px); box-sizing:border-box; background:#1e293b; border:1px solid #475569; border-radius:6px; padding:10px 30px 10px 12px; text-align:left; font-size:12.5px; color:#c9d4e0; line-height:1.5; box-shadow:0 6px 18px rgba(0,0,0,.45); }
+  #fbClose { position:absolute; top:4px; right:6px; background:none; border:none; color:#94a3b8; font-size:16px; line-height:1; padding:2px 5px; cursor:pointer; font-family:inherit; }
+  #fbPanel a { color:#38bdf8; font-weight:bold; text-decoration:none; font-size:14px; }
+
+  /* ---- advert photo check ---- */
+  .drop { border:2px dashed #475569; border-radius:8px; background:#111c30; padding:18px 14px; text-align:center; margin:8px 0; }
+  .drop.over { border-color:#38bdf8; background:#13233d; }
+  .drop .pickbtn { display:inline-block; background:#0284c7; color:#fff; border-radius:6px; font-weight:bold; font-size:16px; padding:9px 18px; cursor:pointer; }
+  .drop .pickbtn:hover { background:#0369a1; }
+  .drop .or { font-size:13px; color:#94a3b8; margin-top:6px; }
+  .tip { font-size:12.5px; color:#9fb0c3; margin:4px 0; line-height:1.45; }
+  .tip b { color:#e2e8f0; }
+  .card { background:#111c30; border:1px solid #334155; border-radius:8px; padding:10px; margin:10px 0; display:flex; gap:12px; align-items:flex-start; }
+  @media (max-width:640px) { .card { display:block; } }
+  .card .pic { flex:none; width:220px; }
+  @media (max-width:640px) { .card .pic { width:auto; } }
+  .card .pic img { display:block; width:100%; max-height:200px; object-fit:contain; background:#0b1220; border:1px solid #334155; border-radius:5px; cursor:zoom-in; }
+  .card .pic .fn { font-size:11.5px; color:#94a3b8; word-break:break-all; margin-top:3px; }
+  .card .info { flex:1; min-width:0; }
+  .verdict { border-left:4px solid #64748b; background:#1a2436; border-radius:4px; padding:7px 10px; font-size:13.5px; margin-bottom:8px; }
+  .verdict b.h { display:block; font-size:15px; color:#f8fafc; margin-bottom:2px; }
+  .verdict.ai { border-left-color:#ef4444; background:#2a1414; }
+  .verdict.edited { border-left-color:#f2c94c; background:#2a2410; }
+  .verdict.camera { border-left-color:#38bdf8; background:#10233a; }
+  .verdict ul { margin:4px 0 0; padding-left:18px; }
+  .verdict li { margin:1px 0; }
+  table.meta { width:100%; border-collapse:collapse; font-size:13px; }
+  table.meta th { text-align:left; vertical-align:top; color:#8fa2b8; font-weight:bold; font-size:11px; text-transform:uppercase; letter-spacing:.3px; padding:3px 8px 3px 0; width:150px; white-space:nowrap; }
+  table.meta td { padding:3px 0; border-bottom:1px solid #1e293b; word-break:break-word; color:#dbe4ee; }
+  table.meta td small { color:#8fa2b8; }
+  .cc { margin-top:8px; border:1px solid #334155; border-radius:5px; padding:6px 9px; font-size:13px; background:#0f1a2c; }
+  .cc b.h { color:#38bdf8; font-size:12px; text-transform:uppercase; letter-spacing:.4px; }
+  .cc .nv { color:#f5e6b8; font-size:12px; }
+  .srch { display:flex; flex-wrap:wrap; gap:6px; align-items:center; margin-top:8px; }
+  .srch button, .srch a { background:#1e293b; color:#e2e8f0; border:1px solid #475569; border-radius:5px; font-size:13px; font-weight:bold; padding:5px 11px; cursor:pointer; text-decoration:none; font-family:inherit; }
+  .srch button:hover, .srch a:hover { border-color:#38bdf8; color:#fff; }
+  .srch .copy { background:#0284c7; border-color:#0284c7; color:#fff; }
+  .srch .msg { font-size:12px; color:#38bdf8; }
+  .urlrow { display:flex; gap:6px; flex-wrap:wrap; align-items:center; margin:6px 0; }
+  .urlrow input { flex:1 1 320px; min-width:0; box-sizing:border-box; background:#0b1220; border:1px solid #334155; color:#e2e8f0; border-radius:4px; padding:6px 8px; font-size:14px; font-family:inherit; }
+  .urlrow input:focus { outline:none; border-color:#38bdf8; }
+  .guide { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:8px; }
+  .guide div { background:#111c30; border:1px solid #334155; border-radius:6px; padding:7px 10px; font-size:13px; line-height:1.5; }
+  .guide div b { color:#f1f5f9; display:block; margin-bottom:2px; }
+  .ask { background:#111c30; border:1px solid #334155; border-radius:6px; padding:8px 12px; font-size:13.5px; }
+  .ask ol { margin:4px 0; padding-left:20px; }
+  .ask li { margin:3px 0; }
+  .honest { background:#1e293b; border-left:4px solid #94a3b8; border-radius:4px; padding:8px 12px; font-size:13.5px; color:#c9d4e0; }
+  .honest p { margin:4px 0; font-size:13.5px; }
+  .acts { margin:6px 0; }
+  .acts button { background:#1e293b; color:#fca5a5; border:1px solid #7f1d1d; border-radius:5px; font-weight:bold; cursor:pointer; font-size:13px; padding:5px 12px; font-family:inherit; }
+  .viewer { position:fixed; inset:0; z-index:3000; background:rgba(2,6,23,.94); display:flex; align-items:center; justify-content:center; }
+  .viewer img { max-width:96vw; max-height:90vh; object-fit:contain; }
+  .viewer button { position:absolute; top:10px; right:10px; background:#1e293b; color:#fff; border:1px solid #475569; border-radius:5px; font-size:15px; font-weight:bold; padding:6px 12px; cursor:pointer; }
+</style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebApplication",
+ "name": "Advert photo check",
+ "url": "https://savvyrenter.co.uk/advert-photo-check.html",
+ "description": "Check a photo from a rental advert: read its camera details, editing software and any AI or Content Credentials labels on your own device, then search for copies of it elsewhere.",
+ "applicationCategory": "UtilitiesApplication",
+ "operatingSystem": "Any (runs in a web browser)",
+ "browserRequirements": "Requires JavaScript",
+ "isAccessibleForFree": true,
+ "inLanguage": "en-GB",
+ "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
+ "publisher": { "@type": "Organization", "name": "Savvy Renter", "url": "https://savvyrenter.co.uk/", "logo": "https://savvyrenter.co.uk/logo.png" }
+}
+</script>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="586e56fe-239b-4e82-be1e-c483dfdfeda1"></script>
+</head>
+<body>
+<nav id="siteRibbon" aria-label="Site menu"><a href="index.html">Home</a> <a href="resources.html">Resources</a> <a href="about.html">About</a></nav>
+<script src="ribbon.js"></script>
+<script src="feedback.js"></script>
+<main class="page">
+<div class="pagebar"><a href="index.html">SavvyRenter.co.uk</a><span class="full">Free tools for renters — nothing you type is stored or sent anywhere</span><span class="brief">Nothing is stored or sent</span></div>
+
+<div class="brand"><div><h1>Advert photo check <a class="beta" href="#betanote" title="Still being tested — see the note at the bottom of the page">Beta*</a></h1><div class="sub">Real, edited or made by AI? · what the photo file says about itself</div></div><div class="fbwrap"><button type="button" id="fbBtn" title="Like the site? Got a suggestion for something we can include? Send us some feedback.">&#9993; Feedback</button><div id="fbPanel" class="hidden"></div></div></div>
+
+<div class="intro xp">
+  <div class="xsum"><button type="button" class="xbtn">&#9662; Full explanation</button><span class="xlbl">Summary</span> Choose a photo saved from a rental advert. This page reads what the file says about itself &mdash; the camera, the date, the editing software, and any label saying it was made or changed by AI &mdash; on your own device. Then you can search for copies of it on other sites. It cannot prove a photo is real; it shows you what is there to see.</div>
+  <div class="xfull hidden"><button type="button" class="xbtn">&#9652; Summary</button><span class="xlbl">Full explanation</span>
+  <p><b>What it reads.</b> Most photos carry hidden details written by the camera or phone: the make and model, when it was taken, and sometimes where. Editing apps add their own name. AI image tools from Adobe, OpenAI, Google, Microsoft and others are meant to label their pictures &mdash; either with a &ldquo;digital source type&rdquo; tag saying the image was made by AI, or with <b>Content Credentials</b> (also called C2PA), a signed record of how the picture was made and changed.</p>
+  <p><b>What it can&rsquo;t do.</b> Listing sites usually strip these details when an agent uploads a photo, and a screenshot never has them. So &ldquo;nothing found&rdquo; is normal and tells you nothing either way. Details can also be faked or removed by anyone who wants to. Treat what you find as a clue, then look at the photo yourself and ask the agent.</p>
+  <p><b>Copies elsewhere.</b> The search buttons open Google, TinEye or Bing so you can look for the same photo on other sites &mdash; a common sign of a scam advert. Sending the photo there is your choice; this page sends nothing.</p>
+  <p><b>Nothing leaves your device.</b> The photo is read in this browser tab and forgotten when you close it.</p>
+  <button type="button" class="xbtn end">&#9652; Summary</button></div>
+</div>
+
+<div class="drop" id="drop">
+  <label class="pickbtn">&#128444; Choose advert photos<input type="file" id="fileIn" accept="image/*,.heic,.heif,.avif" multiple hidden></label>
+  <div class="or">or drag them here, or paste one (Ctrl+V)</div>
+</div>
+<p class="tip"><b>Save the photo, don&rsquo;t screenshot it.</b> On a computer, right-click the picture in the advert and choose <b>Save image as</b>. On a phone, press and hold the picture and choose <b>Download image</b> or <b>Save to Photos</b>. A screenshot or copy-and-paste makes a new picture with none of the original details.</p>
+
+<div id="results"></div>
+<div class="acts hidden" id="clearRow"><button type="button" id="clearBtn">Clear these photos</button></div>
+
+<h2>Search for copies of a photo</h2>
+<p class="tip">Scam adverts often reuse photos of a real home from another listing, sometimes in another town. Copy a photo with the button on its card, or use its web address, then search.</p>
+<div class="urlrow">
+  <input id="imgUrl" type="url" placeholder="Or paste the photo's web address (right-click it in the advert, Copy image address)" autocomplete="off">
+</div>
+<div class="srch" id="urlSearch">
+  <a id="lnkGoogle" href="https://images.google.com/" target="_blank" rel="noopener noreferrer">Google Lens</a>
+  <a id="lnkTineye" href="https://tineye.com/" target="_blank" rel="noopener noreferrer">TinEye</a>
+  <a id="lnkBing" href="https://www.bing.com/visualsearch" target="_blank" rel="noopener noreferrer">Bing</a>
+  <span class="msg" id="urlMsg">Opens the site. Paste the photo there (Ctrl+V) or use its upload button.</span>
+</div>
+
+<h2>What to look for in the photo itself</h2>
+<div class="guide">
+  <div><b>Lines that should be straight</b>Door frames, skirting boards, tile grout, window bars and worktop edges that bend, wobble or don&rsquo;t meet up.</div>
+  <div><b>Things that don&rsquo;t work</b>Radiators with no pipes, no sockets or light switches anywhere, taps with no sink, doors that lead nowhere, a mirror that reflects the wrong thing.</div>
+  <div><b>Smeared small details</b>Text on books, labels, cooker dials, plug sockets and door handles that turn to mush when you zoom in.</div>
+  <div><b>Too perfect</b>Glossy, magazine-like rooms with light from everywhere and no shadows, no clutter, no wear on the carpet &mdash; and nothing that matches the rent.</div>
+  <div><b>Furniture that melts</b>Chair legs that merge into the floor, a sofa that runs into the wall, a bed with no legs. AI &ldquo;virtual staging&rdquo; adds furniture that isn&rsquo;t there.</div>
+  <div><b>Heavy editing</b>A bright blue sky in a dull-lit photo, a very wide lens that makes a box room look like a lounge, stains or damp patches painted out, a garden that is greener than the rest of the street.</div>
+  <div><b>The same photo elsewhere</b>The same pictures on another advert at another address or rent. Use the search buttons above.</div>
+  <div><b>Nothing that ties it to the address</b>No view from a window, no front of the building, nothing you can match on a street map.</div>
+</div>
+
+<h2>What to ask the agent</h2>
+<div class="ask"><ol>
+  <li>&ldquo;Are all the photos of this property, and when were they taken?&rdquo;</li>
+  <li>&ldquo;Have any of the photos been virtually staged, retouched or made with AI?&rdquo; Furniture added by computer is fine if they tell you; hiding damp or damage is not.</li>
+  <li>&ldquo;Can I view it in person, or on a live video call, before I pay anything?&rdquo; Never pay a holding deposit for a home nobody will let you see.</li>
+  <li>Ask in writing (email or message), so you have their answer if the home turns out different.</li>
+</ol>
+<p class="tip">Letting agents and landlords must not mislead you about a property under consumer protection law. A misleading photo can be raised with the agent&rsquo;s redress scheme or reported to Trading Standards. See <a href="faq/misleading-advert.html">the advert was wrong</a> and <a href="faq/rental-scam.html">I paid money and it was a scam</a>.</p>
+</div>
+
+<h2>Being honest about what this can tell you</h2>
+<div class="honest">
+  <p><b>&ldquo;Nothing found&rdquo; proves nothing.</b> Most listing sites strip photo details, and anyone can remove them. A real photo and an AI one can look the same here once the details are gone.</p>
+  <p><b>Camera details can be faked.</b> They are a good sign, not proof. An AI picture very rarely has them by accident.</p>
+  <p><b>Content Credentials are read, not verified.</b> This page shows what the credentials say, including who signed them, but it does not check the signature. For a full check, the Content Authenticity Initiative runs a checker at <a href="https://contentcredentials.org/verify" target="_blank" rel="noopener noreferrer">contentcredentials.org/verify</a> (you would be giving them the photo).</p>
+  <p><b>Invisible watermarks can&rsquo;t be checked here.</b> Google marks its AI pictures with SynthID, a watermark hidden in the pixels themselves. Only Google can read it &mdash; its Gemini app can tell you if a picture you give it was made with Google AI. Other companies have their own hidden marks.</p>
+  <p><b>Your eyes and the agent&rsquo;s answers count most.</b> A viewing in person beats any check on a photo.</p>
+</div>
+
+<div style="margin:18px 0 10px; font-size:12px; color:#94a3b8; line-height:1.5; border-top:1px solid #334155; padding-top:8px;">
+  Savvy Renter &mdash; savvyrenter.co.uk &middot; free tools for renters &middot;
+  Everything on this page happens on your device. No photo is uploaded or sent anywhere unless you choose to search for it.
+</div>
+<div class="faqlinks" style="font-size:13px;line-height:1.5;margin:14px 0 4px;color:#94a3b8"><b style="color:#cbd5e1">Questions renters ask:</b> <a href="faq/rental-scam.html">I paid money for a flat and it was a scam. What can I do?</a> · <a href="faq/misleading-advert.html">The rent, council tax band or bills in the advert were wrong. What can I do?</a> · <a href="faq.html">all questions</a></div>
+<div class="unverified" id="betanote"><b>* Beta.</b> This page is new and still being tested. It reads the details stored in a photo file and shows what they say; it cannot tell you for certain whether a photo is real, edited or made by AI, and it does not check Content Credentials signatures. If something looks wrong, ask the agent and view the property before paying anything.</div>
+</main>
+
+<script src="photo-meta.js"></script>
+<script>
+'use strict';
+const $ = id => document.getElementById(id);
+const results = $('results');
+const shown = [];   // { url, blob, name }
+
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]); }
+function kb(n) { return n > 1048576 ? (n / 1048576).toFixed(1) + ' MB' : Math.max(1, Math.round(n / 1024)) + ' KB'; }
+
+// EXIF dates look like "2021:06:14 10:22:05"; XMP ones like "2021-06-14T10:22:05".
+function niceDate(s) {
+  const m = /^(\d{4})[:\-](\d\d)[:\-](\d\d)(?:[ T](\d\d):(\d\d))?/.exec(s || '');
+  if (!m || m[1] === '0000') return null;
+  const d = new Date(+m[1], +m[2] - 1, +m[3], +(m[4] || 0), +(m[5] || 0));
+  if (isNaN(d)) return null;
+  const txt = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) + (m[4] ? ', ' + m[4] + ':' + m[5] : '');
+  const months = (Date.now() - d) / 2629800000;
+  let age = '';
+  if (months > 24) age = 'about ' + Math.floor(months / 12) + ' years ago &mdash; ask whether it still looks like this';
+  else if (months > 12) age = 'over a year ago &mdash; ask whether it still looks like this';
+  else if (months >= 1) age = Math.floor(months) + ' month' + (Math.floor(months) === 1 ? '' : 's') + ' ago';
+  else if (months > -1) age = 'within the last month';
+  else age = 'a date in the future, so the camera clock was wrong or the date was changed';
+  return { txt, age };
+}
+
+function verdictHtml(r) {
+  const v = r.verdict;
+  const camera = [r.make, r.model].filter(Boolean).join(' ').replace(/^(\S+) \1 /i, '$1 ');
+  if (v.level === 'ai') {
+    return '<div class="verdict ai"><b class="h">Labelled as made or changed by AI</b>The file itself says so:<ul>' +
+      v.reasons.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>Ask the agent whether the room really looks like this, and view it before paying anything.</div>';
+  }
+  if (v.level === 'edited') {
+    return '<div class="verdict edited"><b class="h">Edited with photo software</b><ul>' +
+      v.reasons.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' + (camera ? 'It also says it was taken with a ' + esc(camera) + '. ' : '') + 'Most agents touch up brightness and colour, which is fine. Look closely for anything removed or added, and ask.</div>';
+  }
+  if (camera) {
+    return '<div class="verdict camera"><b class="h">Says it was taken with a camera: ' + esc(camera) + '</b>A good sign, but not proof &mdash; these details can be copied or faked. No AI or editing label was found.</div>';
+  }
+  if (r.c2pa) {
+    return '<div class="verdict"><b class="h">Content Credentials found, with no AI label</b>See what they record below.</div>';
+  }
+  return '<div class="verdict"><b class="h">No details in this file</b>That is normal for photos saved from listing sites and for screenshots, and proves nothing either way. Look at the photo itself using the guide below, and search for copies of it.</div>';
+}
+
+function row(label, value) { return value ? '<tr><th>' + label + '</th><td>' + value + '</td></tr>' : ''; }
+
+function detailsHtml(r, file) {
+  const camera = [r.make, r.model].filter(Boolean).join(' ').replace(/^(\S+) \1 /i, '$1 ');
+  const taken = niceDate(r.taken) || niceDate(r.xmpCreated);
+  const words = r.sourceTypes.map(t => esc(PhotoMeta.SOURCE_WORDS[t] || t) + ' <small>(' + esc(t) + ')</small>').join('<br>');
+  let h = '<table class="meta">';
+  h += row('File', esc(r.format) + (r.width ? ' &middot; ' + r.width + ' &times; ' + r.height + ' pixels' : '') + ' &middot; ' + kb(file.size));
+  h += row('Camera', esc(camera));
+  h += row('Lens', esc(r.lens));
+  h += row('Taken', taken ? esc(taken.txt) + '<br><small>' + taken.age + '</small>' : '');
+  if (!r.taken) h += row('Modified', (niceDate(r.modified) || {}).txt ? esc(niceDate(r.modified).txt) : '');
+  h += row('Software', esc(r.software));
+  h += row('Made with', r.creatorTool && r.creatorTool !== r.software ? esc(r.creatorTool) : '');
+  h += row('Credit', esc(r.credit || r.artist));
+  h += row('Copyright', esc(r.copyright));
+  h += row('Source type', words);
+  if (r.gps) {
+    const ll = r.gps.lat.toFixed(5) + ', ' + r.gps.lon.toFixed(5);
+    h += row('Location', esc(ll) + '<br><small>Where the photo says it was taken. Does it match the address? <a href="https://www.openstreetmap.org/?mlat=' + r.gps.lat.toFixed(5) + '&amp;mlon=' + r.gps.lon.toFixed(5) + '#map=18/' + r.gps.lat.toFixed(5) + '/' + r.gps.lon.toFixed(5) + '" target="_blank" rel="noopener noreferrer">Show on a map</a></small>');
+  }
+  const pt = Object.keys(r.pngText);
+  if (pt.length) h += row('Text in file', pt.map(k => '<b>' + esc(k) + ':</b> ' + esc(String(r.pngText[k]).slice(0, 240))).join('<br>'));
+  if (r.partial) h += row('Note', 'This format is only scanned for AI and Content Credentials labels, not read in full.');
+  if (r.error) h += row('Note', esc(r.error));
+  h += '</table>';
+  if (r.c2pa) {
+    const c = r.c2pa;
+    h += '<div class="cc"><b class="h">Content Credentials (C2PA)</b><br>';
+    h += c.generator ? 'Made with: <b>' + esc(c.generator) + '</b><br>' : '';
+    h += c.actions.length ? 'Recorded steps: ' + esc(c.actions.join(', ').replace(/_/g, ' ')) + '<br>' : '';
+    h += c.signers.length ? 'Signed by: ' + esc(c.signers.join(', ')) + '<br>' : '';
+    h += '<span class="nv">Read, not verified: the signature has not been checked, so this record could have been altered.</span></div>';
+  }
+  return h;
+}
+
+async function addFile(file) {
+  if (!file) return;
+  const buf = await file.arrayBuffer();
+  const r = PhotoMeta.read(buf, file.name);
+  const url = URL.createObjectURL(file);
+  const i = shown.length;
+  shown.push({ url, blob: file, name: file.name });
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML =
+    '<div class="pic"><img alt="" src="' + url + '" data-i="' + i + '"><div class="fn">' + esc(file.name || 'Pasted picture') + '</div></div>' +
+    '<div class="info">' + verdictHtml(r) + detailsHtml(r, file) +
+    '<div class="srch"><button type="button" class="copy" data-copy="' + i + '">Copy photo</button>' +
+    '<a href="https://images.google.com/" target="_blank" rel="noopener noreferrer">Google Lens</a>' +
+    '<a href="https://tineye.com/" target="_blank" rel="noopener noreferrer">TinEye</a>' +
+    '<a href="https://www.bing.com/visualsearch" target="_blank" rel="noopener noreferrer">Bing</a>' +
+    '<span class="msg"></span></div></div>';
+  // Some image types (HEIC on most browsers) can't be shown; say so rather than show a broken picture.
+  card.querySelector('img').addEventListener('error', function () { this.replaceWith(Object.assign(document.createElement('div'), { className: 'fn', textContent: 'This browser can’t show this picture, but its details were still read.' })); });
+  results.appendChild(card);
+  $('clearRow').classList.remove('hidden');
+}
+
+// One at a time, so the cards appear in the order chosen; the first new one is scrolled into view.
+let queue = Promise.resolve();
+function addFiles(list) {
+  const files = Array.from(list || []).filter(f => /^image\//.test(f.type) || /\.(jpe?g|png|webp|hei[cf]|avif|gif|tiff?)$/i.test(f.name));
+  if (!files.length) return;
+  const first = results.children.length;
+  queue = queue.then(async () => {
+    for (const f of files) { try { await addFile(f); } catch (e) { /* unreadable file: skip it */ } }
+    const c = results.children[first];
+    if (c) c.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+}
+
+$('fileIn').addEventListener('change', e => { addFiles(e.target.files); e.target.value = ''; });
+const drop = $('drop');
+['dragenter', 'dragover'].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.add('over'); }));
+['dragleave', 'drop'].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.remove('over'); }));
+drop.addEventListener('drop', e => addFiles(e.dataTransfer.files));
+document.addEventListener('paste', e => {
+  if (e.target && e.target.id === 'imgUrl') return;
+  const files = Array.from((e.clipboardData && e.clipboardData.files) || []);
+  if (files.length) { e.preventDefault(); addFiles(files); }
+});
+$('clearBtn').addEventListener('click', () => {
+  shown.forEach(s => URL.revokeObjectURL(s.url));
+  shown.length = 0;
+  results.innerHTML = '';
+  $('clearRow').classList.add('hidden');
+});
+
+// Copy a photo so it can be pasted into a search site. Clipboards take PNG, so convert.
+async function toPng(blob) {
+  if (blob.type === 'image/png') return blob;
+  const img = await new Promise((ok, no) => { const im = new Image(); im.onload = () => ok(im); im.onerror = no; im.src = URL.createObjectURL(blob); });
+  const c = document.createElement('canvas');
+  c.width = img.naturalWidth; c.height = img.naturalHeight;
+  c.getContext('2d').drawImage(img, 0, 0);
+  URL.revokeObjectURL(img.src);
+  return new Promise(ok => c.toBlob(ok, 'image/png'));
+}
+results.addEventListener('click', async e => {
+  const b = e.target.closest('[data-copy]');
+  if (b) {
+    const msg = b.parentNode.querySelector('.msg');
+    try {
+      if (!navigator.clipboard || !window.ClipboardItem) throw new Error('no clipboard');
+      const png = await toPng(shown[+b.dataset.copy].blob);
+      await navigator.clipboard.write([new ClipboardItem({ 'image/png': png })]);
+      msg.textContent = 'Copied. Open a search site and paste it (Ctrl+V).';
+    } catch (err) {
+      msg.textContent = 'This browser won’t copy pictures. Open a search site and use its upload button to pick the same photo.';
+    }
+    return;
+  }
+  const im = e.target.closest('img[data-i]');
+  if (im) openViewer(im.src);
+});
+
+// Searching by web address: the address goes to the site you click, nothing else.
+function setUrlLinks() {
+  const u = $('imgUrl').value.trim();
+  const ok = /^https?:\/\/\S+$/i.test(u);
+  const q = encodeURIComponent(u);
+  $('lnkGoogle').href = ok ? 'https://lens.google.com/uploadbyurl?url=' + q : 'https://images.google.com/';
+  $('lnkTineye').href = ok ? 'https://tineye.com/search?url=' + q : 'https://tineye.com/';
+  $('lnkBing').href = ok ? 'https://www.bing.com/images/search?view=detailv2&iss=sbi&q=imgurl:' + q : 'https://www.bing.com/visualsearch';
+  $('urlMsg').textContent = ok ? 'Searches for that photo address on the site you click.' : 'Opens the site. Paste the photo there (Ctrl+V) or use its upload button.';
+}
+$('imgUrl').addEventListener('input', setUrlLinks);
+
+function openViewer(src) {
+  const v = document.createElement('div');
+  v.className = 'viewer';
+  v.innerHTML = '<img alt=""><button type="button">Close &times;</button>';
+  v.querySelector('img').src = src;
+  v.addEventListener('click', () => v.remove());
+  document.body.appendChild(v);
+}
+
+// ---------------------------------------------------------------- the explanation box (as on the other tool pages)
+function xpSwap(box){var s=box.querySelector('.xsum'),f=box.querySelector('.xfull');var open=f.classList.contains('hidden');f.classList.toggle('hidden',!open);s.classList.toggle('hidden',open);}
+document.addEventListener('click',function(e){var box=e.target.closest&&e.target.closest('.intro.xp');if(!box)return;if(e.target.closest('a'))return;if(!e.target.closest('.xbtn')&&String(window.getSelection())!=='')return;xpSwap(box);});
+</script>
+</body>
+</html>
