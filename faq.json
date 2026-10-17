@@ -175,6 +175,10 @@
    ],
    "links": [
     {
+     "title": "Advert photo check",
+     "url": "advert-photo-check.html"
+    },
+    {
      "title": "Before you rent",
      "url": "before-you-rent.html"
     }
@@ -230,6 +234,10 @@
     }
    ],
    "links": [
+    {
+     "title": "Advert photo check",
+     "url": "advert-photo-check.html"
+    },
     {
      "title": "Council tax here",
      "url": "counciltax.html"
@@ -331,6 +339,88 @@
     {
      "title": "Moving in audit",
      "url": "moving-in_audit.html"
+    }
+   ]
+  },
+  {
+   "id": "spot-rental-scam",
+   "category": "finding",
+   "question": "Is this rental advert a scam? How can I tell before I pay anything?",
+   "answer": "The biggest warning sign is being asked to pay before you have seen the home in person. Scammers copy the photos and details from real adverts, so a fake listing can look genuine. Be wary if the rent is well below similar homes nearby, the landlord says they are abroad and will post the keys, you are pushed to pay quickly to beat other people, or you are asked to pay by bank transfer to a personal account, in cryptocurrency or through a money transfer service. Search for copies of the photos with a reverse image search: the same pictures on another advert, at another address or rent, is a strong sign of a scam. Check that a letting agent belongs to a redress scheme, which every letting agent in England must, and for a small fee the Land Registry will tell you who owns the property. Never pay anything until you have viewed the home and are sure the person you are dealing with has the right to let it.",
+   "sources": [
+    {
+     "title": "Which?: 4 ways to spot a rental scam",
+     "url": "https://www.which.co.uk/news/article/4-ways-to-spot-a-rental-scam-a206R0v7tjRF"
+    },
+    {
+     "title": "Citizens Advice: check if something might be a scam",
+     "url": "https://www.citizensadvice.org.uk/consumer/scams/check-if-something-might-be-a-scam/"
+    }
+   ],
+   "links": [
+    {
+     "title": "Advert photo check",
+     "url": "advert-photo-check.html"
+    },
+    {
+     "title": "Before you rent",
+     "url": "before-you-rent.html"
+    }
+   ]
+  },
+  {
+   "id": "ai-fake-advert-photos",
+   "category": "finding",
+   "question": "The photos in the advert look fake or made by AI. How can I check?",
+   "answer": "Save the photo from the advert rather than taking a screenshot, then look at the details stored in the file. AI image tools from companies such as OpenAI, Adobe and Google are meant to label their pictures, either with a tag saying the image was made by AI or with signed \"Content Credentials\". Most listing sites strip these details when a photo is uploaded, though, so finding nothing proves nothing either way. Look closely at the picture itself: lines that should be straight but bend, no sockets, radiators or light switches, text and small details that smear when you zoom in, and furniture that melts into the floor or walls. Search for copies of the photo on other sites. Then ask the agent in writing whether the photos are of this home, when they were taken, and whether any were virtually staged or edited. Furniture added by computer is usually acceptable if the advert says so; hiding damp, damage or the real size of a room is misleading. View the home in person before paying anything.",
+   "sources": [
+    {
+     "title": "Content Authenticity Initiative: check Content Credentials",
+     "url": "https://contentcredentials.org/verify"
+    },
+    {
+     "title": "Which?: 4 ways to spot a rental scam",
+     "url": "https://www.which.co.uk/news/article/4-ways-to-spot-a-rental-scam-a206R0v7tjRF"
+    }
+   ],
+   "links": [
+    {
+     "title": "Advert photo check",
+     "url": "advert-photo-check.html"
+    },
+    {
+     "title": "Viewing notes",
+     "url": "viewing-notes.html"
+    }
+   ]
+  },
+  {
+   "id": "flat-not-like-photos",
+   "category": "finding",
+   "question": "The flat looked nothing like the photos in the advert. What can I do?",
+   "answer": "Letting agents and landlords must not mislead you about a property, and that includes photos that hide damage, make rooms look bigger than they are, or show a different home. If you have not signed or paid yet, you can simply walk away. If you paid a holding deposit and pulled out because the advert was misleading, ask for it back in writing and say why. If you have already moved in, keep a copy of the advert and its photos, take your own dated photos of the real condition, and complain to the agent in writing. If that does not resolve it, complain to the agent's redress scheme or report the advert to your council's trading standards team. Where a misleading advert led you into a tenancy you would not otherwise have taken, consumer law can sometimes give you the right to end the contract or get money back, so get free advice before you act.",
+   "sources": [
+    {
+     "title": "Shelter: complain about a letting agent",
+     "url": "https://england.shelter.org.uk/housing_advice/private_renting/complain_about_a_letting_agent"
+    },
+    {
+     "title": "Citizens Advice: check if something might be a scam",
+     "url": "https://www.citizensadvice.org.uk/consumer/scams/check-if-something-might-be-a-scam/"
+    }
+   ],
+   "links": [
+    {
+     "title": "Advert photo check",
+     "url": "advert-photo-check.html"
+    },
+    {
+     "title": "Viewing notes",
+     "url": "viewing-notes.html"
+    },
+    {
+     "title": "TPO complaint workspace",
+     "url": "TPO_Tenant_Workspace.html"
     }
    ]
   },

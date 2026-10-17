@@ -406,7 +406,7 @@ foreach ($d['faqs'] as $f) {
     foreach (array_slice($rel, 0, 6) as $o) $p .= '<li><a href="faq/' . $o['id'] . '.html">' . e($o['question']) . '</a></li>';
     $p .= "</ul>\n";
   }
-  $p .= '<p class="note" style="margin-top:12px">See <a href="faq.html">all ' . count($d['faqs']) . ' renting questions</a>, or the <a href="resources.html">free advice services</a> for help with your own situation.</p>' . "\n";
+  $p .= '<p class="note" style="margin-top:12px">See <a href="faq.html">all the renting questions</a>, or the <a href="resources.html">free advice services</a> for help with your own situation.</p>' . "\n";
   $p .= foot($d['updated']) . $CLOSE;
   file_put_contents("$ROOT/faq/{$f['id']}.html", $p);
   $built[$f['id'] . '.html'] = true;
@@ -423,7 +423,7 @@ foreach (glob("$ROOT/faq/*.html") as $file) {
 
 /* -- sitemap: drop the old FAQ entries, add the current ones ---------------- */
 $sm = file_get_contents("$ROOT/sitemap.xml");
-$sm = preg_replace('#\s*<url>\s*<loc>https://www\.savvyrenter\.co\.uk/faq(\.html|/[^<]*)</loc>.*?</url>#s', '', $sm);
+$sm = preg_replace('#\s*<url>\s*<loc>https://(?:www\.)?savvyrenter\.co\.uk/faq(\.html|/[^<]*)</loc>.*?</url>#s', '', $sm);
 $add = "\n  <url>\n    <loc>{$hubUrl}</loc>\n    <lastmod>{$d['updated']}</lastmod>\n    <priority>0.8</priority>\n  </url>";
 foreach ($d['faqs'] as $f) $add .= "\n  <url>\n    <loc>{$SITE}faq/{$f['id']}.html</loc>\n    <lastmod>{$d['updated']}</lastmod>\n    <priority>0.6</priority>\n  </url>";
 $sm = preg_replace('#\s*</urlset>\s*$#', $add . "\n</urlset>\n", $sm);
